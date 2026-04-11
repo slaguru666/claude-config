@@ -1,0 +1,10 @@
+{
+  "env": {
+    "MAX_THINKING_TOKENS": "8000",
+    "CLAUDE_AUTOCOMPACT_PCT_OVERRIDE": "50"
+  },
+  "autoUpdaterStatus": "enabled",
+  "preferredNotifChannel": "terminal_bell",
+  "verbose": false,
+  "cleanupPeriodDays": 30
+}
