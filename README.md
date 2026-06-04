@@ -2,45 +2,44 @@
 
 Private repo syncing Claude Code config across machines.
 
-## Files
+## What's tracked
 
-| File | Destination |
-|------|------------|
-| `CLAUDE.md` | `~/.claude/CLAUDE.md` |
-| `settings.json` | `~/.claude/settings.json` |
-| `memory/MEMORY.md` | `~/.claude/projects/-Users-<username>-Git/memory/MEMORY.md` |
-| `memory/gsd-patterns.md` | `~/.claude/projects/-Users-<username>-Git/memory/gsd-patterns.md` |
-| `memory/superpowers-patterns.md` | `~/.claude/projects/-Users-<username>-Git/memory/superpowers-patterns.md` |
+| File | Source | Destination |
+|------|--------|-------------|
+| `CLAUDE.md` | `~/.claude/CLAUDE.md` | Global Claude Code instructions |
+| `settings.json` | `~/.claude/settings.json` | Permissions, model, env vars |
+| `memory/*.md` | `~/.claude/projects/-Users-<username>/memory/` | Persistent memory files |
+
+**Not tracked:** `settings.local.json` — accumulates one-off permissions per session, machine-specific.
 
 ## Install on a new machine
 
 ```bash
-git clone https://github.com/slaguru666/claude-config.git
-cd claude-config
-chmod +x install.sh
+git clone https://github.com/slaguru666/claude-config.git ~/Git/claude-config
+cd ~/Git/claude-config
+chmod +x install.sh sync.sh
 ./install.sh
 ```
 
-The install script uses `whoami` to resolve the correct memory path automatically — no manual path editing needed.
+## Sync after changes
 
-## Keeping in sync
-
-After editing any config file on one machine:
+Pull the latest live state into the repo and push:
 
 ```bash
 cd ~/Git/claude-config
-cp ~/.claude/CLAUDE.md .
-cp ~/.claude/settings.json .
-cp ~/.claude/projects/-Users-$(whoami)-Git/memory/*.md memory/
-git add -A
-git commit -m "sync config"
-git push
+./sync.sh                    # syncs, commits, pushes with default message
+./sync.sh "my commit msg"    # custom message
 ```
 
-On the other machine:
+On another machine, pull and reinstall:
 
 ```bash
 cd ~/Git/claude-config
 git pull
 ./install.sh
 ```
+
+## Memory path
+
+Memory files live at `~/.claude/projects/-Users-<username>/memory/`. The scripts resolve
+`<username>` via `whoami` automatically.

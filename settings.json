@@ -1,10 +1,33 @@
 {
+  "cleanupPeriodDays": 30,
   "env": {
     "MAX_THINKING_TOKENS": "8000",
     "CLAUDE_AUTOCOMPACT_PCT_OVERRIDE": "50"
   },
-  "autoUpdaterStatus": "enabled",
-  "preferredNotifChannel": "terminal_bell",
+  "permissions": {
+    "allow": [
+      "Bash(mj-gen *)",
+      "Bash(mj-auth-check *)",
+      "Bash(mj-capture-command *)",
+      "Bash(/Users/timevans/bin/mj-gen *)",
+      "Bash(/Users/timevans/bin/mj-auth-check *)",
+      "Bash(/Users/timevans/bin/mj-capture-command *)"
+    ]
+  },
+  "model": "sonnet",
+  "enabledPlugins": {
+    "codex@openai-codex": true,
+    "warp@claude-code-warp": true
+  },
+  "extraKnownMarketplaces": {
+    "claude-code-warp": {
+      "source": {
+        "source": "github",
+        "repo": "warpdotdev/claude-code-warp"
+      }
+    }
+  },
   "verbose": false,
-  "cleanupPeriodDays": 30
+  "preferredNotifChannel": "terminal_bell",
+  "autoUpdaterStatus": "enabled"
 }

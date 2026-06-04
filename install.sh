@@ -8,7 +8,7 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 CLAUDE_DIR="$HOME/.claude"
 USERNAME=$(whoami)
-MEMORY_DIR="$CLAUDE_DIR/projects/-Users-${USERNAME}-Git/memory"
+MEMORY_DIR="$CLAUDE_DIR/projects/-Users-${USERNAME}/memory"
 
 echo "Installing Claude config for user: $USERNAME"
 
@@ -16,19 +16,17 @@ echo "Installing Claude config for user: $USERNAME"
 cp "$SCRIPT_DIR/CLAUDE.md" "$CLAUDE_DIR/CLAUDE.md"
 echo "  Installed: ~/.claude/CLAUDE.md"
 
-# settings.json — merge if file already exists, otherwise copy
+# settings.json — back up if it already exists
 if [ -f "$CLAUDE_DIR/settings.json" ]; then
-  echo "  ~/.claude/settings.json already exists — backing up to settings.json.bak"
   cp "$CLAUDE_DIR/settings.json" "$CLAUDE_DIR/settings.json.bak"
+  echo "  Backed up: ~/.claude/settings.json -> settings.json.bak"
 fi
 cp "$SCRIPT_DIR/settings.json" "$CLAUDE_DIR/settings.json"
 echo "  Installed: ~/.claude/settings.json"
 
-# Memory files
+# Memory files — copy all .md files from memory/
 mkdir -p "$MEMORY_DIR"
-cp "$SCRIPT_DIR/memory/MEMORY.md" "$MEMORY_DIR/MEMORY.md"
-cp "$SCRIPT_DIR/memory/gsd-patterns.md" "$MEMORY_DIR/gsd-patterns.md"
-cp "$SCRIPT_DIR/memory/superpowers-patterns.md" "$MEMORY_DIR/superpowers-patterns.md"
+cp "$SCRIPT_DIR/memory/"*.md "$MEMORY_DIR/"
 echo "  Installed: memory files -> $MEMORY_DIR"
 
 echo ""
