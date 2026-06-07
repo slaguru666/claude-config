@@ -2,7 +2,7 @@
   "cleanupPeriodDays": 30,
   "env": {
     "MAX_THINKING_TOKENS": "8000",
-    "CLAUDE_AUTOCOMPACT_PCT_OVERRIDE": "50"
+    "CLAUDE_AUTOCOMPACT_PCT_OVERRIDE": "50",
   },
   "permissions": {
     "allow": [
@@ -18,9 +18,7 @@
   "enabledPlugins": {
     "codex@openai-codex": true,
     "warp@claude-code-warp": true,
-    "carta-investors@claude-plugins-official": true,
     "superpowers@claude-plugins-official": true,
-    "github@claude-plugins-official": true,
     "claude-md-management@claude-plugins-official": true,
     "aws-agents@claude-plugins-official": true,
     "feature-dev@claude-plugins-official": true,
