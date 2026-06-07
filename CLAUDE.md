@@ -28,7 +28,7 @@ Discard:
 - **GitHub MCP** — use for repo operations, PRs, issues, code search. Always prefer this over manual `gh` CLI when available.
 - **Graphiti MCP** — knowledge graph memory at `graphiti.timevans.uk`. Use `search_memory_facts` at session start to recall prior context. Use `add_memory` to persist important decisions, discoveries, and project state.
 - **Codex CLI** — `@openai/codex` (binary `codex`) is installed and authenticated (ChatGPT login, creds in `~/.codex/auth.json`, per-machine and not synced). Use for delegating tasks or code review via the `codex@openai-codex` plugin (`/codex:*` commands) or directly: `codex exec "<prompt>"` (add `--skip-git-repo-check` outside a git repo). `install.sh` installs the CLI on each machine; run `codex login --device-auth` once per machine (SSH-friendly).
-- The user's machine is a Mac Mini (`tims-mac-mini-local`).
+- The user runs Claude Code on multiple machines: `timevans-MINI-S` (Linux, Zorin OS 18.1; static LAN IP `192.168.1.6`, key-only SSH — see the `infra-minis-remote-access` memory) and a Mac Mini (`tims-mac-mini-local`). Check the hostname to know which one you're on.
 - The user adds `$HOME/bin` to PATH in `.bashrc`.
 
 ## Memory Protocol
