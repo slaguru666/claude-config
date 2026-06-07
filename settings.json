@@ -29,5 +29,6 @@
   },
   "verbose": false,
   "preferredNotifChannel": "terminal_bell",
-  "autoUpdaterStatus": "enabled"
+  "autoUpdaterStatus": "enabled",
+  "theme": "dark"
 }
