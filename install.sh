@@ -44,5 +44,20 @@ else
   echo "  WARNING: npm not found — install the Codex CLI manually: npm install -g @openai/codex"
 fi
 
+# GitHub MCP server (PAT-based, stdio)
+if command -v claude >/dev/null 2>&1; then
+  if [ -n "${GITHUB_PERSONAL_ACCESS_TOKEN:-}" ]; then
+    echo "  Setting up GitHub MCP server..."
+    claude mcp remove github -s user 2>/dev/null || true
+    claude mcp add github -s user \
+      -e GITHUB_PERSONAL_ACCESS_TOKEN="$GITHUB_PERSONAL_ACCESS_TOKEN" \
+      -- npx -y @modelcontextprotocol/server-github \
+      && echo "  Installed: GitHub MCP server" \
+      || echo "  WARNING: GitHub MCP server setup failed — run manually: claude mcp add github -s user -e GITHUB_PERSONAL_ACCESS_TOKEN=<token> -- npx -y @modelcontextprotocol/server-github"
+  else
+    echo "  Skipping GitHub MCP server — set GITHUB_PERSONAL_ACCESS_TOKEN before running to enable"
+  fi
+fi
+
 echo ""
 echo "Done. Restart Claude Code for settings to take effect."
