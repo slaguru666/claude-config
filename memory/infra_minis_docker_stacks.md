@@ -17,7 +17,7 @@ Data bind-mounted under `/home/timevans/docker/<service>/`. Secrets in `/home/ti
 Services / host ports:
 - **portainer** (portainer/portainer-ce) — https `9443`
 - **gitea** (gitea/gitea, sqlite) — web `3000`, git-ssh `222`. Separate from the existing `gitea.oneoffgames.net`.
-- **obsidian** (lscr.io/linuxserver/obsidian, browser desktop via KasmVNC) — **`https://192.168.1.6:3001`** (host 3001 -> container 3001 = HTTPS, self-signed cert; use HTTPS so KasmVNC clipboard works. Plain HTTP on container 3000 is not mapped.)
+- **obsidian** (lscr.io/linuxserver/obsidian, browser desktop via KasmVNC) — **`https://192.168.1.6:3002`** (host 3002 -> container 3001 = HTTPS, self-signed cert; use HTTPS so KasmVNC clipboard works. Plain HTTP on container 3000 is not mapped.)
 - **stirling-pdf** (stirlingtools/stirling-pdf) — `8081`
 - **nextcloud** (nextcloud:apache) — `8080`; backed by **nextcloud-db** (mariadb:11) + **nextcloud-redis** (internal only)
 
