@@ -44,6 +44,20 @@ else
   echo "  WARNING: npm not found — install the Codex CLI manually: npm install -g @openai/codex"
 fi
 
+# Obsidian vault MCP server (filesystem access)
+if command -v claude >/dev/null 2>&1; then
+  VAULT_PATH="/home/timevans/docker/obsidian/config/Obsidian Vault"
+  if [ -d "$VAULT_PATH" ]; then
+    echo "  Setting up Obsidian MCP server..."
+    claude mcp remove obsidian -s user 2>/dev/null || true
+    claude mcp add obsidian -s user -- npx -y @modelcontextprotocol/server-filesystem "$VAULT_PATH" \
+      && echo "  Installed: Obsidian MCP server" \
+      || echo "  WARNING: Obsidian MCP server setup failed"
+  else
+    echo "  Skipping Obsidian MCP server — vault not found at $VAULT_PATH"
+  fi
+fi
+
 # GitHub MCP server (PAT-based, stdio)
 if command -v claude >/dev/null 2>&1; then
   if [ -n "${GITHUB_PERSONAL_ACCESS_TOKEN:-}" ]; then
