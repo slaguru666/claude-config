@@ -12,6 +12,9 @@ Private repo syncing Claude Code config across machines.
 
 **Not tracked:** `settings.local.json` — accumulates one-off permissions per session, machine-specific.
 
+**CLI dependencies:** `install.sh` also installs the Codex CLI (`npm install -g @openai/codex`) when missing,
+since the `codex@openai-codex` plugin shells out to it. Requires `npm` on the target machine.
+
 ## Install on a new machine
 
 ```bash

@@ -32,5 +32,17 @@ mkdir -p "$MEMORY_DIR"
 cp "$SCRIPT_DIR/memory/"*.md "$MEMORY_DIR/"
 echo "  Installed: memory files -> $MEMORY_DIR"
 
+# CLI dependencies — Codex CLI, required by the codex@openai-codex plugin to actually run.
+if command -v codex >/dev/null 2>&1; then
+  echo "  Codex CLI already present: $(codex --version 2>/dev/null | head -1)"
+elif command -v npm >/dev/null 2>&1; then
+  echo "  Installing Codex CLI (npm install -g @openai/codex)..."
+  npm install -g @openai/codex >/dev/null 2>&1 \
+    && echo "  Installed: Codex CLI $(codex --version 2>/dev/null | head -1)" \
+    || echo "  WARNING: Codex CLI install failed — run manually: npm install -g @openai/codex"
+else
+  echo "  WARNING: npm not found — install the Codex CLI manually: npm install -g @openai/codex"
+fi
+
 echo ""
 echo "Done. Restart Claude Code for settings to take effect."

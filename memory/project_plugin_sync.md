@@ -22,7 +22,11 @@ is NOT synced and should not be — each server re-fetches plugins from its mark
 
 **How to apply:** After installing/removing any plugin, run `~/Git/claude-config/sync.sh` to push the updated
 `settings.json` to GitHub. On another server, `git pull && ./install.sh`, then start Claude Code — it auto-installs
-the enabled plugins from `claude-plugins-official`. Rule: any plugin from a *non-official* marketplace
+the enabled plugins from `claude-plugins-official`. CLI dependency: the `codex@openai-codex` plugin shells out to the Codex CLI (`@openai/codex`, binary `codex`).
+`install.sh` installs it via `npm install -g @openai/codex` when missing, so it propagates to every server that
+runs the installer (requires npm on the target machine).
+
+Rule: any plugin from a *non-official* marketplace
 must have that marketplace added to `extraKnownMarketplaces` in `settings.json`, or it won't install on other
 servers. Both non-official marketplaces in use (`openai-codex` → `openai/codex-plugin-cc`, `claude-code-warp` →
 `warpdotdev/claude-code-warp`) are now registered there.
