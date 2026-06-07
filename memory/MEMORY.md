@@ -6,3 +6,4 @@
 - [Plugin sync](project_plugin_sync.md) — keep Claude Code plugins identical across all servers via the claude-config repo (settings.json enabledPlugins); run sync.sh after install/remove
 - [MINI-S remote access](infra_minis_remote_access.md) — timevans-MINI-S: static 192.168.1.6, key-only SSH + fail2ban, Zyxel DX3301-T0 port-forward 2222->22 (Voneus)
 - [MINI-S Docker stacks](infra_minis_docker_stacks.md) — homelab (Portainer/Gitea/Obsidian/Stirling-PDF/Nextcloud) + Seafile cloud drive; ports, data paths, secrets locations
+- [MINI-S browser automation](infra_minis_browser_automation.md) — Playwright MCP (headless Chromium) lets Claude view/control web pages on the LAN incl. the Zyxel router; restart Claude after adding to load tools
