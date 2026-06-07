@@ -6,8 +6,10 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 CLAUDE_DIR="$HOME/.claude"
-USERNAME=$(whoami)
-MEMORY_DIR="$CLAUDE_DIR/projects/-Users-${USERNAME}/memory"
+# Claude Code encodes the project dir by replacing "/" with "-".
+# Derive from $HOME so it works on macOS (/Users/x -> -Users-x) and Linux (/home/x -> -home-x).
+PROJECT_KEY="${HOME//\//-}"
+MEMORY_DIR="$CLAUDE_DIR/projects/${PROJECT_KEY}/memory"
 MSG="${1:-sync config}"
 
 echo "Syncing from ~/.claude ..."
