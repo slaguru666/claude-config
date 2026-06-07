@@ -17,7 +17,14 @@
   "model": "sonnet",
   "enabledPlugins": {
     "codex@openai-codex": true,
-    "warp@claude-code-warp": true
+    "warp@claude-code-warp": true,
+    "carta-investors@claude-plugins-official": true,
+    "superpowers@claude-plugins-official": true,
+    "github@claude-plugins-official": true,
+    "claude-md-management@claude-plugins-official": true,
+    "aws-agents@claude-plugins-official": true,
+    "feature-dev@claude-plugins-official": true,
+    "huggingface-skills@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "claude-code-warp": {
@@ -27,8 +34,8 @@
       }
     }
   },
+  "theme": "dark",
   "verbose": false,
   "preferredNotifChannel": "terminal_bell",
-  "autoUpdaterStatus": "enabled",
-  "theme": "dark"
+  "autoUpdaterStatus": "enabled"
 }
