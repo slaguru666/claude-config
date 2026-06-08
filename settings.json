@@ -29,5 +29,11 @@
   },
   "verbose": false,
   "preferredNotifChannel": "terminal_bell",
-  "autoUpdaterStatus": "enabled"
+  "autoUpdaterStatus": "enabled",
+  "mcpServers": {
+    "obsidian": {
+      "command": "npx",
+      "args": ["-y", "obsidian-mcp", "/Users/timevans/Obsidian/TimsVault"]
+    }
+  }
 }
