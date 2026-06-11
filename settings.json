@@ -14,7 +14,7 @@
       "Bash(/Users/timevans/bin/mj-capture-command *)"
     ]
   },
-  "model": "sonnet",
+  "model": "opus",
   "enabledPlugins": {
     "codex@openai-codex": true,
     "warp@claude-code-warp": true,
