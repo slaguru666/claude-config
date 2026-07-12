@@ -73,5 +73,16 @@ if command -v claude >/dev/null 2>&1; then
   fi
 fi
 
+# Graphiti MCP server (knowledge-graph memory, HTTP transport)
+# Override the endpoint by exporting GRAPHITI_MCP_URL before running.
+if command -v claude >/dev/null 2>&1; then
+  GRAPHITI_MCP_URL="${GRAPHITI_MCP_URL:-https://graphiti.timevans.uk/mcp}"
+  echo "  Setting up Graphiti MCP server ($GRAPHITI_MCP_URL)..."
+  claude mcp remove graphiti-memory -s user 2>/dev/null || true
+  claude mcp add graphiti-memory "$GRAPHITI_MCP_URL" --transport http -s user \
+    && echo "  Installed: Graphiti MCP server" \
+    || echo "  WARNING: Graphiti MCP server setup failed — run manually: claude mcp add graphiti-memory $GRAPHITI_MCP_URL --transport http -s user"
+fi
+
 echo ""
 echo "Done. Restart Claude Code for settings to take effect."
