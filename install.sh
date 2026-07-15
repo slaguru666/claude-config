@@ -8,9 +8,17 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 CLAUDE_DIR="$HOME/.claude"
 USERNAME=$(whoami)
-# Claude Code encodes the project dir by replacing "/" with "-".
-# Derive from $HOME so it works on macOS (/Users/x -> -Users-x) and Linux (/home/x -> -home-x).
-PROJECT_KEY="${HOME//\//-}"
+# Claude Code encodes the project dir by replacing the path separator with "-".
+# macOS (/Users/x -> -Users-x) and Linux (/home/x -> -home-x) encode the POSIX $HOME.
+# On Windows, Claude Code sees the native path, so C:\Users\x -> C--Users-x. Git Bash
+# reports $HOME as /c/Users/x, which would encode to the wrong key -- convert first.
+if command -v cygpath >/dev/null 2>&1; then
+  # C:\Users\x -> C--Users-x (sed, not bash substitution: a lone "\" in a glob
+  # pattern escapes the next char instead of matching a literal backslash).
+  PROJECT_KEY="$(cygpath -w "$HOME" | sed 's/[\\:]/-/g')"
+else
+  PROJECT_KEY="${HOME//\//-}"
+fi
 MEMORY_DIR="$CLAUDE_DIR/projects/${PROJECT_KEY}/memory"
 
 echo "Installing Claude config for user: $USERNAME"
