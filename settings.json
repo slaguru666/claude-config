@@ -40,6 +40,8 @@
   },
   "theme": "dark",
   "verbose": false,
+  "tui": "fullscreen",
   "preferredNotifChannel": "terminal_bell",
-  "autoUpdaterStatus": "enabled"
+  "autoUpdaterStatus": "enabled",
+  "autoUpdatesChannel": "latest"
 }
