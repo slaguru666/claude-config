@@ -22,7 +22,10 @@
     "claude-md-management@claude-plugins-official": true,
     "aws-agents@claude-plugins-official": true,
     "feature-dev@claude-plugins-official": true,
-    "huggingface-skills@claude-plugins-official": true
+    "huggingface-skills@claude-plugins-official": true,
+    "amazon-location-service@claude-plugins-official": true,
+    "ui-ux-pro-max@ui-ux-pro-max-skill": true,
+    "impeccable@impeccable": true
   },
   "extraKnownMarketplaces": {
     "claude-code-warp": {
@@ -36,12 +39,24 @@
         "source": "github",
         "repo": "openai/codex-plugin-cc"
       }
+    },
+    "ui-ux-pro-max-skill": {
+      "source": {
+        "source": "github",
+        "repo": "nextlevelbuilder/ui-ux-pro-max-skill"
+      }
+    },
+    "impeccable": {
+      "source": {
+        "source": "github",
+        "repo": "pbakaus/impeccable"
+      }
     }
   },
+  "autoUpdatesChannel": "latest",
+  "tui": "fullscreen",
   "theme": "dark",
   "verbose": false,
-  "tui": "fullscreen",
   "preferredNotifChannel": "terminal_bell",
-  "autoUpdaterStatus": "enabled",
-  "autoUpdatesChannel": "latest"
+  "autoUpdaterStatus": "enabled"
 }
