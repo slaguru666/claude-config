@@ -25,16 +25,29 @@ is NOT synced and should not be — each server re-fetches plugins from its mark
 
 **How to apply:** After installing/removing any plugin, run `~/Git/claude-config/sync.sh` to push the updated
 `settings.json` to GitHub. On another server, `git pull && ./install.sh`, then start Claude Code — it auto-installs
-the enabled plugins from `claude-plugins-official`. CLI dependency: the `codex@openai-codex` plugin shells out to the Codex CLI (`@openai/codex`, binary `codex`).
+the enabled plugins from `claude-plugins-official`. UNVERIFIED as of 2026-07-16: whether startup also auto-fetches
+*non-official* marketplaces from `extraKnownMarketplaces`. If a synced non-official plugin is missing on MINI-S,
+run the two-step CLI install below there, then note the answer here. CLI dependency: the `codex@openai-codex` plugin shells out to the Codex CLI (`@openai/codex`, binary `codex`).
 `install.sh` installs it via `npm install -g @openai/codex` when missing, so it propagates to every server that
 runs the installer (requires npm on the target machine).
 
 **Gotcha — hand-editing `extraKnownMarketplaces` does NOT fetch the marketplace.** Adding a marketplace +
 `enabledPlugins` entry by hand only *declares* it. `/reload-plugins` will NOT pick it up: that command reloads
 already-known marketplaces, so the plugin/skill counts come back unchanged and `~/.claude/plugins/known_marketplaces.json`
-still omits the new entry. Fetch it once per machine with `/plugin marketplace add <owner>/<repo>`. Verify an install
-actually happened by reading `~/.claude/plugins/known_marketplaces.json` and `installed_plugins.json` — the reload
-banner's counts are the thing to check, not the absence of an error.
+still omits the new entry.
+
+**Installing a non-official plugin takes TWO steps, and Claude can do both itself via the CLI** (no need to ask the
+user to run slash commands — `claude plugin --help` mirrors `/plugin`):
+```
+claude plugin marketplace add <owner>/<repo>      # clones + registers the marketplace
+claude plugin install <plugin>@<marketplace>      # actually installs it
+```
+Step 1 alone leaves `installed_plugins.json` untouched — registering a marketplace does NOT install the plugins
+already declared in `enabledPlugins`. Neither step rewrites `settings.json`, so a prior hand-edit + sync stays valid.
+
+**Verify by reading files, never by trusting a success banner** — that mistake cost a round trip on 2026-07-16.
+Check `~/.claude/plugins/known_marketplaces.json` (marketplace registered) and `installed_plugins.json` (plugin +
+version + installPath present). Absence of an error is not evidence of an install.
 
 Rule: any plugin from a *non-official* marketplace
 must have that marketplace added to `extraKnownMarketplaces` in `settings.json`, or it won't install on other
