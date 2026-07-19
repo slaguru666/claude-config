@@ -9,8 +9,14 @@ Private repo syncing Claude Code config across machines.
 | `CLAUDE.md` | `~/.claude/CLAUDE.md` | Global Claude Code instructions |
 | `settings.json` | `~/.claude/settings.json` | Permissions, model, env vars |
 | `memory/*.md` | `~/.claude/projects/-Users-<username>/memory/` | Persistent memory files |
+| `skills/` | `~/.claude/skills/` | Shared skills (e.g. `rpg` — scenario-writing system) |
 
 **Not tracked:** `settings.local.json` — accumulates one-off permissions per session, machine-specific.
+
+**Sync order matters:** `sync.sh` copies *live state over the repo* (memory and skills
+included, with deletes). Always `git pull && ./install.sh` **before** working, and
+`./sync.sh` after — syncing from a machine that hasn't installed the latest pull will
+remove the other machines' memory/skill files from the repo.
 
 **CLI dependencies:** `install.sh` also installs the Codex CLI (`npm install -g @openai/codex`) when missing,
 since the `codex@openai-codex` plugin shells out to it. Requires `npm` on the target machine.

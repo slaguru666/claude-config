@@ -37,6 +37,11 @@ else
   echo "  Warning: no memory files found at $MEMORY_DIR — skipping"
 fi
 
+if [ -d "$CLAUDE_DIR/skills" ]; then
+  rsync -a --delete "$CLAUDE_DIR/skills/" "$SCRIPT_DIR/skills/"
+  echo "  Copied: skills/"
+fi
+
 cd "$SCRIPT_DIR"
 git add -A
 if git diff --cached --quiet; then

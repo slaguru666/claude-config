@@ -40,6 +40,13 @@ mkdir -p "$MEMORY_DIR"
 cp "$SCRIPT_DIR/memory/"*.md "$MEMORY_DIR/"
 echo "  Installed: memory files -> $MEMORY_DIR"
 
+# Skills — copy each skill directory into ~/.claude/skills/
+if [ -d "$SCRIPT_DIR/skills" ]; then
+  mkdir -p "$CLAUDE_DIR/skills"
+  rsync -a "$SCRIPT_DIR/skills/" "$CLAUDE_DIR/skills/"
+  echo "  Installed: skills -> ~/.claude/skills/"
+fi
+
 # CLI dependencies — Codex CLI, required by the codex@openai-codex plugin to actually run.
 if command -v codex >/dev/null 2>&1; then
   echo "  Codex CLI already present: $(codex --version 2>/dev/null | head -1)"
