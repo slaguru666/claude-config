@@ -64,3 +64,17 @@ pass.
 - **Signature items with a tiny mechanic** (once/session stress heal on
   interaction) reliably produce unprompted table moments; pure-flavour items
   go unused and nobody minds — both outcomes are fine, so always include one.
+
+## 2026-07 — Day One art production (mj-gen batch)
+
+- **Midjourney silently blocks banned words even in negation.** "no visible
+  gore" kills the job — the grid simply never arrives and the bridge times
+  out. Write the positive form instead ("understated, nothing graphic").
+- **Scene prompts drift photorealistic; style-lock them.** For the house ink
+  style, lead with "hand-drawn pen and ink illustration, NOT a photograph"
+  and append `--no photography, photorealism` — one dusk-boat prompt came
+  back as a photo without it.
+- **Maps are drawn, not generated.** MJ cannot do accurate labelled
+  geography; a hand-styled SVG (rough displacement filter, handwriting font,
+  cream paper) passes visually as sketch art and stays correct. Expect two
+  or three label-collision passes in a browser before it's clean.
