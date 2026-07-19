@@ -133,3 +133,16 @@ pass.
   are true** — Braddock "too afraid to act" AND "cult member" became a
   coerced member, which was stronger than either. Contradictions are usually
   two halves of a better fact.
+
+## 2026-07 — The Con Desk (multi-slot convention tooling)
+
+- **A convention weekend needs ONE entry point.** When several scenarios each
+  have their own GM console, build a hub with the con's real schedule baked
+  in: live-clock "up next / live now" badges, one-tap launches, and per-slot
+  pack-the-bag checklists. Every console gets a ⌂ link home. The hub's
+  relative links mean the whole repo folder must travel to the tablet
+  together — say so in the README.
+- **A contrarian pass earns its keep on the moves the GM prays nobody makes.**
+  "Cross the river NOW" and "we go back for the van" were both one-line hooks
+  until dice forced them; both became the best unwritten scenes. If a hook
+  can be driven to, it needs a written destination and its cost said aloud.
