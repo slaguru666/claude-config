@@ -78,3 +78,20 @@ pass.
   geography; a hand-styled SVG (rough displacement filter, handwriting font,
   cream paper) passes visually as sketch art and stays correct. Expect two
   or three label-collision passes in a browser before it's clean.
+
+## 2026-07 — The Vain Crown build (house-system debut package)
+
+- **A rulebook's pregens are not con pregens.** VANITY's five shipped without
+  Vices — the system's own core engine. When packaging an included adventure
+  for a slot, audit the pregens against the system's *incentive* mechanics,
+  not just their stat legality.
+- **Debut systems need a dice primer baked into the Intro** — one staged
+  practice roll per player that doubles as the arrival scene, so teaching
+  costs zero extra minutes and the first Stumble happens somewhere safe.
+- **Give the villain a countdown table.** "Where is he now" per session-clock
+  row makes lost time (a failed pathfinding roll) mean something concrete and
+  lets fast tables genuinely change the finale's staging.
+- **Silence from a generation pipeline is a diagnosis, not a delay.** When a
+  batch goes quiet, check the actual channel/API for what the service said
+  before waiting again — and keep a fallback asset source (the system's own
+  existing art) so the package ships regardless.
