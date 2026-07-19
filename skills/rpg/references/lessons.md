@@ -116,3 +116,20 @@ pass.
   are printed and well-made but generic, don't rebuild — print per-agent
   mission inserts (private seam + dice crib + table-name conventions) that
   slip inside the sheets. Cheaper, and the sheets stay canon.
+
+## 2026-07 — Silvery Moon rebuild (inherited-draft salvage)
+
+- **Verify a period scenario's real-world facts, then decide: correct or
+  canonize.** Silvery Moon's eclipse was astronomically impossible (new moon
+  that night — checked against the real 1892 record). Correcting it would
+  have cost the climax; canonizing the wrongness AS the horror (the moon that
+  should not be there, proven by an almanac handout and an astronomer pregen)
+  turned the draft's worst error into its best clue. Always check which move
+  the fiction wants before reaching for the eraser.
+- **Mine the draft's own margins for pregens.** The strongest pregen is often
+  already in the text as a named-but-unused NPC (Dr. Lyle was the draft's own
+  "recent collaborator"). Lift them before inventing.
+- **When two source layers contradict (prose vs app data), reconcile so both
+  are true** — Braddock "too afraid to act" AND "cult member" became a
+  coerced member, which was stronger than either. Contradictions are usually
+  two halves of a better fact.
