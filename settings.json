@@ -14,9 +14,18 @@
       "Bash(/Users/timevans/bin/mj-capture-command *)"
     ]
   },
+  "model": "opus",
   "enabledPlugins": {
     "codex@openai-codex": true,
-    "warp@claude-code-warp": true
+    "warp@claude-code-warp": true,
+    "superpowers@claude-plugins-official": true,
+    "claude-md-management@claude-plugins-official": true,
+    "aws-agents@claude-plugins-official": true,
+    "feature-dev@claude-plugins-official": true,
+    "huggingface-skills@claude-plugins-official": true,
+    "amazon-location-service@claude-plugins-official": true,
+    "ui-ux-pro-max@ui-ux-pro-max-skill": true,
+    "impeccable@impeccable": true
   },
   "extraKnownMarketplaces": {
     "claude-code-warp": {
@@ -24,21 +33,30 @@
         "source": "github",
         "repo": "warpdotdev/claude-code-warp"
       }
+    },
+    "openai-codex": {
+      "source": {
+        "source": "github",
+        "repo": "openai/codex-plugin-cc"
+      }
+    },
+    "ui-ux-pro-max-skill": {
+      "source": {
+        "source": "github",
+        "repo": "nextlevelbuilder/ui-ux-pro-max-skill"
+      }
+    },
+    "impeccable": {
+      "source": {
+        "source": "github",
+        "repo": "pbakaus/impeccable"
+      }
     }
   },
+  "autoUpdatesChannel": "latest",
+  "tui": "fullscreen",
+  "theme": "dark",
   "verbose": false,
   "preferredNotifChannel": "terminal_bell",
-  "autoUpdaterStatus": "enabled",
-  "mcpServers": {
-    "obsidian": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "obsidian-mcp",
-        "/Users/timevans/Obsidian/TimsVault"
-      ]
-    }
-  },
-  "agentPushNotifEnabled": true,
-  "inputNeededNotifEnabled": true
+  "autoUpdaterStatus": "enabled"
 }
