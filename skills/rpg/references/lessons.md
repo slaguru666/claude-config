@@ -40,6 +40,21 @@ pass.
   resolves it (a confession that stays ambiguous), say so in the text —
   "no roll resolves this" — so the GM doesn't improvise one under pressure.
 
+## 2026-07 — Day One consistency audit (BRP, real-London setting)
+
+- **Real-city scenarios need a dedicated geography pass.** Check every compass
+  direction, "across the river", landmark sightline, and named route against
+  the actual map before calling a scenario ready — desk playtests won't catch
+  these, but any local player will (Day One had a hospital on the wrong bank,
+  a pier route through a tunnel that's past the destination, and a gatehouse
+  on the wrong end of the bridge).
+- **Grep the cast list for surname collisions between PCs and NPCs** — an
+  audit's cheapest catch (Kira Osei-Mensah vs Fatima Osei), and it reliably
+  confuses a convention table.
+- **In-fiction timestamps deserve arithmetic checks.** If the text says "two
+  hours before the alert", subtract the actual clock times; drafts drift as
+  timelines get re-plotted.
+
 ## 2026-07 — Pregen roster rebuilds
 
 - **Audit inherited rosters against the current scenario, not just the
