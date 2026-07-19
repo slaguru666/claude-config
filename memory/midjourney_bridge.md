@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: reference
   originSessionId: fa4ca039-8c0e-4b9c-aee8-b6d7a81482b5
-  modified: 2026-07-19T13:45:17.670Z
+  modified: 2026-07-19T14:01:49.937Z
 ---
 
 # Midjourney bridge (`mj-gen`)
@@ -52,13 +52,16 @@ Then read the resulting PNG back to verify it matches the brief before placing i
 - Saved files get a `-u1` (upscale-button) suffix — rename to canonical names.
 - Don't run two `mj-gen` calls concurrently in one channel: each polls the
   channel for the newest grid and they can grab each other's jobs.
-- **Out-of-fast-hours is invisible to the bridge**: MJ declines the job in an
+- **A silently-dying job = a banned word, almost always.** MJ declines in an
   ephemeral reply the channel-poller can never see, so `mj-gen` waits out its
-  full timeout on nothing. Signature: several successes, then consecutive
-  timeouts with NO new bot messages in the channel (check via the messages
-  API). Fix is account-side (top up fast hours or switch to relax); retries
-  are wasted until then. `timeout_seconds` in config.json is 1800 as of
-  19 Jul 2026 (was 600) to survive relax-queue waits.
+  full timeout on nothing — NO new bot messages appear in the channel (check
+  via the messages API). Words confirmed to trip it even in innocent use:
+  **"gore"** (even negated: "no visible gore") and **"bust"** ("portrait bust
+  of a warrior"). Reword and rerun; the fix is never account-side unless the
+  account page actually shows 0 fast hours. (19 Jul 2026: five "Portrait
+  bust..." prompts died in a row and were misread as fast-hours exhaustion —
+  the account had 13h56m remaining; "Head and shoulders portrait" worked
+  first try.) `timeout_seconds` in config.json is 1800 (was 600).
 
 ## Known fragility
 

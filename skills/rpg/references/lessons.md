@@ -95,3 +95,24 @@ pass.
   batch goes quiet, check the actual channel/API for what the service said
   before waiting again — and keep a fallback asset source (the system's own
   existing art) so the package ships regardless.
+
+## 2026-07 — Princes Bride rebuild (Dee Sanction, Continuum 2026)
+
+- **Inherited multi-draft projects need a canon-reconciliation clause.** When
+  source materials disagree (two different charm-givers, two Eleanors, a
+  villain who is a fraud in one draft and a pragmatist in another), pick one
+  canon, write it as a numbered Design-Intent item ("Canon reconciled: ..."),
+  and list every superseded fact — otherwise the GM re-derives the
+  contradictions at the table.
+- **Verify the system against primary sources, not inherited quick-refs.** A
+  project's own GM reference had an entirely different game's dice mechanic
+  (PbtA 2d6 for a step-die Falter system). The character sheets + publisher's
+  site are ground truth; the quick-ref is a hypothesis.
+- **Run the set-piece on the system's own resolution mechanic.** The trial as
+  an open Verdict Die (the game's step-up/step-down, made visible on the
+  table) needed zero new rules and made evidence-presentation mechanical.
+  Find the system's native verb before inventing subsystems.
+- **Keep good inherited sheets; add an insert layer.** When existing pregens
+  are printed and well-made but generic, don't rebuild — print per-agent
+  mission inserts (private seam + dice crib + table-name conventions) that
+  slip inside the sheets. Cheaper, and the sheets stay canon.
