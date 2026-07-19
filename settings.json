@@ -38,5 +38,7 @@
         "/Users/timevans/Obsidian/TimsVault"
       ]
     }
-  }
+  },
+  "agentPushNotifEnabled": true,
+  "inputNeededNotifEnabled": true
 }

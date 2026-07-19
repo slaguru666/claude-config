@@ -7,3 +7,4 @@
 - [Mapwright module](mapwright-module.md) — new standalone Foundry v13 battle-map generator at `~/FoundryVTT/Data/modules/mapwright/`; procedural-vector, buildings-first, one-geometry-model design.
 - [Blueprint News](blueprint-news.md) — engine-agnostic SLA BPN briefing generator at `~/blueprint-news/`; reusable component + standalone app, seeded procedural SVG art, Player/GM split, NPC seam for a separate module.
 - [clipsync](clipsync.md) — CouchDB-backed clipboard history for the Macs; `clipsync-setup` to install, `clip` to browse.
+- [AFTERIMAGE scenario](afterimage-scenario.md) — 4-player Blade Runner con game for Contingency 2026; repo slaguru666/Contingency26; playtest fixes pending review.
