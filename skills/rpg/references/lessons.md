@@ -146,3 +146,19 @@ pass.
   "Cross the river NOW" and "we go back for the van" were both one-line hooks
   until dice forced them; both became the best unwritten scenes. If a hook
   can be driven to, it needs a written destination and its cost said aloud.
+
+## 2026-07 — Vain Crown big-table heroes (fixed-class-list systems)
+
+- **When the system has a closed class list, big-table pregens are variant
+  builds, not new classes.** Differentiate inside the class: a different
+  fighting style (sword-and-board Bram vs two-handed Hedda), a different
+  lane emphasis (stealth-killer Pinch vs thrown-blade showman Marlo), a
+  different creed/spell loadout (sustain Wren vs control grave-warden
+  Tobin). Show the audit math so the variants are provably legal.
+- **Point the new Vices at the existing roster.** "A Rival — [existing PC]"
+  only fires at player counts where both are dealt, which big-table extras
+  guarantee. Doctrinal Pride vs the other cleric's creed, and a Glory-Hound
+  pairing, gave every added seat built-in table chemistry for free.
+- **Scale the set-piece with the roster on the card.** The deal-order note
+  (6th/7th/8th) plus boss Grit per extra hero and mook multiplier lives ON
+  the GM cut-out corner of the last hero card page, not buried in the doc.
