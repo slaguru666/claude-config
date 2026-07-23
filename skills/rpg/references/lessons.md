@@ -162,3 +162,30 @@ pass.
 - **Scale the set-piece with the roster on the card.** The deal-order note
   (6th/7th/8th) plus boss Grit per extra hero and mook multiplier lives ON
   the GM cut-out corner of the last hero card page, not buried in the doc.
+
+## 2026-07 — RUNDOWN cardless chase system (Blade Runner, house subsystem)
+
+- **Do the expected-value arithmetic before committing to a subsystem.** A
+  spec self-review pass that actually computed the dice maths caught two dead
+  mechanics that read fine in prose: a role structure where the pursuers' net
+  was ~0.00 per round (the chase could literally never end), and a support role
+  worth +0.24 successes when simply doubling up on the main role was worth
+  +0.57 — nobody would ever have picked it. Prose hides both. One script found
+  both in a minute.
+- **A role that spends a resource needs a role that refunds it.** Four roles
+  only became an economy once the support role was recast from "adds successes"
+  to "buys off the cost the aggressive role generates". Test any new role menu
+  by asking what each option *trades*, not what it *does* — if two options
+  trade the same thing, one of them is decoration.
+- **Check whether the rules you're replacing already contain the escape
+  hatch.** The published Blade Runner chase ships a die table as an alternative
+  to its own obstacle deck, so "make it cardless" was already solved in the
+  book. The real brief was the other four problems (idle players, no
+  accumulating state, generic obstacles, lookup load). Always ask what the
+  request is *actually* for before designing to its literal wording.
+- **When a house subsystem gets a digital aid, test the aid headlessly.** A
+  ~60-line stub-DOM harness in Node drove the real console module through every
+  state transition (clamping, round cap, overtime drift, undo) with no browser
+  and no dependencies. Worth it: two of the "failures" it surfaced were the
+  harness lying, which is itself the thing you want to find before a
+  convention floor.
