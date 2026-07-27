@@ -6,6 +6,21 @@ downstream artifact — print packs, GM consoles, a phone story reader — could
 or distilled from it.** Write the scenario doc this way and the apps fall out of it cheaply.
 Write it as freeform prose and every app becomes bespoke hand-work.
 
+## Prep doc ≠ table surface (the hardest-won lesson)
+
+Everything below describes a **rich, comprehensive prep document** — the right form for
+*writing and understanding* a scenario. It is the WRONG form to put in front of a GM *during
+play.* At Continuum 2026 the comprehensive apps built from these docs went **unused** — "too
+complex, too convoluted." So keep two things separate:
+
+- **The prep doc** (this file's structure) — complete, for authoring and cold stand-in reading.
+- **The table surface** — a ruthless distillation of the *live* essentials only: the session
+  clock / current beat, the next hard trigger, the one secret in play, and any "if late, cut
+  this" note. One page. If a field isn't needed *in the moment*, it does not belong on the
+  table surface. Concision is the feature.
+
+Write the prep doc in full; render the table surface as the smallest possible subset.
+
 ## The governing constraint: a stand-in must be able to run it cold
 
 The single most important property. At a convention the GM can fall through — illness, a

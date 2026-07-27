@@ -4,6 +4,16 @@ This is the shipping half. It captures what the Continuum 2026 project got *righ
 honestly — what it got *wrong*, verified by watching fresh agents solve the same requests
 better than the project actually did.
 
+## Before any of this: should the edition exist at all?
+
+Post-convention truth: **all five editions went unused.** The GM found the content apps too
+complex and the story material too convoluted; the tool he valued was the separate in-play
+**help** tool, not content reference. So the first question is never "which architecture" — it
+is **"will this actually get opened at the table?"** For scenario *content*, the honest default
+is **no** — build lean prep docs and put effort into the live help tool instead. Only build a
+content edition when the GM explicitly asks for one, and even then make it one concise surface.
+The decision table below applies *once you've established the thing is genuinely wanted.*
+
 ## The core decision: adapt one source, or build a separate artifact?
 
 A new "make me a version for device X" request is one of three things. Classify it before you build:

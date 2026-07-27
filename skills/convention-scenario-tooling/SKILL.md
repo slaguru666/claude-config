@@ -9,6 +9,29 @@ Authoring convention one-shot **documents** and shipping the **apps** derived fr
 Distilled from Continuum 2026 (six one-shots, a weekend at the table) — including, honestly,
 the parts that were done the hard way.
 
+## The lesson from the table (read this first — it overrides the rest)
+
+**The GM built five editions of the scenario app and used NONE of them at the convention.**
+His words afterward: *too complex, the story material too convoluted; it needs to be more
+concise and focused.* The convention was the real test and the comprehensive content apps
+failed it. What he *did* value was the separate **GM help tool** (The Director — live pacing,
+dice rule-packs, NPC/clue safety-net): **help in the moment, not reference material to read.**
+
+Consequences that must shape any future work here:
+
+- **Default to NOT building a content app.** Comprehensive, faithful, multi-page renders of the
+  scenario are prep artifacts, not table tools. He won't open them mid-game.
+- **At the table, concision beats completeness — always.** One focused surface with the few
+  things a GM needs *live* (where we are, the next beat, the one secret) beats everything that
+  is true. Convolution killed it.
+- **"All the information in one place" is a real preference** — he liked single-surface, disliked
+  multi-tab/multi-edition sprawl. One page, not six consoles.
+- **The winning product is the in-play *help* tool. Invest there, not in content reference.**
+
+The rest of this skill (doc structure, deploy pattern) is still correct for *authoring and prep*
+and for the rare case a content app is explicitly wanted — but it is now secondary to the lesson
+above.
+
 ## The one idea that ties it together
 
 **A convention scenario has one source of truth — the scenario document — and everything else
