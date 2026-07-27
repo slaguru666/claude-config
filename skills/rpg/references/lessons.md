@@ -163,6 +163,35 @@ pass.
   (6th/7th/8th) plus boss Grit per extra hero and mook multiplier lives ON
   the GM cut-out corner of the last hero card page, not buried in the doc.
 
+## 2026-07-27 — Post-Continuum retro: the GM used none of the apps
+
+Actual outcome data from running the con — the strongest signal in this log.
+
+- **The comprehensive scenario apps went unused — "too complex, the story
+  material too convoluted."** Five device editions were built (v1 tablet, v2
+  responsive, laptop, e-paper, phone story reader); none were opened while
+  running games. A faithful, complete render of a scenario is a *prep* artifact,
+  not a table tool. **Default to NOT building a content app** — a GM mid-game
+  will not read it.
+- **At the table, concision beats completeness, every time.** What was wanted
+  was one focused surface with only the *live* essentials — where we are on the
+  clock, the next hard beat, the one secret in play, the "if late, cut this"
+  note — not everything that is true. Render the table surface as the smallest
+  useful subset of the prep doc.
+- **"All the information in one place" = one surface, not six.** The multi-console,
+  multi-edition sprawl actively hurt; a single page was the stated preference.
+- **The artifact that DID earn its place is the in-play *help* tool** (The
+  Director: live pacing / Director-Rail, dice rule-packs, NPC + clue safety-net)
+  — assistance *in the moment*, not reference to read. That is where console
+  engineering should go; the "a content console per scenario" instinct is
+  retired (see production.md).
+- **Edition proliferation was pure cost.** Each edition = its own build +
+  container + reverse-proxy route + silent staleness liability, and most were
+  never used — they accreted one reasonable "make a version for X" at a time.
+  Before building any such variant, ask whether it will be *opened* at all;
+  adapt one source for presentation-only deltas, fork only for a genuinely
+  different content model.
+
 ## 2026-07 — RUNDOWN cardless chase system (Blade Runner, house subsystem)
 
 - **Do the expected-value arithmetic before committing to a subsystem.** A
