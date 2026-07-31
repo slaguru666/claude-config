@@ -218,3 +218,26 @@ Actual outcome data from running the con — the strongest signal in this log.
   and no dependencies. Worth it: two of the "failures" it surfaced were the
   harness lying, which is itself the thing you want to find before a
   convention floor.
+## 2027-01 prep (2026-07) — continuity searches for returning NPCs
+
+- **Grep the role, not just the name.** A returning NPC brief said "Witchfinder
+  Garrett". Case-insensitive greps for `garrett` and `garret` both found
+  nothing across every convention folder — the character is **Garratt**, from
+  *The Princes Bride*. One wrong consonant nearly produced a scenario that
+  contradicted its own prequel. Search the *role* (`witch finder`, `witchfinder`,
+  `inquisitor`) and read the prior scenario's **NPC roster table** before
+  concluding a character is new. Report "not found" as provisional, never as
+  fact.
+- **The prequel's early-finish Tangent is the sequel's premise, already
+  written.** Every house scenario carries a bonus scene for tables that crack it
+  early. Those scenes are hooks with the cost already priced — *The Princes
+  Bride*'s crossroads offer (a ledger's blank column, a list of three villages,
+  and "teach me what the meadowsweet meant") gave the sequel its inciting
+  incident, its antagonist's arc, and its hardest ending, for free. **Check the
+  Tangent first when writing any follow-up.**
+- **A sequel that reuses the prequel's pregens should be built on their
+  documented seams, not on the plot.** The prequel's Sanction-rhyme table
+  already paired the forger with the evidence-making witch finder; building the
+  new case so that pairing is its best scene costs nothing and is the whole
+  payoff for returning players. Keep the house rule intact — every seam still
+  needs a written alternate route so new players lose nothing but the echo.

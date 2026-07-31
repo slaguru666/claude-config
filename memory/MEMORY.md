@@ -9,3 +9,5 @@
 - [MINI-S browser automation](infra_minis_browser_automation.md) — Playwright MCP (headless Chromium) lets Claude view/control web pages on the LAN incl. the Zyxel router; restart Claude after adding to load tools
 - [Local LLM agent stack](local-llm-agent-stack.md) — Hermes Agent + Ollama + Gemma 4 12B on the user's Mac; install gotchas (64K ctx, uv-managed Python 3.11)
 - [NotebookLM CLI setup](notebooklm-cli-setup.md) — notebooklm-py on the Mac; pin --python 3.12 (else silent 0.1.1 downgrade), browser login, launchd auth-refresh keepalive
+- [RPG skill](rpg-skill.md) — house scenario-writing skill at ~/.claude/skills/rpg, shared via claude-config; pull+install before sync, sync.sh after RPG work.
+- [Contingency 2027](contingency-2027.md) — 27–31 Jan 2027, Hunstanton; repo slaguru666/contingency2027, 10 slots, 8 games incl. the DEAD AIR CoC trilogy.
