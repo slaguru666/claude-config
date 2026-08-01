@@ -59,34 +59,6 @@ set-piece runner (e.g. chase obstacles), PC/NPC dashboards, fullscreen props,
 autosaving state. Scenarios plug in as modules — when building a new scenario,
 add a module rather than a new app.
 
-**Reality check (Continuum 2026, post-con):** none of the built scenario apps
-were used at the table — "too complex, too convoluted." Two hard rules follow:
-
-1. **Keep it lean and single-surface.** The GM reads in 30-second glances; a
-   console must show only what's needed *live* (clock, next beat, the secret in
-   play), not a faithful render of the scenario. Concision is the feature. One
-   surface — resist multi-tab and per-device editions (each is a build +
-   deploy + staleness liability, and they went unused).
-2. **The in-play *help* tool is what earns its keep** — live pacing, dice
-   rule-packs, an NPC/clue safety-net (assistance in the moment). Put console
-   effort there, not into content reference the GM won't open mid-game.
-
-### Hosting an offline app (only if one is genuinely wanted)
-
-Deployed the Continuum apps to a VPS behind a Caddy reverse proxy. The gotchas
-that cost hours, so they don't again:
-
-- **Service-worker cache staleness** is the #1 time-sink: after any rebuild the
-  old SW keeps serving the old page, so you debug code that isn't running.
-  Unregister the SW, clear caches, and do a **full reload** (a hash-nav doesn't
-  reload) before believing what you see.
-- **Never edit a bind-mounted Caddyfile with `mv`/`sed -i`** — it's pinned to an
-  inode; the container keeps reading the old file. Append in place (`>>`), back
-  up first, reload via the admin API from stdin.
-- Private repos → the VPS has no git creds; **rsync the built `dist/` + deploy
-  dir**, don't clone. Each subdomain needs its own DNS A record; Caddy issues
-  TLS once it resolves.
-
 ## Print checklist (before the con)
 
 - Character sheets: A4 portrait, 100% scale, one page per PC + table
