@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: c4d6262b-e105-4e05-87bf-f2f891e7df82
-  modified: 2026-08-04T20:44:19.499Z
+  modified: 2026-08-04T20:53:52.376Z
 ---
 
 The `claude-config` repo (`slaguru666/claude-config`) syncs Claude config across a fleet that
@@ -22,17 +22,26 @@ Three traps, all confirmed on 2026-08-04:
    *and* vs incoming `origin/main` before running `install.sh`; hand-merge the union. The repo's
    own history does this repeatedly (`30d3c95`, `ad3c645`).
 
-2. **GitHub MCP used to never install on the Macs — fixed 2026-08-04.** The old `install.sh`
-   only registered it when `GITHUB_PERSONAL_ACCESS_TOKEN` was set, and commit `f5a7a70` put
-   that token in `.bashrc` while the Macs run zsh, so it was invisible and the step silently
-   skipped every time. The npm package it installed (`@modelcontextprotocol/server-github`)
-   is also deprecated — "Package no longer supported", last published 2025.4.8. **Do not add
-   a PAT to fix this.** `install.sh` now registers GitHub's official remote server over HTTP
-   at `https://api.githubcopilot.com/mcp/`, which uses OAuth and needs no PAT; authorise once
-   per machine with `/mcp` in an *interactive* `claude` session. Until authorised,
-   `claude mcp list` reports it as "Failed to connect", not "Needs authentication" — that is
-   the normal unauthenticated state, not a fault. (`gh` CLI is separately authenticated as
-   `slaguru666` and remains a fine fallback.)
+2. **GitHub MCP: the remote server works, but Claude Code's own OAuth flow cannot.**
+   Two separate faults, both fixed 2026-08-04. First, the old `install.sh` only registered the
+   server when `GITHUB_PERSONAL_ACCESS_TOKEN` was set, and commit `f5a7a70` put that token in
+   `.bashrc` while the Macs run zsh — invisible, so the step silently skipped every time. The
+   npm package it used (`@modelcontextprotocol/server-github`) is deprecated anyway ("Package
+   no longer supported", last published 2025.4.8).
+
+   Second — and this is the non-obvious one — **plain `claude mcp add --transport http` against
+   `https://api.githubcopilot.com/mcp/` cannot authenticate.** `/mcp` fails with
+   *"Incompatible auth server: does not support dynamic client registration"*. GitHub's
+   authorization server metadata (`issuer: https://github.com/login/oauth`, fetched from
+   `https://github.com/.well-known/oauth-authorization-server/login/oauth`) publishes **no
+   `registration_endpoint`**, so RFC 7591 DCR is unavailable and Claude Code cannot self-register.
+
+   `install.sh` therefore supports two working routes, OAuth app taking precedence:
+   `GITHUB_MCP_CLIENT_ID` + `MCP_CLIENT_SECRET` (pre-registered GitHub OAuth App, uses
+   `--client-id`/`--client-secret`), else `GITHUB_MCP_TOKEN` (or the legacy
+   `GITHUB_PERSONAL_ACCESS_TOKEN`) passed as `--header "Authorization: Bearer <token>"`.
+   The PAT lands in plaintext in `~/.claude.json`. With neither set the step skips loudly.
+   (`gh` CLI is separately authenticated as `slaguru666` and remains a fine fallback.)
 
 3. **`install.sh` overwrites live memory with the repo copy.** Same `cp`-wins hazard as
    `settings.json`: any memory file written since the last `sync.sh` is reverted by the next

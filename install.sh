@@ -62,33 +62,85 @@ else
   echo "  WARNING: npm not found — install the Codex CLI manually: npm install -g @openai/codex"
 fi
 
-# Obsidian vault MCP server (filesystem access)
+# Obsidian vault MCP server (filesystem access).
+# The vault lives in a different place on every machine: on MINI-S it is inside the
+# homelab Docker stack (~/docker/obsidian/config/...), on the Macs it is a native
+# Obsidian vault under ~/Vault. The old hardcoded /home/timevans/... path could never
+# match on macOS, so this step silently skipped there on every install.
+# Candidates are probed in order and every one that exists is granted to the server.
+# Override with OBSIDIAN_VAULT_PATHS (colon-separated) before running.
 if command -v claude >/dev/null 2>&1; then
-  VAULT_PATH="/home/timevans/docker/obsidian/config/Obsidian Vault"
-  if [ -d "$VAULT_PATH" ]; then
-    echo "  Setting up Obsidian MCP server..."
+  if [ -n "${OBSIDIAN_VAULT_PATHS:-}" ]; then
+    IFS=':' read -r -a CANDIDATE_VAULTS <<< "$OBSIDIAN_VAULT_PATHS"
+  else
+    CANDIDATE_VAULTS=(
+      "$HOME/docker/obsidian/config/Obsidian Vault"
+      "$HOME/Vault/Tims_Vault"
+      "$HOME/Vault/slavault/slavault"
+    )
+  fi
+
+  FOUND_VAULTS=()
+  for candidate in "${CANDIDATE_VAULTS[@]}"; do
+    [ -d "$candidate" ] && FOUND_VAULTS+=("$candidate")
+  done
+
+  if [ "${#FOUND_VAULTS[@]}" -gt 0 ]; then
+    echo "  Setting up Obsidian MCP server (${#FOUND_VAULTS[@]} vault(s))..."
     claude mcp remove obsidian -s user 2>/dev/null || true
-    claude mcp add obsidian -s user -- npx -y @modelcontextprotocol/server-filesystem "$VAULT_PATH" \
-      && echo "  Installed: Obsidian MCP server" \
+    claude mcp add obsidian -s user -- npx -y @modelcontextprotocol/server-filesystem "${FOUND_VAULTS[@]}" \
+      && for v in "${FOUND_VAULTS[@]}"; do echo "  Installed: Obsidian MCP server -> $v"; done \
       || echo "  WARNING: Obsidian MCP server setup failed"
   else
-    echo "  Skipping Obsidian MCP server — vault not found at $VAULT_PATH"
+    echo "  Skipping Obsidian MCP server — no vault found in: ${CANDIDATE_VAULTS[*]}"
   fi
 fi
 
-# GitHub MCP server (official remote server, OAuth — no PAT needed).
-# Replaces the old stdio setup: @modelcontextprotocol/server-github is deprecated
-# ("Package no longer supported", last published 2025.4.8), and the PAT it needed was
-# exported from .bashrc, which the zsh Macs never read — so the server silently never
-# installed there. Authorise once per machine with /mcp in an interactive session.
+# GitHub MCP server (official remote server at api.githubcopilot.com).
+# The old @modelcontextprotocol/server-github stdio package is deprecated ("Package no longer
+# supported", last published 2025.4.8) and is no longer used.
+#
+# Claude Code's built-in OAuth flow does NOT work here: GitHub's authorization server
+# publishes no registration_endpoint (confirmed at
+# https://github.com/.well-known/oauth-authorization-server/login/oauth), so /mcp fails with
+# "Incompatible auth server: does not support dynamic client registration". Two routes work
+# instead; the OAuth app takes precedence when configured.
+#
+#   1. Pre-registered OAuth app — export GITHUB_MCP_CLIENT_ID and MCP_CLIENT_SECRET.
+#      Optionally GITHUB_MCP_CALLBACK_PORT if the app pins a redirect URI.
+#   2. PAT — export GITHUB_MCP_TOKEN (or the older GITHUB_PERSONAL_ACCESS_TOKEN).
+#      Stored in plaintext in ~/.claude.json, so rotate it as you would any credential.
+#
 # Override the endpoint by exporting GITHUB_MCP_URL before running.
 if command -v claude >/dev/null 2>&1; then
   GITHUB_MCP_URL="${GITHUB_MCP_URL:-https://api.githubcopilot.com/mcp/}"
-  echo "  Setting up GitHub MCP server ($GITHUB_MCP_URL)..."
-  claude mcp remove github -s user 2>/dev/null || true
-  claude mcp add github "$GITHUB_MCP_URL" --transport http -s user \
-    && echo "  Installed: GitHub MCP server — run /mcp in an interactive session to authorise" \
-    || echo "  WARNING: GitHub MCP server setup failed — run manually: claude mcp add github $GITHUB_MCP_URL --transport http -s user"
+  GITHUB_MCP_TOKEN="${GITHUB_MCP_TOKEN:-${GITHUB_PERSONAL_ACCESS_TOKEN:-}}"
+
+  if [ -n "${GITHUB_MCP_CLIENT_ID:-}" ] && [ -n "${MCP_CLIENT_SECRET:-}" ]; then
+    echo "  Setting up GitHub MCP server (OAuth app, $GITHUB_MCP_URL)..."
+    GH_ARGS=(github "$GITHUB_MCP_URL" --transport http -s user
+             --client-id "$GITHUB_MCP_CLIENT_ID" --client-secret)
+    if [ -n "${GITHUB_MCP_CALLBACK_PORT:-}" ]; then
+      GH_ARGS+=(--callback-port "$GITHUB_MCP_CALLBACK_PORT")
+    fi
+    claude mcp remove github -s user 2>/dev/null || true
+    claude mcp add "${GH_ARGS[@]}" \
+      && echo "  Installed: GitHub MCP server (OAuth app) — run /mcp to complete authorisation" \
+      || echo "  WARNING: GitHub MCP server setup failed (OAuth app route)"
+  elif [ -n "${GITHUB_MCP_CLIENT_ID:-}" ]; then
+    echo "  Skipping GitHub MCP server — GITHUB_MCP_CLIENT_ID is set but MCP_CLIENT_SECRET is not."
+    echo "    (--client-secret would block waiting for a prompt, so both are required together.)"
+  elif [ -n "$GITHUB_MCP_TOKEN" ]; then
+    echo "  Setting up GitHub MCP server (PAT header, $GITHUB_MCP_URL)..."
+    claude mcp remove github -s user 2>/dev/null || true
+    claude mcp add github "$GITHUB_MCP_URL" --transport http -s user \
+      --header "Authorization: Bearer $GITHUB_MCP_TOKEN" \
+      && echo "  Installed: GitHub MCP server (PAT)" \
+      || echo "  WARNING: GitHub MCP server setup failed (PAT route)"
+  else
+    echo "  Skipping GitHub MCP server — export GITHUB_MCP_TOKEN (PAT),"
+    echo "    or GITHUB_MCP_CLIENT_ID + MCP_CLIENT_SECRET (OAuth app), then re-run."
+  fi
 fi
 
 # Graphiti MCP server (knowledge-graph memory, HTTP transport)
