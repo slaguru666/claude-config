@@ -76,19 +76,19 @@ if command -v claude >/dev/null 2>&1; then
   fi
 fi
 
-# GitHub MCP server (PAT-based, stdio)
+# GitHub MCP server (official remote server, OAuth — no PAT needed).
+# Replaces the old stdio setup: @modelcontextprotocol/server-github is deprecated
+# ("Package no longer supported", last published 2025.4.8), and the PAT it needed was
+# exported from .bashrc, which the zsh Macs never read — so the server silently never
+# installed there. Authorise once per machine with /mcp in an interactive session.
+# Override the endpoint by exporting GITHUB_MCP_URL before running.
 if command -v claude >/dev/null 2>&1; then
-  if [ -n "${GITHUB_PERSONAL_ACCESS_TOKEN:-}" ]; then
-    echo "  Setting up GitHub MCP server..."
-    claude mcp remove github -s user 2>/dev/null || true
-    claude mcp add github -s user \
-      -e GITHUB_PERSONAL_ACCESS_TOKEN="$GITHUB_PERSONAL_ACCESS_TOKEN" \
-      -- npx -y @modelcontextprotocol/server-github \
-      && echo "  Installed: GitHub MCP server" \
-      || echo "  WARNING: GitHub MCP server setup failed — run manually: claude mcp add github -s user -e GITHUB_PERSONAL_ACCESS_TOKEN=<token> -- npx -y @modelcontextprotocol/server-github"
-  else
-    echo "  Skipping GitHub MCP server — set GITHUB_PERSONAL_ACCESS_TOKEN before running to enable"
-  fi
+  GITHUB_MCP_URL="${GITHUB_MCP_URL:-https://api.githubcopilot.com/mcp/}"
+  echo "  Setting up GitHub MCP server ($GITHUB_MCP_URL)..."
+  claude mcp remove github -s user 2>/dev/null || true
+  claude mcp add github "$GITHUB_MCP_URL" --transport http -s user \
+    && echo "  Installed: GitHub MCP server — run /mcp in an interactive session to authorise" \
+    || echo "  WARNING: GitHub MCP server setup failed — run manually: claude mcp add github $GITHUB_MCP_URL --transport http -s user"
 fi
 
 # Graphiti MCP server (knowledge-graph memory, HTTP transport)
