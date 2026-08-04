@@ -6,17 +6,9 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 CLAUDE_DIR="$HOME/.claude"
-# Claude Code encodes the project dir by replacing the path separator with "-".
-# macOS (/Users/x -> -Users-x) and Linux (/home/x -> -home-x) encode the POSIX $HOME.
-# On Windows, Claude Code sees the native path, so C:\Users\x -> C--Users-x. Git Bash
-# reports $HOME as /c/Users/x, which would encode to the wrong key -- convert first.
-if command -v cygpath >/dev/null 2>&1; then
-  # C:\Users\x -> C--Users-x (sed, not bash substitution: a lone "\" in a glob
-  # pattern escapes the next char instead of matching a literal backslash).
-  PROJECT_KEY="$(cygpath -w "$HOME" | sed 's/[\\:]/-/g')"
-else
-  PROJECT_KEY="${HOME//\//-}"
-fi
+# shellcheck source=project-paths.sh
+source "$SCRIPT_DIR/project-paths.sh"
+PROJECT_KEY="$(project_key_for "$HOME")"
 MEMORY_DIR="$CLAUDE_DIR/projects/${PROJECT_KEY}/memory"
 MSG="${1:-sync config}"
 
@@ -37,8 +29,27 @@ else
   echo "  Warning: no memory files found at $MEMORY_DIR — skipping"
 fi
 
+# Extra per-project memory dirs (see project-paths.sh). A machine that lacks one
+# of these projects skips it, leaving the repo copy intact — never deletes it.
+for rel in "${EXTRA_PROJECT_PATHS[@]}"; do
+  src="$CLAUDE_DIR/projects/$(project_key_for "$HOME/$rel")/memory"
+  slug="$(project_slug_for "$rel")"
+  if [ -d "$src" ] && ls "$src"/*.md &>/dev/null; then
+    mkdir -p "$SCRIPT_DIR/memory/projects/$slug"
+    rm -f "$SCRIPT_DIR/memory/projects/$slug/"*.md
+    cp "$src/"*.md "$SCRIPT_DIR/memory/projects/$slug/"
+    echo "  Copied: memory/projects/$slug/"
+  else
+    echo "  Skipped: memory/projects/$slug/ — not present on this machine"
+  fi
+done
+
 if [ -d "$CLAUDE_DIR/skills" ]; then
-  rsync -a --delete "$CLAUDE_DIR/skills/" "$SCRIPT_DIR/skills/"
+  # --no-links: skills installed by other tools (firecrawl, composio) are symlinks
+  # into ~/.agents/skills. Copying them as symlinks would commit links that dangle
+  # on every other machine; dereferencing them would vendor someone else's skills.
+  # Only real skill directories belong in this repo.
+  rsync -a --delete --no-links "$CLAUDE_DIR/skills/" "$SCRIPT_DIR/skills/"
   echo "  Copied: skills/"
 fi
 

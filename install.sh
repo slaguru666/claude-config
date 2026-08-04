@@ -8,17 +8,9 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 CLAUDE_DIR="$HOME/.claude"
 USERNAME=$(whoami)
-# Claude Code encodes the project dir by replacing the path separator with "-".
-# macOS (/Users/x -> -Users-x) and Linux (/home/x -> -home-x) encode the POSIX $HOME.
-# On Windows, Claude Code sees the native path, so C:\Users\x -> C--Users-x. Git Bash
-# reports $HOME as /c/Users/x, which would encode to the wrong key -- convert first.
-if command -v cygpath >/dev/null 2>&1; then
-  # C:\Users\x -> C--Users-x (sed, not bash substitution: a lone "\" in a glob
-  # pattern escapes the next char instead of matching a literal backslash).
-  PROJECT_KEY="$(cygpath -w "$HOME" | sed 's/[\\:]/-/g')"
-else
-  PROJECT_KEY="${HOME//\//-}"
-fi
+# shellcheck source=project-paths.sh
+source "$SCRIPT_DIR/project-paths.sh"
+PROJECT_KEY="$(project_key_for "$HOME")"
 MEMORY_DIR="$CLAUDE_DIR/projects/${PROJECT_KEY}/memory"
 
 echo "Installing Claude config for user: $USERNAME"
@@ -39,6 +31,17 @@ echo "  Installed: ~/.claude/settings.json"
 mkdir -p "$MEMORY_DIR"
 cp "$SCRIPT_DIR/memory/"*.md "$MEMORY_DIR/"
 echo "  Installed: memory files -> $MEMORY_DIR"
+
+# Extra per-project memory dirs (see project-paths.sh)
+for rel in "${EXTRA_PROJECT_PATHS[@]}"; do
+  src="$SCRIPT_DIR/memory/projects/$(project_slug_for "$rel")"
+  if [ -d "$src" ] && ls "$src"/*.md &>/dev/null; then
+    dest="$CLAUDE_DIR/projects/$(project_key_for "$HOME/$rel")/memory"
+    mkdir -p "$dest"
+    cp "$src/"*.md "$dest/"
+    echo "  Installed: memory ($rel) -> $dest"
+  fi
+done
 
 # Skills — copy each skill directory into ~/.claude/skills/
 if [ -d "$SCRIPT_DIR/skills" ]; then
