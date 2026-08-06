@@ -11,6 +11,33 @@ grows into a duplicate of the skill. Several 2026-07 entries below are already
 encoded in the references; they stay as worked examples until the next pruning
 pass.
 
+## 2026-08 — DEAD AIR build (Things from the Flood, 3-hour variant)
+
+- **A sequel system is a different system — verify the core loop before
+  writing the crash-course.** Things from the Flood looks like Tales from the
+  Loop and isn't: **Luck Points are gone**, **Pride is replaced by Shame**
+  (once per session, automatic success for acting *against* it), **Scars** are
+  permanent and the second one can remove a teen from play — the "kids can't
+  die" guarantee is off. Writing the GM Essentials block from memory of the
+  parent game would have shipped four wrong rules. Check the build numbers too
+  (Flood: 14 attribute points, 10 skill points, keys ≤3, non-keys ≤1).
+- **When lore can't be verified, make the scenario canon-local and say so in a
+  numbered Design-Intent line.** Anchoring only to what's confirmed published
+  (Boulder City, the DART Loop, the Gravitron, the Bona Reactor) and inventing
+  every site, org and NPC means the Mystery drops into any table's version of
+  the setting with nothing to reconcile — and it stops the writer bluffing
+  setting detail they haven't got.
+- **The 3-hour cut of the house format** (proven shape, not a guess at the
+  table yet): Intro 15 · Act One 45 · break 5 · Act Two 60 · Act Three 30 ·
+  Epilogue 15 = 2:45 play inside a 3:00 cap, hard rule at **2:00** instead of
+  2:45. What gets cut to make it fit is *breadth*, never structure — one split
+  with two sites, one journey, one set-piece, one room. Act Three keeps its
+  full 30 minutes; it is the only budget that must not shrink.
+- **In a system where PCs can be permanently maimed, announce the stakes of
+  the set-piece before the first roll.** "Nobody dies here; failure costs
+  Conditions, and the fifth Condition is permanent" turns a swim into a real
+  decision instead of a dice formality.
+
 ## 2026-07 — AFTERIMAGE desk playtests (Blade Runner, Continuum 2026)
 
 - **Answer the obvious professional move.** Players will always try the
