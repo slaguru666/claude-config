@@ -18,4 +18,5 @@
 - [Local LLM agent stack](local-llm-agent-stack.md) — Hermes Agent + Ollama + Gemma 4 12B on the user's Mac; install gotchas (64K ctx, uv-managed Python 3.11)
 - [NotebookLM CLI setup](notebooklm-cli-setup.md) — notebooklm-py on the Mac; pin --python 3.12 (else silent 0.1.1 downgrade), browser login, launchd auth-refresh keepalive
 - [RPG skill](rpg-skill.md) — house scenario-writing skill at ~/.claude/skills/rpg, shared via claude-config; pull+install before sync, sync.sh after RPG work.
+- [RingBRP project](ringbrp-project.md) — new BRP-engine RPG from the 1984 Chaosium Ringworld set; corpus extracted + setting bible written; ORC/IP question still open.
 - [Contingency 2027](contingency-2027.md) — 27–31 Jan 2027, Hunstanton; repo slaguru666/contingency2027, 10 slots, 8 games incl. the DEAD AIR CoC trilogy.
