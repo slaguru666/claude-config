@@ -213,3 +213,36 @@ pass.
   new case so that pairing is its best scene costs nothing and is the whole
   payoff for returning players. Keep the house rule intact — every seam still
   needs a written alternate route so new players lose nothing but the echo.
+
+## 2026-08 — OPEN DAY (The Custodians prologue, house system)
+
+- **Write the recruitment prologue out of the pregens' own biography lines.** The
+  ten "(before)" sheets each ended with a *How they found her/him* line. Two of
+  them — a building that "stopped being on the street it was on" and a caller
+  talked down "for eleven minutes" — were already the same incident, and the
+  other eight fitted over it without a single edit to the plot. Build the
+  prologue at the intersection of the existing seams and the scenario cannot
+  contradict a sheet, because the sheets came first. **Read the whole roster's
+  private lines before inventing an inciting incident.**
+- **Reconcile the seams in both directions, and prefer changing the sheet.** One
+  line said *night* and the scenario is an afternoon: one word on the pregen was
+  the cheap fix, and both became true. Where a seam needed an event the scenario
+  did not have (a casualty for the one who carries people out, an injury for the
+  doctor), the honest move is to add the event, not to bend the seam.
+- **A scenario where nothing is hostile needs that stated as a GM instruction, in
+  the first page, three times.** The default GM reflex under pressure is to make
+  something menacing. "Every figure is busy, polite or preoccupied" is a rule,
+  not flavour.
+- **Let them succeed and let the outcome not change.** For a fixed-timetable act,
+  write explicitly that every intervention *works* mechanically and alters
+  nothing — and that the GM must not have them fail instead. Failing is
+  comforting, because failing implies succeeding would have helped.
+- **Three unresolved things is the right number.** One is a loose end, two is a
+  mystery the table will try to solve, four is untidy. Name them in the GM notes
+  as *do not resolve* so a helpful GM does not answer them.
+- **Midjourney will not stop putting lettering on a building.** "no text / no
+  signage / no lettering" failed twice on a shopfront-shaped prompt. What worked:
+  describe it as a *two-ink screen print*, name the two inks, say "flat pale
+  yellow background instead of sky", and add "no shops". Palette drift and
+  hallucinated signage are the same failure — the prompt was letting the model
+  reach for a naturalistic reference photo.
