@@ -21,3 +21,4 @@
 - [RingBRP project](ringbrp-project.md) — new BRP-engine RPG from the 1984 Chaosium Ringworld set; corpus extracted + setting bible written; ORC/IP question still open.
 - [Contingency 2027](contingency-2027.md) — 27–31 Jan 2027, Hunstanton; repo slaguru666/contingency2027, 10 slots, 8 games incl. the DEAD AIR CoC trilogy.
 - [Gitea timevans.uk](infra-gitea-timevans.md) — push over SSH port **2222**, not 22; HTTPS has no stored credential
+- [Ambient synth (Drift)](ambient-synth.md) — single-file Web Audio groovebox: pad, CS-80, 303 acid, 8-drum kit, chords, melody gen, song mode + WAV bounce, Blade Runner-style Offworld generator at ~/ambient-synth/; port 8765, localStorage v4, not in git

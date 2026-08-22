@@ -25,7 +25,8 @@
     "huggingface-skills@claude-plugins-official": true,
     "amazon-location-service@claude-plugins-official": true,
     "ui-ux-pro-max@ui-ux-pro-max-skill": true,
-    "impeccable@impeccable": true
+    "impeccable@impeccable": true,
+    "claude-mem@thedotmack": true
   },
   "extraKnownMarketplaces": {
     "claude-code-warp": {
@@ -51,6 +52,12 @@
         "source": "github",
         "repo": "pbakaus/impeccable"
       }
+    },
+    "thedotmack": {
+      "source": {
+        "source": "github",
+        "repo": "thedotmack/claude-mem"
+      }
     }
   },
   "autoUpdatesChannel": "latest",
@@ -58,7 +65,7 @@
   "theme": "dark",
   "verbose": false,
   "preferredNotifChannel": "terminal_bell",
-  "autoUpdaterStatus": "enabled",
+  "inputNeededNotifEnabled": true,
   "agentPushNotifEnabled": true,
-  "inputNeededNotifEnabled": true
+  "autoUpdaterStatus": "enabled"
 }
