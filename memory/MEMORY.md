@@ -26,3 +26,5 @@
 - [Haunt app](haunt-app.md) — generative horror ambience machine at ~/haunt/ (14 scenes, 36 layers, tension arc + jump scares, FX rack); port 8767, not in git
 - [Grimoire app](grimoire-app.md) — dark-fantasy keys preset instrument (40 presets, knobs, arp, key lock, textures) at ~/grimoire/; port 8768, not in git
 - [Nexus app](nexus-app.md) — combined cinematic score workstation (Blade Runner/horror/Alien/drama, 18 scenes, mood pad, arcs, cue pads, split keys, 42 layers) at ~/nexus/; port 8769, not in git
+- [QuickDesign plugin](quickdesign-plugin.md) — AI media generation (Seedance/Sora2/Kling/Nano Banana); plugin + CLI installed 2026-08-30, still needs `quickdesign login`
+- [Installing Claude plugins via CLI](claude-plugin-install-cli.md) — use `claude plugin install`, not hand-edited settings.json; marketplace name ≠ repo name

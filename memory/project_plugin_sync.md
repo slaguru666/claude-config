@@ -17,7 +17,9 @@ The user explicitly wants newly installed plugins propagated to every machine.
 - From non-official marketplaces (each registered in `extraKnownMarketplaces`):
   `codex@openai-codex` (`openai/codex-plugin-cc`), `warp@claude-code-warp` (`warpdotdev/claude-code-warp`),
   `ui-ux-pro-max@ui-ux-pro-max-skill` (`nextlevelbuilder/ui-ux-pro-max-skill`),
-  `impeccable@impeccable` (`pbakaus/impeccable`)
+  `impeccable@impeccable` (`pbakaus/impeccable`), `claude-mem@thedotmack` (`thedotmack/claude-mem`),
+  `quickdesign@claude-community` (`anthropics/claude-plugins-community` — note the marketplace NAME is
+  `claude-community`, not the repo name; `quickdesign@claude-plugins-community` fails)
 
 **Why:** Plugins are declared in `settings.json` (`enabledPlugins` + `extraKnownMarketplaces`), which the
 [[user-github]] `claude-config` repo already tracks. The installed plugin *cache* under `~/.claude/plugins/`
@@ -27,9 +29,16 @@ is NOT synced and should not be — each server re-fetches plugins from its mark
 `settings.json` to GitHub. On another server, `git pull && ./install.sh`, then start Claude Code — it auto-installs
 the enabled plugins from `claude-plugins-official`. UNVERIFIED as of 2026-07-16: whether startup also auto-fetches
 *non-official* marketplaces from `extraKnownMarketplaces`. If a synced non-official plugin is missing on MINI-S,
-run the two-step CLI install below there, then note the answer here. CLI dependency: the `codex@openai-codex` plugin shells out to the Codex CLI (`@openai/codex`, binary `codex`).
-`install.sh` installs it via `npm install -g @openai/codex` when missing, so it propagates to every server that
-runs the installer (requires npm on the target machine).
+run the two-step CLI install below there, then note the answer here.
+
+**CLI dependencies.** Two plugins shell out to a binary and are inert without it: `codex@openai-codex` needs
+the Codex CLI (`@openai/codex`, binary `codex`), and `quickdesign@claude-community` needs `@quickdesign/cli`
+(binary `quickdesign`). `install.sh` installs both via `npm install -g` when missing, so they propagate to every
+server that runs the installer (requires npm on the target machine). `quickdesign` additionally needs a
+per-machine `quickdesign login` (OAuth browser flow, token at `~/.config/quickdesign/auth.json`, or
+`--token-stdin`/`QUICKDESIGN_TOKEN` headless) — that part cannot be synced. Do NOT run `quickdesign init`: it
+copies the same skill into `~/.claude/skills/quickdesign`, duplicating the plugin copy (and `sync.sh` would then
+commit it into the repo's `skills/`). Use `quickdesign login` alone.
 
 **Gotcha — hand-editing `extraKnownMarketplaces` does NOT fetch the marketplace.** Adding a marketplace +
 `enabledPlugins` entry by hand only *declares* it. `/reload-plugins` will NOT pick it up: that command reloads

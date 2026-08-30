@@ -46,7 +46,13 @@ done
 # Skills — copy each skill directory into ~/.claude/skills/
 if [ -d "$SCRIPT_DIR/skills" ]; then
   mkdir -p "$CLAUDE_DIR/skills"
-  rsync -a "$SCRIPT_DIR/skills/" "$CLAUDE_DIR/skills/"
+  if command -v rsync >/dev/null 2>&1; then
+    rsync -a "$SCRIPT_DIR/skills/" "$CLAUDE_DIR/skills/"
+  else
+    # No rsync (Git Bash on Windows). This direction is a plain overlay with no
+    # --delete, so cp is an exact substitute.
+    cp -R "$SCRIPT_DIR/skills/." "$CLAUDE_DIR/skills/"
+  fi
   echo "  Installed: skills -> ~/.claude/skills/"
 fi
 
@@ -60,6 +66,21 @@ elif command -v npm >/dev/null 2>&1; then
     || echo "  WARNING: Codex CLI install failed — run manually: npm install -g @openai/codex"
 else
   echo "  WARNING: npm not found — install the Codex CLI manually: npm install -g @openai/codex"
+fi
+
+# QuickDesign CLI, required by the quickdesign@claude-community plugin to actually run.
+# The bundled skill only wraps this binary; without it every invocation dies on "command not found".
+# Auth is per-machine and NOT synced — run `quickdesign login` once per box. Do not run
+# `quickdesign init`: it copies the skill into ~/.claude/skills/, duplicating the plugin's copy.
+if command -v quickdesign >/dev/null 2>&1; then
+  echo "  QuickDesign CLI already present: $(quickdesign --version 2>/dev/null | head -1)"
+elif command -v npm >/dev/null 2>&1; then
+  echo "  Installing QuickDesign CLI (npm install -g @quickdesign/cli)..."
+  npm install -g @quickdesign/cli >/dev/null 2>&1 \
+    && echo "  Installed: QuickDesign CLI $(quickdesign --version 2>/dev/null | head -1)" \
+    || echo "  WARNING: QuickDesign CLI install failed — run manually: npm install -g @quickdesign/cli"
+else
+  echo "  WARNING: npm not found — install the QuickDesign CLI manually: npm install -g @quickdesign/cli"
 fi
 
 # Obsidian vault MCP server (filesystem access).

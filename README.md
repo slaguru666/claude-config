@@ -18,8 +18,10 @@ included, with deletes). Always `git pull && ./install.sh` **before** working, a
 `./sync.sh` after — syncing from a machine that hasn't installed the latest pull will
 remove the other machines' memory/skill files from the repo.
 
-**CLI dependencies:** `install.sh` also installs the Codex CLI (`npm install -g @openai/codex`) when missing,
-since the `codex@openai-codex` plugin shells out to it. Requires `npm` on the target machine.
+**CLI dependencies:** `install.sh` also installs the Codex CLI (`npm install -g @openai/codex`) and the
+QuickDesign CLI (`npm install -g @quickdesign/cli`) when missing,
+since the `codex@openai-codex` and `quickdesign@claude-community` plugins shell out to them. Requires `npm` on
+the target machine. QuickDesign also needs a one-off `quickdesign login` per machine (OAuth; not synced).
 
 ## Install on a new machine
 

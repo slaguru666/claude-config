@@ -49,8 +49,15 @@ if [ -d "$CLAUDE_DIR/skills" ]; then
   # into ~/.agents/skills. Copying them as symlinks would commit links that dangle
   # on every other machine; dereferencing them would vendor someone else's skills.
   # Only real skill directories belong in this repo.
-  rsync -a --delete --no-links "$CLAUDE_DIR/skills/" "$SCRIPT_DIR/skills/"
-  echo "  Copied: skills/"
+  if command -v rsync >/dev/null 2>&1; then
+    rsync -a --delete --no-links "$CLAUDE_DIR/skills/" "$SCRIPT_DIR/skills/"
+    echo "  Copied: skills/"
+  else
+    # No rsync (e.g. Git Bash on Windows). Skipping is the safe failure: a plain cp
+    # cannot express --delete or --no-links, and getting it wrong has wiped skills/rpg
+    # from the repo before. Sync skills from a machine that has rsync.
+    echo "  Skipped: skills/ — rsync not found on this machine (repo copy left intact)"
+  fi
 fi
 
 cd "$SCRIPT_DIR"
