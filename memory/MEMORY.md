@@ -28,3 +28,4 @@
 - [Nexus app](nexus-app.md) — combined cinematic score workstation (Blade Runner/horror/Alien/drama, 18 scenes, mood pad, arcs, cue pads, split keys, 42 layers) at ~/nexus/; port 8769, not in git
 - [QuickDesign plugin](quickdesign-plugin.md) — AI media generation (Seedance/Sora2/Kling/Nano Banana); plugin + CLI installed 2026-08-30, still needs `quickdesign login`
 - [Installing Claude plugins via CLI](claude-plugin-install-cli.md) — use `claude plugin install`, not hand-edited settings.json; marketplace name ≠ repo name
+- [Masque app](masque-app.md) — real-time GM voice changer at ~/masque; spec 1 + Beatrice 2 AI sidecar (spec 2) BUILT + verified 2026-08-23, merged to main
