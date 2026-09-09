@@ -5,7 +5,7 @@ metadata:
   type: project
 ---
 
-"Haunt" horror ambience machine at `~/haunt/index.html` (~770 lines, single file, Web Audio, no deps) with README.md; launch config `haunt` in `~/.claude/launch.json` serves port 8767. Built 2026-08-22 on the user's "do the same for another app, horror ambiance" request, mirroring Esper's six-panel architecture ([[esper-app]]).
+"Haunt" horror ambience machine at `~/haunt/index.html` (~770 lines, single file, Web Audio, no deps) with README.md; launch config `haunt` in `~/.claude/launch.json` serves port 8767. **Hosted publicly since 2026-09-08** at `https://web.oneoffgames.com/sound/haunt.html`, one of five in the SOUND suite linked from that site's terminal menu — see [[infra-oneoffgames-vps]]. The local port is still the place to edit; deploying is a copy of `index.html` into `/var/www/web.oneoffgames.com/sound/`. Built 2026-08-22 on the user's "do the same for another app, horror ambiance" request, mirroring Esper's six-panel architecture ([[esper-app]]).
 
 Scenes: asylum, woods, house, boiler, ritual, cosmic, hospital, ship, cornfield, crypt, station, cabin, carnival, numbers. Master params: tension (drives everything), pulse, key, scale, dissonance, darkness, proximity. 36 synthesised layers incl. whispers, breathing, footsteps, creaks, knocks, chains, crows, wolves, numbers-station voice, screams, giggle, Shepard tone, reverse swells, stingers. Conductor: tension arc → jump scare (silence gain node → stinger/scream/flash), evolve, journey, 16 cues. Studio: WAV record, snapshots, Nightmare randomizer, export/import. State in localStorage `haunt-v1`. `window.haunt` exposes everything.
 

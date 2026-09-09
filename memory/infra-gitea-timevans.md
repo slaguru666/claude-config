@@ -25,4 +25,6 @@ Repos are publicly readable over HTTPS, so Foundry manifest URLs of the form
 `https://gitea.timevans.uk/<user>/<repo>/raw/branch/main/system.json` resolve
 anonymously and can be used for *Install System → Manifest URL*.
 
-Related: [[ringbrp-project]], [[feedback_semaphore_gitea_url]]
+**`tevans` is a second account on this instance**, separate from `slaguru666` — the Mac's "Mac5" key is `slaguru666` and cannot read `tevans` repos. A **deploy key is scoped to one repository** and Gitea rejects the same key content on a second one, so generate a fresh key per repo. Note `tevans/loom-adventures` is misleadingly named: it holds the `vanity-roller` PWA, not Loom data; Loom backs up to `tevans/loom-data` ([[loom-app]]).
+
+Related: [[ringbrp-project]], [[feedback_semaphore_gitea_url]], [[loom-app]], [[infra-oneoffgames-vps]]

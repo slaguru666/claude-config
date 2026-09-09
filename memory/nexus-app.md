@@ -5,7 +5,7 @@ metadata:
   type: project
 ---
 
-"Nexus" at `~/nexus/index.html` (~590 lines, single file, Web Audio, no deps) with README.md; launch config `nexus` in `~/.claude/launch.json` serves port 8769. Built 2026-08-22 as the capstone "combined tool" the user asked for (Blade Runner + horror + sci-fi horror + Alien + dramatic cinema, designed as a tool, playable).
+"Nexus" at `~/nexus/index.html` (~590 lines, single file, Web Audio, no deps) with README.md; launch config `nexus` in `~/.claude/launch.json` serves port 8769. **Hosted publicly since 2026-09-08** at `https://web.oneoffgames.com/sound/nexus.html`, one of five in the SOUND suite linked from that site's terminal menu — see [[infra-oneoffgames-vps]]. The local port is still the place to edit; deploying is a copy of `index.html` into `/var/www/web.oneoffgames.com/sound/`. Built 2026-08-22 as the capstone "combined tool" the user asked for (Blade Runner + horror + sci-fi horror + Alien + dramatic cinema, designed as a tool, playable).
 
 Structure: Director (5 worlds → 18 scenes, Wonder↔Dread × Calm↔Intense XY pad driving voicings and pulse layers, arcs Build/Tension/Release/Chase/Trailer/Aftermath/Nightmare, evolve, journey, chord chips), Cue pads (16 one-shots on number row + QWER), Keys (split at C4, 20 voices incl. CS-80 presets, dark pad, epic/sul-pont strings, choirs, organ, piano, CS-80 lead, Alien echoplex trumpet, braam, taiko, hit; play modes poly/ostinato/arp/chord/pulse; key lock; harmony; sustain), Layers (42), Manipulations (Haunt's rack + sub boost + trailer squash), Studio (WAV record, snapshots, Dream, export/import). State in localStorage `nexus-v1` via guarded LS helper. `window.nexus` exposes everything.
 

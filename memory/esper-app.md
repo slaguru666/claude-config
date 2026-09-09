@@ -5,7 +5,7 @@ metadata:
   type: project
 ---
 
-"Esper" generative Vangelis-style app at `~/esper/index.html` (~1000 lines, single file, Web Audio, no deps) with README.md; launch config `esper` in `~/.claude/launch.json` serves port 8766. Built 2026-08-22, expanded the same day on the user's "lots and lots more functions" request.
+"Esper" generative Vangelis-style app at `~/esper/index.html` (~1000 lines, single file, Web Audio, no deps) with README.md; launch config `esper` in `~/.claude/launch.json` serves port 8766. **Hosted publicly since 2026-09-08** at `https://web.oneoffgames.com/sound/esper.html`, one of five in the SOUND suite linked from that site's terminal menu — see [[infra-oneoffgames-vps]]. The local port is still the place to edit; deploying is a copy of `index.html` into `/var/www/web.oneoffgames.com/sound/`. Built 2026-08-22, expanded the same day on the user's "lots and lots more functions" request.
 
 Panels: Style & tempo (14 styles, tempo/key/scale override, chord chips with hold/next/randomize), Layers (26 per-sound levels incl. whale, spinner, thunder, city hum, machinery, radio, heartbeat, glass, bell tower, tape), Manipulations (ensemble chorus, wow/flutter, phaser, lo-fi, gate, tremolo, master filter + breathe, delay sync/ping-pong, reverb spaces, warmth/air, drift, width, half-time, Freeze), Performance (keys voices, arpeggiator, sustain, lead/pad/bass/drum overrides, harmony), Conductor (Evolve, Journey, cue buttons), Studio (WAV record, 4 snapshots, Dream randomizer, export/import, themes, spectrum scope). State in localStorage `esper-v2` (+ `-snap1..4`). `window.esper` exposes internals.
 

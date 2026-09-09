@@ -5,7 +5,7 @@ metadata:
   type: project
 ---
 
-"Drift" ambient groovebox, built 2026-08-21/22. Lives at `~/ambient-synth/index.html` (~1850 lines, plus README.md and `.claude/launch.json` config named `drift`, port 8765 via `python3 -m http.server`). Vanilla JS + Web Audio, no deps, no build. State auto-saves to localStorage key `drift-state-v4`; Export/Import project JSON.
+"Drift" ambient groovebox, built 2026-08-21/22. Lives at `~/ambient-synth/index.html` (~1850 lines, plus README.md and `.claude/launch.json` config named `drift`, port 8765 via `python3 -m http.server`) **Hosted publicly since 2026-09-08** at `https://web.oneoffgames.com/sound/drift.html`, one of five in the SOUND suite linked from that site's terminal menu — see [[infra-oneoffgames-vps]]. The local port is still the place to edit; deploying is a copy of `index.html` into `/var/www/web.oneoffgames.com/sound/`.. Vanilla JS + Web Audio, no deps, no build. State auto-saves to localStorage key `drift-state-v4`; Export/Import project JSON.
 
 Sections: Groovebox transport (tempo, swing, key/scale, pattern length 8–64, 8 patterns, song chain with per-section D/A/C/M mutes, loop/play-once, fill, Rec overdub, Bounce to WAV / Bounce whole song, MIDI in), Master (pump sidechain, DJ filter, delay/reverb/volume), Pad, CS-80 (two-layer engine with PWM, ring mod, touch, 8 presets), Offworld (Blade Runner-style generator: 8 scenes, 6 moods, drone/wind/rain/sparkle/shimmer/e-piano/choir/lead swells/boom+risers, bar-sync), Beats (8 synthesized drums, per-drum level/tune/decay/mute, style generators, humanise), Acid (303 + 4 bass styles), Chords (diatonic stab track, live chord keys), Melody (lead/CS-80/pad, random-walk gen).
 

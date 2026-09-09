@@ -29,4 +29,5 @@
 - [QuickDesign plugin](quickdesign-plugin.md) — AI media generation (Seedance/Sora2/Kling/Nano Banana); plugin + CLI installed 2026-08-30, still needs `quickdesign login`
 - [Installing Claude plugins via CLI](claude-plugin-install-cli.md) — use `claude plugin install`, not hand-edited settings.json; marketplace name ≠ repo name
 - [Masque app](masque-app.md) — real-time GM voice changer at ~/masque; spec 1 + Beatrice 2 AI sidecar (spec 2) BUILT + verified 2026-08-23, merged to main
-- [Loom app](loom-app.md) — local Alkemion-style adventure-design tool at ~/loom (port 8771, Markdown-on-disk modules, share links, exports); built + 4 test rounds Sept 2026; see docs/feedback/REPORT.md
+- [Loom app](loom-app.md) — local Alkemion-style adventure-design tool at ~/loom (port 8771, Markdown-on-disk adventures, facet-constrained generators, map generator, scenario builders, procedural art, passphrase remote access); see docs/feedback/REPORT.md
+- [One Off Games VPS](infra-oneoffgames-vps.md) — `ssh foundry` (85.190.246.132, root only); nginx + web.oneoffgames.com public game site; drop a folder in the web root and it is live
