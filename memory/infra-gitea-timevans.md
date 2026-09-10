@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: reference
   originSessionId: 710730ff-4590-4412-82b8-d6ae6765d92b
-  modified: 2026-08-10T19:08:17.601Z
+  modified: 2026-09-09T20:10:00.000Z
 ---
 
 `gitea.timevans.uk` (user `slaguru666`) accepts git over **SSH on port 2222**, not the
@@ -24,6 +24,8 @@ remote rather than trying to supply a token.
 Repos are publicly readable over HTTPS, so Foundry manifest URLs of the form
 `https://gitea.timevans.uk/<user>/<repo>/raw/branch/main/system.json` resolve
 anonymously and can be used for *Install System → Manifest URL*.
+
+**The Mac's browser is signed in as `tevans`, while the Mac's SSH key is `slaguru666`.** The New Repository form therefore offers only `tevans` as owner, and `?owner=` in the URL does NOT override it — a repo created that way lands under the wrong account and this Mac cannot push to it. Create repos for `slaguru666` while signed in as `slaguru666`. Gitea also has **push-to-create disabled**, and there is no API token on the Mac, so a new repo must exist before the first push.
 
 **`tevans` is a second account on this instance**, separate from `slaguru666` — the Mac's "Mac5" key is `slaguru666` and cannot read `tevans` repos. A **deploy key is scoped to one repository** and Gitea rejects the same key content on a second one, so generate a fresh key per repo. Note `tevans/loom-adventures` is misleadingly named: it holds the `vanity-roller` PWA, not Loom data; Loom backs up to `tevans/loom-data` ([[loom-app]]).
 
