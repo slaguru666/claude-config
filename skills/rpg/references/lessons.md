@@ -243,3 +243,29 @@ pass.
   load-bearing in the fiction, it belongs in a handout, never in generated art —
   a picture that contradicts the clue is worse than no picture. Cut it and
   reassign the spare plate.
+- **Draw the plan, don't prompt it.** (AFTERIMAGE v3.1, Sep 2026.) A scene map
+  whose labels carry clues cannot be generated — Midjourney will not hold legible
+  text or accurate geography. Hand-built SVG on a cream ground (rough displacement
+  filter, monospace, an evidence tag block, hatch fills) reads as a real forensic
+  plan, prints vector-sharp at any size and drops straight into Foundry. Two rules
+  make it usable: **numbered callouts with a key below the drawing** instead of
+  labels sprayed across the plan — that alone kills every collision — and the map
+  says only what the *room* says. AFTERIMAGE's plan shows where the four cameras
+  are and nothing about what is on them, because the recordings are the act's work.
+- **A player-facing map is a turn-taking device.** Handing out the floorplan the
+  moment they come through the door lets the table split *itself* into stations —
+  which is what a one-location act needs to stop being one person narrating a room.
+  Write the four-station split into the handout, not just the GM text.
+- **When your document generates a package, verify the package, not the world.**
+  A Foundry Adventure re-import does *not* overwrite documents already imported
+  under the same ids: the package was correct, the world was stale, and every check
+  I ran against the world was checking last week's build. Delete the adventure's
+  ids from the world and import clean before believing any verification pass. The
+  general rule: prove the artifact you built, then prove it *arrived*, and never
+  let a green check on a cached copy stand in for either.
+- **Rebalance the props when you rebalance the plot.** Restructuring the mystery
+  silently invalidated the print pack: renumbered handouts, a corrected autopsy,
+  and a drive index missing the partition the finale turns on. If the screen props
+  and the paper props are separate documents, they are two chances to be wrong —
+  put the handout text in one module and derive both, or diff them by hand every
+  single revision.
