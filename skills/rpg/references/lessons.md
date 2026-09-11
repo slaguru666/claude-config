@@ -269,3 +269,45 @@ pass.
   and the paper props are separate documents, they are two chances to be wrong —
   put the handout text in one module and derive both, or diff them by hand every
   single revision.
+- **Never put the climax's central lever behind a roll.** (AFTERIMAGE playtest 04,
+  Sep 2026.) If the decisive move is a *fact* — something true, said out loud, in
+  front of witnesses — then saying it works, full stop. Desk-tested the
+  alternative: the players rolled to declare it, lost, and the GM had to improvise
+  the most important exchange of the night on the spot. It turned to mush in four
+  seconds. The fix is not a better roll, it is a different question: make the
+  lever automatic and let the roll decide **how much the opposition salvages**,
+  with a written row for every outcome *including* the one where the players lose.
+  This is the house "rolls buy extra, never entry" rule, and the climax is exactly
+  where it is most tempting and most costly to break.
+- **The ending you steer the table toward must exist in the outcomes table.** If
+  the act text spends a paragraph teaching the GM to let players build a
+  particular ending, and the epilogue has no row for it, the GM improvises the
+  last ten minutes of the game with four people watching. Write the row for the
+  ending you *want*, not only the obvious ones.
+- **Put a set-piece's designed ending on the rail, not on the die.** The chase's
+  final location — candles, paper birds, its own commissioned plate — was obstacle
+  result 6 on a d6, in a chase that lasted two rounds. It had about a 30% chance
+  of ever appearing. If you wrote the place it ends, that is where it ends;
+  randomise the obstacles along the way, never the destination.
+- **Do the arithmetic on a set-piece before you budget it.** A chase budgeted at
+  "3–5 rounds, ~12 minutes" ran two rounds and six, because the system counted a
+  10+ as two successes and one good throw crossed the entire range track. Work out
+  the expected successes per round against the number of steps on the track, then
+  either fix the budget or fix the track — and tell the GM in the text that a fast
+  resolution is normal, so they don't stretch it artificially.
+- **When a revision changes a fact, grep for the old conclusion.** Changing the
+  autopsy from "the grip was human" to "the wound cannot rule anybody out" left
+  four summaries — the revelations checklist, the pitch paragraph, and two columns
+  of a clue table — still asserting the thing the evidence now refuses to say. A
+  GM skims the checklist before play, so the stale summary is the one that reaches
+  the table.
+- **State the hard cut-to-the-climax time exactly once.** It appeared three times
+  and disagreed with itself by twenty minutes. Same rule for any number a GM acts
+  on under pressure.
+- **Story time and session time must not share a notation.** A countdown table of
+  in-fiction times (`01:45`) facing a timing table of session times (`1:45`) is a
+  trap. Give fiction times a leading zero and an `hrs`, and label the column.
+- **Decide whether Slot Zero is inside or outside the session clock, and say so in
+  the Overview.** Four strangers take 15–20 minutes on safety, pitches and
+  choosing. Whether that is inside the budget decides whether the scenario fits
+  the slot, and it is not a detail the GM should have to adjudicate at the table.

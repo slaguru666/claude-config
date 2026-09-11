@@ -8,7 +8,7 @@
 - [Mapwright module](mapwright-module.md) — new standalone Foundry v13 battle-map generator at `~/FoundryVTT/Data/modules/mapwright/`; procedural-vector, buildings-first, one-geometry-model design.
 - [Blueprint News](blueprint-news.md) — engine-agnostic SLA BPN briefing generator at `~/blueprint-news/`; reusable component + standalone app, seeded procedural SVG art, Player/GM split, NPC seam for a separate module.
 - [clipsync](clipsync.md) — CouchDB-backed clipboard history for the Macs; `clipsync-setup` to install, `clip` to browse.
-- [AFTERIMAGE scenario](afterimage-scenario.md) — 4-player Blade Runner game for Continuum 2026, Fri 24 July, Slot 2; repo slaguru666/Continuum2026; v3.1 restructured (accidental death) + full Foundry module; needs one playtest.
+- [AFTERIMAGE scenario](afterimage-scenario.md) — 4-player Blade Runner game for Continuum 2026, Fri 24 July, Slot 2; repo slaguru666/Continuum2026; v3.2 convention-ready — restructured (accidental death), Codex-reviewed, desk-playtested, full Foundry module.
 - [Princes Bride scenario](princes-bride-scenario.md) — Dee Sanction game for Continuum 2026, Sun 26 July, Slot 7; reconciled canon + real rules (ignore old quick-ref); convention-ready.
 - Continuum 2026 slate complete in slaguru666/Continuum2026: Day One (Fri S1), AFTERIMAGE (Fri S2), Vain Crown (Sat S4), Another Fine Mess — Pulp Cthulhu chopper sequel (Sun S6), Princes Bride (Sun S7).
 - [Plugin sync](project_plugin_sync.md) — keep Claude Code plugins identical across all servers via the claude-config repo (settings.json enabledPlugins); run sync.sh after install/remove
