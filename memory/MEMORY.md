@@ -8,7 +8,7 @@
 - [Mapwright module](mapwright-module.md) — new standalone Foundry v13 battle-map generator at `~/FoundryVTT/Data/modules/mapwright/`; procedural-vector, buildings-first, one-geometry-model design.
 - [Blueprint News](blueprint-news.md) — engine-agnostic SLA BPN briefing generator at `~/blueprint-news/`; reusable component + standalone app, seeded procedural SVG art, Player/GM split, NPC seam for a separate module.
 - [clipsync](clipsync.md) — CouchDB-backed clipboard history for the Macs; `clipsync-setup` to install, `clip` to browse.
-- [AFTERIMAGE scenario](afterimage-scenario.md) — 4-player Blade Runner game for Continuum 2026, Fri 24 July, Slot 2; repo slaguru666/Continuum2026; convention-ready.
+- [AFTERIMAGE scenario](afterimage-scenario.md) — 4-player Blade Runner game for Continuum 2026, Fri 24 July, Slot 2; repo slaguru666/Continuum2026; v3.1 restructured (accidental death) + full Foundry module; needs one playtest.
 - [Princes Bride scenario](princes-bride-scenario.md) — Dee Sanction game for Continuum 2026, Sun 26 July, Slot 7; reconciled canon + real rules (ignore old quick-ref); convention-ready.
 - Continuum 2026 slate complete in slaguru666/Continuum2026: Day One (Fri S1), AFTERIMAGE (Fri S2), Vain Crown (Sat S4), Another Fine Mess — Pulp Cthulhu chopper sequel (Sun S6), Princes Bride (Sun S7).
 - [Plugin sync](project_plugin_sync.md) — keep Claude Code plugins identical across all servers via the claude-config repo (settings.json enabledPlugins); run sync.sh after install/remove
@@ -26,8 +26,6 @@
 - [Haunt app](haunt-app.md) — generative horror ambience machine at ~/haunt/ (14 scenes, 36 layers, tension arc + jump scares, FX rack); port 8767, not in git
 - [Grimoire app](grimoire-app.md) — dark-fantasy keys preset instrument (40 presets, knobs, arp, key lock, textures) at ~/grimoire/; port 8768, not in git
 - [Nexus app](nexus-app.md) — combined cinematic score workstation (Blade Runner/horror/Alien/drama, 18 scenes, mood pad, arcs, cue pads, split keys, 42 layers) at ~/nexus/; port 8769, not in git
-- [QuickDesign plugin](quickdesign-plugin.md) — AI media generation (Seedance/Sora2/Kling/Nano Banana); plugin + CLI installed 2026-08-30, still needs `quickdesign login`
-- [Installing Claude plugins via CLI](claude-plugin-install-cli.md) — use `claude plugin install`, not hand-edited settings.json; marketplace name ≠ repo name
 - [Masque app](masque-app.md) — real-time GM voice changer at ~/masque; spec 1 + Beatrice 2 AI sidecar (spec 2) BUILT + verified 2026-08-23, merged to main
 - [Loom app](loom-app.md) — local Alkemion-style adventure-design tool at ~/loom (port 8771, Markdown-on-disk adventures, facet-constrained generators, map generator, scenario builders, procedural art, passphrase remote access); see docs/feedback/REPORT.md
 - [One Off Games VPS](infra-oneoffgames-vps.md) — `ssh foundry` (85.190.246.132, root only); nginx + web.oneoffgames.com public game site; drop a folder in the web root and it is live

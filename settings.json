@@ -26,8 +26,7 @@
     "amazon-location-service@claude-plugins-official": true,
     "ui-ux-pro-max@ui-ux-pro-max-skill": true,
     "impeccable@impeccable": true,
-    "claude-mem@thedotmack": true,
-    "quickdesign@claude-community": true
+    "claude-mem@thedotmack": true
   },
   "extraKnownMarketplaces": {
     "claude-code-warp": {
@@ -58,12 +57,6 @@
       "source": {
         "source": "github",
         "repo": "thedotmack/claude-mem"
-      }
-    },
-    "claude-community": {
-      "source": {
-        "source": "github",
-        "repo": "anthropics/claude-plugins-community"
       }
     }
   },
