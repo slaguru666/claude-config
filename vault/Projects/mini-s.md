@@ -64,6 +64,11 @@ port-forward **WAN 2222 → 192.168.1.6:22**, so `ssh -p 2222 timevans@<public-i
   `~/.profile` instead. This is why the Node install looked broken until it was moved.
 - npm 11 blocks package postinstall scripts by default — Claude Code needs
   `npm install -g --allow-scripts=@anthropic-ai/claude-code` for its postinstall to run.
+- **GitHub tokens live in `~/.config/github/tokens.env` (chmod 600), sourced from
+  `~/.profile` and `~/.zshrc`** — never in an rc file directly. They were previously
+  exported from `.bashrc` and `.zshrc`, both world-readable, and one was also baked
+  into a stale `settings.local.json` allow-rule. Cleaned 2026-09-13; every remaining
+  on-disk copy is 600. The values themselves still need rotating.
 - The registered `github` MCP server still uses the deprecated
   `@modelcontextprotocol/server-github`. It connects, but `install.sh` has moved on to
   the official remote server.
