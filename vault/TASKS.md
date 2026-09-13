@@ -47,7 +47,10 @@ Index: [[INDEX]]
 - [ ] Corkboard phase 1 for scenario-forge: `src/data/index.mjs` barrel + `exports` map, provenance flag, re-sync [[corkboard]]
 - [ ] scenario-forge acceptance test — build AFTERIMAGE, import into a scratch world, open the case board (the one thing the spike could not verify) [[scenario-forge]]
 - [ ] Normalise the other five scenarios to the house format — real editing, not a script [[scenario-forge]]
-- [ ] Print the handout pack and do Tim's read-through [[afterimage]]
+- [ ] Tim's read-through — the handout pack is printed (2026-09-13): 23 sheets, four
+      print-only spill pages fixed, `print/AFTERIMAGE-handouts.pdf` [[afterimage]]
+- [ ] Decide the **F2-H02-E** collision — the pack uses it for the night-market plan
+      (2026-09-11), the scenario table gave it to the props sheet (2026-09-13) [[afterimage]]
 - [ ] Push Masque to Gitea and GitHub — still local only [[masque]]
 - [ ] Install BlackHole via `./setup.sh` — required before real Discord use [[masque]]
 - [ ] Discord smoke test with a real mic [[masque]]

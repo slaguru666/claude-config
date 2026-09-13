@@ -20,14 +20,22 @@ module at `foundry/afterimage/` — `node build.mjs` builds and installs.
 **Current state — v3.2, convention-ready.** Desk-playtested in full from the GM chair
 at v3.1 on 2026-09-11: **2:47 on the clock**, inside the 3-hour ceiling, honest dice,
 chase run round by round. Fifteen findings, all applied in v3.2. Art complete: 6
-scene plates, 9 cast portraits, 2 drawn SVG evidence plates. Print pack (16 handouts
-plus a cut-out sheet) and the Foundry module are both current.
+scene plates, 9 cast portraits, 2 drawn SVG evidence plates. Foundry module current.
+**Print pack printed and repaired 2026-09-13** — 22 handouts plus a cut-out sheet,
+23 sheets. The exported PDF was from July, built before the ID cards and blueprints
+existed; rendering the current HTML found four spill pages invisible on screen.
 
 **Next steps**
-- Print the pack
-- Tim's read-through
+- Tim's read-through (the pack itself is printed — `print/AFTERIMAGE-handouts.pdf`, 23pp)
+- Resolve the **F2-H02-E collision**: the printed pack has used it for the night-market
+  plan since 2026-09-11 (`f6fb48c`); the scenario's handout table gave the same ID to the
+  props sheet on 2026-09-13 (`a18f3eb`). Renumbering touches the scenario text and the
+  Foundry module, so it was left for a decision.
 
 **Key decisions**
+- **The shrine alley is its own sheet (F2-H02-G).** It shared a page with the night
+  market while its own GM note said not to show it until the chase ended there — an
+  instruction the sheet made impossible to obey.
 - **The death is an accident, not an ambiguity** (restructured v3.1). Kade took the
   returned Aris by the wrists; she pulled away two-handed; he fell against his own
   rig. Wren, a copy, found the body and left.
