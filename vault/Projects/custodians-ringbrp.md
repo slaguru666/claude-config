@@ -18,13 +18,14 @@ updated: 2026-09-13
 - `~/RingBRP/` → `slaguru666/ringbrp-design` (public since 9 Sep 2026) — the design
   corpus: the bible, six rules specs, 26 review briefs. `.gitignore` holds the scans back.
 
-**Current state** — playable and guarded. **22 build guards** under `npm run check`, each a
-claim about the game re-measured on every build. **`docs/REVIEW_LOG.md` (at R-301) holds the
+**Current state** — playable and guarded. **21 build guards** under `npm run check`, each a
+claim about the game re-measured on every build. **`docs/REVIEW_LOG.md` (at R-307) holds the
 reasoning behind all of them** and is the thing to read before re-deciding anything here.
 Scenarios: `LAST_ADMISSION`, `OPEN_DAY`, `THROUGH_TRAIN`, **CLEAN GROUND** (v0.24, eleven
 desk passes, Contingency 2027 slot 9), whose published figures are held in both directions —
 `check-packs` holds the baseline against the harness, `check-cited` the prose against the
-baseline, 162 figures cited across six artifacts, and `check-figures` reads the figures rather than the markers so a measured number with nothing holding it stops the build.
+baseline, 169 figures across 22 files against six baselines, and `check-figures` reads the
+figures rather than the markers, so a measured number with nothing holding it stops the build.
 
 **Next steps** — **CLEAN GROUND needs a run with human beings, and that is now the only thing
 left on its list.** Pass 11 closed the last desk-reachable branch; every one of the original
@@ -73,6 +74,11 @@ system with no scene plates at all.
   "median 24 rounds" survived every pass because it carried no citation marker, and
   `check-cited` can only resolve markers that exist. Fifth reader caught unable to see its
   own format, after cast declarations, beat tags, citation markers and `POWER:`.
+- 2026-09-13 — **Bold means two different things and the guard has to know which.** In prose
+  this corpus bolds what it publishes; inside a table it bolds the rows it wants read. Nine
+  measurement columns mix bold with plain, every cell correctly cited. So `check-figures`
+  reads bold in prose only and lets the column header rule inside tables — one guard, three
+  readers, each silent where another is authoritative (R-307, the fold of `check-unmarked`).
 - **Rewards accelerate, they never gate.** Two versions failed with something on the critical
   path behind a probability gate (once at P=1.7%).
 
