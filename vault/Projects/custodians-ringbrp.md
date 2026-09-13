@@ -19,17 +19,18 @@ updated: 2026-09-13
   corpus: the bible, six rules specs, 26 review briefs. `.gitignore` holds the scans back.
 
 **Current state** — playable and guarded. **20 build guards** under `npm run check`, each a
-claim about the game re-measured on every build. **`docs/REVIEW_LOG.md` (at R-297) holds the
+claim about the game re-measured on every build. **`docs/REVIEW_LOG.md` (at R-298) holds the
 reasoning behind all of them** and is the thing to read before re-deciding anything here.
-Scenarios: `LAST_ADMISSION`, `OPEN_DAY`, `THROUGH_TRAIN`, **CLEAN GROUND** (v0.20.1, nine
+Scenarios: `LAST_ADMISSION`, `OPEN_DAY`, `THROUGH_TRAIN`, **CLEAN GROUND** (v0.22, eleven
 desk passes, Contingency 2027 slot 9), whose published figures are held in both directions —
 `check-packs` holds the baseline against the harness, `check-cited` the prose against the
-baseline, 151 figures cited across six artifacts.
+baseline, 160 figures cited across six artifacts.
 
-**Next steps** — **CLEAN GROUND needs a run with human beings**; no desk pass replaces it.
-Four branches unplayed after nine: a fight the players choose, Ashcroft accepting THE OFFER
-*and* being taken, a hollow man that succeeds at the swap. Then splitting `ringbrp.mjs`, and
-anatomy tables for non-human shapes — the bestiary's own known gap.
+**Next steps** — **CLEAN GROUND needs a run with human beings, and that is now the only thing
+left on its list.** Pass 11 closed the last desk-reachable branch; every one of the original
+four has been played. Then splitting `ringbrp.mjs`, and anatomy tables for non-human shapes —
+the bestiary's own known gap. The obvious twenty-first guard, if one is wanted: an asymmetric
+counter for figure-shaped text carrying no citation marker.
 
 **Key decisions**
 - 2026-09-09 — **`rules.mjs` is the ONLY rule authority**, imported by runtime and pack
@@ -51,6 +52,16 @@ anatomy tables for non-human shapes — the bestiary's own known gap.
   `runFight` reports who is standing, not that it ran out of rounds, so every published fight
   figure had run at a 40-round default; one table understated a wipe by fourteen points with
   29% of runs unfinished.
+- 2026-09-13 — **A verified figure lends its credibility to the sentence it stands in.**
+  Re-deriving a peer's 4.90% exactly and inheriting their unchecked premise with it shipped a
+  false claim. The arithmetic was never the part that could be wrong. The cheap check is
+  *what does this figure need to be true in order to matter?* — sharper still, the scenario
+  had no roll for it at all, so it was a right number with no question attached and the
+  premise arrived to give it one.
+- 2026-09-13 — **A guard checks what is marked; the defect lives in what is not.** A stale
+  "median 24 rounds" survived every pass because it carried no citation marker, and
+  `check-cited` can only resolve markers that exist. Fifth reader caught unable to see its
+  own format, after cast declarations, beat tags, citation markers and `POWER:`.
 - **Rewards accelerate, they never gate.** Two versions failed with something on the critical
   path behind a probability gate (once at P=1.7%).
 
