@@ -33,7 +33,13 @@ declared, so a tampered bundle cannot slip bytes under an id another board trust
 Import into the app is always a fork (contracts §4); import into Foundry replaces
 the page, because a page *is* the board. Both hosts translate at the seam: a
 Foundry path becomes a digest on the way out and a server path on the way back.
-1242 tests. Head `9dc9768`, pushed.
+**The app works with the wifi off** — a generated service worker precaches a
+shell derived from the import graph (never a hand-kept list), a content hash in
+`sw.js` is what makes the browser notice a deploy, and an update installs beside
+the running one and waits until the person presses Reload. A cached shell meeting
+newer boards gets its own screen, not the "cannot store anything" one, because
+that message invites clearing site data. Installable: manifest plus icons drawn
+by `tools/app-icons.mjs`. 1292 tests. Head `8e6c067`, pushed.
 
 New: `src/data/apply.mjs` (the trust boundary for flat `system.*` payloads),
 `src/data/sanitize.mjs` (the one allow-list sanitiser, both hosts),
@@ -56,9 +62,13 @@ a pre-existing undo that could restore half an old line against half a new one
 and leave it with no length. Reviews in `docs/reviews/` (18–23).
 
 **Next steps**
-- **Phase 4.4 — offline.** Service worker, update and migration recovery
 - **Phase 4.5 — touch.** `touch-action`, `pointercancel`/`lostpointercapture`,
   pointer-id filtering, two-finger pan and zoom
+- **The iPad is now the blocker for phase 4.** Add to Home Screen, standalone
+  display, `navigator.storage.persist()`, and whether Files round-trips a
+  `.corkboard` bundle. Contracts §5 and §9 are provisional until it answers
+- Run `npm run build:app` after changing anything the app loads; a test fails if
+  you forget
 - Explicit v1 migration, and the sanitised share copy, still owed from phase 4
 - Phases 5–6: sync proof, opt-in sharing
 - iPad storage durability testing (contracts §5), and Tim's iPad test of
@@ -68,6 +78,19 @@ and leave it with no length. Reviews in `docs/reviews/` (18–23).
   so the clamp is invisible until release
 
 **Key decisions**
+- 2026-09-13 — **A precache list is derived, never written.** A stale one is
+  invisible until the network is gone, on the device that cannot then be fixed.
+  The walk follows the real import graph and refuses a dynamic import it cannot
+  follow; a test regenerates `app/sw.js` and compares.
+- 2026-09-13 — **The shell version lives inside `sw.js`.** The browser decides
+  an update exists by diffing that file's bytes, so a version anywhere else
+  leaves a module-only deploy byte-identical and permanently unnoticed.
+- 2026-09-13 — **A new version waits; it never reloads by itself.** A note being
+  typed is not in IndexedDB yet. `skipWaiting` runs only on a button press — the
+  sole exception being the out-of-date screen, which has nothing to lose.
+- 2026-09-13 — **A stale shell meeting newer data gets its own message.**
+  Telling somebody their boards are unreadable invites clearing site data, which
+  is exactly what loses them.
 - 2026-09-13 — **A rule that cannot be tested where it lives should move, not gain a
   comment.** The acknowledge guard — do not clear the new-card marks while a gesture
   holds an element, because a redraw replaces the cards and empties the SVG layers
