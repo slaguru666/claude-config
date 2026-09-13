@@ -45,6 +45,9 @@ a pre-existing undo that could restore half an old line against half a new one
 and leave it with no length. Reviews in `docs/reviews/` (18–23).
 
 **Next steps**
+- **Decide the renderer skip for ghost strokes** (review 26). Dropping it is the
+  honest default: refusing new taps is the whole of the fix, and the skip only
+  bought DOM tidiness at the cost of a keyboard path
 - **Phase 4 — transfer and offline.** Bounded ZIP and asset round trips both
   ways, explicit v1 migration, the sanitised share copy, service worker
 - **`sheet.mjs#editCard` is owed a live run in Foundry.** It stores through the
@@ -59,6 +62,17 @@ and leave it with no length. Reviews in `docs/reviews/` (18–23).
   so the clamp is invisible until release
 
 **Key decisions**
+- 2026-09-13 — **Review 26: no production defect, one regression I wrote blind.**
+  Codex cleared `isStroke`, confirmed no creation path was missed, and confirmed
+  the branch I deleted was unreachable. It also caught that every renderer
+  fixture used exactly two points, so two mutants lived through my own twelve.
+  The one that matters: I recorded that a ghost stroke was clearable only by
+  *Wipe ink*, and that is **false in Foundry** — `sheet.mjs` gives `.cb-stroke`
+  `tabindex="0"` with the pen in hand and Delete erases the focused stroke, and
+  a 0x0 box does **not** leave an element out of the tab order (measured in a
+  browser, not assumed). So the renderer skip closes the only selective removal
+  a legacy ghost had. **Open: whether the skip stays, goes, or is replaced by a
+  cleanup.** → [[2026-09]]
 - 2026-09-13 — **A picture is content-addressed and resolved at draw time.** The
   board stores `asset:<sha256>`; the loadable URL is made by a resolver the
   renderer is handed and revoked when the screen goes, because a `blob:` URL is
