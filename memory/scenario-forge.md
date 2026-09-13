@@ -12,8 +12,8 @@ from tables the scenarios already contain: Clue Trail → case board, NPC Roster
 cast board, Countdown → timeline board, plus a zones-only player board. It
 refuses to build a non-conforming scenario.
 
-As of 2026-09-13: **design approved, spec committed (`e405c38`), no code, no
-remote yet.** Full design in the repo's
+As of 2026-09-13: **design approved, spec pushed (`e405c38`) to private
+`slaguru666/scenario-forge`, no code yet.** Full design in the repo's
 `docs/superpowers/specs/2026-09-13-scenario-forge-design.md`; project state and
 decisions in the vault's `Projects/scenario-forge.md` — the vault wins on any
 disagreement. See [[claude-memory-vault]], [[corkboard-module]], [[rpg-skill]].

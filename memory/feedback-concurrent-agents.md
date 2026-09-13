@@ -36,4 +36,16 @@ Four more that only show up with **separate interactive sessions** (peers, not s
   -a --prefix=$TMPDIR/`. A green run in your own tree says nothing about what you pushed,
   because your tree contains the thing the commit is missing.
 
+- **I did it to someone else the same night, having already written the rule above.**
+  2026-09-13, ~21:31: I staged `git add styles/corkboard.css` — one named path, my own
+  file to edit — and shipped eleven lines of another session's in-flight iOS touch CSS
+  (`-webkit-touch-callout`, `-webkit-tap-highlight-color`) inside a commit titled "docs:
+  say which Foundry the prose-mirror boxes were measured on". Three sweeps happened in
+  that repo that night and this was one of them. The rule does not fail because it is
+  unknown; it fails because a one-line docs commit does not *feel* like it needs a
+  staged-diff check. **`git diff --cached` before EVERY commit means every commit** —
+  most of all the small ones. A second cost worth knowing: the commit is now a
+  stylesheet change wearing a docs message, so reverting it would silently delete a
+  touch behaviour nobody reading the subject line would expect to lose.
+
 **Why:** parallel agents are a big speed-up on independent content work, and every one of these problems appeared in a single session of doing it. **How to apply:** applies to any repo, not just [[loom-app]], where more than one agent is running at a time.

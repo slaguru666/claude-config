@@ -30,7 +30,7 @@ Index: [[INDEX]]
 - [ ] Load `sla-mothership` once and confirm the libWrapper banner is gone — stored config
       fixed and verified against its backup, but that world has not been launched since
       [[oneoffgames-vps]]
-- [ ] **scenario-forge** — decide the remote (GitHub private under `slaguru666`, or Gitea); nothing pushed yet [[scenario-forge]]
+- [x] **scenario-forge** — remote created, private `slaguru666/scenario-forge`, spec pushed (2026-09-13) [[scenario-forge]]
 - [ ] scenario-forge — parser + Scenario model + validator, run against all six scenarios for the drift inventory [[scenario-forge]]
 - [ ] scenario-forge — Foundry builder, regression target: reproduce AFTERIMAGE's adventure [[scenario-forge]]
 - [ ] Corkboard phase 1 for scenario-forge: `src/data/index.mjs` barrel + `exports` map, provenance flag, re-sync [[corkboard]]

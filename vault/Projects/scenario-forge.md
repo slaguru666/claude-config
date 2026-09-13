@@ -1,7 +1,7 @@
 ---
 type: project
 status: active
-repo: none yet — local only
+repo: slaguru666/scenario-forge
 path: ~/Git/scenario-forge
 updated: 2026-09-13
 ---
@@ -16,8 +16,9 @@ conform. The framework is a compiler, not a document — a style guide that is n
 executed is a style guide that drifts, which is how six scenarios ended up with
 three spellings of the same heading.
 
-**Where it lives** — `~/Git/scenario-forge`, local only, no remote yet. Spec at
-`docs/superpowers/specs/2026-09-13-scenario-forge-design.md`, head `e405c38`.
+**Where it lives** — `~/Git/scenario-forge`, remote `slaguru666/scenario-forge`
+(private). Spec at
+`docs/superpowers/specs/2026-09-13-scenario-forge-design.md`, head `e405c38`, pushed.
 
 **Current state** — Design approved and spec committed 2026-09-13. **No code
 yet.** The spike is done and closed the one feasibility question (below).
@@ -31,8 +32,6 @@ cast board, Countdown -> timeline board, plus a near-empty player board with
 zones only.
 
 **Next steps** (spec §12)
-- Decide the remote — GitHub private under `slaguru666`, or Gitea. Nothing is
-  pushed yet
 - Parser + Scenario model + validator, run against all six existing scenarios.
   Output is a report, not a module — this is where the real drift inventory comes from
 - Foundry builder, regression target: reproduce AFTERIMAGE's current adventure
