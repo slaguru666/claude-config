@@ -11,6 +11,7 @@ metadata:
 When several background agents are editing one repo at the same time:
 
 - **Never `git add -A` or `git commit -a`.** It sweeps other agents' half-finished work into your commit under a message that describes something else. This happened once and put 279 lines of three agents' pack data inside a commit labelled "docs". Stage the exact paths you changed.
+- ⚠ **Staging exact paths is NOT enough, because the hazard is the FILE, not the pathspec.** `git add <file>` takes the whole file, including a peer's edits to it. On 2026-09-13 I staged two named paths and still shipped eight of another session's eleven hunks under my own commit message. **Read the staged diff — `git diff --cached` — before every commit in a shared tree.** If hunks appear that you did not write, either the commit message must cover them or they must be unstaged.
 - **Give each agent a disjoint set of files, and say so in the brief** — including which files it must NOT touch and why. Agents that share a file will silently overwrite one another.
 - **Warn them that the test count and the failing-test list will move under them**, and name the failures that are already known and not theirs. Otherwise they spend a long time investigating someone else's breakage, or worse, "fix" it.
 - **Tell them the scratchpad is shared** — two agents picked the same `check.mjs` filename and one clobbered the other's harness.
@@ -22,13 +23,16 @@ Four more that only show up with **separate interactive sessions** (peers, not s
 - **Sessions share ONE working tree per repo — they are not separate clones.** So a peer's commit only moves HEAD; the files on disk already held their edits, and anything edited afterwards is necessarily on top of them. A dirty file that a peer also touched is therefore **not** evidence of divergence, and must not be read as one. Check the tree (`git diff HEAD -- <path>`, or grep for the construct you are worried about) before warning anyone to rebase.
 - **Git authorship cannot tell you which session made a commit** — every session commits as `slaguru666`, and there is no mapping from a transcript to a `ListAgents` address (`[ref]` values are not session UUIDs, and the desktop session list omits terminal sessions). Asking "is this yours" is the only method, so a broadcast with an ignore-if-not-you opener is a reasonable pattern — expect to receive them and to answer with facts from the tree rather than from memory.
 - **Do not repeat a peer's figure back to them.** On 2026-09-13 a peer's fix list gave two numbers side by side; I quoted one back as the figure "a GM actually meets", with more confidence than it had been written with. It was a counterfactual that never occurs in play, and my repeating it is what made it look checked. Recompute from the source before restating, and when you do, compute at **full precision** — I nearly reported their 43.6% as wrong because I blended their rounded percentages instead of the raw proportions; the exact value is 43.637.
-- **Staging named paths is only half the protection — verify the commit in isolation.** On
-  2026-09-13 a peer's `git add -A` landed my uncommitted edits inside their commit, which took
-  the document citing `step5 unsettledFactor` but not the module exporting it, so a fresh
-  checkout of HEAD failed on a key that did not exist. Committing exact paths stops you
-  sweeping others' work; it does **not** stop your commit depending on something you left
-  behind. Clone HEAD into a tempdir and run the suite there, or `git checkout-index -a
-  --prefix=$TMPDIR/` — a green run in your own dirty tree proves nothing about what you
-  pushed, because your tree contains the thing the commit is missing.
+- **Staging named paths is only half the protection — verify the commit in isolation.**
+  Recorded here originally with the roles reversed and the wrong cause; corrected 2026-09-13
+  after verifying the commit myself. **It was my commit, and I had not used `git add -A`** — I
+  staged two exact document paths. A peer had edited one of those documents, so their hunks
+  came with the file, while the module they had also changed (`tools/step5-split.mjs`) did
+  not, because it was not one of my paths. HEAD then cited `step5 unsettledFactor` with
+  nothing exporting it and a fresh checkout failed. **`npm run check` passed for me**, because
+  their uncommitted module was sitting on my disk: my tree contained the very thing my commit
+  was missing. Clone HEAD into a tempdir, or `git worktree add --detach $TMP <sha>`, and run
+  the suite there — **a green run in your own dirty tree proves nothing about what you
+  pushed.**
 
 **Why:** parallel agents are a big speed-up on independent content work, and every one of these problems appeared in a single session of doing it. **How to apply:** applies to any repo, not just [[loom-app]], where more than one agent is running at a time.
