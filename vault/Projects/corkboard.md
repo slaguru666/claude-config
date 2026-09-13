@@ -57,6 +57,11 @@ and leave it with no length. Reviews in `docs/reviews/` (18–23).
   so the clamp is invisible until release
 
 **Key decisions**
+- 2026-09-13 — **Widen the witness, do not guess a rule.** Three attempts to have
+  `undoConflict` judge whether an undo would ruin a line each refused safe undos,
+  because from there you cannot tell restoring a real past state from combining
+  halves that never coexisted. Coupled fields must be *watched* together
+  (`readPlaces`), and then no rule is needed → [[2026-09]]
 - 2026-09-13 — **A note body is decided in one place, in two tiers.** `ingest`
   says what may be STORED, `display` says what is DRAWN, and they are different
   sets on purpose: a table written in Foundry is legal but undrawn, so it
