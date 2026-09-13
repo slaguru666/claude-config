@@ -21,7 +21,7 @@ Index: [[INDEX]]
       - [ ] slice 3: asset ids, blob store, the display-time image resolver
 - [ ] **Run CLEAN GROUND with human beings** — now literally the only thing left; eleven desk
       passes, every desk-reachable branch played (v0.22, pass 11). Before convention-ready;
-      nine desk passes cannot settle Act Four's 45 minutes with no mechanical threat, or
+      no number of desk passes can settle Act Four's 45 minutes with no mechanical threat, or
       whether THE OFFER plays as a decision [[custodians-ringbrp]]
 - [ ] Print the handout pack and do Tim's read-through [[afterimage]]
 - [ ] Push Masque to Gitea and GitHub — still local only [[masque]]
