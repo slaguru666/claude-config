@@ -57,6 +57,15 @@ Freshness is a conditional GET on nginx's own ETag every 15s; an update keeps
 each viewer's pan and zoom. No accounts, no index, no password — the link is the
 protection, and the page says so.
 
+**The app publishes on its own** (2026-09-13). Publish button per shelf row;
+needs `./install-publish-server.sh` once (systemd unit `corkboard-publish` on
+127.0.0.1:8788, nginx proxies `/corkboard/publish/`, token in
+`/etc/corkboard-publish.env`, 600 root:root — **value not recorded anywhere but
+there**). The filter runs **in the browser** before upload, so the server never
+receives a secret; the server refuses a board that plainly was not filtered
+(`looksSanitised`), which catches the app being wrong rather than replacing the
+filter. No unpublish — still `ssh` + `rm`.
+
 **The app is deployed and live** (2026-09-13) at
 **https://web.oneoffgames.com/corkboard/app/** — `./deploy-app.sh` rsyncs `app`,
 `src`, `styles`, `assets` to the web root; there is no build output, the browser
@@ -101,6 +110,22 @@ and leave it with no length. Reviews in `docs/reviews/` (18–23).
   so the clamp is invisible until release
 
 **Key decisions**
+- 2026-09-13 — **Sanitise on the client, verify on the server.** A server that
+  sanitises is a server that first receives the secrets, so the filter runs in
+  the browser and the endpoint only ever sees a filtered board. The server's
+  own check cannot know what was removed but can refuse one that plainly was
+  not filtered — hidden entries, or a `gmNote` key still present. Defence in
+  depth that costs five lines and converts a client bug from a leak into a
+  failed publish. → [[2026-09]]
+- 2026-09-13 — **Never be safe only because of the reverse proxy.** The publish
+  server took the last path segment as the slug, so `/anything/at/all/myslug`
+  published — and `/corkboard/publish/..` normalises to `/corkboard/`, whose
+  last segment is a valid slug. nginx proxies one location, but the service has
+  to be safe run directly.
+- 2026-09-13 — **Verify a secret-bearing path without holding the secret.** Read
+  a token into a shell variable, never into the transcript; where a literal is
+  unavoidable (a browser), set a throwaway, verify, then rotate to a fresh
+  server-generated one. The live token has never been in a session.
 - 2026-09-13 — **A fake cannot test a `this` binding.** The published board's
   poller defaulted to `{ set: setInterval }` — bare references — so
   `timers.set(...)` passed `this === timers` and the browser threw *Illegal
