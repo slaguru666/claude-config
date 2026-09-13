@@ -23,10 +23,10 @@ three spellings of the same heading.
 **Current state** — Parser and validator built and pushed 2026-09-13 (`fbd7566`,
 79 tests). `forge check <dir>` parses the house format and runs 15 rules; there is
 no builder yet, so the report **is** the product. All six Continuum scenarios now
-carry front matter and validate at `convention-ready`. **37 findings down to 7.** All that is left
-is four missing Clue Trails (Vain Crown, Silvery Moon and Chopper entirely; Day
-One act 2) and three over-long read-aloud blocks. Nothing structural remains,
-and no handout or heading finding survives. The spike is done and closed the one feasibility question (below).
+carry front matter and validate at `convention-ready`. **37 findings down to 4**, and the four
+are one thing: missing Clue Trails (Vain Crown, Silvery Moon and Chopper entirely;
+Day One act 2). AFTERIMAGE, Princes Bride and everything structural are clean.
+What is left is scenario writing, not tooling. The spike is done and closed the one feasibility question (below).
 [[afterimage]]'s `foundry/afterimage/build.mjs` is the seed: 211 lines of which
 only 8 mention AFTERIMAGE, and `content/scenario.mjs` already treats the scenario
 Markdown as the single source of truth. The engine is that generalised.
@@ -48,6 +48,17 @@ zones only.
   have [[rpg-skill]] point at it. One template, not two copies drifting
 
 **Key decisions**
+- 2026-09-13 — **Read-aloud overflow becomes bullets the GM voices, never a cut.**
+  Three blocks were over the house limit; each kept three spoken sentences and
+  handed the rest to bullets, so a word-level diff of all three trims shows one
+  word changed and nothing removed. AFTERIMAGE act 3 also gained by it: place,
+  then what waits at the rail, then Aris's line on its own.
+- 2026-09-13 — **R-01 measures beats, not full stops.** *"I'm Aris. The original.
+  I assume you've met the revisions."* is one breath at the table; counting its
+  full stops made it worth three and inflated act 3 from 7 to 11. A quoted run
+  now collapses to one beat. It excused nothing — all three blocks were still
+  over under the fairer count — but the trimmed versions end on dialogue and
+  would have fired again without it.
 - 2026-09-13 — **Handouts are indexed in two places and both are correct** — a
   front-of-document Handout Index *and* a `### Handouts` table inside the act
   that deals them. The template prescribes both; reading only the first reported
