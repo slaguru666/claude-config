@@ -63,10 +63,12 @@ is served with no nginx change at all** — copy files in and it is live.
   `src/`, so each deploy stamps every file with its own moment and wipes the previous
   layer. Identify what is live by hashing a file and comparing against commits — and
   expect the answer to be an uncommitted working tree as often as a commit.
-- **Every Setup scan logs the same two broken systems**: `ringworld` (missing
-  `styles/ringworld.css`) and `zero-engine-d6` (missing `scripts/utils/rolls.mjs`),
-  plus an invalid `zero-engine` in `zero-engine-backup` and an invalid world in
-  `sla-industries-borg.backup.20260212174927`. Noise, not the cause of anything.
+- **Setup-scan noise, not a cause of anything.** `ringworld`'s missing files were
+  fixed 2026-09-13. Still logged: `zero-engine-d6` (missing `scripts/utils/rolls.mjs`),
+  an invalid `zero-engine` in `zero-engine-backup`, and an invalid world in
+  `sla-industries-borg.backup.20260212174927` — all dead backups.
+- `ringworld` is a **dead v0.1.0 stub** (Dec 2025, no templates or code, used by 0 of 49
+  worlds), not to be confused with `ringbrp` v1.6.0, the real Custodians system.
 - **Foundry is `foundryvtt13.service`, not `foundry.service`** — the latter exists and is
   inactive. Data `/root/foundrydata`, port 30000 behind nginx, `foundry.oneoffgames.com`.
   `curl -s .../api/status` answers `{active, world, system, users}` without logging in, and
@@ -114,10 +116,12 @@ Related: [[loom]], [[mini-s]], [[gitea-timevans]]
   `src/`, so each deploy stamps every file with its own moment and wipes the previous
   layer. Identify what is live by hashing a file and comparing against commits — and
   expect the answer to be an uncommitted working tree as often as a commit.
-- **Every Setup scan logs the same two broken systems**: `ringworld` (missing
-  `styles/ringworld.css`) and `zero-engine-d6` (missing `scripts/utils/rolls.mjs`),
-  plus an invalid `zero-engine` in `zero-engine-backup` and an invalid world in
-  `sla-industries-borg.backup.20260212174927`. Noise, not the cause of anything.
+- **Setup-scan noise, not a cause of anything.** `ringworld`'s missing files were
+  fixed 2026-09-13. Still logged: `zero-engine-d6` (missing `scripts/utils/rolls.mjs`),
+  an invalid `zero-engine` in `zero-engine-backup`, and an invalid world in
+  `sla-industries-borg.backup.20260212174927` — all dead backups.
+- `ringworld` is a **dead v0.1.0 stub** (Dec 2025, no templates or code, used by 0 of 49
+  worlds), not to be confused with `ringbrp` v1.6.0, the real Custodians system.
 - **To find who parked a world, read the access log, not the debug log.** The debug log
   records no shutdown line at all — only the next `Launching World | Complete`. The access log
   does: `POST /setup` with `Referer: .../game` is Return to Setup clicked inside a running

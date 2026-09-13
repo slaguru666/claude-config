@@ -59,11 +59,23 @@ Index: [[INDEX]]
 
 ## Verifying
 
-- **Hash the object you proved you hashed.** `git show <ref>:<path>` has been observed
-  returning the wrong number of bytes (git 2.54.0, no `.gitattributes`), producing
-  plausible-looking md5s of nothing. Use `git ls-tree -r <ref> -- <path>` for the blob
-  sha, `git cat-file blob <sha>` to read it, and `git cat-file -s <sha>` to confirm the
-  size first.
+- **Brace the variable: `"${ref}:path"`, never `"$ref:path"`.** The shell here is zsh,
+  which reads `:s` as a history-style substitution modifier on the parameter and
+  silently eats the rest — no error, no warning. `"$ref:src/board/sheet.mjs"` expands to
+  just `a5e772e`, so `git show` and `git cat-file -p` each receive a bare commit and
+  return the commit's own bytes, which hash to a plausible-looking md5 of the wrong
+  thing. Verified 2026-09-13:
+
+      zsh  -c 'ref=a5e772e; printf "%s\n" "$ref:src/board/sheet.mjs"'   -> a5e772e
+      bash -c 'ref=a5e772e; printf "%s\n" "$ref:src/board/sheet.mjs"'   -> a5e772e:src/board/sheet.mjs
+      zsh, braced "${ref}:src/board/sheet.mjs"                          -> a5e772e:src/board/sheet.mjs
+
+  It generalises past git to any `"$var:suffix"` on zsh — `"$host:$path"` in an scp,
+  `"$dir:$port"`, anything of that shape. A literal invocation with no variable always
+  worked, which is why this only ever bit inside a loop.
+- When a hash still looks wrong, confirm the object: `git ls-tree -r <ref> -- <path>`
+  for the blob sha, `git cat-file -s <sha>` for its size, `git cat-file blob <sha>` to
+  read it.
 - **Never date a deploy from a deployed file's mtime.** A build that copies a tree
   stamps every file with the latest deploy and erases earlier ones. Compare content.
 - **A host's egress is not its browser's egress.** The Claude-in-Chrome extension exits
