@@ -24,6 +24,9 @@ Index: [[INDEX]]
       passes, every desk-reachable branch played (v0.22, pass 11). Before convention-ready;
       no number of desk passes can settle Act Four's 45 minutes with no mechanical threat, or
       whether THE OFFER plays as a decision [[custodians-ringbrp]]
+- [ ] Load `sla-mothership` once and confirm the libWrapper banner is gone — stored config
+      fixed and verified against its backup, but that world has not been launched since
+      [[oneoffgames-vps]]
 - [ ] Print the handout pack and do Tim's read-through [[afterimage]]
 - [ ] Push Masque to Gitea and GitHub — still local only [[masque]]
 - [ ] Install BlackHole via `./setup.sh` — required before real Discord use [[masque]]

@@ -27,13 +27,44 @@ HTML pages plus the SOUND suite ([[drift]], [[esper]], [[haunt]], [[grimoire]],
 [[nexus]]). Its `location /` is `try_files $uri $uri/ =404`, so **a new subdirectory
 is served with no nginx change at all** — copy files in and it is live.
 
-**Next steps** — none outstanding.
+**Next steps**
+- Load `sla-mothership` once and confirm the libWrapper banner is gone. The stored config
+  is fixed and verified against its backup, but that world has not been launched since.
 
 **Key decisions**
+- 2026-09-13 — **EZGlide is the module that loses to Zoom/Pan Options.** Both claimed
+  `Canvas.prototype._onMouseWheel` as a libWrapper `OVERRIDE` in three worlds
+  (`blade-runner`, `vaesen`, `sla-mothership`). Zoom/Pan registers unconditionally and is
+  the more featureful of the two, so EZGlide is disabled world-wide rather than kept on a
+  client-scoped toggle that would have left every player the banner. Backups of the edited
+  `settings` DBs are in `/root/foundry-backups/` → [[2026-09]]
 - 2026-09-08 — This box, not [[mini-s]], is the home for anything that must be on the
   internet. MINI-S sits on a different subnet and is unreachable from the Mac Mini.
 
 **Gotchas**
+- **Foundry is `foundryvtt13.service`, not `foundry.service`** — the latter exists and is
+  inactive. Data `/root/foundrydata`, port 30000 behind nginx, `foundry.oneoffgames.com`.
+  `curl -s .../api/status` answers `{active, world, system, users}` without logging in, and
+  is the fastest way to know which world is up.
+- **Taking a world down is easy and putting one up is not.** *Return to Setup* works from
+  the game, but the setup menu behind it needs the **administrator password**, which Claude
+  will not type — so the server ends up parked with no world. The server-side path avoids
+  the password entirely (`world` in `/root/foundrydata/Config/options.json`, then restart
+  the unit), but it is a config write plus a service restart and the auto-mode classifier
+  blocks both. **Do not leave a world for Tim to relaunch — get the switch authorised
+  first, or ask him to do it.**
+- A player seat being occupied does not mean Tim is at the keyboard; another Claude session
+  logs in as **TimEvans** too, and the join list only shows that the user is taken. Check
+  before concluding a human is watching, and never join as a user already connected — it
+  displaces whoever holds it.
+- **Module conflicts are world-scoped; a module's own settings usually are not.** Enabling
+  or disabling lives in each world's `core.moduleConfiguration`, so it fixes every player at
+  once; a module's `scope: "client"` toggle fixes one browser. Read all worlds' configs with
+  Foundry's bundled `classic-level` (`/opt/foundryvtt/node_modules/classic-level`) — the
+  active world's DB is locked, and scraping the LevelDB files by hand misparses most of them.
+  Back the `settings` directory up before writing, open it read-write (an exclusive open
+  fails rather than corrupts if the world is live), and preserve the whole record: the value
+  is a JSON **string** inside a document with `key`/`value`/`_id`/`user`/`_stats`.
 - House style for the site is a green-phosphor CRT terminal: VT323, `#33ff33` on
   `#0a0a0a`, glowing borders, `> ` on hover, blinking cursor. **Match it** rather than
   introducing a second typeface; `index.html` has the canonical menu markup.

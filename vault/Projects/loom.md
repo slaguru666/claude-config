@@ -1,7 +1,7 @@
 ---
 type: project
 status: active
-repo: tevans/loom (gitea.timevans.uk, private)
+repo: slaguru666/loom (gitea.timevans.uk, private)
 path: ~/loom
 updated: 2026-09-13
 ---
@@ -23,11 +23,28 @@ same folder and the app would write into its own source.
 **Current state** — Working and deployed. Seven maker packs (~7,200 rows), six
 subjects, five scenario-builder recipes, seeded procedural SVG art in six styles,
 passphrase-gated remote access. Known issues are listed in `docs/feedback/REPORT.md` —
-**read that before adding features.**
+**read that before adding features.** The Custodians material is now imported and live on
+the deployed instance: the five CLEAN GROUND / Through Train scenarios, the art sheets, the
+GM screen, and the Ringworld setting board generated from the bible by
+`~/RingBRP/make-loom-board.mjs` (a generator, so the bible stays the single source — it adds
+only card *type*, which Loom colours by and numbered headings cannot supply).
 
 **Next steps** — driven by `docs/feedback/REPORT.md`.
 
 **Key decisions**
+- 2026-09-13 — **A seed is meaningless without the engine that read it.** `ENGINE`
+  (`generators.mjs:52`, now 2) is written into provenance beside the seed and bumped
+  whenever generation changes meaning; otherwise rewriting a pack row silently makes old
+  output unreproducible. The Makers panel has to be given it explicitly — that view copies
+  named fields onto its own result rows, so a new provenance field does not reach it
+  → [[2026-09]]
+- 2026-09-13 — **Documents are pushed into Loom, never copied into it.** `tools/import-docs.mjs`
+  posts Markdown from wherever it is authored (the RingBRP system, ChaosiumCon26) to a running
+  Loom; `--dry`, `--replace`, `--host`, `--campaign`, and `LOOM_COOKIE` for the passphrase gate,
+  which the script never handles itself. A second import of the same document is refused rather
+  than silently collecting `through-train-2`. It reports the counts the **server** returned, not
+  the plan it computed — the two disagree whenever the server holds an older importer, and
+  reporting the plan hides that completely → [[2026-09]]
 - Each adventure is a folder of Markdown and JSON, so it syncs with Seafile or
   Nextcloud and opens in Obsidian.
 - Remote access is "just me, from anywhere": a passphrase and HTTPS, no accounts,

@@ -68,6 +68,17 @@ and leave it with no length. Reviews in `docs/reviews/` (18–23).
   so the clamp is invisible until release
 
 **Key decisions**
+- 2026-09-13 — **A rule that cannot be tested where it lives should move, not gain a
+  comment.** The acknowledge guard — do not clear the new-card marks while a gesture
+  holds an element, because a redraw replaces the cards and empties the SVG layers
+  under an in-flight stroke — arrived as a closure inside a private method of
+  `sheet.mjs`, which imports Foundry and has no coverage. It is now
+  `shouldAcknowledge({fresh, active})` in `controller.mjs`: pure, Foundry-free, and
+  the reasoning travels with the rule instead of being copied beside it. The seven
+  cases include the half that is easy to miss — deferring must not lose the marks, so
+  the next look after the gesture ends still clears them. The rule names it asserts
+  are the ones `#gestureRules()` returns, deliberately, so a rename there fails here.
+  `9869072` → [[2026-09]]
 - 2026-09-13 — **A bundle's pictures are checked against their own names.** An
   asset id is the SHA-256 of the bytes, so reading one is arithmetic, not trust.
   Without the check a file somebody sent could put bytes of its choosing under an
@@ -183,6 +194,18 @@ and leave it with no length. Reviews in `docs/reviews/` (18–23).
 - Foundry merges field class defaults onto instances — comparing `field.options`
   alone produces phantom differences.
 - Safe to deploy over a running server (no compendium packs), unlike [[afterimage]].
+- **A clean console after a reload is not evidence — the tool's buffer spans reloads.**
+  A stale error line outlives the fix that removed it, and ordering is the only tell
+  (the pre-reload sequence appears *after* the line it preceded). Pin the page first:
+  `performance.timeOrigin` against the deploy time, or a sentinel on `window` that a
+  real reload destroys. In a world with many modules the buffer also overflows and
+  drops the setup-time lines entirely, so prefer a mechanism check — a disabled module
+  fetches no scripts (`performance.getEntriesByType("resource")`) and registers no
+  settings, which cannot be faked by a quiet log → [[2026-09]]
+- `build.mjs` copies only `COPY = ["src","styles","templates","assets","lang"]`
+  (`build.mjs:7`). Untracked files under `app/` or `tools/` therefore **cannot** reach a
+  build; the `bundle.mjs`/`zip.mjs` hazard was real only because those sat under `src/`.
+  Do not warn a peer off a deploy without checking that the copy is scoped.
 - **Driving the board with synthetic events has sharp edges** — all four written
   up in `docs/verification/2026-09-13-rebase-live.md`. The worst: the content
   subtree is replaced on every render, so a reused viewport reference is detached
