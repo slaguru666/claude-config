@@ -90,6 +90,10 @@ and leave it with no length. Reviews in `docs/reviews/` (18–23).
   so the clamp is invisible until release
 
 **Key decisions**
+- 2026-09-13 — **Hold L to point; it is a Foundry keybinding, not a key listener.**
+  `game.keybindings.register` makes it findable in Configure Controls, rebindable,
+  and lets Foundry decide when somebody is typing. A feature reachable only by a
+  key nobody is told about is not shipped. → [[2026-09]]
 - 2026-09-13 — **A sheet detached into its own window is a second document, and
   the move happens late.** Foundry adopts the element on a semaphore, after
   `_onRender`, so anything bound during a render names the window being left.
