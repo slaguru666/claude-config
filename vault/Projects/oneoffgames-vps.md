@@ -68,12 +68,16 @@ is served with no nginx change at all** — copy files in and it is live.
   `src/`, so each deploy stamps every file with its own moment and wipes the previous
   layer. Identify what is live by hashing a file and comparing against commits — and
   expect the answer to be an uncommitted working tree as often as a commit.
-- **Setup-scan noise, not a cause of anything.** `ringworld`'s missing files were
-  fixed 2026-09-13. Still logged: `zero-engine-d6` (missing `scripts/utils/rolls.mjs`),
+- **Setup-scan noise, not a cause of anything.** `ringworld` is gone as of 2026-09-13.
+  Still logged: `zero-engine-d6` (missing `scripts/utils/rolls.mjs`),
   an invalid `zero-engine` in `zero-engine-backup`, and an invalid world in
   `sla-industries-borg.backup.20260212174927` — all dead backups.
-- `ringworld` is a **dead v0.1.0 stub** (Dec 2025, no templates or code, used by 0 of 49
-  worlds), not to be confused with `ringbrp` v1.6.0, the real Custodians system.
+- `ringworld` was a **dead v0.1.0 stub** (Dec 2025, no code, used by 0 of 49 worlds),
+  not to be confused with `ringbrp` v1.6.0, the real Custodians system. **Removed
+  2026-09-13** on Tim's instruction, after confirming no world referenced it; backup at
+  `/root/foundry-backups/ringworld-stub-20260913225550.tar.gz`. A second inert copy of
+  its manifest remains at `Data/Ringworld/` (outside `systems/`, so Foundry never loaded
+  it) — left in place, not yet asked about.
 - **Foundry is `foundryvtt13.service`, not `foundry.service`** — the latter exists and is
   inactive. Data `/root/foundrydata`, port 30000 behind nginx, `foundry.oneoffgames.com`.
   `curl -s .../api/status` answers `{active, world, system, users}` without logging in, and
