@@ -20,15 +20,15 @@ That surprises people on first use; lead with it.
 strings (`card-gestures.mjs`), shapes and ink (`ink-gestures.mjs`) and zones
 (`zone-gestures.mjs`) are all out of `sheet.mjs`, which has dropped 2821 → ~2409
 lines. The controller owns a `BoardHost` seam so the handlers never touch
-Foundry. 614 tests. Head `d9fc738`, pushed, deployed.
+Foundry. 643 tests. Head `d3ee375`, pushed, deployed.
 
-Codex rounds 18–21 on this work. Round 21 found the shape minimum-size guard
-from `33910fd` was itself defective — it measured a line by its **box diagonal**,
-which is the line's length only while the ends sit in opposite corners. Fixed by
-measuring endpoint displacement; verified live on `cb2`. Two existing tests were
-passing for the wrong reason (horizontal fixture, diagonal claim) and were
-corrected. Reviews in `docs/reviews/` (18–21), live runs in
-`docs/verification/`.
+Codex rounds 18–22 on this work. Rounds 21 and 22 both found the shape
+minimum-size guard measuring the wrong thing: first `setShapeBox` using the
+**box diagonal** (right only while the ends sit in opposite corners), then
+`addShape` measuring its **rounded box** rather than the drag, which let a line
+be drawn 13.5 long that could not then be resized to 13.5. `lineLength()` is now
+the single definition both ask. Head `d3ee375`. Reviews in `docs/reviews/`
+(18–22), live runs in `docs/verification/`.
 
 **Next steps**
 - Phase 3 remaining: dialogs and IO, IndexedDB commits, shared sanitiser, board
@@ -42,6 +42,10 @@ corrected. Reviews in `docs/reviews/` (18–21), live runs in
   so the clamp is invisible until release
 
 **Key decisions**
+- 2026-09-13 — **One definition of a line's length**, asked by creation and
+  resizing alike (`lineLength` in `board-ops.mjs`). Two rounds of review found
+  the same defect twice because the two guards each measured their own
+  convenient proxy → [[2026-09]]
 - 2026-09-13 — **A line's minimum is measured between its ends, not across its
   box.** The box is only the line's bounding box at creation; after a nudge it can
   gain a side the line never had, and a guard reading the diagonal will spend it
