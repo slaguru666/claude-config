@@ -75,9 +75,12 @@ is served with no nginx change at all** — copy files in and it is live.
 - `ringworld` was a **dead v0.1.0 stub** (Dec 2025, no code, used by 0 of 49 worlds),
   not to be confused with `ringbrp` v1.6.0, the real Custodians system. **Removed
   2026-09-13** on Tim's instruction, after confirming no world referenced it; backup at
-  `/root/foundry-backups/ringworld-stub-20260913225550.tar.gz`. A second inert copy of
-  its manifest remains at `Data/Ringworld/` (outside `systems/`, so Foundry never loaded
-  it) — left in place, not yet asked about.
+  `/root/foundry-backups/ringworld-stub-20260913225550.tar.gz`, which holds both copies.
+  A second inert copy of its manifest at `Data/Ringworld/` (outside `systems/`, so Foundry
+  never loaded it) was **removed the same evening**, also on Tim's instruction. Nothing
+  named `ring*` remains in `Data/` but `systems/ringbrp`. One residue left by choice:
+  `forge-assets.json` still lists `systems/ringworld/system.json`, a stale entry in an
+  asset cache that nothing reads for system loading.
 - **Foundry is `foundryvtt13.service`, not `foundry.service`** — the latter exists and is
   inactive. Data `/root/foundrydata`, port 30000 behind nginx, `foundry.oneoffgames.com`.
   `curl -s .../api/status` answers `{active, world, system, users}` without logging in, and
