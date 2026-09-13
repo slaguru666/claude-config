@@ -57,6 +57,13 @@ livestock on a hillside the text says is empty, and seven re-rolls produced noth
   `runFight` reports who is standing, not that it ran out of rounds, so every published fight
   figure had run at a 40-round default; one table understated a wipe by fourteen points with
   29% of runs unfinished.
+- 2026-09-13 — **A structural check cannot see a rendering defect: render the artifact and
+  look at it.** The handout pack's print rule zeroed `.sheet` padding, and `.slug` is
+  absolutely positioned at `top:6mm`, so in print — and only in print — the GM filing slug
+  landed on the first line of three of the four sheets. On screen it was perfect, and
+  `check-handouts` was correct throughout: it holds structure (shared classes, columns, the
+  41 mi line, the 11pt floor), and a collision between an absolute element and the flow is
+  not structure. Print the pack before a convention, not after.
 - 2026-09-13 — **Midjourney: naming a thing to exclude it puts it in, and a long `--no` list
   stalls the job outright.** "No birds, no sheep" produced livestock; "the grey is dust and not
   snow" produced snow. Separately, four prompts with ten or more `--no` terms never returned a
