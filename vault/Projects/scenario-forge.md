@@ -23,7 +23,9 @@ three spellings of the same heading.
 **Current state** — Parser and validator built and pushed 2026-09-13 (`fbd7566`,
 79 tests). `forge check <dir>` parses the house format and runs 15 rules; there is
 no builder yet, so the report **is** the product. All six Continuum scenarios now
-carry front matter and validate at `convention-ready`. **37 findings down to 18.** The spike is done and closed the one feasibility question (below).
+carry front matter and validate at `convention-ready`. **37 findings down to 13**,
+and Silvery Moon and Chopper are clean. What is left is nine undefined handouts,
+three over-long read-aloud blocks, and one un-IDed props row. The spike is done and closed the one feasibility question (below).
 [[afterimage]]'s `foundry/afterimage/build.mjs` is the seed: 211 lines of which
 only 8 mention AFTERIMAGE, and `content/scenario.mjs` already treats the scenario
 Markdown as the single source of truth. The engine is that generalised.
@@ -45,6 +47,14 @@ zones only.
   have [[rpg-skill]] point at it. One template, not two copies drifting
 
 **Key decisions**
+- 2026-09-13 — **An unrecognised heading is a gap in the format as often as a
+  fault in the scenario.** Day One's "THE SHAPE OF THE DAY" and "Zombie Rules —
+  Quick Reference" became two new canonical types — `running-this` (GM
+  orientation: how the situation holds and what to do when players push on it)
+  and `rules-reference` (looked up mid-session, not read). Aliased *generically*
+  and the headings renamed to lead with the general stem, keeping their own
+  phrasing as the subtitle. A scenario-specific alias would have been the drift
+  the validator exists to catch.
 - 2026-09-13 — **The clue Type column takes a qualifier.** C-01 found twelve
   violations across two scenarios and every one was the *format's* fault:
   `Essential (routes: Dallam · Ashford letters · Garratt's own notes)` says how
