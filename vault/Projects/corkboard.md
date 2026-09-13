@@ -62,6 +62,11 @@ and leave it with no length. Reviews in `docs/reviews/` (18–23).
   so the clamp is invisible until release
 
 **Key decisions**
+- 2026-09-13 — **Coupled fields must be *watched* together, not judged by a rule.**
+  Three successive undo guards each refused something safe, because `undoConflict`
+  cannot tell a genuine restore from a recombination. The guard is gone; the witness
+  is wide (`w`, `h`, `a`, `b` move as one) and is now read on **both sides** of the
+  update, closing the commit-window race Codex found in review 27. → [[2026-09]]
 - 2026-09-13 — **Review 26: no production defect, one regression I wrote blind.**
   Codex cleared `isStroke`, confirmed no creation path was missed, and confirmed
   the branch I deleted was unreachable. It also caught that every renderer
