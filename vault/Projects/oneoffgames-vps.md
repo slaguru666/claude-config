@@ -104,6 +104,13 @@ Related: [[loom]], [[mini-s]], [[gitea-timevans]]
   `styles/ringworld.css`) and `zero-engine-d6` (missing `scripts/utils/rolls.mjs`),
   plus an invalid `zero-engine` in `zero-engine-backup` and an invalid world in
   `sla-industries-borg.backup.20260212174927`. Noise, not the cause of anything.
-- **The Foundry debug log records no shutdown line.** A world being parked leaves no trace at
-  all — only the next `Launching World | Complete` appears, so the log cannot tell you who took
-  a world down or when. Asking the other sessions is the only route.
+- **To find who parked a world, read the access log, not the debug log.** The debug log
+  records no shutdown line at all — only the next `Launching World | Complete`. The access log
+  does: `POST /setup` with `Referer: .../game` is Return to Setup clicked inside a running
+  world, with time and client IP.
+- **A deployed file's mtime dates the last deploy, not yours.** `rsync` overwrites. Hash the
+  file and match it to a commit; a timestamp will attribute someone else's deploy to you.
+- **One client IP is not one actor.** Sessions driving Tim's Chrome through the browser
+  extension all egress from one address, while their ssh egresses from another. Two sessions
+  doing opposite things minutes apart look like one admin. Reconcile against session
+  transcripts before calling anything unexplained.
