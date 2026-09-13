@@ -57,6 +57,14 @@ the repo copy intact, and reads `~/Git/claude-config/vault/` directly.
 **Never edit the iCloud copy**, including on the phone — the next sync overwrites it.
 Durability no longer depends on iCloud; git is the durable layer now.
 
+**Concurrency is the weak point, not sync.** The scheme assumes one writer at a time,
+and several Claude sessions write it at once. Git catches nothing here: a session that
+reads a note, edits its own copy and writes it back produces no conflict, just a silent
+overwrite — or, when both append, a silently doubled file. `Log/` is safe because it is
+append-only; project notes are not. The working rules are in `CONVENTIONS.md` under
+*Writing to the vault*. A `sync.sh` check for repeated headings would make this
+self-detecting and has not been built.
+
 ## Structure
 
 ```

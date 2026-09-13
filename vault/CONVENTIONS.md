@@ -83,6 +83,27 @@ Index: [[INDEX]]
   about where the driven browser appears to come from. Measure it — fetch an IP echo
   service through the same tool.
 
+## Writing to the vault
+
+Several sessions write these notes at once, and the vault has the **same shared-tree
+hazard as the repo** — with none of git's noise, because a whole-file read-modify-write
+never conflicts, it just silently wins.
+
+- **`git pull --ff-only` in `claude-config` before editing a note, and again before
+  `sync.sh`.** `sync.sh` pushes canonical → repo with `--delete`; a peer's merge sitting
+  only in the repo is destroyed by your next sync.
+- **Anchor-replace exactly once.** `s.replace(old, new)` with no count replaces *every*
+  occurrence, so editing an already-doubled file doubles it again. Use `count=1` and
+  assert the anchor appears exactly once first.
+- **Re-read the file before appending to it**, rather than trusting the copy you read
+  earlier in the session.
+- **Check for doubling after an edit.** A repeated `**Section**` heading, or the same
+  long line twice, means two writers collided:
+  `grep -oE '^\*\*[A-Z][a-z ]+\*\*' <file> | sort | uniq -d`
+- This happened on 2026-09-13: `Projects/oneoffgames-vps.md` carried two `**Gotchas**`
+  sections across five commits, ~2.2 KB duplicated, bullets stranded after the
+  `Related:` footer, and nothing complained. Found and merged by another session.
+
 ## Infrastructure
 
 - Semaphore → Gitea repository URLs use `http://gitea:3000/tevans/<repo>.git`,
