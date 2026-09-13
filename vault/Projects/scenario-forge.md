@@ -23,9 +23,11 @@ three spellings of the same heading.
 **Current state** — Parser and validator built and pushed 2026-09-13 (`fbd7566`,
 79 tests). `forge check <dir>` parses the house format and runs 15 rules; there is
 no builder yet, so the report **is** the product. All six Continuum scenarios now
-carry front matter and validate at `convention-ready`. **37 findings down to 13**,
-and Silvery Moon and Chopper are clean. What is left is nine undefined handouts,
-three over-long read-aloud blocks, and one un-IDed props row. The spike is done and closed the one feasibility question (below).
+carry front matter and validate at `convention-ready`. **37 findings down to 16** — 13 after the
+structural passes, plus 3 that C-04/C-05 made visible. What is left: three scenarios
+with no Clue Trail at all (Vain Crown, Silvery Moon, Chopper) and one act missing
+one (Day One act 2); nine undefined handouts; three over-long read-aloud blocks; one
+un-IDed props row. Nothing structural remains. The spike is done and closed the one feasibility question (below).
 [[afterimage]]'s `foundry/afterimage/build.mjs` is the seed: 211 lines of which
 only 8 mention AFTERIMAGE, and `content/scenario.mjs` already treats the scenario
 Markdown as the single source of truth. The engine is that generalised.
@@ -47,6 +49,13 @@ zones only.
   have [[rpg-skill]] point at it. One template, not two copies drifting
 
 **Key decisions**
+- 2026-09-13 — **The final act is exempt from needing a clue trail.** C-04 (no
+  trail anywhere) and C-05 (a non-final act without one) exist because Silvery
+  Moon and Chopper validated *clean* while missing the thing the case board is
+  built from. But the house template prescribes trails for Acts One and Two and
+  says nothing about the last, because the last is usually a confrontation —
+  AFTERIMAGE's pier, Princes Bride's trial. Requiring one there would report two
+  finished scenarios as unfinished. Locked in by a test on both.
 - 2026-09-13 — **An unrecognised heading is a gap in the format as often as a
   fault in the scenario.** Day One's "THE SHAPE OF THE DAY" and "Zombie Rules —
   Quick Reference" became two new canonical types — `running-this` (GM
