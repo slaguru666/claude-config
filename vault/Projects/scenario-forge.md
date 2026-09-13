@@ -3,7 +3,7 @@ type: project
 status: active
 repo: slaguru666/scenario-forge
 path: ~/Git/scenario-forge
-updated: 2026-09-13
+updated: 2026-09-14
 ---
 
 # scenario-forge
@@ -20,32 +20,32 @@ three spellings of the same heading.
 (private). Spec at
 `docs/superpowers/specs/2026-09-13-scenario-forge-design.md`, head `e405c38`, pushed.
 
-**Current state** — Parser, validator, journal builder, **packer and adventure
-assembly** built and pushed 2026-09-13 (`5cdc26b`, 171 tests). `forge build
-scenario.config.mjs` produces an installable module end to end — 9 journal
-entries, 55 pack keys, `module.json`, LevelDB packs and readable JSON sources.
-The AFTERIMAGE regression passes byte-for-byte. `forge check <dir>` runs 17 rules;
-all six Continuum scenarios carry front matter and validate at
-`convention-ready`, **37 findings down to 4** — all four missing Clue Trails
-(Vain Crown, Silvery Moon, Chopper entirely; Day One act 2), which is scenario
-writing, not tooling.
+**Current state** — Parser, validator, journal builder, packer, adventure
+assembly and the **full content port** built and pushed (`6845182`, 222 tests).
+`forge build scenario.config.mjs` produces an installable module end to end:
+AFTERIMAGE rebuilds with **every document the original carries** — 30 journals
+(9 scenario entries + 21 handouts), 13 actors, 6 scenes, 1 table, 170 pack keys,
+plus `module.json`, LevelDB packs, readable JSON sources and copied assets.
+`forge check <dir>` runs 17 rules; all six Continuum scenarios carry front matter
+and validate at `convention-ready`, **37 findings down to 4** — all four missing
+Clue Trails (Vain Crown, Silvery Moon, Chopper entirely; Day One act 2), which is
+scenario writing, not tooling.
 
 **Validate-before-write is demonstrated, not just designed**: pointing the
 builder at Silvery Moon prints `C-04 … nothing written` and leaves no `dist/`
 behind at all.
 
-**The live acceptance test passed** (2026-09-13). Built AFTERIMAGE under the id
-`afterimage-forge` so the real module was never overwritten, installed it, made a
-scratch world **Forge Acceptance Test** (blade-runner system), enabled the module,
-imported the Adventure: **6 folders + 9 journal entries created**, every entry
-filed in its folder, pages GM-only, blockquotes styled, `@UUID` links present,
-and the pages open and read correctly in the journal sheet. Both are still on the
-Mac — delete the world and `~/FoundryVTT/Data/modules/afterimage-forge` when done.
+**The live acceptance test passed, twice** (2026-09-13 journals-only, 2026-09-14
+full content). Built under the id `afterimage-forge` so the real module was never
+overwritten, installed, imported into the scratch world **Forge Acceptance Test**
+(blade-runner system): 30 journals, 13 actors, 6 scenes, 1 table, folders filed,
+pages GM-only, blockquotes styled, `@UUID` links live, **all 37 module asset URLs
+return 200**, and the Parlor 88 background renders on canvas. The second import
+over the first updated in place and created nothing — the destructive re-import
+behaviour, observed rather than inferred. Both are still on the Mac — delete the
+world and `~/FoundryVTT/Data/modules/afterimage-forge` when done.
 
-**Not yet built** — handouts, actors, scenes and tables (still hand-authored in
-`Continuum2026/foundry/afterimage/content/`, ~1000 lines, the port into
-`scenario.config.mjs`), the four Corkboard boards, and the Corkboard phase-1
-changes.
+**Not yet built** — the four Corkboard boards and the Corkboard phase-1 changes.
 
 **The four boards** are built from tables the scenarios already contain: Clue
 Trail -> case board (all hidden, `gmNote` carries the fallback), NPC Roster ->
@@ -53,17 +53,38 @@ cast board, Countdown -> timeline board, plus a near-empty player board with
 zones only.
 
 **Next steps** (spec §12)
-- Foundry builder, regression target: reproduce AFTERIMAGE's current adventure
 - Corkboard phase 1 (`src/data/index.mjs` barrel + `exports` map, provenance
   flag, re-sync) and the four board generators
-- Acceptance test: build AFTERIMAGE, import into a scratch world, open the case
-  board — the one thing the spike could not verify
+- Write the four missing Clue Trails — the last four validator findings
 - Adapters beyond `blade-runner` and `generic`
 - Normalise the other five scenarios. Real editing, not a script
 - Move `~/.claude/skills/rpg/assets/scenario-template.md` into `templates/` and
   have [[rpg-skill]] point at it. One template, not two copies drifting
 
 **Key decisions**
+- 2026-09-14 — **A build that ships no assets must fail, not fall back.** The
+  content port installed clean and rendered broken: the config declared no
+  `assets` directory, so the copy step was skipped, every portrait fell back to
+  `mystery-man` and every scene background pointed at a file that did not exist.
+  Nothing failed, because each individual fallback was a *designed* one.
+  `src/build/assets.mjs` now walks the built documents for module-owned paths
+  and fails before any write. The distinction it draws is the point: **absence
+  is a choice, a broken path is a bug** — an NPC with no portrait declared is
+  still fine (Ottley has none in the original either), but a declared file that
+  is not there stops the build. It walks the whole document tree rather than a
+  list of known image fields, so a builder that grows a new one is covered
+  without anyone remembering.
+- 2026-09-14 — **A module carries two descriptions and they are not the same
+  copy.** The manifest is read in the module browser; the Adventure's is read in
+  the import dialog. Both were empty in the first port, so the import dialog
+  showed a blank card. `manifestDescription` is now distinct from `description`.
+- 2026-09-14 — **`cfg.moduleId` overrides the front matter.** It had been a dead
+  key the builder ignored while `module_id` in the front matter decided
+  everything, which is why the acceptance build previously needed a hand-edited
+  temp copy of the scenario. A config override is the honest home for a variant
+  build id — front matter states what the scenario *is*, the config states how
+  *this* build differs — and it makes the side-by-side install safe by
+  construction rather than by remembering the gotcha below.
 - 2026-09-13 — **A JournalEntry has no `img` field in Foundry v14.** Measured in a
   live world during the acceptance test: the schema is `[_id, name, pages, folder,
   categories, sort, ownership, flags, _stats]`. AFTERIMAGE's original builder set
@@ -157,9 +178,15 @@ zones only.
 
 **Gotchas**
 - **Never build the acceptance copy under the real module id.** `~/FoundryVTT/Data/
-  modules/afterimage` holds the complete, convention-ready module; a journals-only
-  forge build installed over it would replace it. Build under `afterimage-forge`
-  (rewrite `module_id` in a temp copy of the scenario) so the two sit side by side.
+  modules/afterimage` holds the complete, convention-ready module; a forge build
+  installed over it would replace it. Set `moduleId: "afterimage-forge"` in the
+  config (no longer a temp copy of the scenario) so the two sit side by side.
+- **The installed `afterimage` module is a stale build** — 28 journals and 5
+  scenes against the repo's 30 and 6. Compare a forge build against
+  `Continuum2026/foundry/afterimage/dist/src`, never against what is installed,
+  or the forge build looks like it invented content it did not.
+- **Foundry holds the pack LevelDBs open.** Quit it before `--install`; the
+  guard refuses while it is running, and `--force` past that corrupts packs.
 - **No Foundry CLI.** Packing writes LevelDB directly via `classic-level`,
   because the CLI splits a scene's `levels` into their own sublevel keys and v14
   synthesises a blank level instead — the background art is lost. The workaround
