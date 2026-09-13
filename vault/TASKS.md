@@ -12,10 +12,13 @@ Index: [[INDEX]]
 
 - [ ] Phase 3 — extract the controller incrementally, subsystem by subsystem [[corkboard]]
     - [x] gestures: cards/strings, shapes/ink, zones (2026-09-13)
-    - [ ] dialogs and IO, IndexedDB commits, shared sanitiser, board create/list/name/delete
+    - [x] IndexedDB commits, board create/list/name/delete (2026-09-13)
+    - [ ] dialogs and IO, shared sanitiser
 - [ ] Build the standalone Corkboard app shell [[corkboard]]
       - [x] viewport and gesture arbitration — all eight `reacquire` verified live (2026-09-13)
-      - [ ] cards and strings, then shapes and ink, then dialogs and IO
+      - [x] slice 1: open a board, draw on it, reopen it with the work still there (2026-09-13)
+      - [ ] slice 2: the shared sanitiser and a rich-text editor for card bodies
+      - [ ] slice 3: asset ids, blob store, the display-time image resolver
 - [ ] **Run CLEAN GROUND with human beings** — the only thing left before convention-ready;
       nine desk passes cannot settle Act Four's 45 minutes with no mechanical threat, or
       whether THE OFFER plays as a decision [[custodians-ringbrp]]
