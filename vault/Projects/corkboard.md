@@ -39,7 +39,13 @@ shell derived from the import graph (never a hand-kept list), a content hash in
 the running one and waits until the person presses Reload. A cached shell meeting
 newer boards gets its own screen, not the "cannot store anything" one, because
 that message invites clearing site data. Installable: manifest plus icons drawn
-by `tools/app-icons.mjs`. 1292 tests. Head `8e6c067`, pushed.
+by `tools/app-icons.mjs`. **Phase 4 is complete.** 4.5 was mostly verification: two-finger pinch,
+pointer-id filtering and `pointercancel` were already built in phase 3 and had
+never run under a finger. They do now — pinch scales exactly by the finger ratio,
+a second finger returns a dragged card and writes nothing, and handles measure
+45–47px under `pointer: coarse`. Added the iOS callout and tap-highlight
+suppression and a scroll-shadow on the narrow toolbar. 1292 tests. Head
+`b0456c7`, pushed.
 
 New: `src/data/apply.mjs` (the trust boundary for flat `system.*` payloads),
 `src/data/sanitize.mjs` (the one allow-list sanitiser, both hosts),
@@ -62,9 +68,7 @@ a pre-existing undo that could restore half an old line against half a new one
 and leave it with no length. Reviews in `docs/reviews/` (18–23).
 
 **Next steps**
-- **Phase 4.5 — touch.** `touch-action`, `pointercancel`/`lostpointercapture`,
-  pointer-id filtering, two-finger pan and zoom
-- **The iPad is now the blocker for phase 4.** Add to Home Screen, standalone
+- **The iPad is the only thing phase 4 is waiting on.** Add to Home Screen, standalone
   display, `navigator.storage.persist()`, and whether Files round-trips a
   `.corkboard` bundle. Contracts §5 and §9 are provisional until it answers
 - Run `npm run build:app` after changing anything the app loads; a test fails if
@@ -78,6 +82,11 @@ and leave it with no length. Reviews in `docs/reviews/` (18–23).
   so the clamp is invisible until release
 
 **Key decisions**
+- 2026-09-13 — **`git add -A` has now swept this session's uncommitted work into
+  three unrelated commits** (bd2517e, 1e73377). A revert of any of them would
+  silently take a change its message never mentions. Named paths only.
+- 2026-09-13 — **Never chain a commit off a piped test run.** `vitest | grep &&
+  git commit` reads grep's exit status, so a red suite commits anyway.
 - 2026-09-13 — **The Undo double-fire was not real, and the symptom said so before any
   measurement was taken.** One click gives one handler run and one toast, and every
   `[data-action]` element carries exactly one listener across every render path. Per-render
