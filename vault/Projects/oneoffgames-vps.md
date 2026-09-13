@@ -56,6 +56,10 @@ is served with no nginx change at all** — copy files in and it is live.
   `/game` referer). Diagnose with `systemctl status foundryvtt13` — if the PID and
   "Active: since" are unchanged, nothing crashed, and the answer is in the nginx
   access log, not the journal.
+- **Never date a deploy by the deployed files' mtime.** `build.mjs` recursively copies
+  `src/`, so each deploy stamps every file with its own moment and wipes the previous
+  layer. Identify what is live by hashing a file and comparing against commits — and
+  expect the answer to be an uncommitted working tree as often as a commit.
 - **Every Setup scan logs the same two broken systems**: `ringworld` (missing
   `styles/ringworld.css`) and `zero-engine-d6` (missing `scripts/utils/rolls.mjs`),
   plus an invalid `zero-engine` in `zero-engine-backup` and an invalid world in
@@ -100,6 +104,10 @@ Related: [[loom]], [[mini-s]], [[gitea-timevans]]
   `/game` referer). Diagnose with `systemctl status foundryvtt13` — if the PID and
   "Active: since" are unchanged, nothing crashed, and the answer is in the nginx
   access log, not the journal.
+- **Never date a deploy by the deployed files' mtime.** `build.mjs` recursively copies
+  `src/`, so each deploy stamps every file with its own moment and wipes the previous
+  layer. Identify what is live by hashing a file and comparing against commits — and
+  expect the answer to be an uncommitted working tree as often as a commit.
 - **Every Setup scan logs the same two broken systems**: `ringworld` (missing
   `styles/ringworld.css`) and `zero-engine-d6` (missing `scripts/utils/rolls.mjs`),
   plus an invalid `zero-engine` in `zero-engine-backup` and an invalid world in
