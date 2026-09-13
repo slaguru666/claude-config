@@ -20,18 +20,25 @@ three spellings of the same heading.
 (private). Spec at
 `docs/superpowers/specs/2026-09-13-scenario-forge-design.md`, head `e405c38`, pushed.
 
-**Current state** — Parser, validator and **journal builder** built and pushed
-2026-09-13 (`fa254b8`, 140 tests). `forge check <dir>` parses the house format and
-runs 17 rules. **The AFTERIMAGE regression passes**: the shared engine reproduces
-its nine scenario journal entries with the same names, pages, order, sorts and
-ownership, and byte-identical HTML. All six Continuum scenarios carry front matter
-and validate at `convention-ready`; **37 findings down to 4**, and the four are one
-thing — missing Clue Trails (Vain Crown, Silvery Moon and Chopper entirely; Day One
-act 2). That is scenario writing, not tooling.
+**Current state** — Parser, validator, journal builder, **packer and adventure
+assembly** built and pushed 2026-09-13 (`5cdc26b`, 171 tests). `forge build
+scenario.config.mjs` produces an installable module end to end — 9 journal
+entries, 55 pack keys, `module.json`, LevelDB packs and readable JSON sources.
+The AFTERIMAGE regression passes byte-for-byte. `forge check <dir>` runs 17 rules;
+all six Continuum scenarios carry front matter and validate at
+`convention-ready`, **37 findings down to 4** — all four missing Clue Trails
+(Vain Crown, Silvery Moon, Chopper entirely; Day One act 2), which is scenario
+writing, not tooling.
 
-**Not yet built** — handouts, actors, scenes, tables, `module.json`, adventure
-assembly, packing, and the four Corkboard boards. Those still live hand-authored in
-`Continuum2026/foundry/afterimage/content/` and are the port into `scenario.config.mjs`.
+**Validate-before-write is demonstrated, not just designed**: pointing the
+builder at Silvery Moon prints `C-04 … nothing written` and leaves no `dist/`
+behind at all.
+
+**Not yet built** — handouts, actors, scenes and tables (still hand-authored in
+`Continuum2026/foundry/afterimage/content/`, ~1000 lines, the port into
+`scenario.config.mjs`), the four Corkboard boards, and the Corkboard phase-1
+changes. The live acceptance test — build, import into a scratch world, open it —
+is now possible and still owed.
 
 **The four boards** are built from tables the scenarios already contain: Clue
 Trail -> case board (all hidden, `gmNote` carries the fallback), NPC Roster ->
@@ -50,6 +57,13 @@ zones only.
   have [[rpg-skill]] point at it. One template, not two copies drifting
 
 **Key decisions**
+- 2026-09-13 — **The scene `levels` trap is guarded by a test, not a comment.**
+  `HIERARCHY.scenes` omits `levels` because Foundry v14 cannot reassemble it from
+  its own sublevel — it synthesises a blank level and the background art is gone.
+  A test asserts the omission, so tidying the packer back to the Foundry CLI
+  fails loudly instead of silently shipping scenes with no backgrounds. `stamp`
+  guards the same loss by the other route: an unstamped document is migrated as
+  legacy content, which also discards `levels`.
 - 2026-09-13 — **Journal entries are declared against canonical ids, not heading
   text.** The original builder matched literal headings (`"Plot Summary (GM truth
   — players never see this page)"`) and threw when the document was reworded, so
