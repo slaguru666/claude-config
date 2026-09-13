@@ -19,7 +19,7 @@
 - [NotebookLM CLI setup](notebooklm-cli-setup.md) — notebooklm-py on the Mac; pin --python 3.12 (else silent 0.1.1 downgrade), browser login, launchd auth-refresh keepalive
 - [RPG skill](rpg-skill.md) — house scenario-writing skill at ~/.claude/skills/rpg, shared via claude-config; pull+install before sync, sync.sh after RPG work.
 - [The Custodians / RingBRP](ringbrp-project.md) — Foundry system at systems/ringbrp; `rules.mjs` is the ONLY rule authority and has superseded the old design-doc rulings; scenarios live inside the system at docs/scenarios/.
-- [Contingency 2027](contingency-2027.md) — 27–31 Jan 2027, Hunstanton; repo slaguru666/contingency2027, 10 slots, 8 games incl. the DEAD AIR CoC trilogy.
+- [Contingency 2027](contingency-2027.md) — 27–31 Jan 2027, Hunstanton; repo slaguru666/contingency2027, 10 slots, 9 games; CLEAN GROUND takes Sun aft (slot 9).
 - [Gitea timevans.uk](infra-gitea-timevans.md) — push over SSH port **2222**, not 22; HTTPS has no stored credential
 - [Push after commit](feedback-push-after-commit.md) — push in the same turn as the commit; don't leave it for another session to sweep up
 - [Ambient synth (Drift)](ambient-synth.md) — single-file Web Audio groovebox: pad, CS-80, 303 acid, 8-drum kit, chords, melody gen, song mode + WAV bounce, Blade Runner-style Offworld generator at ~/ambient-synth/; port 8765, localStorage v4, not in git

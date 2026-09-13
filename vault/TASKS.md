@@ -11,6 +11,9 @@ Index: [[INDEX]]
 ## Active
 
 - [ ] Phase 3 — extract the controller incrementally, subsystem by subsystem [[corkboard]]
+    - [x] gestures: cards/strings, shapes/ink, zones (2026-09-13)
+    - [ ] dialogs and IO, IndexedDB commits, shared sanitiser, board create/list/name/delete
+- [ ] Build the standalone Corkboard app shell [[corkboard]]
       - [x] viewport and gesture arbitration — all eight `reacquire` verified live (2026-09-13)
       - [ ] cards and strings, then shapes and ink, then dialogs and IO
 - [ ] Print the handout pack and do Tim's read-through [[afterimage]]
