@@ -20,12 +20,17 @@ Index: [[INDEX]]
 - Before pushing, check `git log origin/<branch>..HEAD` and say what is going
   out — in a shared tree it may include someone else's commits.
 - This does **not** extend to PRs, merges or auto-merge. Those still wait.
-- **`git show <ref>:<path>` can hand you the commit object instead of the file.**
-  Seen repeatably on 2026-09-13: it returned the ~2.6 KB commit object for a 116 KB
-  source file, and hashing that gives a perfectly normal-looking md5 of the wrong
-  thing. Two sessions reached opposite conclusions from it and neither could
-  reproduce the other. Use `git ls-tree -r <ref> -- <path>`, then
-  `git cat-file blob <sha>`.
+- **In zsh, `"$ref:src/..."` silently drops everything after the colon.** zsh reads
+  `:s` as a history-style substitution modifier on the parameter, so
+  `"$ref:src/board/sheet.mjs"` expands to bare `a5e772e` — no error, no warning.
+  `git show "$ref:path"` then prints the whole commit (99 KB of message and diff)
+  and `git cat-file -p "$ref:path"` returns the commit object (2.6 KB); both hash
+  cleanly and look like a plausible file. On 2026-09-13 two sessions produced
+  byte-identical wrong md5s this way and spent an evening unable to reproduce each
+  other. **Brace it — `"${ref}:path"`** — and verify with
+  `git ls-tree -r <ref> -- <path>` then `git cat-file blob <sha>`, checking the byte
+  count against `cat-file -s`. bash is unaffected; the shell here is zsh, so this
+  applies to any `"$var:suffix"`, not only git.
 - Gitea pushes go over **SSH port 2222**. See [[gitea-timevans]].
 
 ## Working method
