@@ -20,13 +20,15 @@ That surprises people on first use; lead with it.
 now runs** (2026-09-13). `app/index.html` is a browser page with no Foundry that
 creates, names, opens and deletes boards; adds cards and zones; drags, resizes,
 ties string, draws and rubs out; and reopens a board with everything still there.
-Slice 2 adds a **note body you can write**: a card panel with a title, a
-`contenteditable` rich-text editor and a GM note. It is not a second corkboard —
+Slice 2 adds a **note body you can write** and slice 3 **pictures**: a card panel
+with a title, a `contenteditable` rich-text editor, a picture and a GM note, plus
+a Photo button on the toolbar. It is not a second corkboard —
 the renderer, stylesheet, gestures and arithmetic are the module's own files,
 reached through the `BoardHost` seam. ~976 tests. Head `ab20565`, pushed.
 
 New: `src/data/apply.mjs` (the trust boundary for flat `system.*` payloads),
 `src/data/sanitize.mjs` (the one allow-list sanitiser, both hosts),
+`src/data/assets.mjs` + `src/app/asset-store.mjs` (content-addressed pictures),
 `src/app/{commits,store,idb,writer-lock,host,board-view,shelf,selection,notify,
 icons,main,editor,card-editor}.mjs`, `styles/app.css`.
 `src/board/gesture-order.mjs` holds the one copy of the arbitration order, and
@@ -43,7 +45,8 @@ a pre-existing undo that could restore half an old line against half a new one
 and leave it with no length. Reviews in `docs/reviews/` (18–23).
 
 **Next steps**
-- **App slice 3** — asset ids, blob store, the display-time image resolver
+- **Phase 4 — transfer and offline.** Bounded ZIP and asset round trips both
+  ways, explicit v1 migration, the sanitised share copy, service worker
 - **`sheet.mjs#editCard` is owed a live run in Foundry.** It stores through the
   shared `ingest` now instead of `foundry.utils.cleanHTML`; one line, unit-tested
   indirectly, never executed inside Foundry
@@ -56,6 +59,11 @@ and leave it with no length. Reviews in `docs/reviews/` (18–23).
   so the clamp is invisible until release
 
 **Key decisions**
+- 2026-09-13 — **A picture is content-addressed and resolved at draw time.** The
+  board stores `asset:<sha256>`; the loadable URL is made by a resolver the
+  renderer is handed and revoked when the screen goes, because a `blob:` URL is
+  valid only for the document that made it. Reclaiming is by scan over snapshots
+  AND commits — an id only an old commit names is bytes a replay will ask for.
 - 2026-09-13 — **A tap with the pen leaves no mark.** A press with no travel
   stored a one-point stroke; a `<polyline>` with one point has no subpath, so it
   painted nothing, measured 0x0 and took its hit thread with it — unseeable,
