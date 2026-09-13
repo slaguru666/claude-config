@@ -23,7 +23,7 @@ ties string, draws and rubs out; and reopens a board with everything still there
 Slice 2 adds a **note body you can write**: a card panel with a title, a
 `contenteditable` rich-text editor and a GM note. It is not a second corkboard —
 the renderer, stylesheet, gestures and arithmetic are the module's own files,
-reached through the `BoardHost` seam. ~968 tests. Head `3603140`, pushed.
+reached through the `BoardHost` seam. ~976 tests. Head `ab20565`, pushed.
 
 New: `src/data/apply.mjs` (the trust boundary for flat `system.*` payloads),
 `src/data/sanitize.mjs` (the one allow-list sanitiser, both hosts),
@@ -48,7 +48,6 @@ and leave it with no length. Reviews in `docs/reviews/` (18–23).
   shared `ingest` now instead of `foundry.utils.cleanHTML`; one line, unit-tested
   indirectly, never executed inside Foundry
 - Then: dialogs and IO, import/export, and the `.corkboard` bundle (phase 4)
-- Pen-tap dot defect — spawned as task `task_c0e721aa`, awaiting Tim's click
 - Phases 4–6: transfer and offline, sync proof, opt-in sharing
 - iPad storage durability testing (contracts §5), and Tim's iPad test of
   https://web.oneoffgames.com/corkboard-spike/
@@ -57,6 +56,15 @@ and leave it with no length. Reviews in `docs/reviews/` (18–23).
   so the clamp is invisible until release
 
 **Key decisions**
+- 2026-09-13 — **A tap with the pen leaves no mark.** A press with no travel
+  stored a one-point stroke; a `<polyline>` with one point has no subpath, so it
+  painted nothing, measured 0x0 and took its hit thread with it — unseeable,
+  unselectable, clearable only by *Wipe ink*. Refusing beat drawing it: a tap is
+  how you reach a mark with the pen still in hand, so a tap that painted would
+  stamp ink on the thing you were reaching for, and the highlighter's `butt`
+  linecap paints nothing for a zero-length subpath anyway. One predicate,
+  `isStroke`, answers for both the write path and the renderer. The comment that
+  argued for the dot sat on an **unreachable** branch → [[2026-09]]
 - 2026-09-13 — **Widen the witness, do not guess a rule.** Three attempts to have
   `undoConflict` judge whether an undo would ruin a line each refused safe undos,
   because from there you cannot tell restoring a real past state from combining
