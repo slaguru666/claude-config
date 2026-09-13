@@ -266,6 +266,13 @@ and leave it with no length. Reviews in `docs/reviews/` (18–23).
   state so Foundry's own broadcast carries them. Keep that property.
 
 **Gotchas**
+- **On foundry.oneoffgames.com every session is the same `TimEvans` GM**, so a pin's
+  `author` and the log's client IP cannot tell two sessions apart. Worse: only
+  *authentication* records carry `ip`/`session` — launches, parks, vends and
+  client-session lines carry neither, so **a world park is unattributable by
+  construction**. One admin auth (13 Sep 00:45:49) granted ~23h of credential-free
+  parking to session `ad9e225e`, which then authenticated from *two different* IPs.
+  Transcripts and screenshots are the only real attribution. See [[2026-09]]
 - **Nothing in `sheet.mjs` binds to `this.element`, `document` or `window` on a per-render
   path** — all 48 listeners target a node inside the replaced part subtree, which is the only
   reason re-binding on every `_onRender` cannot accumulate. Add one to a surviving node and it
