@@ -100,6 +100,11 @@ never conflicts, it just silently wins.
 - **Check for doubling after an edit.** A repeated `**Section**` heading, or the same
   long line twice, means two writers collided:
   `grep -oE '^\*\*[A-Z][a-z ]+\*\*' <file> | sort | uniq -d`
+- **`sync.sh` now refuses a doubled note**, checking canonical before the rsync. It
+  names the file and heading, skips only the vault stage, and exits non-zero. If you
+  see that refusal, fold the sections — do not reach for
+  `--allow-duplicate-headings`, which exists for a note that legitimately repeats a
+  heading, not for getting past the guard.
 - **`Log/YYYY-MM.md` is the safe target.** Append-only, dated, newest at the bottom:
   three sessions wrote to it concurrently all that evening with no collision. Put the
   narrative there and only the distilled rule in a structured note, because a dated

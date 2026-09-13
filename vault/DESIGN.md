@@ -62,8 +62,12 @@ and several Claude sessions write it at once. Git catches nothing here: a sessio
 reads a note, edits its own copy and writes it back produces no conflict, just a silent
 overwrite — or, when both append, a silently doubled file. `Log/` is safe because it is
 append-only; project notes are not. The working rules are in `CONVENTIONS.md` under
-*Writing to the vault*. A `sync.sh` check for repeated headings would make this
-self-detecting and has not been built.
+*Writing to the vault*, and since 2026-09-13 `sync.sh` enforces the detectable half:
+it checks canonical for duplicated headings **before** the rsync, so a doubled note
+never reaches the repo, and warns about notes present only in the repo copy that
+`--delete` is about to remove. A failure holds back the vault stage only — config,
+memory and skills still sync — and the run exits non-zero. Override with
+`./sync.sh --allow-duplicate-headings`.
 
 ## Structure
 
