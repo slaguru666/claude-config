@@ -24,7 +24,7 @@ Index: [[INDEX]]
       - [x] slice 2: the shared sanitiser and a rich-text editor for card bodies (2026-09-13)
       - [x] slice 3: asset ids, blob store, the display-time image resolver (2026-09-13)
 - [ ] **Run CLEAN GROUND with human beings** — now literally the only thing left; eleven desk
-      passes, every desk-reachable branch played (v0.22, pass 11). Before convention-ready;
+      passes, every desk-reachable branch played, artwork placed (v0.25). Before convention-ready;
       no number of desk passes can settle Act Four's 45 minutes with no mechanical threat, or
       whether THE OFFER plays as a decision [[custodians-ringbrp]]
 - [ ] Load `sla-mothership` once and confirm the libWrapper banner is gone — stored config

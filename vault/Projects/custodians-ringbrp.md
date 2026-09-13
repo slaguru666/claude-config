@@ -21,19 +21,21 @@ updated: 2026-09-13
 **Current state** — playable and guarded. **21 build guards** under `npm run check`, each a
 claim about the game re-measured on every build. **`docs/REVIEW_LOG.md` (at R-309) holds the
 reasoning behind all of them** and is the thing to read before re-deciding anything here.
-Scenarios: `LAST_ADMISSION`, `OPEN_DAY`, `THROUGH_TRAIN`, **CLEAN GROUND** (v0.24, eleven
-desk passes, Contingency 2027 slot 9), whose published figures are held in both directions —
+Scenarios: `LAST_ADMISSION`, `OPEN_DAY`, `THROUGH_TRAIN`, **CLEAN GROUND** (v0.25, eleven
+desk passes, artwork placed, Contingency 2027 slot 9), whose published figures are held in both directions —
 `check-packs` holds the baseline against the harness, `check-cited` the prose against the
-baseline, 169 figures across 22 files against six baselines, and `check-figures` reads the
-figures rather than the markers, so a measured number with nothing holding it stops the build.
+baseline, and **`check-figures` reads the figures rather than the markers**, so a measured
+number with nothing holding it stops the build. That guard is now one reader with three
+authorities — shapes on a named phrasing, columns on the table header, bold in prose only —
+after `check-unmarked` was folded into it.
 
 **Next steps** — **CLEAN GROUND needs a run with human beings, and that is now the only thing
 left on its list.** Pass 11 closed the last desk-reachable branch; every one of the original
 four has been played. Then splitting `ringbrp.mjs`, and anatomy tables for non-human shapes —
-the bestiary's own known gap. **CLEAN GROUND's artwork is written but not generated** —
-`docs/scenarios/CLEAN_GROUND_ART.md` holds 6 NPC portraits and 11 scene plates ready for
-`mj-gen`; the pregen portraits and handout pack are done, and it is the only scenario in the
-system with no scene plates at all.
+the bestiary's own known gap. **CLEAN GROUND's artwork is generated and placed** — 6 NPC
+portraits at 512×512 and 11 scene plates at 1024×682, prompts and failure notes in
+`docs/scenarios/CLEAN_GROUND_ART.md`. One known defect kept on purpose: `cg_04_crossing` has
+livestock on a hillside the text says is empty, and seven re-rolls produced nothing better.
 
 **Key decisions**
 - 2026-09-09 — **`rules.mjs` is the ONLY rule authority**, imported by runtime and pack
@@ -55,6 +57,11 @@ system with no scene plates at all.
   `runFight` reports who is standing, not that it ran out of rounds, so every published fight
   figure had run at a 40-round default; one table understated a wipe by fourteen points with
   29% of runs unfinished.
+- 2026-09-13 — **Midjourney: naming a thing to exclude it puts it in, and a long `--no` list
+  stalls the job outright.** "No birds, no sheep" produced livestock; "the grey is dust and not
+  snow" produced snow. Separately, four prompts with ten or more `--no` terms never returned a
+  grid while the same prompt with four came back in two minutes — indistinguishable from a
+  banned word, so it will be misdiagnosed every time. Keep `--no` short, steer in the prompt.
 - 2026-09-13 — **A verified figure lends its credibility to the sentence it stands in.**
   Re-deriving a peer's 4.90% exactly and inheriting their unchecked premise with it shipped a
   false claim. The arithmetic was never the part that could be wrong. The cheap check is
