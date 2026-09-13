@@ -24,13 +24,24 @@ Slice 2 adds a **note body you can write** and slice 3 **pictures**: a card pane
 with a title, a `contenteditable` rich-text editor, a picture and a GM note, plus
 a Photo button on the toolbar. It is not a second corkboard —
 the renderer, stylesheet, gestures and arithmetic are the module's own files,
-reached through the `BoardHost` seam. 1090 tests. Head `69238ab`, pushed.
+reached through the `BoardHost` seam.
+
+**Phase 4 transfer is done** (2026-09-13). A board and its pictures travel as one
+`.corkboard` file — a dependency-free zip holding `board.json` and
+`assets/<sha256>.<ext>`. Reading hashes every picture against the id the manifest
+declared, so a tampered bundle cannot slip bytes under an id another board trusts.
+Import into the app is always a fork (contracts §4); import into Foundry replaces
+the page, because a page *is* the board. Both hosts translate at the seam: a
+Foundry path becomes a digest on the way out and a server path on the way back.
+1242 tests. Head `9dc9768`, pushed.
 
 New: `src/data/apply.mjs` (the trust boundary for flat `system.*` payloads),
 `src/data/sanitize.mjs` (the one allow-list sanitiser, both hosts),
 `src/data/assets.mjs` + `src/app/asset-store.mjs` (content-addressed pictures),
 `src/app/{commits,store,idb,writer-lock,host,board-view,shelf,selection,notify,
-icons,main,editor,card-editor}.mjs`, `styles/app.css`.
+icons,main,editor,card-editor,bundle-io}.mjs`, `styles/app.css`.
+`src/data/{zip,bundle}.mjs` are the container and the format; `src/app/bundle-io.mjs`
+and `src/board/bundle-io.mjs` are the same format against each host's storage.
 `src/board/gesture-order.mjs` holds the one copy of the arbitration order, and
 `view-gestures.mjs` the pan — both hosts go through them. `build.mjs` keeps
 `src/app` out of the module's dist.
@@ -50,13 +61,11 @@ and leave it with no length. Reviews in `docs/reviews/` (18–23).
   removed `#bindStrokeKeys()`. Open an editable unlocked board with a ghost and
   an ordinary stroke, pen active, Tab to the ghost, Delete, confirm only its id
   goes. Both ink layers
-- **Phase 4 — transfer and offline.** Bounded ZIP and asset round trips both
-  ways, explicit v1 migration, the sanitised share copy, service worker
-- **`sheet.mjs#editCard` is owed a live run in Foundry.** It stores through the
-  shared `ingest` now instead of `foundry.utils.cleanHTML`; one line, unit-tested
-  indirectly, never executed inside Foundry
-- Then: dialogs and IO, import/export, and the `.corkboard` bundle (phase 4)
-- Phases 4–6: transfer and offline, sync proof, opt-in sharing
+- **Phase 4.4 — offline.** Service worker, update and migration recovery
+- **Phase 4.5 — touch.** `touch-action`, `pointercancel`/`lostpointercapture`,
+  pointer-id filtering, two-finger pan and zoom
+- Explicit v1 migration, and the sanitised share copy, still owed from phase 4
+- Phases 5–6: sync proof, opt-in sharing
 - iPad storage durability testing (contracts §5), and Tim's iPad test of
   https://web.oneoffgames.com/corkboard-spike/
 - Deferred from review 21: require `shape` whenever `setShapeBox` is given size
@@ -64,6 +73,26 @@ and leave it with no length. Reviews in `docs/reviews/` (18–23).
   so the clamp is invisible until release
 
 **Key decisions**
+- 2026-09-13 — **A bundle's pictures are checked against their own names.** An
+  asset id is the SHA-256 of the bytes, so reading one is arithmetic, not trust.
+  Without the check a file somebody sent could put bytes of its choosing under an
+  id an unrelated board already uses, and that board would quietly show the new
+  picture. Applies to both hosts.
+- 2026-09-13 — **Blobs are written durably before the board that names them.**
+  Interrupted that way round, the worst case is bytes nothing points at, which a
+  sweep collects. The other way round the card is permanently broken and nothing
+  can tell that from a picture the sender never had. Not a preference.
+- 2026-09-13 — **"Missing" is asked of the device, never of the file.** Content
+  addressing makes them different questions: a picture a bundle left out may
+  already be here under the same id. Reporting the file's gap told people to
+  expect a placeholder next to a card that drew perfectly.
+- 2026-09-13 — **Import into Foundry replaces; import into the app forks.** There
+  is no shelf in Foundry to fork onto — the page is the board — and contracts §4
+  only asks for a fork where a board has an identity of its own.
+- 2026-09-13 — **Foundry's uuid-scoped upload rewrites the filename**, so a
+  content-addressed name does not stop a second import writing the picture again.
+  Kept anyway: uploading to a path of our own leaves files the world never
+  manages. The duplicate costs disk; an orphan costs forever.
 - 2026-09-13 — **Coupled fields must be *watched* together, not judged by a rule.**
   Three successive undo guards each refused something safe, because `undoConflict`
   cannot tell a genuine restore from a recombination. The guard is gone; the witness
