@@ -56,9 +56,14 @@ is served with no nginx change at all** — copy files in and it is live.
   `/game` referer). Diagnose with `systemctl status foundryvtt13` — if the PID and
   "Active: since" are unchanged, nothing crashed, and the answer is in the nginx
   access log, not the journal.
+- **To find who parked a world, read the access log, not the debug log.** The debug
+  log records no shutdown line at all — only the next `Launching World | Complete`.
+  The access log does, with time and client IP.
 - Foundry admin actions arriving from an unfamiliar IP are usually a Claude session
   driving Tim's Chrome: the extension egresses `178.239.163.114`, not the home WAN.
-  Measured 2026-09-13. Do not read it as an intrusion.
+  Measured 2026-09-13. Do not read it as an intrusion. **One client IP is not one
+  actor** — several sessions share that browser while their ssh egresses elsewhere, so
+  two of them doing opposite things minutes apart look like a single admin.
 - **Never date a deploy by the deployed files' mtime.** `build.mjs` recursively copies
   `src/`, so each deploy stamps every file with its own moment and wipes the previous
   layer. Identify what is live by hashing a file and comparing against commits — and
@@ -102,33 +107,3 @@ is served with no nginx change at all** — copy files in and it is live.
   certbot can issue.
 
 Related: [[loom]], [[mini-s]], [[gitea-timevans]]
-
-**Gotchas**
-- **A world at `/setup` does not mean the server fell over.** `foundryvtt13.service`
-  keeps running; returning to Setup is an in-app admin action (`POST /setup` with a
-  `/game` referer). Diagnose with `systemctl status foundryvtt13` — if the PID and
-  "Active: since" are unchanged, nothing crashed, and the answer is in the nginx
-  access log, not the journal.
-- Foundry admin actions arriving from an unfamiliar IP are usually a Claude session
-  driving Tim's Chrome: the extension egresses `178.239.163.114`, not the home WAN.
-  Measured 2026-09-13. Do not read it as an intrusion.
-- **Never date a deploy by the deployed files' mtime.** `build.mjs` recursively copies
-  `src/`, so each deploy stamps every file with its own moment and wipes the previous
-  layer. Identify what is live by hashing a file and comparing against commits — and
-  expect the answer to be an uncommitted working tree as often as a commit.
-- **Setup-scan noise, not a cause of anything.** `ringworld`'s missing files were
-  fixed 2026-09-13. Still logged: `zero-engine-d6` (missing `scripts/utils/rolls.mjs`),
-  an invalid `zero-engine` in `zero-engine-backup`, and an invalid world in
-  `sla-industries-borg.backup.20260212174927` — all dead backups.
-- `ringworld` is a **dead v0.1.0 stub** (Dec 2025, no templates or code, used by 0 of 49
-  worlds), not to be confused with `ringbrp` v1.6.0, the real Custodians system.
-- **To find who parked a world, read the access log, not the debug log.** The debug log
-  records no shutdown line at all — only the next `Launching World | Complete`. The access log
-  does: `POST /setup` with `Referer: .../game` is Return to Setup clicked inside a running
-  world, with time and client IP.
-- **A deployed file's mtime dates the last deploy, not yours.** `rsync` overwrites. Hash the
-  file and match it to a commit; a timestamp will attribute someone else's deploy to you.
-- **One client IP is not one actor.** Sessions driving Tim's Chrome through the browser
-  extension all egress from one address, while their ssh egresses from another. Two sessions
-  doing opposite things minutes apart look like one admin. Reconcile against session
-  transcripts before calling anything unexplained.
