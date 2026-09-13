@@ -10,6 +10,9 @@ Index: [[INDEX]]
 
 ## Active
 
+- [x] Undo double-fire report — **not reproducible; no defect** [[corkboard]] (2026-09-13). One click gives one handler run and one toast; the binding is single on every render path. Do not re-chase.
+- [ ] Open, and separate from the above: the undo race in `docs/reviews/codex-review-29.md` — a write landing inside the undo's own `page.update` can still collapse a line, because validation and application are not atomic. Deliberately unpatched [[corkboard]]
+
 - [ ] Phase 3 — extract the controller incrementally, subsystem by subsystem [[corkboard]]
     - [x] gestures: cards/strings, shapes/ink, zones (2026-09-13)
     - [x] IndexedDB commits, board create/list/name/delete (2026-09-13)

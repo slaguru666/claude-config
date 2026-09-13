@@ -32,6 +32,15 @@ is served with no nginx change at all** — copy files in and it is live.
   is fixed and verified against its backup, but that world has not been launched since.
 
 **Key decisions**
+- 2026-09-13 — **A session can take a world down and not put it back.** Game Settings → Return
+  to Setup shuts the world down and lands on the admin-password gate, which a session will not
+  type; the server-side route (set `world` in `options.json`, restart `foundryvtt13`) is what a
+  permission classifier blocks. Treat Return to Setup as **one-way** — ask Tim before using it,
+  or be ready to leave production parked → [[2026-09]]
+- 2026-09-13 — **Announce a deploy; never just do one.** `./deploy.sh --force` builds a working
+  tree several sessions share and swaps the module under anyone connected. Four sessions
+  deployed here in one evening, one under Tim mid-test. A clean `git status` is necessary and
+  not sufficient; the other half is whether a human is on the server → [[2026-09]]
 - 2026-09-13 — **EZGlide is the module that loses to Zoom/Pan Options.** Both claimed
   `Canvas.prototype._onMouseWheel` as a libWrapper `OVERRIDE` in three worlds
   (`blade-runner`, `vaesen`, `sla-mothership`). Zoom/Pan registers unconditionally and is
@@ -75,3 +84,8 @@ is served with no nginx change at all** — copy files in and it is live.
   certbot can issue.
 
 Related: [[loom]], [[mini-s]], [[gitea-timevans]]
+
+**Gotchas**
+- **The Foundry debug log records no shutdown line.** A world being parked leaves no trace at
+  all — only the next `Launching World | Complete` appears, so the log cannot tell you who took
+  a world down or when. Asking the other sessions is the only route.

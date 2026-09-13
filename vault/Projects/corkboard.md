@@ -78,6 +78,16 @@ and leave it with no length. Reviews in `docs/reviews/` (18–23).
   so the clamp is invisible until release
 
 **Key decisions**
+- 2026-09-13 — **The Undo double-fire was not real, and the symptom said so before any
+  measurement was taken.** One click gives one handler run and one toast, and every
+  `[data-action]` element carries exactly one listener across every render path. Per-render
+  binding is safe *by construction* here and worth knowing rather than re-deriving: every
+  `addEventListener` in `sheet.mjs` targets a node inside the part subtree, Foundry replaces a
+  `root: true` part's children on every render (`replaceChildren`), and
+  `_configureRenderParts` ignores `options.parts`, so no partial render can skip the
+  replacement. The report also contradicted itself: both refusal branches null `#undo` before
+  notifying, so two listeners could only ever have produced *one* warning and then "There is
+  nothing to undo". **Do not re-chase this** → [[2026-09]]
 - 2026-09-13 — **A precache list is derived, never written.** A stale one is
   invisible until the network is gone, on the device that cannot then be fixed.
   The walk follows the real import graph and refuses a dynamic import it cannot
@@ -211,6 +221,10 @@ and leave it with no length. Reviews in `docs/reviews/` (18–23).
   state so Foundry's own broadcast carries them. Keep that property.
 
 **Gotchas**
+- **Nothing in `sheet.mjs` binds to `this.element`, `document` or `window` on a per-render
+  path** — all 48 listeners target a node inside the replaced part subtree, which is the only
+  reason re-binding on every `_onRender` cannot accumulate. Add one to a surviving node and it
+  **will** accumulate silently, one per render, with no error and no duplicate in the DOM.
 - `sheet.mjs` is the only writer, via `#commit`. `board-ops.mjs` is pure functions
   returning flat update payloads. `visibility.mjs` is the single gate between a
   player's board and the GM's.
