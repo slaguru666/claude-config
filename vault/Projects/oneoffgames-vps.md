@@ -51,6 +51,15 @@ is served with no nginx change at all** — copy files in and it is live.
   internet. MINI-S sits on a different subnet and is unreachable from the Mac Mini.
 
 **Gotchas**
+- **A world at `/setup` does not mean the server fell over.** `foundryvtt13.service`
+  keeps running; returning to Setup is an in-app admin action (`POST /setup` with a
+  `/game` referer). Diagnose with `systemctl status foundryvtt13` — if the PID and
+  "Active: since" are unchanged, nothing crashed, and the answer is in the nginx
+  access log, not the journal.
+- **Every Setup scan logs the same two broken systems**: `ringworld` (missing
+  `styles/ringworld.css`) and `zero-engine-d6` (missing `scripts/utils/rolls.mjs`),
+  plus an invalid `zero-engine` in `zero-engine-backup` and an invalid world in
+  `sla-industries-borg.backup.20260212174927`. Noise, not the cause of anything.
 - **Foundry is `foundryvtt13.service`, not `foundry.service`** — the latter exists and is
   inactive. Data `/root/foundrydata`, port 30000 behind nginx, `foundry.oneoffgames.com`.
   `curl -s .../api/status` answers `{active, world, system, users}` without logging in, and
@@ -86,6 +95,15 @@ is served with no nginx change at all** — copy files in and it is live.
 Related: [[loom]], [[mini-s]], [[gitea-timevans]]
 
 **Gotchas**
+- **A world at `/setup` does not mean the server fell over.** `foundryvtt13.service`
+  keeps running; returning to Setup is an in-app admin action (`POST /setup` with a
+  `/game` referer). Diagnose with `systemctl status foundryvtt13` — if the PID and
+  "Active: since" are unchanged, nothing crashed, and the answer is in the nginx
+  access log, not the journal.
+- **Every Setup scan logs the same two broken systems**: `ringworld` (missing
+  `styles/ringworld.css`) and `zero-engine-d6` (missing `scripts/utils/rolls.mjs`),
+  plus an invalid `zero-engine` in `zero-engine-backup` and an invalid world in
+  `sla-industries-borg.backup.20260212174927`. Noise, not the cause of anything.
 - **The Foundry debug log records no shutdown line.** A world being parked leaves no trace at
   all — only the next `Launching World | Complete` appears, so the log cannot tell you who took
   a world down or when. Asking the other sessions is the only route.
