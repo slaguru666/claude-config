@@ -9,8 +9,8 @@ updated: 2026-09-13
 # MINI-S
 
 **What it is** — `timevans-MINI-S`, a **Zorin OS 18.1 Linux** box (older notes calling
-it a Mac Mini are wrong). Runs a self-hosted homelab and a cloud drive, and is one of
-the machines Claude Code runs on.
+it a Mac Mini are wrong). Runs a self-hosted homelab and a cloud drive. It used to be
+one of the machines Claude Code ran on — see the next paragraph.
 
 **Claude Code is NOT currently installed here** (verified 2026-09-13). `~/.claude`
 exists with history, sessions and plugins, so it ran at some point — but there is no
