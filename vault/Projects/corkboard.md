@@ -66,11 +66,11 @@ and leave it with no length. Reviews in `docs/reviews/` (18–23).
   sidesteps a transaction held across an `await` being closed by the browser
 - 2026-09-13 — **The arbitration order lives in one place** (`gesture-order.mjs`).
   Two array literals in two hosts agree only while somebody remembers they must
-- 2026-09-13 — **`validateBoard` is stricter than live Foundry.** Foundry 14.363
-  does NOT enforce a TypedObjectField member's min/max on the update path —
-  a shape endpoint of 1.05 is stored, survives a reload, and never gains schema
-  defaults — while the portable validator clamps it. Never write data that only
-  one half of the project will rewrite → [[2026-09]]
+- 2026-09-13 — **A broken module has no data model, so nothing is cleaned.** I
+  concluded Foundry does not enforce a TypedObjectField member's min/max after
+  probing a module whose imports were 404ing from a partial deploy: the subtype
+  was never registered. Missing schema defaults are the tell. Foundry and
+  `validateBoard` agree; deploy the build, never the files you touched → [[2026-09]]
 - 2026-09-13 — **One definition of a line's length**, asked by creation and
   resizing alike (`lineLength` in `board-ops.mjs`). Two rounds of review found
   the same defect twice because the two guards each measured their own
