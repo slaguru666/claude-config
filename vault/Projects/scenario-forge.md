@@ -20,16 +20,18 @@ three spellings of the same heading.
 (private). Spec at
 `docs/superpowers/specs/2026-09-13-scenario-forge-design.md`, head `e405c38`, pushed.
 
-**Current state** — Parser and validator built and pushed 2026-09-13 (`fbd7566`,
-79 tests). `forge check <dir>` parses the house format and runs 15 rules; there is
-no builder yet, so the report **is** the product. All six Continuum scenarios now
-carry front matter and validate at `convention-ready`. **37 findings down to 4**, and the four
-are one thing: missing Clue Trails (Vain Crown, Silvery Moon and Chopper entirely;
-Day One act 2). AFTERIMAGE, Princes Bride and everything structural are clean.
-What is left is scenario writing, not tooling. The spike is done and closed the one feasibility question (below).
-[[afterimage]]'s `foundry/afterimage/build.mjs` is the seed: 211 lines of which
-only 8 mention AFTERIMAGE, and `content/scenario.mjs` already treats the scenario
-Markdown as the single source of truth. The engine is that generalised.
+**Current state** — Parser, validator and **journal builder** built and pushed
+2026-09-13 (`fa254b8`, 140 tests). `forge check <dir>` parses the house format and
+runs 17 rules. **The AFTERIMAGE regression passes**: the shared engine reproduces
+its nine scenario journal entries with the same names, pages, order, sorts and
+ownership, and byte-identical HTML. All six Continuum scenarios carry front matter
+and validate at `convention-ready`; **37 findings down to 4**, and the four are one
+thing — missing Clue Trails (Vain Crown, Silvery Moon and Chopper entirely; Day One
+act 2). That is scenario writing, not tooling.
+
+**Not yet built** — handouts, actors, scenes, tables, `module.json`, adventure
+assembly, packing, and the four Corkboard boards. Those still live hand-authored in
+`Continuum2026/foundry/afterimage/content/` and are the port into `scenario.config.mjs`.
 
 **The four boards** are built from tables the scenarios already contain: Clue
 Trail -> case board (all hidden, `gmNote` carries the fallback), NPC Roster ->
@@ -48,6 +50,15 @@ zones only.
   have [[rpg-skill]] point at it. One template, not two copies drifting
 
 **Key decisions**
+- 2026-09-13 — **Journal entries are declared against canonical ids, not heading
+  text.** The original builder matched literal headings (`"Plot Summary (GM truth
+  — players never see this page)"`) and threw when the document was reworded, so
+  rewording the scenario was a build break. The coupling now lives in the alias
+  map, where it is one edit and a test.
+- 2026-09-13 — **The regression compares links by what they point at, not by id.**
+  Ids differ on purpose (namespaced by module), so raw HTML comparison would only
+  ever prove that. Each `@UUID` is resolved back to its document key on both
+  sides, plus a test asserting no id in the output is UNRESOLVED.
 - 2026-09-13 — **Read-aloud overflow becomes bullets the GM voices, never a cut.**
   Three blocks were over the house limit; each kept three spoken sentences and
   handed the rest to bullets, so a word-level diff of all three trims shows one
