@@ -23,11 +23,10 @@ three spellings of the same heading.
 **Current state** — Parser and validator built and pushed 2026-09-13 (`fbd7566`,
 79 tests). `forge check <dir>` parses the house format and runs 15 rules; there is
 no builder yet, so the report **is** the product. All six Continuum scenarios now
-carry front matter and validate at `convention-ready`. **37 findings down to 16** — 13 after the
-structural passes, plus 3 that C-04/C-05 made visible. What is left: three scenarios
-with no Clue Trail at all (Vain Crown, Silvery Moon, Chopper) and one act missing
-one (Day One act 2); nine undefined handouts; three over-long read-aloud blocks; one
-un-IDed props row. Nothing structural remains. The spike is done and closed the one feasibility question (below).
+carry front matter and validate at `convention-ready`. **37 findings down to 7.** All that is left
+is four missing Clue Trails (Vain Crown, Silvery Moon and Chopper entirely; Day
+One act 2) and three over-long read-aloud blocks. Nothing structural remains,
+and no handout or heading finding survives. The spike is done and closed the one feasibility question (below).
 [[afterimage]]'s `foundry/afterimage/build.mjs` is the seed: 211 lines of which
 only 8 mention AFTERIMAGE, and `content/scenario.mjs` already treats the scenario
 Markdown as the single source of truth. The engine is that generalised.
@@ -49,6 +48,10 @@ zones only.
   have [[rpg-skill]] point at it. One template, not two copies drifting
 
 **Key decisions**
+- 2026-09-13 — **Handouts are indexed in two places and both are correct** — a
+  front-of-document Handout Index *and* a `### Handouts` table inside the act
+  that deals them. The template prescribes both; reading only the first reported
+  five of Vain Crown's handouts as undefined when its acts define all five.
 - 2026-09-13 — **The final act is exempt from needing a clue trail.** C-04 (no
   trail anywhere) and C-05 (a non-final act without one) exist because Silvery
   Moon and Chopper validated *clean* while missing the thing the case board is
