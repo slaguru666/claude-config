@@ -68,3 +68,19 @@ working. `build.mjs` excludes the app from the shipped module.
 Reviews from both Codex and an internal pass live in `docs/reviews/` with ranked
 feature proposals. Related: [[afterimage-scenario]], [[infra-oneoffgames-vps]],
 [[feedback-codex-review-loop]].
+
+**Tim tests on the LOCAL Foundry, not only the VPS.** `~/FoundryVTT/Data/modules/corkboard`
+(dataPath `~/FoundryVTT`, app on port 30000). `./deploy.sh --force` only reaches the VPS, so
+deploy to both: `npm run build && rsync -a --delete dist/ ~/FoundryVTT/Data/modules/corkboard/`
+then `diff -rq` to verify. Several hours of fixes never reached him because they went to the
+VPS alone.
+
+**Detaching a sheet into its own browser window:** Foundry adopts the element on a semaphore
+inside `_insertElement`, so the move happens AFTER `_onRender`. Anything bound during a render
+is bound to the window the board is leaving. Rebind in `_onDetach`/`_onAttach` (core's empty
+stubs, called with both documents), and take frames/timers from
+`element.ownerDocument.defaultView` — a backgrounded main window throttles rAF.
+
+**`styles/corkboard.css` and the app's import graph are service-worker shell files.** Any edit,
+comment included, turns `test/app-shell.test.mjs` red until `node tools/build-app-shell.mjs`
+is re-run. That is the test working.

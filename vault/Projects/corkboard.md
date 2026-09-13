@@ -90,6 +90,14 @@ and leave it with no length. Reviews in `docs/reviews/` (18–23).
   so the clamp is invisible until release
 
 **Key decisions**
+- 2026-09-13 — **A sheet detached into its own window is a second document, and
+  the move happens late.** Foundry adopts the element on a semaphore, after
+  `_onRender`, so anything bound during a render names the window being left.
+  Rebind in `_onDetach`/`_onAttach`; take frames and timers from the element's own
+  view, because a backgrounded main window throttles rAF. → [[2026-09]]
+- 2026-09-13 — **A laser pointer is not board state, so it gets the only socket.**
+  Ephemeral, no undo, never written to the document; board state still travels as
+  document updates. → [[2026-09]]
 - 2026-09-13 — **A static host is not a static host.** nginx knows neither `.mjs`
   nor `.webmanifest`, and a module served as `application/octet-stream` is
   refused outright — a blank page, one console error, nothing else wrong. This
