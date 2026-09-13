@@ -43,6 +43,24 @@ for rel in "${EXTRA_PROJECT_PATHS[@]}"; do
   fi
 done
 
+# Obsidian memory vault -> the slavault vault, when this machine has one.
+# Overlay only, no --delete: a machine's own newer notes are never destroyed by an
+# install. Machines with no Obsidian vault (MINI-S) read the repo copy directly.
+if [ -d "$SCRIPT_DIR/vault" ]; then
+  if [ -d "$HOME/Vault/slavault" ]; then
+    VAULT_DEST="$HOME/Vault/slavault/Ai/Claude"
+    mkdir -p "$VAULT_DEST"
+    if command -v rsync >/dev/null 2>&1; then
+      rsync -a "$SCRIPT_DIR/vault/" "$VAULT_DEST/"
+    else
+      cp -R "$SCRIPT_DIR/vault/." "$VAULT_DEST/"
+    fi
+    echo "  Installed: memory vault -> $VAULT_DEST"
+  else
+    echo "  Memory vault available at $SCRIPT_DIR/vault (no Obsidian vault on this machine)"
+  fi
+fi
+
 # Skills — copy each skill directory into ~/.claude/skills/
 if [ -d "$SCRIPT_DIR/skills" ]; then
   mkdir -p "$CLAUDE_DIR/skills"
@@ -97,7 +115,7 @@ if command -v claude >/dev/null 2>&1; then
     CANDIDATE_VAULTS=(
       "$HOME/docker/obsidian/config/Obsidian Vault"
       "$HOME/Vault/Tims_Vault"
-      "$HOME/Vault/slavault/slavault"
+      "$HOME/Vault/slavault"
     )
   fi
 

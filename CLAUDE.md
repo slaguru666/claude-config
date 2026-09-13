@@ -49,10 +49,18 @@ During a session, call `add_memory` to persist:
 
 ## Claude Memory Vault (Obsidian)
 
-A durable Markdown record of our work lives in the iCloud Obsidian vault at
-`~/Library/Mobile Documents/iCloud~md~obsidian/Documents/Obsidian/Ai/Claude/`.
-It is the canonical human-readable memory layer; Graphiti and claude-mem are the
-fast recall layers. If they disagree, the vault wins. Design: `Ai/Claude/DESIGN.md`.
+A durable Markdown record of our work. It is the canonical human-readable memory
+layer; Graphiti and claude-mem are the fast recall layers. If they disagree, the
+vault wins. Design and rationale: `DESIGN.md` inside it.
+
+**Where it is, in order of authority:**
+1. **Canonical — `~/Vault/slavault/Ai/Claude/`** (the Macs). Read and write here.
+2. **History — `vault/` in the `claude-config` repo.** `sync.sh` pushes it,
+   `install.sh` restores it. This is what survives a dead machine.
+3. **Mirror — the iCloud vault's `Ai/Claude/`.** One-way, so TASKS.md is readable
+   on the phone. **Never write here** — `sync.sh` overwrites it with `--delete`.
+4. **MINI-S and any machine with no Obsidian vault** reads
+   `~/Git/claude-config/vault/` directly. Pull before trusting it.
 
 **Read** at session start: `INDEX.md`, then the relevant `Projects/<name>.md`.
 
@@ -61,7 +69,8 @@ fast recall layers. If they disagree, the vault wins. Design: `Ai/Claude/DESIGN.
   *Key decisions* in the project note
 - work completes or changes state → rewrite *Current state* and *Next steps* in the
   project note, bump `updated:`, tick or add items in `TASKS.md`
-- session ends → make sure both of the above are true
+- session ends → make sure both are true, then run `~/Git/claude-config/sync.sh`
+  so the change reaches git and the other machines
 
 **Constraints (hard):**
 - It holds the **map, never the work**: paths, repos, ports, decisions, gotchas.
@@ -71,8 +80,6 @@ fast recall layers. If they disagree, the vault wins. Design: `Ai/Claude/DESIGN.
 - Never delete or edit a `Log/` entry — corrections are new dated entries.
 - Prefer editing an existing note over creating a new one. One screen per project
   note; trim rather than grow.
-
-Machines without iCloud (MINI-S) cannot see this vault — use Graphiti there.
 
 ## Key Projects & Infrastructure
 - Gitea instance at `gitea.oneoffgames.net`

@@ -44,6 +44,29 @@ for rel in "${EXTRA_PROJECT_PATHS[@]}"; do
   fi
 done
 
+# Obsidian memory vault. Canonical copy is the slavault vault on the Macs; the
+# iCloud vault gets a one-way MIRROR so TASKS.md stays readable on the phone —
+# edits made on the phone are overwritten, so treat the iCloud copy as read-only.
+# A machine without slavault (MINI-S) skips this entirely, leaving the repo copy
+# intact — the same never-delete-what-you-don't-have rule as the memory dirs above.
+VAULT_SRC="$HOME/Vault/slavault/Ai/Claude"
+VAULT_MIRROR="$HOME/Library/Mobile Documents/iCloud~md~obsidian/Documents/Obsidian/Ai/Claude"
+if [ -d "$VAULT_SRC" ]; then
+  if command -v rsync >/dev/null 2>&1; then
+    mkdir -p "$SCRIPT_DIR/vault"
+    rsync -a --delete --no-links "$VAULT_SRC/" "$SCRIPT_DIR/vault/"
+    echo "  Copied: vault/"
+    if [ -d "$(dirname "$VAULT_MIRROR")" ]; then
+      rsync -a --delete "$VAULT_SRC/" "$VAULT_MIRROR/"
+      echo "  Mirrored: vault -> iCloud vault"
+    fi
+  else
+    echo "  Skipped: vault/ — rsync not found on this machine (repo copy left intact)"
+  fi
+else
+  echo "  Skipped: vault/ — no ~/Vault/slavault/Ai/Claude on this machine"
+fi
+
 if [ -d "$CLAUDE_DIR/skills" ]; then
   # --no-links: skills installed by other tools (firecrawl, composio) are symlinks
   # into ~/.agents/skills. Copying them as symlinks would commit links that dangle
