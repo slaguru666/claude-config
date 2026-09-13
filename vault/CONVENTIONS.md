@@ -100,6 +100,18 @@ never conflicts, it just silently wins.
 - **Check for doubling after an edit.** A repeated `**Section**` heading, or the same
   long line twice, means two writers collided:
   `grep -oE '^\*\*[A-Z][a-z ]+\*\*' <file> | sort | uniq -d`
+- **`Log/YYYY-MM.md` is the safe target.** Append-only, dated, newest at the bottom:
+  three sessions wrote to it concurrently all that evening with no collision. Put the
+  narrative there and only the distilled rule in a structured note, because a dated
+  append cannot collide with anything.
+- **Never `>>` onto a project note.** It lands past the `Related:` footer and outside
+  whatever structure the note has. Insert after a named anchor instead.
+- **Never create a heading that might already exist.** A section you cannot find may
+  mean a peer is adding it right now — put the bullet under the existing heading. This
+  rule was written by a session that had just stacked a second vault section beside
+  this one while composing it.
+- **Fold, do not stack.** If a peer's bullet already covers yours, sharpen theirs or
+  drop yours. Two bullets saying one thing is how a note doubles in the first place.
 - This happened on 2026-09-13: `Projects/oneoffgames-vps.md` carried two `**Gotchas**`
   sections across five commits, ~2.2 KB duplicated, bullets stranded after the
   `Related:` footer, and nothing complained. Found and merged by another session.
