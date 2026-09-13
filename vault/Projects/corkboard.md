@@ -16,20 +16,33 @@ That surprises people on first use; lead with it.
 **Where it lives** — `~/Git/corkboard`, remote `slaguru666/corkboard`. Deploy with
 `./deploy.sh --force`, then reload the world. Reviews in `docs/reviews/`.
 
-**Current state** — Phase 2 complete (2026-09-12). Portable schema (`src/data/schema.mjs`),
-standalone validator (`src/data/validate.mjs`) and conformance fingerprinting
-(`src/data/fingerprint.mjs`) agree with Foundry v14.363 on **zero differences**.
-349 tests passing. Both real boards validate with no errors and no coercions.
-Committed `3ee09e1`, pushed. Live module files untouched.
+**Current state** — Phase 3 viewport and gesture arbitration complete
+(2026-09-13). `BoardController` and a Foundry-free `GestureArbiter` extracted;
+every element drag now **rebases on concurrent edits** — a drag means "from where
+this is now", so another player's move is never silently undone. 448 tests.
+Head `cde4cff`, pushed, deployed.
+
+Five Codex review rounds on this work found **six defects**, all fixed and each
+verified against the live server. **All eight `reacquire` implementations now
+have a live pass** — card move/resize, zone move/resize, shape move, reshape,
+string, pen, shape creation. Written up in
+`docs/verification/2026-09-13-rebase-live.md`; reviews in `docs/reviews/`
+(8–17).
 
 **Next steps**
-- Phase 3: extract the controller incrementally, subsystem by subsystem, with live
-  checks between — a wide refactor built on the Phase 2 schema and validator
-- iPad storage durability testing (contracts §5)
+- Phase 3 remaining: cards and strings, then shapes and ink, then dialogs and IO
+- Phases 4–6: transfer and offline, sync proof, opt-in sharing
+- iPad storage durability testing (contracts §5), and Tim's iPad test of
+  https://web.oneoffgames.com/corkboard-spike/
 - File-exchange validation (§4, §9)
-- Local-network sync for offline iPads (§8) — decided out of scope for Phase 2
+- Local-network sync for offline iPads (§8) — out of scope for Phase 2
 
 **Key decisions**
+- 2026-09-13 — **All drags rebase on concurrent edits**, cards and zones included
+  (Tim's call). A clamped drag must rebase from the *pointer*, never from the
+  clamped preview — that distinction was a real defect → [[2026-09]]
+- 2026-09-13 — Gesture recovery is driven by `draw()` → `reacquire()`, **not** by
+  `lostpointercapture`, which fires for touch and pen whatever the gesture is
 - 2026-09-12 — Dual schema definitions with conformance testing → [[2026-09]]
 - 2026-09-12 — **Never stricter than Foundry.** Foundry's NumberField is nullable,
   so `pin.x = null` is valid; entity keys are unconstrained, so hand-authored keys
@@ -47,5 +60,21 @@ Committed `3ee09e1`, pushed. Live module files untouched.
 - Foundry merges field class defaults onto instances — comparing `field.options`
   alone produces phantom differences.
 - Safe to deploy over a running server (no compendium packs), unlike [[afterimage]].
+- **Driving the board with synthetic events has sharp edges** — all four written
+  up in `docs/verification/2026-09-13-rebase-live.md`. The worst: the content
+  subtree is replaced on every render, so a reused viewport reference is detached
+  after the first commit, and events sent to it report as *"the gesture declined
+  to claim"* rather than as an error.
+- Toolbar controls (pen, shape tools, Player preview) exist only in
+  `board-edit.hbs`. Rendering the **parent journal sheet** embeds the page
+  read-only — open the page's own sheet.
+- **Player preview** puts a GM's sheet into player mode; no second login needed
+  to test player-only behaviour.
+- **A pinned background needs a pinned colour.** Two editor fields set a light
+  background and let the colour inherit; under the dark theme that is near-white,
+  so note bodies were invisible. ProseMirror styles its own `.editor-content`, so
+  the host's colour does not reach it.
+- The card editor opens from the card's **right-click menu**, or automatically
+  after *Add note* — double-click only opens *link* cards.
 
 Related: [[custodians-ringbrp]], [[oneoffgames-vps]]

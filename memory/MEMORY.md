@@ -31,5 +31,8 @@
 - [Loom app](loom-app.md) — local Alkemion-style adventure-design tool at ~/loom (port 8771, Markdown-on-disk adventures, facet-constrained generators, map generator, scenario builders, procedural art, passphrase remote access); see docs/feedback/REPORT.md
 - [One Off Games VPS](infra-oneoffgames-vps.md) — `ssh foundry` (85.190.246.132, root only); nginx + web.oneoffgames.com public game site; drop a folder in the web root and it is live
 - [Concurrent agents](feedback-concurrent-agents.md) — never `git add -A` with agents running; disjoint files, verify every claim
-- [Corkboard module](corkboard-module.md) — Foundry investigation board at ~/Git/corkboard; a board IS a journal page (no sidebar icon), no custom socket, player-edit grants real OWNER
+- [Codex review loop](feedback-codex-review-loop.md) — fix → codex review → fix findings → verify live → repeat; use `--profile deep`, and tell a reviewer on a streak not to invent findings
+- [Codex profiles](infra-codex-profiles.md) — profiles are per-file `~/.codex/<name>.config.toml`; only gpt-6-astra and gpt-5.5 answer, and a stale model name breaks the CLI outright
+- [Verify the neighbours](feedback-verify-the-neighbours.md) — checking one claim in the code finds the error in the function next to it; a rule that matches the output on common inputs can still be invented
+- [Corkboard module](corkboard-module.md) — Foundry investigation board at ~/Git/corkboard; a board IS a journal page (no sidebar icon), no custom socket, player-edit grants real OWNER, plus the live-verification harness gotchas
 - [Claude memory vault](claude-memory-vault.md) — canonical MD memory in the iCloud Obsidian vault at `Ai/Claude/`; read INDEX.md at session start, write state/tasks/decisions there

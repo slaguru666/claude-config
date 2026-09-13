@@ -11,6 +11,8 @@ Index: [[INDEX]]
 ## Active
 
 - [ ] Phase 3 — extract the controller incrementally, subsystem by subsystem [[corkboard]]
+      - [x] viewport and gesture arbitration — all eight `reacquire` verified live (2026-09-13)
+      - [ ] cards and strings, then shapes and ink, then dialogs and IO
 - [ ] Print the handout pack and do Tim's read-through [[afterimage]]
 - [ ] Push Masque to Gitea and GitHub — still local only [[masque]]
 - [ ] Install BlackHole via `./setup.sh` — required before real Discord use [[masque]]

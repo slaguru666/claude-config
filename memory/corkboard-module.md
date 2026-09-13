@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 1c117e42-e3c4-45cf-af54-8456a315b23b
-  modified: 2026-09-11T23:37:39.308Z
+  modified: 2026-09-13T09:44:53.616Z
 ---
 
 Corkboard is a standalone Foundry VTT v14 module at `~/Git/corkboard`
@@ -33,5 +33,28 @@ deploying over the running server is safe — unlike the afterimage module, whos
 LevelDB packs require returning the world to Setup first. Reload the world to
 pick up new code.
 
+**Verifying a gesture against a live server** is a technique this module needed
+and the harness has sharp edges, all written up in
+`docs/verification/2026-09-13-rebase-live.md`. Read that before driving the
+board with synthetic events — the four that cost real time:
+
+- The **content subtree is replaced on every render**, so a viewport reference
+  looked up once and reused is detached after the first commit. Events sent to
+  it reach nothing, and it reports as *"the gesture declined to claim"* rather
+  than as an error. Re-query for every event.
+- `setPointerCapture` throws for a fabricated pointer id; stub it and restore it
+  after. Nothing depends on capture for recovery.
+- Anything using `document.elementFromPoint` (string release, card hit tests)
+  needs the point inside the **sheet window**, which keeps the size it opened at
+  — enlarging the browser pane does not enlarge it. `app.setPosition` does.
+- Player-only behaviour is reachable without a second login: the board's own
+  **Player preview** button puts a GM's sheet into player mode.
+
+Toolbar controls (pen, shape tools, player preview) exist only in
+`board-edit.hbs` — rendering the *parent journal sheet* embeds the page read-only
+through `board-view.hbs`, where no shape gesture is ever claimed. Open the
+page's own sheet.
+
 Reviews from both Codex and an internal pass live in `docs/reviews/` with ranked
-feature proposals. Related: [[afterimage-scenario]], [[infra-oneoffgames-vps]].
+feature proposals. Related: [[afterimage-scenario]], [[infra-oneoffgames-vps]],
+[[feedback-codex-review-loop]].
