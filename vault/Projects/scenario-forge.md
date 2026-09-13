@@ -20,8 +20,10 @@ three spellings of the same heading.
 (private). Spec at
 `docs/superpowers/specs/2026-09-13-scenario-forge-design.md`, head `e405c38`, pushed.
 
-**Current state** — Design approved and spec committed 2026-09-13. **No code
-yet.** The spike is done and closed the one feasibility question (below).
+**Current state** — Parser and validator built and pushed 2026-09-13 (`fbd7566`,
+79 tests). `forge check <dir>` parses the house format and runs 15 rules; there is
+no builder yet, so the report **is** the product. All six Continuum scenarios now
+carry front matter and validate at `convention-ready`. **37 findings down to 18.** The spike is done and closed the one feasibility question (below).
 [[afterimage]]'s `foundry/afterimage/build.mjs` is the seed: 211 lines of which
 only 8 mention AFTERIMAGE, and `content/scenario.mjs` already treats the scenario
 Markdown as the single source of truth. The engine is that generalised.
@@ -32,8 +34,6 @@ cast board, Countdown -> timeline board, plus a near-empty player board with
 zones only.
 
 **Next steps** (spec §12)
-- Parser + Scenario model + validator, run against all six existing scenarios.
-  Output is a report, not a module — this is where the real drift inventory comes from
 - Foundry builder, regression target: reproduce AFTERIMAGE's current adventure
 - Corkboard phase 1 (`src/data/index.mjs` barrel + `exports` map, provenance
   flag, re-sync) and the four board generators
@@ -45,6 +45,21 @@ zones only.
   have [[rpg-skill]] point at it. One template, not two copies drifting
 
 **Key decisions**
+- 2026-09-13 — **The clue Type column takes a qualifier.** C-01 found twelve
+  violations across two scenarios and every one was the *format's* fault:
+  `Essential (routes: Dallam · Ashford letters · Garratt's own notes)` says how
+  else the clue can reach the table, which is the most useful thing in the row.
+  A Type now opens with Essential or Optional and may qualify that freely;
+  the parser splits `type` / `qualifier` / `typeRaw` so the annotation reaches
+  the case board's gmNote instead of being deleted to satisfy a validator.
+- 2026-09-13 — **A rule that cries wolf gets ignored, so both imprecise rules
+  were narrowed rather than tuned.** R-01 counted every blockquote and reported
+  a 24-sentence "read-aloud block" that was a GM aside (34 findings → 3); it now
+  judges only blocks that say they are read aloud or sit under a heading that
+  does. N-02 treated every `####` in an act as an NPC and reported AFTERIMAGE's
+  numbered *location* "① The rig and the body" as missing from the cast (16 → 0);
+  it now reads only headings beneath an `### NPCs` subsection. Both trade recall
+  for precision on purpose. → [[2026-09]]
 - 2026-09-13 — **The Scenario object is the seam.** Parsers know Markdown and
   nothing about Foundry; builders know Foundry and nothing about Markdown;
   adapters know one system and nothing about either. A bug in clue parsing
