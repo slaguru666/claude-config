@@ -20,15 +20,18 @@ That surprises people on first use; lead with it.
 now runs** (2026-09-13). `app/index.html` is a browser page with no Foundry that
 creates, names, opens and deletes boards; adds cards and zones; drags, resizes,
 ties string, draws and rubs out; and reopens a board with everything still there.
-Verified live against a 21-commit board. It is not a second corkboard — the
-renderer, stylesheet, gestures and arithmetic are the module's own files, reached
-through the `BoardHost` seam. 781 tests. Head `5246a85`, pushed.
+Slice 2 adds a **note body you can write**: a card panel with a title, a
+`contenteditable` rich-text editor and a GM note. It is not a second corkboard —
+the renderer, stylesheet, gestures and arithmetic are the module's own files,
+reached through the `BoardHost` seam. ~968 tests. Head `3603140`, pushed.
 
 New: `src/data/apply.mjs` (the trust boundary for flat `system.*` payloads),
+`src/data/sanitize.mjs` (the one allow-list sanitiser, both hosts),
 `src/app/{commits,store,idb,writer-lock,host,board-view,shelf,selection,notify,
-icons,main}.mjs`, `styles/app.css`. `src/board/gesture-order.mjs` holds the one
-copy of the arbitration order, and `view-gestures.mjs` the pan — both hosts go
-through them. `build.mjs` keeps `src/app` out of the module's dist.
+icons,main,editor,card-editor}.mjs`, `styles/app.css`.
+`src/board/gesture-order.mjs` holds the one copy of the arbitration order, and
+`view-gestures.mjs` the pan — both hosts go through them. `build.mjs` keeps
+`src/app` out of the module's dist.
 
 Run it: `npx http-server . -p 8791 -c-1`, open `/app/index.html`.
 
@@ -40,9 +43,10 @@ a pre-existing undo that could restore half an old line against half a new one
 and leave it with no length. Reviews in `docs/reviews/` (18–23).
 
 **Next steps**
-- **App slice 2** — the shared allow-list sanitiser used by BOTH hosts, and a
-  contenteditable rich-text editor (`<prose-mirror>` is Foundry's). Contracts §2
 - **App slice 3** — asset ids, blob store, the display-time image resolver
+- **`sheet.mjs#editCard` is owed a live run in Foundry.** It stores through the
+  shared `ingest` now instead of `foundry.utils.cleanHTML`; one line, unit-tested
+  indirectly, never executed inside Foundry
 - Then: dialogs and IO, import/export, and the `.corkboard` bundle (phase 4)
 - Pen-tap dot defect — spawned as task `task_c0e721aa`, awaiting Tim's click
 - Phases 4–6: transfer and offline, sync proof, opt-in sharing
@@ -53,6 +57,13 @@ and leave it with no length. Reviews in `docs/reviews/` (18–23).
   so the clamp is invisible until release
 
 **Key decisions**
+- 2026-09-13 — **A note body is decided in one place, in two tiers.** `ingest`
+  says what may be STORED, `display` says what is DRAWN, and they are different
+  sets on purpose: a table written in Foundry is legal but undrawn, so it
+  survives a trip through the app instead of being quietly deleted by it.
+- 2026-09-13 — **The sanitiser tokenises and rebuilds; it never strips.** Output
+  is written fresh from the parse with everything escaped, so markup it did not
+  understand comes out as text. Stripping hands the browser bytes nobody parsed.
 - 2026-09-13 — **The multi-tab lock is `navigator.locks`, not BroadcastChannel**,
   amending contracts §5 in place. A BroadcastChannel post from `pagehide` is
   queued as a task and the document dies before it runs, so closing the tab
