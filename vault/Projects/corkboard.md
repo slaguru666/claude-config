@@ -45,6 +45,11 @@ a pre-existing undo that could restore half an old line against half a new one
 and leave it with no length. Reviews in `docs/reviews/` (18–23).
 
 **Next steps**
+- **Live Foundry check owed for the ghost-stroke keyboard route** (review 28).
+  `sheet.mjs` has no unit tests, so two mutants stand: `reach(el, false)` and a
+  removed `#bindStrokeKeys()`. Open an editable unlocked board with a ghost and
+  an ordinary stroke, pen active, Tab to the ghost, Delete, confirm only its id
+  goes. Both ink layers
 - **Phase 4 — transfer and offline.** Bounded ZIP and asset round trips both
   ways, explicit v1 migration, the sanitised share copy, service worker
 - **`sheet.mjs#editCard` is owed a live run in Foundry.** It stores through the
