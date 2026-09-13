@@ -9,14 +9,18 @@ updated: 2026-09-13
 # MINI-S
 
 **What it is** — `timevans-MINI-S`, a **Zorin OS 18.1 Linux** box (older notes calling
-it a Mac Mini are wrong). Runs a self-hosted homelab and a cloud drive. It used to be
-one of the machines Claude Code ran on — see the next paragraph.
+it a Mac Mini are wrong). Runs a self-hosted homelab and a cloud drive, and is one of
+the machines Claude Code runs on.
 
-**Claude Code is NOT currently installed here** (verified 2026-09-13). `~/.claude`
-exists with history, sessions and plugins, so it ran at some point — but there is no
-`claude` binary, and no `node`/`npm` anywhere on the box or in the login PATH. The
-config and the memory vault are staged and correct; they start working the moment
-Claude Code is reinstalled. That needs Node first, which needs sudo, so it is Tim's step.
+**Toolchain (installed 2026-09-13, all without sudo).** Claude Code had gone missing
+and there was no Node at all. Rebuilt user-local:
+- **Node v24.21.0** from the official nodejs.org tarball, sha256 verified, unpacked to
+  `~/.local/node-v24.21.0` with `~/.local/node` as a stable symlink.
+- **npm global prefix is `~/.local/npm-global`**, deliberately *not* inside the
+  version-pinned Node directory, so a future Node upgrade does not take the global
+  packages with it.
+- **Claude Code 2.1.270**, **Codex CLI 0.154.0**, **QuickDesign 0.10.0** via `npm -g`.
+- PATH is exported from **`~/.profile`**, not `~/.bashrc` — see Gotchas.
 
 **Where it lives** — Wired `enp1s0` locked to static **192.168.1.6/24** via
 NetworkManager; gateway and DNS `192.168.1.1` (Zyxel DX3301-T0, ISP Voneus). Wi-Fi
@@ -38,7 +42,6 @@ port-forward **WAN 2222 → 192.168.1.6:22**, so `ssh -p 2222 timevans@<public-i
   leave the repo copy intact. Pull before trusting it. See [[claude-config-sync]].
 
 **Next steps**
-- Install Node, then Claude Code, to make this box usable again
 - Decide whether to retire Seafile or Nextcloud — two cloud drives coexist
 - A DHCP reservation for the MAC is recommended to avoid lease conflicts
 
@@ -55,5 +58,14 @@ port-forward **WAN 2222 → 192.168.1.6:22**, so `ssh -p 2222 timevans@<public-i
 - MCP tools load only at Claude Code startup — restart after adding a server.
 - The `~/.ssh/id_ed25519` here is the outbound GitHub key, not a login key.
 - Docker setup needs interactive sudo, which Claude cannot do — those steps are Tim's.
+- **Ubuntu's `~/.bashrc` returns early for non-interactive shells**, so any PATH line
+  added at the bottom of it is invisible to `ssh host "cmd"`, to scripts, and even to
+  `bash -lc`. It works only in a real interactive terminal. Put PATH exports in
+  `~/.profile` instead. This is why the Node install looked broken until it was moved.
+- npm 11 blocks package postinstall scripts by default — Claude Code needs
+  `npm install -g --allow-scripts=@anthropic-ai/claude-code` for its postinstall to run.
+- The registered `github` MCP server still uses the deprecated
+  `@modelcontextprotocol/server-github`. It connects, but `install.sh` has moved on to
+  the official remote server.
 
 Related: [[oneoffgames-vps]], [[claude-config-sync]]
