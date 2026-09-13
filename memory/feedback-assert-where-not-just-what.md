@@ -12,6 +12,15 @@ When editing a file programmatically, **`assert count(anchor) == 1` is only half
 Uniqueness proves you replaced the text you meant. For an *insertion* it proves nothing at
 all: it says the anchor is unique, not that the anchor is the right place.
 
+**And an append has no anchor, so it fails the same way with nothing to assert on.** On
+2026-09-13 I appended four dated decisions to a shared project note and they landed under
+the **Gotchas** heading rather than **Key decisions** — one of them was this lesson. A peer
+found them by walking the file afterwards and checking that every bullet sat under a heading
+that takes that kind of bullet. **That is the general form of this rule**: the fix is not a
+better anchor, it is *verifying the result's container after the write*. Re-read the region
+you changed, or assert the heading you landed under — cheap, and the only thing that catches
+an append.
+
 **Why:** the two failure modes it misses are both silent.
 
 - **Wrong container.** Inserting immediately before a heading puts the text at the *end of
