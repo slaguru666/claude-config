@@ -52,6 +52,20 @@ Index: [[INDEX]]
   anything at all — and a `FAIL` pattern matches a failing run more readily than a
   passing one. Read the runner's own status.
 
+## Verifying
+
+- **Hash the object you proved you hashed.** `git show <ref>:<path>` has been observed
+  returning the wrong number of bytes (git 2.54.0, no `.gitattributes`), producing
+  plausible-looking md5s of nothing. Use `git ls-tree -r <ref> -- <path>` for the blob
+  sha, `git cat-file blob <sha>` to read it, and `git cat-file -s <sha>` to confirm the
+  size first.
+- **Never date a deploy from a deployed file's mtime.** A build that copies a tree
+  stamps every file with the latest deploy and erases earlier ones. Compare content.
+- **A host's egress is not its browser's egress.** The Claude-in-Chrome extension exits
+  from its own address, so `isLocal`, the default route and an ssh source IP say nothing
+  about where the driven browser appears to come from. Measure it — fetch an IP echo
+  service through the same tool.
+
 ## Infrastructure
 
 - Semaphore → Gitea repository URLs use `http://gitea:3000/tevans/<repo>.git`,

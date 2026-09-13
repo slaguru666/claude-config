@@ -56,6 +56,9 @@ is served with no nginx change at all** — copy files in and it is live.
   `/game` referer). Diagnose with `systemctl status foundryvtt13` — if the PID and
   "Active: since" are unchanged, nothing crashed, and the answer is in the nginx
   access log, not the journal.
+- Foundry admin actions arriving from an unfamiliar IP are usually a Claude session
+  driving Tim's Chrome: the extension egresses `178.239.163.114`, not the home WAN.
+  Measured 2026-09-13. Do not read it as an intrusion.
 - **Never date a deploy by the deployed files' mtime.** `build.mjs` recursively copies
   `src/`, so each deploy stamps every file with its own moment and wipes the previous
   layer. Identify what is live by hashing a file and comparing against commits — and
@@ -104,6 +107,9 @@ Related: [[loom]], [[mini-s]], [[gitea-timevans]]
   `/game` referer). Diagnose with `systemctl status foundryvtt13` — if the PID and
   "Active: since" are unchanged, nothing crashed, and the answer is in the nginx
   access log, not the journal.
+- Foundry admin actions arriving from an unfamiliar IP are usually a Claude session
+  driving Tim's Chrome: the extension egresses `178.239.163.114`, not the home WAN.
+  Measured 2026-09-13. Do not read it as an intrusion.
 - **Never date a deploy by the deployed files' mtime.** `build.mjs` recursively copies
   `src/`, so each deploy stamps every file with its own moment and wipes the previous
   layer. Identify what is live by hashing a file and comparing against commits — and
