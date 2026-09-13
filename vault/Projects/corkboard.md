@@ -46,6 +46,17 @@ a second finger returns a dragged card and writes nothing, and handles measure
 45–47px under `pointer: coarse`. Added the iOS callout and tap-highlight
 suppression and a scroll-shadow on the narrow toolbar. 1292 tests.
 
+**Players can be given a read-only copy** (2026-09-13). `./publish.sh
+<board.corkboard> [slug]` sanitises and rsyncs; players open
+`#view/<slug>`. NOT the sync engine of phases 5-6 — there are no writes, which
+is where all that cost lives. The filter runs on the GM's machine before the
+file exists, so a hidden card is **absent** from the published bytes rather than
+undrawn (stronger than Foundry, where `visibility.mjs` documents the opposite),
+and a picture reachable only from a hidden card is never written into the zip.
+Freshness is a conditional GET on nginx's own ETag every 15s; an update keeps
+each viewer's pan and zoom. No accounts, no index, no password — the link is the
+protection, and the page says so.
+
 **The app is deployed and live** (2026-09-13) at
 **https://web.oneoffgames.com/corkboard/app/** — `./deploy-app.sh` rsyncs `app`,
 `src`, `styles`, `assets` to the web root; there is no build output, the browser
@@ -90,6 +101,24 @@ and leave it with no length. Reviews in `docs/reviews/` (18–23).
   so the clamp is invisible until release
 
 **Key decisions**
+- 2026-09-13 — **A fake cannot test a `this` binding.** The published board's
+  poller defaulted to `{ set: setInterval }` — bare references — so
+  `timers.set(...)` passed `this === timers` and the browser threw *Illegal
+  invocation*. The board drew once and never updated again, which is the one
+  thing the feature is for. Every unit test injected fakes, and a fake is a plain
+  function that does not care what `this` is; only a deployed page found it.
+  Third time this repo has been bitten by a fake answering whatever it was
+  taught. Wrap globals, never reference them into an object. → [[2026-09]]
+- 2026-09-13 — **A security boundary belongs in one pure function over bytes.**
+  The published copy is sanitised by a script, not by a publish action in each
+  host — two implementations of one boundary in the two places hardest to test
+  (one needs Foundry, one needs IndexedDB). Neither host changed to gain the
+  feature.
+- 2026-09-13 — **Assert absence against the raw file, never the render.** The
+  publish tests read every bundle twice: as the viewer will, and as raw zip
+  entries plus raw `board.json` bytes. A filter can drop a card from the board
+  object and leave its photograph in the archive, and only the second reading
+  sees it. `unused` reporting a stray entry is not the same as removing it.
 - 2026-09-13 — **Hold L to point; it is a Foundry keybinding, not a key listener.**
   `game.keybindings.register` makes it findable in Configure Controls, rebindable,
   and lets Foundry decide when somebody is typing. A feature reachable only by a
