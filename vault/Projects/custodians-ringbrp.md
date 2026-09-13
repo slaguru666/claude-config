@@ -49,6 +49,12 @@ anatomy tables for non-human shapes, which the bestiary names as its own known g
 - 2026-09-13 — **`docs/scenarios/` holds scenarios, playtest records and art sheets**, and
   only the first kind has live rolls. Classified by the document's own H1, never its
   filename. An unclassified document is **fatal**, not silently dropped.
+- 2026-09-13 — **Derived figures resolve against the rule; sampled figures against a
+  baseline.** A figure that is a pure function of `rules.mjs` is enumerated on every build
+  and never stored: a stored copy is a cache that can go stale, and it arrives with an
+  `--update` able to silence a real disagreement between document and game. A sampled figure
+  is expensive and noisy to re-run, so it is recorded deliberately. `check-cited`'s ARTIFACTS
+  map takes either kind and a citation does not know which it got.
 - **Rewards accelerate, they never gate.** Two versions failed because something on
   the critical path sat behind a probability gate (once at P=1.7%).
 

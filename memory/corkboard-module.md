@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 1c117e42-e3c4-45cf-af54-8456a315b23b
-  modified: 2026-09-13T09:44:53.616Z
+  modified: 2026-09-13T17:10:00.000Z
 ---
 
 Corkboard is a standalone Foundry VTT v14 module at `~/Git/corkboard`
@@ -54,6 +54,16 @@ Toolbar controls (pen, shape tools, player preview) exist only in
 `board-edit.hbs` — rendering the *parent journal sheet* embeds the page read-only
 through `board-view.hbs`, where no shape gesture is ever claimed. Open the
 page's own sheet.
+
+**There is now a second host.** The same repo carries a standalone browser app
+(`src/app/`, `app/index.html`, `styles/app.css`) with no Foundry at all, built on
+the `BoardHost` seam in `controller.mjs` — same renderer, same stylesheet, same
+gestures, same arithmetic. Run it with `npx http-server . -p 8791 -c-1`. It
+stores commits in IndexedDB and arbitrates multi-tab writing with
+**`navigator.locks`**, not a BroadcastChannel election: a post from `pagehide` is
+queued as a task and the document dies before it runs, so a closed tab never
+hands over. Anything shared may gain parameters but must keep `sheet.mjs`
+working. `build.mjs` excludes the app from the shipped module.
 
 Reviews from both Codex and an internal pass live in `docs/reviews/` with ranked
 feature proposals. Related: [[afterimage-scenario]], [[infra-oneoffgames-vps]],
