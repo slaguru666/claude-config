@@ -20,6 +20,12 @@ Index: [[INDEX]]
 - Before pushing, check `git log origin/<branch>..HEAD` and say what is going
   out — in a shared tree it may include someone else's commits.
 - This does **not** extend to PRs, merges or auto-merge. Those still wait.
+- **`git show <ref>:<path>` can hand you the commit object instead of the file.**
+  Seen repeatably on 2026-09-13: it returned the ~2.6 KB commit object for a 116 KB
+  source file, and hashing that gives a perfectly normal-looking md5 of the wrong
+  thing. Two sessions reached opposite conclusions from it and neither could
+  reproduce the other. Use `git ls-tree -r <ref> -- <path>`, then
+  `git cat-file blob <sha>`.
 - Gitea pushes go over **SSH port 2222**. See [[gitea-timevans]].
 
 ## Working method
@@ -33,6 +39,18 @@ Index: [[INDEX]]
   evidence of divergence — check the tree before warning anyone.
 - Git authorship cannot identify which session made a commit. Asking is the
   only method.
+- **No artefact names a session.** Four misattributions in one evening
+  (2026-09-13) all came from inferring an actor from a thing: every commit is
+  authored `slaguru666`; a deployed file's mtime names only the **last** deploy,
+  because `rsync` overwrites; and sessions driving Tim's Chrome share one egress
+  IP while their ssh uses another, so one address covers several actors doing
+  opposite things minutes apart. Verify a deploy by **content against commits**.
+  Ask a peer rather than infer — and when a check you *can* run contradicts a
+  peer's account, the fix is a measurement, not a louder account.
+- **Never chain a commit off a filtered test run.** `vitest | grep … && git commit`
+  commits on *grep's* exit status, which is green whenever the pattern matches
+  anything at all — and a `FAIL` pattern matches a failing run more readily than a
+  passing one. Read the runner's own status.
 
 ## Infrastructure
 
