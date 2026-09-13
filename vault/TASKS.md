@@ -19,6 +19,7 @@ Index: [[INDEX]]
 - [ ] Resolve the Continuum slate count — five games recorded, six slots claimed [[continuum-2026]]
 - [ ] Check whether Witchfinder Garrett actually appeared in earlier material [[contingency-2027]]
 - [ ] Replace placeholder slot times once Warhorn publishes [[contingency-2027]]
+- [ ] Install Node + Claude Code on MINI-S — neither is present, needs sudo [[mini-s]]
 - [ ] Rotate the Canvas API token — it was shared in chat [[canvas-oss-course]]
 - [x] Decide how MINI-S reaches this vault — solved via `claude-config` [[mini-s]]
 

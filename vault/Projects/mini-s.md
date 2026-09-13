@@ -12,6 +12,12 @@ updated: 2026-09-13
 it a Mac Mini are wrong). Runs a self-hosted homelab and a cloud drive, and is one of
 the machines Claude Code runs on.
 
+**Claude Code is NOT currently installed here** (verified 2026-09-13). `~/.claude`
+exists with history, sessions and plugins, so it ran at some point — but there is no
+`claude` binary, and no `node`/`npm` anywhere on the box or in the login PATH. The
+config and the memory vault are staged and correct; they start working the moment
+Claude Code is reinstalled. That needs Node first, which needs sudo, so it is Tim's step.
+
 **Where it lives** — Wired `enp1s0` locked to static **192.168.1.6/24** via
 NetworkManager; gateway and DNS `192.168.1.1` (Zyxel DX3301-T0, ISP Voneus). Wi-Fi
 `wlo1` is a separate interface on `192.168.0.240/24`. External access: Zyxel
@@ -32,6 +38,7 @@ port-forward **WAN 2222 → 192.168.1.6:22**, so `ssh -p 2222 timevans@<public-i
   leave the repo copy intact. Pull before trusting it. See [[claude-config-sync]].
 
 **Next steps**
+- Install Node, then Claude Code, to make this box usable again
 - Decide whether to retire Seafile or Nextcloud — two cloud drives coexist
 - A DHCP reservation for the MAC is recommended to avoid lease conflicts
 

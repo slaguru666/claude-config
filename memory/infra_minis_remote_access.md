@@ -32,3 +32,11 @@ describes it as a Mac Mini — outdated).
 
 **Why:** user wants secure remote SSH into this machine over the internet; static IP + key-only auth +
 fail2ban + a single forwarded port is the agreed setup.
+
+**Corrections (2026-09-13, both verified from the Mac Mini):**
+- MINI-S **is** reachable from the Mac Mini. Ping and key-only SSH from 192.168.0.30
+  to 192.168.1.6 both work; the claim that different subnets block LAN SSH is wrong.
+- **Claude Code is not installed on MINI-S.** `~/.claude` holds history and sessions
+  from when it ran, but there is no `claude` binary and no node/npm on the box. The
+  synced config and the memory vault (`~/Git/claude-config/vault/`) are staged and
+  correct, and start working on reinstall. Node needs sudo, so that is Tim's step.
