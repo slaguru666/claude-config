@@ -18,10 +18,10 @@ updated: 2026-09-13
 - `~/RingBRP/` → `slaguru666/ringbrp-design` (public since 9 Sep 2026) — the design
   corpus: the bible, six rules specs, 26 review briefs. `.gitignore` holds the scans back.
 
-**Current state** — playable and guarded. **21 build guards** under `npm run check`, each a
-claim about the game re-measured on every build. **`docs/REVIEW_LOG.md` (at R-299) holds the
+**Current state** — playable and guarded. **22 build guards** under `npm run check`, each a
+claim about the game re-measured on every build. **`docs/REVIEW_LOG.md` (at R-301) holds the
 reasoning behind all of them** and is the thing to read before re-deciding anything here.
-Scenarios: `LAST_ADMISSION`, `OPEN_DAY`, `THROUGH_TRAIN`, **CLEAN GROUND** (v0.23, eleven
+Scenarios: `LAST_ADMISSION`, `OPEN_DAY`, `THROUGH_TRAIN`, **CLEAN GROUND** (v0.24, eleven
 desk passes, Contingency 2027 slot 9), whose published figures are held in both directions —
 `check-packs` holds the baseline against the harness, `check-cited` the prose against the
 baseline, 162 figures cited across six artifacts, and `check-figures` reads the figures rather than the markers so a measured number with nothing holding it stops the build.
@@ -29,7 +29,10 @@ baseline, 162 figures cited across six artifacts, and `check-figures` reads the 
 **Next steps** — **CLEAN GROUND needs a run with human beings, and that is now the only thing
 left on its list.** Pass 11 closed the last desk-reachable branch; every one of the original
 four has been played. Then splitting `ringbrp.mjs`, and anatomy tables for non-human shapes —
-the bestiary's own known gap. The twenty-first guard is built (`check-figures`).
+the bestiary's own known gap. **CLEAN GROUND's artwork is written but not generated** —
+`docs/scenarios/CLEAN_GROUND_ART.md` holds 6 NPC portraits and 11 scene plates ready for
+`mj-gen`; the pregen portraits and handout pack are done, and it is the only scenario in the
+system with no scene plates at all.
 
 **Key decisions**
 - 2026-09-09 — **`rules.mjs` is the ONLY rule authority**, imported by runtime and pack
@@ -57,6 +60,10 @@ the bestiary's own known gap. The twenty-first guard is built (`check-figures`).
   *what does this figure need to be true in order to matter?* — sharper still, the scenario
   had no roll for it at all, so it was a right number with no question attached and the
   premise arrived to give it one.
+- 2026-09-13 — **A guard that calls the good material broken is worse than one that misses a
+  defect.** Scanning table cells without blanking citation comments reported ~130 correctly
+  cited rows as unheld (`packs line.hollow6.hurt` contains a 6). A blind spot costs one wrong
+  number; a false-positive storm teaches the reader to stop reading the output.
 - 2026-09-13 — **Two rules each right can be a hole between them.** `check-cited` refuses a
   citation against a sample maximum because it moves a third on a re-seed; the document printed
   that same figure bare. Refusing the citation while printing the number left the least stable
