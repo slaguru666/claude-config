@@ -34,11 +34,18 @@ writing, not tooling.
 builder at Silvery Moon prints `C-04 … nothing written` and leaves no `dist/`
 behind at all.
 
+**The live acceptance test passed** (2026-09-13). Built AFTERIMAGE under the id
+`afterimage-forge` so the real module was never overwritten, installed it, made a
+scratch world **Forge Acceptance Test** (blade-runner system), enabled the module,
+imported the Adventure: **6 folders + 9 journal entries created**, every entry
+filed in its folder, pages GM-only, blockquotes styled, `@UUID` links present,
+and the pages open and read correctly in the journal sheet. Both are still on the
+Mac — delete the world and `~/FoundryVTT/Data/modules/afterimage-forge` when done.
+
 **Not yet built** — handouts, actors, scenes and tables (still hand-authored in
 `Continuum2026/foundry/afterimage/content/`, ~1000 lines, the port into
 `scenario.config.mjs`), the four Corkboard boards, and the Corkboard phase-1
-changes. The live acceptance test — build, import into a scratch world, open it —
-is now possible and still owed.
+changes.
 
 **The four boards** are built from tables the scenarios already contain: Clue
 Trail -> case board (all hidden, `gmNote` carries the fallback), NPC Roster ->
@@ -57,6 +64,12 @@ zones only.
   have [[rpg-skill]] point at it. One template, not two copies drifting
 
 **Key decisions**
+- 2026-09-13 — **A JournalEntry has no `img` field in Foundry v14.** Measured in a
+  live world during the acceptance test: the schema is `[_id, name, pages, folder,
+  categories, sort, ownership, flags, _stats]`. AFTERIMAGE's original builder set
+  a cover on every entry and scenario-forge faithfully reproduced it — both were
+  writing a field Foundry silently discards. The cover belongs on the **Adventure**,
+  which does have it and shows it in the import dialog.
 - 2026-09-13 — **The scene `levels` trap is guarded by a test, not a comment.**
   `HIERARCHY.scenes` omits `levels` because Foundry v14 cannot reassemble it from
   its own sublevel — it synthesises a blank level and the background art is gone.
@@ -143,6 +156,10 @@ zones only.
   inferred from prose; no string beats wrong string.
 
 **Gotchas**
+- **Never build the acceptance copy under the real module id.** `~/FoundryVTT/Data/
+  modules/afterimage` holds the complete, convention-ready module; a journals-only
+  forge build installed over it would replace it. Build under `afterimage-forge`
+  (rewrite `module_id` in a temp copy of the scenario) so the two sit side by side.
 - **No Foundry CLI.** Packing writes LevelDB directly via `classic-level`,
   because the CLI splits a scene's `levels` into their own sublevel keys and v14
   synthesises a blank level instead — the background art is lost. The workaround
