@@ -19,7 +19,7 @@ updated: 2026-09-13
   corpus: the bible, six rules specs, 26 review briefs. `.gitignore` holds the scans back.
 
 **Current state** — playable and guarded. **21 build guards** under `npm run check`, each a
-claim about the game re-measured on every build. **`docs/REVIEW_LOG.md` (at R-307) holds the
+claim about the game re-measured on every build. **`docs/REVIEW_LOG.md` (at R-309) holds the
 reasoning behind all of them** and is the thing to read before re-deciding anything here.
 Scenarios: `LAST_ADMISSION`, `OPEN_DAY`, `THROUGH_TRAIN`, **CLEAN GROUND** (v0.24, eleven
 desk passes, Contingency 2027 slot 9), whose published figures are held in both directions —
