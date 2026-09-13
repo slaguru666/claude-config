@@ -17,4 +17,9 @@ When several background agents are editing one repo at the same time:
 - **Verify every claim yourself before acting on it.** Agents miss things and occasionally report fixes that do not reproduce — but they are also sometimes right when you are wrong, so re-measure rather than assuming either way.
 - **Hand over a failing test as the spec** where the task is "make X true". It is unambiguous and self-verifying.
 
+Two more that only show up with **separate interactive sessions** (peers, not subagents), both learned 2026-09-12 when two sessions raised a false alarm at each other across `~/Git/corkboard`:
+
+- **Sessions share ONE working tree per repo — they are not separate clones.** So a peer's commit only moves HEAD; the files on disk already held their edits, and anything edited afterwards is necessarily on top of them. A dirty file that a peer also touched is therefore **not** evidence of divergence, and must not be read as one. Check the tree (`git diff HEAD -- <path>`, or grep for the construct you are worried about) before warning anyone to rebase.
+- **Git authorship cannot tell you which session made a commit** — every session commits as `slaguru666`, and there is no mapping from a transcript to a `ListAgents` address (`[ref]` values are not session UUIDs, and the desktop session list omits terminal sessions). Asking "is this yours" is the only method, so a broadcast with an ignore-if-not-you opener is a reasonable pattern — expect to receive them and to answer with facts from the tree rather than from memory.
+
 **Why:** parallel agents are a big speed-up on independent content work, and every one of these problems appeared in a single session of doing it. **How to apply:** applies to any repo, not just [[loom-app]], where more than one agent is running at a time.

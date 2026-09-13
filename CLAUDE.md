@@ -47,6 +47,33 @@ During a session, call `add_memory` to persist:
 - Resolved bugs and their root causes
 - User preferences learned during the session
 
+## Claude Memory Vault (Obsidian)
+
+A durable Markdown record of our work lives in the iCloud Obsidian vault at
+`~/Library/Mobile Documents/iCloud~md~obsidian/Documents/Obsidian/Ai/Claude/`.
+It is the canonical human-readable memory layer; Graphiti and claude-mem are the
+fast recall layers. If they disagree, the vault wins. Design: `Ai/Claude/DESIGN.md`.
+
+**Read** at session start: `INDEX.md`, then the relevant `Projects/<name>.md`.
+
+**Write automatically**, without being asked:
+- a decision lands → append a dated line to `Log/YYYY-MM.md` + a bullet under
+  *Key decisions* in the project note
+- work completes or changes state → rewrite *Current state* and *Next steps* in the
+  project note, bump `updated:`, tick or add items in `TASKS.md`
+- session ends → make sure both of the above are true
+
+**Constraints (hard):**
+- It holds the **map, never the work**: paths, repos, ports, decisions, gotchas.
+  No code blocks over five lines, no scenario or document text, no generated assets.
+- Never write a secret. Name its location only.
+- Never create a note outside `Ai/Claude/`.
+- Never delete or edit a `Log/` entry — corrections are new dated entries.
+- Prefer editing an existing note over creating a new one. One screen per project
+  note; trim rather than grow.
+
+Machines without iCloud (MINI-S) cannot see this vault — use Graphiti there.
+
 ## Key Projects & Infrastructure
 - Gitea instance at `gitea.oneoffgames.net`
 - Graphiti knowledge graph at `graphiti.timevans.uk`

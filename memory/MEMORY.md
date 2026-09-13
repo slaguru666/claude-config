@@ -21,6 +21,7 @@
 - [The Custodians / RingBRP](ringbrp-project.md) — Foundry system at systems/ringbrp; `rules.mjs` is the ONLY rule authority and has superseded the old design-doc rulings; scenarios live inside the system at docs/scenarios/.
 - [Contingency 2027](contingency-2027.md) — 27–31 Jan 2027, Hunstanton; repo slaguru666/contingency2027, 10 slots, 8 games incl. the DEAD AIR CoC trilogy.
 - [Gitea timevans.uk](infra-gitea-timevans.md) — push over SSH port **2222**, not 22; HTTPS has no stored credential
+- [Push after commit](feedback-push-after-commit.md) — push in the same turn as the commit; don't leave it for another session to sweep up
 - [Ambient synth (Drift)](ambient-synth.md) — single-file Web Audio groovebox: pad, CS-80, 303 acid, 8-drum kit, chords, melody gen, song mode + WAV bounce, Blade Runner-style Offworld generator at ~/ambient-synth/; port 8765, localStorage v4, not in git
 - [Esper app](esper-app.md) — generative Vangelis/CS-80 Blade Runner machine at ~/esper/ (14 styles, 26 layers, FX rack, performance/conductor/studio); port 8766, not in git
 - [Haunt app](haunt-app.md) — generative horror ambience machine at ~/haunt/ (14 scenes, 36 layers, tension arc + jump scares, FX rack); port 8767, not in git
@@ -31,3 +32,4 @@
 - [One Off Games VPS](infra-oneoffgames-vps.md) — `ssh foundry` (85.190.246.132, root only); nginx + web.oneoffgames.com public game site; drop a folder in the web root and it is live
 - [Concurrent agents](feedback-concurrent-agents.md) — never `git add -A` with agents running; disjoint files, verify every claim
 - [Corkboard module](corkboard-module.md) — Foundry investigation board at ~/Git/corkboard; a board IS a journal page (no sidebar icon), no custom socket, player-edit grants real OWNER
+- [Claude memory vault](claude-memory-vault.md) — canonical MD memory in the iCloud Obsidian vault at `Ai/Claude/`; read INDEX.md at session start, write state/tasks/decisions there
