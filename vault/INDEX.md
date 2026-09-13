@@ -21,6 +21,7 @@ The map of everything Claude and Tim are building. Open this first.
 | [[blueprint-news]] | SLA Industries BPN briefing generator (+ Zero Engine variant) | complete |
 | [[the-director]] | Offline convention GM tablet PWA | complete |
 | [[rpg-skill]] | The house scenario-writing skill at `~/.claude/skills/rpg` | active |
+| [[scenario-forge]] | Compiles a house-format scenario into a Foundry module + Corkboard boards | active |
 
 ## Conventions and scenarios
 

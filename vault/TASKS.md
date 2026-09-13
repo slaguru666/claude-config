@@ -30,6 +30,12 @@ Index: [[INDEX]]
 - [ ] Load `sla-mothership` once and confirm the libWrapper banner is gone — stored config
       fixed and verified against its backup, but that world has not been launched since
       [[oneoffgames-vps]]
+- [ ] **scenario-forge** — decide the remote (GitHub private under `slaguru666`, or Gitea); nothing pushed yet [[scenario-forge]]
+- [ ] scenario-forge — parser + Scenario model + validator, run against all six scenarios for the drift inventory [[scenario-forge]]
+- [ ] scenario-forge — Foundry builder, regression target: reproduce AFTERIMAGE's adventure [[scenario-forge]]
+- [ ] Corkboard phase 1 for scenario-forge: `src/data/index.mjs` barrel + `exports` map, provenance flag, re-sync [[corkboard]]
+- [ ] scenario-forge acceptance test — build AFTERIMAGE, import into a scratch world, open the case board (the one thing the spike could not verify) [[scenario-forge]]
+- [ ] Normalise the other five scenarios to the house format — real editing, not a script [[scenario-forge]]
 - [ ] Print the handout pack and do Tim's read-through [[afterimage]]
 - [ ] Push Masque to Gitea and GitHub — still local only [[masque]]
 - [ ] Install BlackHole via `./setup.sh` — required before real Discord use [[masque]]
