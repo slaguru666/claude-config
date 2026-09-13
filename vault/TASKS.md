@@ -59,7 +59,7 @@ Index: [[INDEX]]
 
 ## Blocked / awaiting a decision
 
-- [ ] iPad storage durability testing [[corkboard]]
+- [ ] iPad storage durability testing [[corkboard]] — the app is now live at https://web.oneoffgames.com/corkboard/app/ (not `corkboard-spike/`), so this is unblocked
 - [x] File-exchange validation [[corkboard]] — `.corkboard` bundles both ways, verified in Foundry v14 and the app (2026-09-13)
 - [ ] Local-network sync for offline iPads — out of scope for Phase 2 [[corkboard]]
 - [ ] Confirm non-official marketplaces auto-fetch on MINI-S [[claude-config-sync]]

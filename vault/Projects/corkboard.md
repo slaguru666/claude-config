@@ -44,8 +44,15 @@ pointer-id filtering and `pointercancel` were already built in phase 3 and had
 never run under a finger. They do now — pinch scales exactly by the finger ratio,
 a second finger returns a dragged card and writes nothing, and handles measure
 45–47px under `pointer: coarse`. Added the iOS callout and tap-highlight
-suppression and a scroll-shadow on the narrow toolbar. 1292 tests. Head
-`b0456c7`, pushed.
+suppression and a scroll-shadow on the narrow toolbar. 1292 tests.
+
+**The app is deployed and live** (2026-09-13) at
+**https://web.oneoffgames.com/corkboard/app/** — `./deploy-app.sh` rsyncs `app`,
+`src`, `styles`, `assets` to the web root; there is no build output, the browser
+loads the repo's own files. First deploy was a **dead page**: nginx has no
+`.mjs` MIME entry, so every module came back `application/octet-stream` and was
+refused under strict MIME checking. Fixed by `location` rules on the VPS.
+Head `c8b3ced`, pushed.
 
 New: `src/data/apply.mjs` (the trust boundary for flat `system.*` payloads),
 `src/data/sanitize.mjs` (the one allow-list sanitiser, both hosts),
@@ -75,13 +82,30 @@ and leave it with no length. Reviews in `docs/reviews/` (18–23).
   you forget
 - Explicit v1 migration, and the sanitised share copy, still owed from phase 4
 - Phases 5–6: sync proof, opt-in sharing
-- iPad storage durability testing (contracts §5), and Tim's iPad test of
-  https://web.oneoffgames.com/corkboard-spike/
+- iPad storage durability testing (contracts §5). The URL to test is now the real
+  app, **https://web.oneoffgames.com/corkboard/app/** — not the old
+  `corkboard-spike/`, which is the phase-1 spike and a different thing
 - Deferred from review 21: require `shape` whenever `setShapeBox` is given size
   keys (today it silently falls back to a zero floor); `reshape` previews nothing,
   so the clamp is invisible until release
 
 **Key decisions**
+- 2026-09-13 — **A static host is not a static host.** nginx knows neither `.mjs`
+  nor `.webmanifest`, and a module served as `application/octet-stream` is
+  refused outright — a blank page, one console error, nothing else wrong. This
+  is the entire difference between `npx http-server` and the real host, and only
+  a deploy finds it. `default_type` in a `location`, never a `types { }` block:
+  a `types` block *replaces* the inherited MIME map and would take the CSS and
+  images down with it. → [[2026-09]]
+- 2026-09-13 — **A browser caches a wrong Content-Type.** After the MIME fix the
+  page still failed twice with the old error; nginx sends no `Cache-Control`, so
+  heuristic freshness served the stale response. Suspect this before suspecting
+  the server when a deploy "did not take". `fetch(url, {cache: "reload"})` then
+  navigate.
+- 2026-09-13 — **A backup beside a config is a second config.**
+  `sites-enabled` is a wildcard include, so `web.oneoffgames.com.pre-corkboard.*`
+  parsed as another server block and `nginx -t` reported conflicting server
+  names. Backups go in `/root/nginx-backups/`.
 - 2026-09-13 — **`git add -A` has now swept this session's uncommitted work into
   three unrelated commits** (bd2517e, 1e73377). A revert of any of them would
   silently take a change its message never mentions. Named paths only.
