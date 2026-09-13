@@ -24,7 +24,7 @@ Slice 2 adds a **note body you can write** and slice 3 **pictures**: a card pane
 with a title, a `contenteditable` rich-text editor, a picture and a GM note, plus
 a Photo button on the toolbar. It is not a second corkboard —
 the renderer, stylesheet, gestures and arithmetic are the module's own files,
-reached through the `BoardHost` seam. ~976 tests. Head `ab20565`, pushed.
+reached through the `BoardHost` seam. 1090 tests. Head `69238ab`, pushed.
 
 New: `src/data/apply.mjs` (the trust boundary for flat `system.*` payloads),
 `src/data/sanitize.mjs` (the one allow-list sanitiser, both hosts),
