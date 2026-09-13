@@ -19,14 +19,20 @@ updated: 2026-09-13
   corpus: the bible, six rules specs, 26 review briefs. `.gitignore` holds back the
   scanned books and extracted page images.
 
-**Current state** — playable, and now guarded. **19 build guards** under `npm run check`,
+**Current state** — playable, and now guarded. **20 build guards** under `npm run check`,
 each one a claim about the game that is re-measured on every build; `docs/REVIEW_LOG.md`
-is at **R-293** and is the reasoning behind every one of them. Scenarios: `LAST_ADMISSION`,
-`OPEN_DAY`, `THROUGH_TRAIN` and **CLEAN GROUND** (v0.19.1, eight desk playtests).
-`docs/BESTIARY.md` is generated from the game and checked against it.
+is at **R-297** and is the reasoning behind every one of them. Scenarios: `LAST_ADMISSION`,
+`OPEN_DAY`, `THROUGH_TRAIN` and **CLEAN GROUND** (v0.20.1, **nine** desk playtests, booked
+for Contingency 2027 slot 9). `docs/BESTIARY.md` is generated from the game and checked
+against it. **CLEAN GROUND's published figures are now held in both directions**:
+`check-packs` holds the baseline against the harness, `check-cited` holds the prose against
+the baseline, and 151 figures across six artifacts carry citation markers.
 
-**Next steps** — splitting `ringbrp.mjs`; anatomy tables for non-human shapes, which the
-bestiary names as its own known gap.
+**Next steps** — **CLEAN GROUND needs a run with human beings**; that is the only thing
+left before convention-ready and no desk pass can replace it. Four branches remain unplayed
+after nine passes: a fight the players choose, Ashcroft accepting THE OFFER *and* being
+taken, and a hollow man that succeeds at the swap. Elsewhere: splitting `ringbrp.mjs`;
+anatomy tables for non-human shapes, which the bestiary names as its own known gap.
 
 **Key decisions**
 - 2026-09-09 — **`rules.mjs` is the ONLY rule authority**, imported by both runtime
@@ -56,5 +62,21 @@ bestiary names as its own known gap.
   prefix has its prose read as a scenario's. Cost one rename already (`declared-cast.mjs`).
 - Derive HP from the weapon damage ladder, not the reverse — halving HP collapses
   the 1984 damage values into one-hit kills.
+
+- 2026-09-13 — **A guard measured at a default ceiling is a guard that lies quietly.**
+  `simulate.mjs` calls `runFight` with no options, so every published fight figure ran at a
+  40-round cap and `runFight` returns who is standing rather than a truncation flag. One
+  table understated a wipe rate by fourteen points with 29% of runs never finishing. Measure
+  at a cap nothing reaches and refuse to record a truncated sweep — a warning on a number
+  that is already wrong is a number that gets quoted.
+- 2026-09-13 — **A unique-match assertion protects against editing the wrong text and not
+  at all against inserting in the wrong place.** Cost a numbered list that ran 1,2,3,4,6,5
+  under a heading saying "five", through two versions and five guard additions.
+- 2026-09-13 — **Prose that counts itself is not a format**, so no checker sees it. The cold
+  read — reading the document as a GM meeting it 30 minutes before a slot — found in one
+  minute what seven passes of dice never touched. Keep doing it.
+- 2026-09-13 — **A figure quoted in a fix list acquires confidence every time it is
+  restated.** A wrong number there propagated to a second reader who handed it back with
+  more confidence than it was written with. Correct the record, not only the document.
 
 Related: [[rpg-skill]], [[gitea-timevans]], [[codex-cli]]

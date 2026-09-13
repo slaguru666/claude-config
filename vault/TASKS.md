@@ -16,6 +16,9 @@ Index: [[INDEX]]
 - [ ] Build the standalone Corkboard app shell [[corkboard]]
       - [x] viewport and gesture arbitration — all eight `reacquire` verified live (2026-09-13)
       - [ ] cards and strings, then shapes and ink, then dialogs and IO
+- [ ] **Run CLEAN GROUND with human beings** — the only thing left before convention-ready;
+      nine desk passes cannot settle Act Four's 45 minutes with no mechanical threat, or
+      whether THE OFFER plays as a decision [[custodians-ringbrp]]
 - [ ] Print the handout pack and do Tim's read-through [[afterimage]]
 - [ ] Push Masque to Gitea and GitHub — still local only [[masque]]
 - [ ] Install BlackHole via `./setup.sh` — required before real Discord use [[masque]]
