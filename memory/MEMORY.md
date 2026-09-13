@@ -35,6 +35,7 @@
 - [Codex profiles](infra-codex-profiles.md) — profiles are per-file `~/.codex/<name>.config.toml`; only gpt-6-astra and gpt-5.5 answer, and a stale model name breaks the CLI outright
 - [Verify the neighbours](feedback-verify-the-neighbours.md) — checking one claim in the code finds the error in the function next to it; a rule that matches the output on common inputs can still be invented
 - [Assert where, not just what](feedback-assert-where-not-just-what.md) — a unique-match assertion proves you edited the right text, never that new text landed in the right place
+- [scenario-forge](scenario-forge.md) — compiles house-format scenario Markdown into a Foundry module + 4 Corkboard boards; design approved 2026-09-13, no code yet
 - [Corkboard module](corkboard-module.md) — Foundry investigation board at ~/Git/corkboard, plus a standalone no-Foundry app on the same BoardHost seam; a board IS a journal page (no sidebar icon), no custom socket, player-edit grants real OWNER, plus the live-verification harness gotchas
 - [Claude memory vault](claude-memory-vault.md) — canonical MD memory at `~/Vault/slavault/Ai/Claude/`; read INDEX.md at session start, write state/tasks/decisions there — iCloud is a one-way mirror, never write to it
 - [Fuzz cannot generate](feedback-fuzz-cannot-generate.md) — a clean fuzz proves nothing about events its harness cannot produce; state the generator's range, not the run count
