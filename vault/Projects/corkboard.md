@@ -20,15 +20,14 @@ That surprises people on first use; lead with it.
 strings (`card-gestures.mjs`), shapes and ink (`ink-gestures.mjs`) and zones
 (`zone-gestures.mjs`) are all out of `sheet.mjs`, which has dropped 2821 → ~2409
 lines. The controller owns a `BoardHost` seam so the handlers never touch
-Foundry. 643 tests. Head `d3ee375`, pushed, deployed.
+Foundry. 744 tests. Head `4911529`, pushed, deployed.
 
-Codex rounds 18–22 on this work. Rounds 21 and 22 both found the shape
-minimum-size guard measuring the wrong thing: first `setShapeBox` using the
-**box diagonal** (right only while the ends sit in opposite corners), then
-`addShape` measuring its **rounded box** rather than the drag, which let a line
-be drawn 13.5 long that could not then be resized to 13.5. `lineLength()` is now
-the single definition both ask. Head `d3ee375`. Reviews in `docs/reviews/`
-(18–22), live runs in `docs/verification/`.
+Codex rounds 18–23, all on the shape minimum. The same defect kept reappearing
+because each guard measured its own convenient proxy: the box diagonal, then the
+rounded box, then fractions that can exceed 1. `lineLength()` is now the single
+definition, and creation holds a line's ends inside its box. Round 23 also fixed
+a pre-existing undo that could restore half an old line against half a new one
+and leave it with no length. Head `4911529`. Reviews in `docs/reviews/` (18–23).
 
 **Next steps**
 - Phase 3 remaining: dialogs and IO, IndexedDB commits, shared sanitiser, board
@@ -42,6 +41,11 @@ the single definition both ask. Head `d3ee375`. Reviews in `docs/reviews/`
   so the clamp is invisible until release
 
 **Key decisions**
+- 2026-09-13 — **`validateBoard` is stricter than live Foundry.** Foundry 14.363
+  does NOT enforce a TypedObjectField member's min/max on the update path —
+  a shape endpoint of 1.05 is stored, survives a reload, and never gains schema
+  defaults — while the portable validator clamps it. Never write data that only
+  one half of the project will rewrite → [[2026-09]]
 - 2026-09-13 — **One definition of a line's length**, asked by creation and
   resizing alike (`lineLength` in `board-ops.mjs`). Two rounds of review found
   the same defect twice because the two guards each measured their own
