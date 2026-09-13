@@ -76,6 +76,12 @@ Index: [[INDEX]]
 - When a hash still looks wrong, confirm the object: `git ls-tree -r <ref> -- <path>`
   for the blob sha, `git cat-file -s <sha>` for its size, `git cat-file blob <sha>` to
   read it.
+- **A guard tested outside the shell options of its host is not tested.** A check whose
+  `grep` exits 1 on no-match aborts its host script under `set -e`, and a harness that
+  runs it under a plain `bash -c` cannot see that — every case passes while the real
+  thing is broken. End such greps with `|| true`, and exercise the guard inside the
+  script it will live in, under that script's own options. Applies to anything run from
+  a hook, a CI step, or a `set -e` wrapper, which is most things that guard something.
 - **Never date a deploy from a deployed file's mtime.** A build that copies a tree
   stamps every file with the latest deploy and erases earlier ones. Compare content.
 - **A host's egress is not its browser's egress.** The Claude-in-Chrome extension exits
