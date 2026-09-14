@@ -3,7 +3,7 @@ type: project
 status: active
 repo: slaguru666/corkboard
 path: ~/Git/corkboard
-updated: 2026-09-13
+updated: 2026-09-14
 ---
 
 # Corkboard
@@ -94,7 +94,22 @@ definition, and creation holds a line's ends inside its box. Round 23 also fixed
 a pre-existing undo that could restore half an old line against half a new one
 and leave it with no length. Reviews in `docs/reviews/` (18–23).
 
+**Phase 5 designed, not built** (2026-09-14). A web-based shared Corkboard with
+logins, at **corkboard.oneoffgames.com** (DNS live, 85.190.246.132 — the same box
+as web/foundry.oneoffgames.com; `corkboard.timevans.uk` is a *different* machine).
+Server-primary: Postgres holds the boards, the browser is a view, a third
+`BoardHost` in `src/web/host.mjs` sits beside `sheet.mjs` and `src/app/host.mjs`
+so the renderer, gestures and board schema are unchanged. Accounts are ones you
+create (argon2id, table-backed session cookies, no email); per-board
+owner/editor/viewer. Live updates by **SSE, not WebSockets** — no dependency, and
+the whole filtered board is pushed per recipient rather than the ops. Seven
+slices; **slice 1 gets logged into before 2–7 are committed to.** Design:
+`docs/superpowers/specs/2026-09-14-shared-corkboard-design.md` (commit 0215bab).
+Neither the Foundry module, the standalone app nor the published board changes.
+
 **Next steps**
+- **Phase 5 slice 1** — service, Postgres, accounts, sessions, admin page; certbot
+  for corkboard.oneoffgames.com. Awaiting Tim's review of the design, then a plan
 - **The iPad is the only thing phase 4 is waiting on.** Add to Home Screen, standalone
   display, `navigator.storage.persist()`, and whether Files round-trips a
   `.corkboard` bundle. Contracts §5 and §9 are provisional until it answers
@@ -110,6 +125,19 @@ and leave it with no length. Reviews in `docs/reviews/` (18–23).
   so the clamp is invisible until release
 
 **Key decisions**
+- 2026-09-14 — **The shared system gets its own subdomain.** A session cookie is
+  scoped to a host, and `web.oneoffgames.com` already carries the public game
+  site, the standalone app and the published folder. One certbot run buys the
+  cookie an origin that is only Corkboard's. → [[2026-09]]
+- 2026-09-14 — **The server pushes the whole filtered board, per recipient, not
+  the ops.** Filtering ops looks cheaper until a card's `hidden` flips: a viewer
+  who could not see it needs a *create* and one who could needs a *delete*, and
+  every leak this design prevents would live in that translation. Kilobytes are
+  the right price. → [[2026-09]]
+- 2026-09-14 — **SSE, not WebSockets.** Server→client is the only direction that
+  needs a push; writes go by POST. `EventSource` reconnects itself and nginx
+  needs one line. A WebSocket library would be this project's first runtime
+  dependency, to do less. → [[2026-09]]
 - 2026-09-13 — **Sanitise on the client, verify on the server.** A server that
   sanitises is a server that first receives the secrets, so the filter runs in
   the browser and the endpoint only ever sees a filtered board. The server's
