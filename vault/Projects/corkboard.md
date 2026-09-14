@@ -121,6 +121,21 @@ Slice 3 also did NOT need a `defer-redraw-while-dragging` mechanism:
 `GestureArbiter.reacquire()` has carried that since phase 3.
 `docs/verification/2026-09-14-shared-slice-3.md`.
 
+**Slice 4 is grants and the server-side filter** — the thing the whole design
+was built for. `board_grants` gives a (board, user) a role; **ownership is NOT
+in that table** and stays in `boards.owner_id`, deliberately against spec §5,
+because a role stored twice can disagree with itself (flagged in the plan and
+the verification doc). `openBoard` runs `visibleBoard(state, "player")` for a
+viewer before anything is written to the socket, so **a hidden card is absent
+from a viewer's bytes** rather than present and undrawn — proved live against
+the raw response and the SSE stream, not against a parsed board. It works for
+a live update as much as a page load only because slice 3's `hub.publish`
+already built one message per recipient. An editor sees the board as a GM does.
+Every write is re-checked against the grant: a viewer's commit is **403 denied**
+(not `gone` — she can see the board, so pretending otherwise is a lie she can
+disprove by reloading). Revoking closes that person's streams with a `gone`.
+`docs/verification/2026-09-14-shared-slice-4.md`.
+
 Slice 1, for the record:
 `./install-web-server.sh` then `certbot --nginx -d corkboard.oneoffgames.com`;
 both idempotent, and the installer never overwrites the database password or
@@ -167,13 +182,19 @@ Neither the Foundry module, the standalone app nor the published board changes.
   but never in one session (signing in means typing a password into a form),
   and a drag completing across a push is unverified because synthetic pointer
   events never made the gesture claim
-- **Phase 5 slice 4** — grants and the server-side filter; `boardStateFor` in
-  `src/web/boards.mjs` is the ONE function it widens
+- **Phase 5 slice 5** — assets (pictures on a shared board). The board already
+  refuses them out loud rather than dropping them quietly
+- **Before any slice that changes an EXISTING table**: `schema.sql` is
+  `create table if not exists`, so a changed column definition never reaches a
+  database that already has the table, and the db suite truncates rows without
+  dropping them — it reports green on a constraint that never applied. There is
+  no migration mechanism yet; one is owed
 - Slice 1+2 gaps worth closing: no reboot test (that box runs Foundry), nothing
   about load, the login throttle forgets on restart (in-memory by design)
 - Housekeeping on the box: the `corkboard_test` role and database, and an SSH
-  tunnel on port 55432 if one is still open. Account `sara` is suspended — it
-  existed only to prove a stranger gets 404
+  tunnel on port 55432 if one is still open. Account `sara` is suspended again
+  after slice 4 used it; its temporary password file was shredded. Two
+  `Dock 9, live check` boards from slice 3 are still on the box
 - **The iPad is the only thing phase 4 is waiting on.** Add to Home Screen, standalone
   display, `navigator.storage.persist()`, and whether Files round-trips a
   `.corkboard` bundle. Contracts §5 and §9 are provisional until it answers
@@ -189,6 +210,24 @@ Neither the Foundry module, the standalone app nor the published board changes.
   so the clamp is invisible until release
 
 **Key decisions**
+- 2026-09-15 — **Ownership lives in one place, against the spec's own table.**
+  `board_grants` carries only `editor` and `viewer`, with a check constraint
+  naming exactly those two; `boards.owner_id` stays the sole record of who owns
+  a board. A second copy could disagree — two owner rows, or an owner row naming
+  somebody who is not `owner_id` — and no query needed it. Flagged, not done
+  quietly. → [[2026-09]]
+- 2026-09-15 — **A test fixture that loses its payload looks exactly like a
+  pass.** The NUL proof reported a clean result while exercising nothing: the
+  escape in the shell script had become a literal NUL on the way to disk and
+  bash dropped it, so curl sent a perfectly clean body. Same family as
+  "`$(...)` strips NULs", one step earlier in the pipeline. A fixture carrying
+  an awkward byte must COUNT what it is about to send, every run. → [[2026-09]]
+- 2026-09-15 — **Assert on element names, not substrings, when checking a
+  sanitiser.** `<scr<script>ipt>` comes back as ONE element named `scr<script`;
+  a substring check calls it a surviving script and is wrong about what a
+  browser reads. Checked in a real parser: zero attributes, not a script
+  element. A tag name cannot contain whitespace, so no attribute can be begun
+  inside one. → [[2026-09]]
 - 2026-09-15 — **A structurally coupled field group travels whole or not at
   all.** A line's `w`, `h`, `a`, `b` are one value under four names, and TWO
   separate things split it: producers naming only what they changed, and

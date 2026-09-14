@@ -1,6 +1,6 @@
 ---
 type: tasks
-updated: 2026-09-13
+updated: 2026-09-15
 ---
 
 # Tasks
@@ -16,7 +16,9 @@ Index: [[INDEX]]
     - **A regression I introduced:** `writeThrough` sets `diff:false` for the WHOLE payload, and `setShapeEnd` names `x,y` too. Position is outside the coupling, so a concurrent move is now overwritten where the parent preserved it, buying nothing for length. Fix: keep the group complete, but leave diffing on for fields outside it.
     - Also open: PLAUSIBLE P2 — widening changes which fields the witness reads after the await, so an undo can adopt a competitor's write. P3 — five mutations to sheet.mjs reinstate the defect and still pass the source-text guard.
 - [ ] **`looksResurrected` — needs a decision, not a patch** [[corkboard]] (review 31). Delete cleanup infers from values, so it misses a phantom whose unwritten fields match the schema defaults and deletes a genuine restoration somebody has recoloured. This area has punished value-rules four times.
-- [ ] Carry the geometry write policy into slice 4 [[corkboard]] — the app host applies payloads verbatim and records partial ops in the commit log; one writer per board is the only thing stopping the same defect, and fan-out removes it.
+- [ ] **Carry the geometry write policy into the shared host** [[corkboard]] — the app host applies payloads verbatim and records partial ops in the commit log; one writer per board was the only thing stopping the same defect. **Slice 4 removed that**: an editor and an owner can now both write to one board, so this is no longer hypothetical. Slice 4 did NOT address it — the shared host refuses a stale `base` with a 409 rather than merging, which is stronger than Foundry's diffing, but the `changes` log still holds partial ops.
+- [x] **Phase 5 slice 4 — grants and the server-side filter** [[corkboard]] (2026-09-15, cc04a90). editor/viewer per (board, user); `visibleBoard(state,"player")` runs on the SERVER per recipient, so a hidden card is absent from a viewer's bytes. Verified live against raw responses and the SSE stream. 40/40 mutations. Ownership deliberately NOT duplicated into `board_grants` (spec §5 deviation, flagged). One real finding from attacking the sanitiser: a NUL in a note body used to be a 500.
+- [ ] **A migration mechanism** [[corkboard]] — `schema.sql` is `create table if not exists`, so a changed column definition never reaches an existing database, and the db suite truncates rows without dropping tables, so it reports green on a constraint that never applied. Fine so far (every table has been new); the next slice that alters an existing column needs this first.
 
 - [ ] Phase 3 — extract the controller incrementally, subsystem by subsystem [[corkboard]]
     - [x] gestures: cards/strings, shapes/ink, zones (2026-09-13)
