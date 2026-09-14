@@ -75,6 +75,11 @@ Index: [[INDEX]]
 - [ ] Local-network sync for offline iPads — out of scope for Phase 2 [[corkboard]]
 - [x] Publish from the app [[corkboard]] — Publish button + `corkboard-publish` service; filter runs client-side, server refuses unfiltered boards (2026-09-13)
 - [ ] Unpublish from the app [[corkboard]] — taking a board down is still `ssh` + `rm`; a DELETE on the same service and auth
+- [x] Shared Corkboard slice 1 — accounts, sessions, admin page, live at https://corkboard.oneoffgames.com [[corkboard]] (2026-09-14)
+- [x] Shared Corkboard slice 2 — boards, the commit endpoint and the module server; a board renders under a CSP with no `unsafe-inline` [[corkboard]] (2026-09-14)
+- [ ] **Sign in once at corkboard.oneoffgames.com and open a board** [[corkboard]] — the one thing slice 2 could not verify; account `tim`, password in `/root/.corkboard-admin` on the box
+- [ ] Shared Corkboard slice 3 — SSE fan-out, so a second tab is not stale until reloaded [[corkboard]]
+- [ ] Tidy the box after slice 1: drop the `corkboard_test` role and database, close any SSH tunnel on port 55432 [[corkboard]]
 - [x] Read-only published board [[corkboard]] — `./publish.sh`, players open `#view/<slug>`; sanitised before it leaves the machine (2026-09-13)
 - [ ] Confirm non-official marketplaces auto-fetch on MINI-S [[claude-config-sync]]
 - [ ] Decide whether to retire Seafile or Nextcloud [[mini-s]]

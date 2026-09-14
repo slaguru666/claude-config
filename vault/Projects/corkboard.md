@@ -94,8 +94,21 @@ definition, and creation holds a line's ends inside its box. Round 23 also fixed
 a pre-existing undo that could restore half an old line against half a new one
 and leave it with no length. Reviews in `docs/reviews/` (18–23).
 
-**Phase 5 slice 1 is LIVE** (2026-09-14) at
-**https://corkboard.oneoffgames.com** — accounts, sessions and an admin page.
+**Phase 5 slices 1 AND 2 are LIVE** (2026-09-14) at
+**https://corkboard.oneoffgames.com** — accounts, sessions, an admin page, and
+**boards**. A board is a page at `/boards/<id>` drawn by the same `BoardScreen`
+the standalone app uses; there is no `src/web/host.mjs` after all — the seam
+that mattered was the **session**, six members, so `src/web/client/session.mjs`
+answers it over HTTP and `BoardScreen` needed one new parameter (`makeLock`).
+Modules are served from a **map built at start-up** — no filename ever comes
+from a request, so there is no traversal to guard against. Somebody else's
+board answers **404, not 403**. A stale write is 409. Slice 2 is also the first
+time `src/data/sanitize.mjs` stands at a real trust boundary, because here the
+author of a note is somebody else — it runs on the SERVER. Verified live:
+`docs/verification/2026-09-14-shared-slice-2.md`. **An account `tim` now
+exists; its password is in `/root/.corkboard-admin` on the box** (600).
+
+Slice 1, for the record:
 `./install-web-server.sh` then `certbot --nginx -d corkboard.oneoffgames.com`;
 both idempotent, and the installer never overwrites the database password or
 touches an account. Service `corkboard-web` on 127.0.0.1:8790 behind nginx,
@@ -107,7 +120,15 @@ README). No registration, no email, no reset-by-mail. Boards are slice 2, so
 the shelf is honestly empty. Verified live:
 `docs/verification/2026-09-14-shared-slice-1.md` — 79 mutations, 78 caught,
 seven defects found. The Foundry module, the standalone app and the published
-board are all untouched; 1593 tests green.
+board are all untouched; 1670 tests green.
+
+**The CSP line, worth keeping** — under `style-src 'self'` with no
+`unsafe-inline`: `el.style.x =` and `el.style.cssText =` apply and are allowed;
+`setAttribute("style", …)` and a markup `style="…"` are **blocked and silently
+do not apply**, with no exception to catch. The renderer's CSSOM discipline is
+therefore load-bearing, and breaking it looks like cards that stop moving.
+Also: `tools/app-shell.mjs` holds a literal NUL byte as a hash separator, so
+git calls it binary and **grep finds nothing in it at all**.
 
 **Phase 5 designed** (2026-09-14). A web-based shared Corkboard with
 logins, at **corkboard.oneoffgames.com** (DNS live, 85.190.246.132 — the same box
@@ -123,12 +144,16 @@ slices; **slice 1 gets logged into before 2–7 are committed to.** Design:
 Neither the Foundry module, the standalone app nor the published board changes.
 
 **Next steps**
-- **Create the first admin account** on corkboard.oneoffgames.com — the command
-  is in the README; the password is typed on stdin, never as an argument
-- **Phase 5 slice 2** — boards and the third BoardHost (`src/web/host.mjs`), so
-  one person can edit through the server with the real renderer
-- Slice 1 gaps worth closing: no reboot test (that box runs Foundry), nothing
+- **Sign in once at corkboard.oneoffgames.com and open a board.** The only
+  thing slice 2 could not verify: the server was driven end to end by curl and
+  the client in a real browser, but never in the same session, because signing
+  in means typing a password into a form
+- **Phase 5 slice 3** — SSE fan-out, so a second tab is not stale until reloaded
+- Slice 1+2 gaps worth closing: no reboot test (that box runs Foundry), nothing
   about load, the login throttle forgets on restart (in-memory by design)
+- Housekeeping on the box: the `corkboard_test` role and database, and an SSH
+  tunnel on port 55432 if one is still open. Account `sara` is suspended — it
+  existed only to prove a stranger gets 404
 - **The iPad is the only thing phase 4 is waiting on.** Add to Home Screen, standalone
   display, `navigator.storage.persist()`, and whether Files round-trips a
   `.corkboard` bundle. Contracts §5 and §9 are provisional until it answers
