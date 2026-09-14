@@ -68,10 +68,21 @@ is served with no nginx change at all** — copy files in and it is live.
   `src/`, so each deploy stamps every file with its own moment and wipes the previous
   layer. Identify what is live by hashing a file and comparing against commits — and
   expect the answer to be an uncommitted working tree as often as a commit.
-- **Setup-scan noise, not a cause of anything.** `ringworld` is gone as of 2026-09-13.
-  Still logged: `zero-engine-d6` (missing `scripts/utils/rolls.mjs`),
-  an invalid `zero-engine` in `zero-engine-backup`, and an invalid world in
-  `sla-industries-borg.backup.20260212174927` — all dead backups.
+- **The Setup scan is down to one error, and it is not noise.** `ringworld`,
+  `zero-engine-backup` and `sla-industries-borg.backup.20260212174927` were all removed
+  2026-09-13 and are gone from the scan — verified by a park-and-relaunch at 00:18/00:19
+  on the 14th, not inferred. What remains is `zero-engine-d6`, and calling it a dead
+  backup was **wrong**: it is a live system, used by the `zero-d6` world.
+- **`zero-engine-d6` is knowingly broken — leave it.** Tim's call, 2026-09-14. Its
+  manifest declares `scripts/utils/rolls.mjs`, which has never existed, and
+  `scripts/apps/actor-sheet.mjs:3` really does `import { rollPoolToChat }` from it, with
+  `system.js` importing that sheet — so the chain fails at link time and the system never
+  initialises. **Neither obvious fix works**: dropping the manifest entry leaves the
+  `import` in the code, and an empty stub file silences the scan while a named import of
+  a missing export still fails — trading the warning for silence. The only real fix is
+  writing the roll function, which means knowing the Zero Engine D6 pool mechanic; there
+  is no reference, as the sibling `zero-engine` system has no `utils/` at all. Blast
+  radius is one world last played 2025-10-29, broken since. → [[2026-09]]
 - `ringworld` was a **dead v0.1.0 stub** (Dec 2025, no code, used by 0 of 49 worlds),
   not to be confused with `ringbrp` v1.6.0, the real Custodians system. **Removed
   2026-09-13** on Tim's instruction, after confirming no world referenced it; backup at
