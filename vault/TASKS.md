@@ -11,7 +11,7 @@ Index: [[INDEX]]
 ## Active
 
 - [x] Undo double-fire report — **not reproducible; no defect** [[corkboard]] (2026-09-13). One click gives one handler run and one toast; the binding is single on every render path. Do not re-chase.
-- [x] Undo race when a write lands inside the undo's own `page.update` [[corkboard]] — **was already fixed; the review's heading said otherwise** (2026-09-14, `c5e362a`). `invertPayload` restores a line's `w`/`h`/`a`/`b` together, gated on kind, so the race has nothing to combine badly with, and `#commit` hears a delete landing inside its own write. Closed by removing what the race needed, not by a check — no check can, since the check and the write are not one act. Verified by replaying the review's own sequence: length 20, not 0. Do not re-chase.
+- [ ] **Undo race — REOPENED, my "do not re-chase" was wrong** [[corkboard]] (2026-09-14, review 31). Writing the inverse whole closes the race only when the competing write lands FIRST. Landing second, Foundry's diff has already thinned it to the fields that changed on that client, and they recombine with the box the inverse restored: Bob-then-Alice gives length 20, Alice-then-Bob gives 0. `diff:false` is necessary and insufficient. Also open: `looksResurrected` infers from values, so delete cleanup misses a phantom matching the defaults and deletes a genuine restoration somebody recoloured. Needs a decision, not a patch — this area has punished value-rules four times.
 
 - [ ] Phase 3 — extract the controller incrementally, subsystem by subsystem [[corkboard]]
     - [x] gestures: cards/strings, shapes/ink, zones (2026-09-13)
