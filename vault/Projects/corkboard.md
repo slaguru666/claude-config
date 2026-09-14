@@ -94,7 +94,22 @@ definition, and creation holds a line's ends inside its box. Round 23 also fixed
 a pre-existing undo that could restore half an old line against half a new one
 and leave it with no length. Reviews in `docs/reviews/` (18–23).
 
-**Phase 5 designed, not built** (2026-09-14). A web-based shared Corkboard with
+**Phase 5 slice 1 is LIVE** (2026-09-14) at
+**https://corkboard.oneoffgames.com** — accounts, sessions and an admin page.
+`./install-web-server.sh` then `certbot --nginx -d corkboard.oneoffgames.com`;
+both idempotent, and the installer never overwrites the database password or
+touches an account. Service `corkboard-web` on 127.0.0.1:8790 behind nginx,
+Postgres database+role `corkboard`, credentials in `/etc/corkboard-web.env`
+(600 root:root). argon2id passwords at 19 MiB; the sessions table stores
+SHA-256 of the token, never the token. **The database has zero users — the
+first admin is Tim's to create**, password on stdin (the command is in the
+README). No registration, no email, no reset-by-mail. Boards are slice 2, so
+the shelf is honestly empty. Verified live:
+`docs/verification/2026-09-14-shared-slice-1.md` — 79 mutations, 78 caught,
+seven defects found. The Foundry module, the standalone app and the published
+board are all untouched; 1593 tests green.
+
+**Phase 5 designed** (2026-09-14). A web-based shared Corkboard with
 logins, at **corkboard.oneoffgames.com** (DNS live, 85.190.246.132 — the same box
 as web/foundry.oneoffgames.com; `corkboard.timevans.uk` is a *different* machine).
 Server-primary: Postgres holds the boards, the browser is a view, a third
@@ -108,8 +123,12 @@ slices; **slice 1 gets logged into before 2–7 are committed to.** Design:
 Neither the Foundry module, the standalone app nor the published board changes.
 
 **Next steps**
-- **Phase 5 slice 1** — service, Postgres, accounts, sessions, admin page; certbot
-  for corkboard.oneoffgames.com. Awaiting Tim's review of the design, then a plan
+- **Create the first admin account** on corkboard.oneoffgames.com — the command
+  is in the README; the password is typed on stdin, never as an argument
+- **Phase 5 slice 2** — boards and the third BoardHost (`src/web/host.mjs`), so
+  one person can edit through the server with the real renderer
+- Slice 1 gaps worth closing: no reboot test (that box runs Foundry), nothing
+  about load, the login throttle forgets on restart (in-memory by design)
 - **The iPad is the only thing phase 4 is waiting on.** Add to Home Screen, standalone
   display, `navigator.storage.persist()`, and whether Files round-trips a
   `.corkboard` bundle. Contracts §5 and §9 are provisional until it answers
@@ -125,6 +144,17 @@ Neither the Foundry module, the standalone app nor the published board changes.
   so the clamp is invisible until release
 
 **Key decisions**
+- 2026-09-14 — **Postgres is tested against Postgres, never a fake.** Three of
+  the things store-pg.mjs exists to get right — the case-insensitive unique
+  index, the on-delete cascade, the lower() lookup — are properties of the
+  database. Proved by mutation: a fake agrees with the JavaScript on all three
+  while the database disagrees. Dev machine has no Postgres, so the suite
+  tunnels to the VPS's. → [[2026-09]]
+- 2026-09-14 — **A flag that reports what the code claims is not evidence.**
+  `authenticate` returned `hashed: true` so a test could assert the anti-
+  enumeration hash had run; it was a hardcoded literal, and deleting the hash
+  entirely left every test green. Timing properties need timing tests — as a
+  ratio against a comparable path, so they calibrate to the machine. → [[2026-09]]
 - 2026-09-14 — **The shared system gets its own subdomain.** A session cookie is
   scoped to a host, and `web.oneoffgames.com` already carries the public game
   site, the standalone app and the published folder. One certbot run buys the
