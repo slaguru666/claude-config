@@ -78,7 +78,9 @@ Index: [[INDEX]]
 - [x] Shared Corkboard slice 1 — accounts, sessions, admin page, live at https://corkboard.oneoffgames.com [[corkboard]] (2026-09-14)
 - [x] Shared Corkboard slice 2 — boards, the commit endpoint and the module server; a board renders under a CSP with no `unsafe-inline` [[corkboard]] (2026-09-14)
 - [ ] **Sign in once at corkboard.oneoffgames.com and open a board** [[corkboard]] — the one thing slice 2 could not verify; account `tim`, password in `/root/.corkboard-admin` on the box
-- [ ] Shared Corkboard slice 3 — SSE fan-out, so a second tab is not stale until reloaded [[corkboard]]
+- [x] Shared Corkboard slice 3 — SSE fan-out; live updates over public HTTPS in 60ms [[corkboard]] (2026-09-14)
+- [ ] **Open one board in two signed-in tabs and drag a card** [[corkboard]] — closes both remaining slice 2+3 gaps at once
+- [ ] Shared Corkboard slice 4 — grants + the server-side filter; `boardStateFor` is the one function to widen [[corkboard]]
 - [ ] Tidy the box after slice 1: drop the `corkboard_test` role and database, close any SSH tunnel on port 55432 [[corkboard]]
 - [x] Read-only published board [[corkboard]] — `./publish.sh`, players open `#view/<slug>`; sanitised before it leaves the machine (2026-09-13)
 - [ ] Confirm non-official marketplaces auto-fetch on MINI-S [[claude-config-sync]]

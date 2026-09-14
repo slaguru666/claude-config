@@ -94,7 +94,7 @@ definition, and creation holds a line's ends inside its box. Round 23 also fixed
 a pre-existing undo that could restore half an old line against half a new one
 and leave it with no length. Reviews in `docs/reviews/` (18–23).
 
-**Phase 5 slices 1 AND 2 are LIVE** (2026-09-14) at
+**Phase 5 slices 1, 2 AND 3 are LIVE** (2026-09-14) at
 **https://corkboard.oneoffgames.com** — accounts, sessions, an admin page, and
 **boards**. A board is a page at `/boards/<id>` drawn by the same `BoardScreen`
 the standalone app uses; there is no `src/web/host.mjs` after all — the seam
@@ -107,6 +107,19 @@ time `src/data/sanitize.mjs` stands at a real trust boundary, because here the
 author of a note is somebody else — it runs on the SERVER. Verified live:
 `docs/verification/2026-09-14-shared-slice-2.md`. **An account `tim` now
 exists; its password is in `/root/.corkboard-admin` on the box** (600).
+
+**Slice 3 is the SSE fan-out.** `GET /api/boards/:id/events`; a commit pushes
+the WHOLE board to every watcher, built once per recipient (`hub.publish` takes
+a function, not a message — that is spec §7 made structural so slice 4's filter
+changes one place). The event id IS the revision, so `Last-Event-ID` makes a
+reconnect free and there is no replay buffer. Live: opening event in 70ms,
+commit→listener in 60ms, heartbeat on its 25s interval, `gone` on delete.
+nginx needs `proxy_buffering off` on that path — the installer will NOT rewrite
+an existing site file (certbot has been through it), so it now *warns* when the
+block is missing, because a buffered stream still "works", just minutes late.
+Slice 3 also did NOT need a `defer-redraw-while-dragging` mechanism:
+`GestureArbiter.reacquire()` has carried that since phase 3.
+`docs/verification/2026-09-14-shared-slice-3.md`.
 
 Slice 1, for the record:
 `./install-web-server.sh` then `certbot --nginx -d corkboard.oneoffgames.com`;
@@ -146,11 +159,13 @@ slices; **slice 1 gets logged into before 2–7 are committed to.** Design:
 Neither the Foundry module, the standalone app nor the published board changes.
 
 **Next steps**
-- **Sign in once at corkboard.oneoffgames.com and open a board.** The only
-  thing slice 2 could not verify: the server was driven end to end by curl and
-  the client in a real browser, but never in the same session, because signing
-  in means typing a password into a form
-- **Phase 5 slice 3** — SSE fan-out, so a second tab is not stale until reloaded
+- **Open the same board in two signed-in tabs and drag a card in one.** Closes
+  BOTH open gaps in seconds: the server and the client have each been proven,
+  but never in one session (signing in means typing a password into a form),
+  and a drag completing across a push is unverified because synthetic pointer
+  events never made the gesture claim
+- **Phase 5 slice 4** — grants and the server-side filter; `boardStateFor` in
+  `src/web/boards.mjs` is the ONE function it widens
 - Slice 1+2 gaps worth closing: no reboot test (that box runs Foundry), nothing
   about load, the login throttle forgets on restart (in-memory by design)
 - Housekeeping on the box: the `corkboard_test` role and database, and an SSH
