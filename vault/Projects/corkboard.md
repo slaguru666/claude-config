@@ -405,6 +405,11 @@ Neither the Foundry module, the standalone app nor the published board changes.
   state so Foundry's own broadcast carries them. Keep that property.
 
 **Gotchas**
+- **A NUL byte in a source file makes it BINARY to git** — no diff, no blame, no
+  merge. `tools/app-shell.mjs` carried a literal `0x00` as the hash separator in
+  `shellVersion` and had been undiffable all along; `"\0"` is the same byte at
+  runtime (`a667c65`). Worth a scan if a file ever mysteriously shows as
+  "Binary files differ".
 - **On foundry.oneoffgames.com every session is the same `TimEvans` GM**, so a pin's
   `author` and the log's client IP cannot tell two sessions apart. Worse: only
   *authentication* records carry `ip`/`session` — launches, parks, vends and
