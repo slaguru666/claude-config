@@ -3,7 +3,7 @@ type: project
 status: active
 repo: slaguru666/corkboard
 path: ~/Git/corkboard
-updated: 2026-09-14
+updated: 2026-09-15
 ---
 
 # Corkboard
@@ -159,6 +159,9 @@ slices; **slice 1 gets logged into before 2–7 are committed to.** Design:
 Neither the Foundry module, the standalone app nor the published board changes.
 
 **Next steps**
+- **Verify the geometry race fix on a live board** — drag a line's box in one
+  tab while undoing a resize in another, both orderings. Codex's harness ran
+  Foundry 14.361; live is 14.363
 - **Open the same board in two signed-in tabs and drag a card in one.** Closes
   BOTH open gaps in seconds: the server and the client have each been proven,
   but never in one session (signing in means typing a password into a form),
@@ -186,6 +189,20 @@ Neither the Foundry module, the standalone app nor the published board changes.
   so the clamp is invisible until release
 
 **Key decisions**
+- 2026-09-15 — **A structurally coupled field group travels whole or not at
+  all.** A line's `w`, `h`, `a`, `b` are one value under four names, and TWO
+  separate things split it: producers naming only what they changed, and
+  Foundry's `page.update` diffing against the SENDING client's view and dropping
+  whatever matches. Fixing one leaves the other ordering broken — which is how
+  the 2026-09-14 fix passed the reported sequence and failed its reverse.
+  `writeThrough` is both decisions in one testable function; the trade is
+  last-write-wins over the group, which always leaves a shape somebody
+  authored. → [[2026-09]]
+- 2026-09-15 — **A decision that lives only in `sheet.mjs` is held by nothing.**
+  It imports Foundry, so it has no unit tests: a mutation reinstating the undo
+  race there passed the entire suite. Policies move into `board-ops.mjs` where
+  tests reach them, and the call site gets a source-text guard in
+  `build.test.mjs`. → [[2026-09]]
 - 2026-09-14 — **Postgres is tested against Postgres, never a fake.** Three of
   the things store-pg.mjs exists to get right — the case-insensitive unique
   index, the on-delete cascade, the lower() lookup — are properties of the
