@@ -39,3 +39,4 @@
 - [Corkboard module](corkboard-module.md) — Foundry investigation board at ~/Git/corkboard, plus a standalone no-Foundry app on the same BoardHost seam; a board IS a journal page (no sidebar icon), no custom socket, player-edit grants real OWNER, plus the live-verification harness gotchas
 - [Claude memory vault](claude-memory-vault.md) — canonical MD memory at `~/Vault/slavault/Ai/Claude/`; read INDEX.md at session start, write state/tasks/decisions there — iCloud is a one-way mirror, never write to it
 - [Fuzz cannot generate](feedback-fuzz-cannot-generate.md) — a clean fuzz proves nothing about events its harness cannot produce; state the generator's range, not the run count
+- [Check the instrument](feedback-check-the-instrument.md) — prove the detector fires before trusting its silence; `$(...)` strips NUL bytes and will lie to you

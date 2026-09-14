@@ -127,8 +127,10 @@ board are all untouched; 1670 tests green.
 `setAttribute("style", …)` and a markup `style="…"` are **blocked and silently
 do not apply**, with no exception to catch. The renderer's CSSOM discipline is
 therefore load-bearing, and breaking it looks like cards that stop moving.
-Also: `tools/app-shell.mjs` holds a literal NUL byte as a hash separator, so
-git calls it binary and **grep finds nothing in it at all**.
+Was: `tools/app-shell.mjs` held a literal NUL byte as a hash separator, so git
+called it binary and **grep found nothing in it at all**. Fixed in `a667c65`
+(`"\0"`, byte-identical). Note `$(...)` **strips NUL bytes** — counting them
+through a command substitution lies.
 
 **Phase 5 designed** (2026-09-14). A web-based shared Corkboard with
 logins, at **corkboard.oneoffgames.com** (DNS live, 85.190.246.132 — the same box
