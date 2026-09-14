@@ -11,7 +11,7 @@ Index: [[INDEX]]
 ## Active
 
 - [x] Undo double-fire report — **not reproducible; no defect** [[corkboard]] (2026-09-13). One click gives one handler run and one toast; the binding is single on every render path. Do not re-chase.
-- [ ] Open, and separate from the above: the undo race in `docs/reviews/codex-review-29.md` — a write landing inside the undo's own `page.update` can still collapse a line, because validation and application are not atomic. Deliberately unpatched [[corkboard]]
+- [x] Undo race when a write lands inside the undo's own `page.update` [[corkboard]] — **was already fixed; the review's heading said otherwise** (2026-09-14, `c5e362a`). `invertPayload` restores a line's `w`/`h`/`a`/`b` together, gated on kind, so the race has nothing to combine badly with, and `#commit` hears a delete landing inside its own write. Closed by removing what the race needed, not by a check — no check can, since the check and the write are not one act. Verified by replaying the review's own sequence: length 20, not 0. Do not re-chase.
 
 - [ ] Phase 3 — extract the controller incrementally, subsystem by subsystem [[corkboard]]
     - [x] gestures: cards/strings, shapes/ink, zones (2026-09-13)
