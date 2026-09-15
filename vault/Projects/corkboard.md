@@ -136,6 +136,30 @@ Every write is re-checked against the grant: a viewer's commit is **403 denied**
 disprove by reloading). Revoking closes that person's streams with a `gone`.
 `docs/verification/2026-09-14-shared-slice-4.md`.
 
+**Slice 5 is pictures on a shared board** (2026-09-15), live. A card can hold a
+photograph again, and the same question slice 4 asked of a hidden card is asked
+of its picture: a viewer gets **404** for the bytes behind a card they cannot
+see, and 404 for the ones they could the moment a grant is revoked.
+`mayFetchAsset` goes through `assetsFor`, which goes through `boardStateFor` —
+the SAME filter — so the picture door and the board door cannot drift apart.
+The id is the **SHA-256 of the bytes the server received**; there is no field a
+caller can name it with, and the media type is read out of the bytes too. Bytes
+live on disk under `/var/lib/corkboard-web/assets/ab/cd/<digest>`, NOT in
+Postgres (§5) — written to a `.part` name and `rename`d, because a file at a
+content-addressed path is a promise nothing will re-hash. SVG is refused here
+though the app accepts it: `/assets/<id>` is a URL and navigating to it renders
+a same-origin document. The browser gets a **same-origin URL, never a blob** —
+the CSP is `img-src 'self' data:`, so a blob would simply not draw; that is why
+`AssetResolver` now takes a `url` record and tracks whether the URL is `ours`.
+Two things the deploy needed: `StateDirectory=corkboard-web` on the unit
+(`ProtectSystem=strict` would have failed the first upload with EROFS at the
+rename) and nginx `client_max_body_size` **9m**, a megabyte above the service's
+own 8 MiB cap so the SERVICE refuses and says why instead of nginx's HTML page.
+The installer warns about the second on a box it will not rewrite.
+**No orphan collector**: an upload that never reaches a card, or a picture on a
+deleted board, stays on disk — observed, not assumed.
+`docs/verification/2026-09-15-shared-slice-5.md`.
+
 Slice 1, for the record:
 `./install-web-server.sh` then `certbot --nginx -d corkboard.oneoffgames.com`;
 both idempotent, and the installer never overwrites the database password or
@@ -182,8 +206,12 @@ Neither the Foundry module, the standalone app nor the published board changes.
   but never in one session (signing in means typing a password into a form),
   and a drag completing across a push is unverified because synthetic pointer
   events never made the gesture claim
-- **Phase 5 slice 5** — assets (pictures on a shared board). The board already
-  refuses them out loud rather than dropping them quietly
+- **An orphan picture is never reclaimed** — an upload that never reaches a card,
+  or one on a board somebody deletes, stays in the `assets` index and on disk.
+  Each upload is capped at 8 MiB; nothing bounds how many. Deciding what a
+  deleted board's pictures mean is entangled with slice 6's import/export, so it
+  is owed as part of that
+- **Phase 5 slice 6** — import and export against the shared service
 - **Before any slice that changes an EXISTING table**: `schema.sql` is
   `create table if not exists`, so a changed column definition never reaches a
   database that already has the table, and the db suite truncates rows without
@@ -193,8 +221,10 @@ Neither the Foundry module, the standalone app nor the published board changes.
   about load, the login throttle forgets on restart (in-memory by design)
 - Housekeeping on the box: the `corkboard_test` role and database, and an SSH
   tunnel on port 55432 if one is still open. Account `sara` is suspended again
-  after slice 4 used it; its temporary password file was shredded. Two
-  `Dock 9, live check` boards from slice 3 are still on the box
+  after slice 4 AND slice 5 used it; both temporary password files were shredded.
+  Two `Dock 9, live check` boards from slice 3 are still on the box; slice 5's
+  test board and its two pictures were deleted, index rows and disk files
+  included
 - **The iPad is the only thing phase 4 is waiting on.** Add to Home Screen, standalone
   display, `navigator.storage.persist()`, and whether Files round-trips a
   `.corkboard` bundle. Contracts §5 and §9 are provisional until it answers
@@ -210,6 +240,18 @@ Neither the Foundry module, the standalone app nor the published board changes.
   so the clamp is invisible until release
 
 **Key decisions**
+- 2026-09-15 — **Deploy the web service from a clean git worktree, never from the
+  working tree.** `install-web-server.sh` rsyncs `src/` with `--delete` from
+  wherever it is run, so a peer session's uncommitted files ship to production.
+  `git worktree add <tmp> <commit>` and run the installer from there.
+- 2026-09-15 — **A mutation sweep must run in a throwaway worktree too.** An
+  in-place sweep that copies to `<file>.bak` and restores is invisible to a peer
+  reading the tree: the restore clobbers their edit, and their edit makes a
+  mutant look like it survived. Silent in both directions.
+- 2026-09-15 — **A picture's URL is authorised through the board filter, not
+  beside it.** One filter, two doors, so they cannot disagree — the alternative
+  was a second rule about who may see which digest, and two rules only have to
+  differ once.
 - 2026-09-15 — **The app host's commit log records a line's geometry whole, and
   the reason is the log, not a live race.** `BoardSession.commit` now calls
   `completeGeometry` before `makeCommit`. Nothing can split a partial op today,
