@@ -709,6 +709,18 @@ is typed into any form, which is what had kept live proofs parked for four slice
   state so Foundry's own broadcast carries them. Keep that property.
 
 **Gotchas**
+- **Two products, two deploys, and the app is the one that gets forgotten.**
+  `./install-web-server.sh` ships the shared service to
+  corkboard.oneoffgames.com; `./deploy-app.sh` ships the STANDALONE app
+  (`app src styles assets`) to `/var/www/web.oneoffgames.com/corkboard`. They
+  share `src/`, so a commit touching `src/data/` changes both — deploying one
+  leaves the other behind on the same fix. Checked after the `dca755b` deploy
+  (2026-09-15): the service was current and the app's live shell was
+  `923e015268df8cc9` against the repo's `df467b7648afb4f2`. Compare
+  `curl -s https://web.oneoffgames.com/corkboard/app/sw.js | grep VERSION`
+  against `git show <sha>:app/sw.js | grep VERSION` — one line, and it is the
+  only quick way to see the app's build from outside. `deploy-app.sh` also uses
+  `rsync --delete`, so it wants the same throwaway-worktree treatment.
 - **There are TWO served module graphs, and "not in the served graph" is only ever
   true of one of them.** The web service walks `BOARD_ENTRIES`
   (`tools/web-server.mjs`: `src/web/client/main.mjs` plus `styles/corkboard.css`
