@@ -184,6 +184,29 @@ must go red on the bad build AND green on the good one; either half alone is
 half a check.** The fix asserted what came back (a stream, or a page) rather than
 the status.
 
+**A negative result needs its own instrument check, and almost never gets one.**
+The sharpest instance today, because it happened *while quoting this file at
+somebody*. A peer said they had recorded a lesson here; I grepped, read the tail,
+found nothing, and told them it had not landed. It had — two-thirds of the way in,
+at line 121 of 195. Both halves of my check were structurally incapable of seeing
+it: `tail -25` began at line 173, and every pattern I searched was **my paraphrase
+of words somebody else had written**. I even searched `author is exactly` while
+their sentence read "the author is *precisely* the person" — the bare word
+`author` would have hit on the first try.
+
+That is the general shape and it is worth more than the anecdote: **you cannot
+grep for someone else's phrasing, only for your own guess at it**, so search the
+shortest distinctive fragment you are sure about — a filename, an identifier, one
+uncommon word — never a remembered sentence. And prove the search can find
+something before reporting that it found nothing: grep a string you know is
+present, or print how many lines you actually read.
+
+**A positive result carries its own proof; a negative one never does.** "It is not
+there" is always a claim about the looking. Third false negative from a search in
+one day, and the only one where the searcher had just invoked this very rule
+against somebody else — which is the evidence that knowing the rule does not fire
+it.
+
 **How to apply:** Fire the detector deliberately before trusting its silence —
 introduce the violation, break the thing, plant the string — and confirm it is
 seen. If a check cannot be made to fail on demand, it is not yet a check; say
