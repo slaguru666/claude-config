@@ -61,7 +61,15 @@ Index: [[INDEX]]
 - [x] scenario-forge — module.json, adventure assembly, LevelDB packer; `forge build` works end to end (2026-09-13) [[scenario-forge]]
 - [x] **scenario-forge live acceptance test PASSED** (2026-09-13) — built, installed, imported into a scratch world, pages open and read correctly [[scenario-forge]]
 - [ ] Tidy up after the acceptance test — delete the **Forge Acceptance Test** world and `~/FoundryVTT/Data/modules/afterimage-forge` [[scenario-forge]]
-- [ ] scenario-forge — the four Corkboard boards, plus Corkboard phase 1 (data barrel + exports map, provenance flag, re-sync) [[scenario-forge]]
+- [~] **scenario-forge — the four Corkboard boards** (2026-09-15, 7aa1814). Case/Player/Cast/
+      Timeline build for all six scenarios: 24 boards, 0 errors, 0 coercions. Corkboard phase 1
+      barrel + exports map shipped (corkboard 3cf70af). **Still open from phase 1:** the sheet
+      header reading the provenance flag, and re-sync [[scenario-forge]]
+- [ ] Wire the boards into the adventure build — they are generated and validated but nothing
+      packs them yet; needs `module.json` `relationships.requires: corkboard` too [[scenario-forge]]
+- [ ] **Day One clue 4 (Danny's arm) is Essential, behind a Spot Hidden roll, with no written
+      fallback** — found by CB-04. The house standard says essential clues never live behind a
+      search roll; the 13:00 hard trigger is the de-facto fallback but is not written as one [[afterimage]]
 - [ ] Corkboard phase 1 for scenario-forge: `src/data/index.mjs` barrel + `exports` map, provenance flag, re-sync [[corkboard]]
 - [ ] scenario-forge acceptance test — build AFTERIMAGE, import into a scratch world, open the case board (the one thing the spike could not verify) [[scenario-forge]]
 - [x] **Five scenarios normalised to the house format** (2026-09-15, 0ad76fd) — all six now 15/15
