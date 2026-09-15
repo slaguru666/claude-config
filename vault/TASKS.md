@@ -131,9 +131,13 @@ Index: [[INDEX]]
       (columns are packed tight, a wider card overlaps), height may be SHORTER, clamped so nothing
       reaches the row beneath. Verified in Foundry: zero overlapping pairs, all inside the zone,
       two clean rows [[scenario-forge]]
-- [ ] Tidy up after the acceptance test — delete the **Forge Acceptance Test** world,
-      `~/FoundryVTT/Data/modules/afterimage-forge`, and `/tmp/afterimage-forge-dist`
-      [[scenario-forge]]
+- [x] **Tidied up after the acceptance test** (2026-09-15). `forge-acceptance` world and the
+      `afterimage-forge` module moved to **~/.Trash** rather than deleted, so both are
+      recoverable; /tmp build scratch removed. Contents checked first — every document in that
+      world was imported, none hand-authored. **Note: `~/FoundryVTT/Data/modules/corkboard` was
+      replaced with a current build during the test and no copy of the old one was kept.** It is
+      newer and fully tested but is now a little behind corkboard HEAD — re-run `npm run build`
+      + copy to dist if you want it current [[scenario-forge]]
 - [x] **Five scenarios normalised to the house format** (2026-09-15, 0ad76fd) — all six now 15/15
       canonical sections, and every one registers clues, NPCs, handouts and art [[scenario-forge]]
 - [ ] Decide `SM-ART-06-silverstrike` — it was in neither the "still valid" nor the "orphaned"
