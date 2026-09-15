@@ -450,3 +450,55 @@ pass.
   suite: a set-piece clue has no act number, so `null === null` quietly matched
   every set-piece clue to every set-piece — invisible with one set-piece in the
   fixture. Write the second one.
+
+## 2026-09 — STANDING ORDER (The Custodians, first desk pass)
+
+- **A fallback that requires the revelation it is a fallback for is not a
+  fallback.** The essential revelation had a primary route, a "half-knows" NPC
+  fallback, and a document. Both rolls failed and the document was in the
+  dead woman's private quarters — findable only by someone who already knew she
+  had written it, which is the thing the revelation tells you. The party finished
+  never learning the scenario's central fact. **Trace every fallback back to what
+  the player must already know to reach it.** If the answer is "the revelation",
+  it is decoration. The fix was to move the document somewhere the party has an
+  independent reason to be, and to add a route through the NPC who cannot refuse.
+- **Audit the rating, not just the skill name.** A guard confirmed every skill
+  was rollable at 25%+, and the essential revelation still sat behind the cast's
+  best-in-party 40 — a coin flip on the moral centre of the case. Worse, the
+  casting table credited that skill to the interview specialist as a *strength*
+  when it was her joint-lowest. **Print the actual number beside the clue when
+  casting, not the character's job title.** A one-line probe over the pregens'
+  expanded sheets catches it in seconds.
+- **A failure state much worse than the alternative is not a choice, it is a
+  reflex.** Three real endings, and the moment the clever one failed its roll the
+  table took the safe one in ninety seconds — resolving a fifty-minute act in
+  eight, because deliberating while the world ends is not a thing players do. The
+  fix is staging, not text: hold the antagonist's pen *above the paper* for one
+  full round of table talk before the fall-through. **Write the pause in as an
+  instruction, and say it is not optional.**
+- **Put the person who knows the price in the room where the price is paid.** The
+  NPC who had worked out what cancelling costs was two corridors away when the
+  party cancelled, leaving the GM to choose between teleporting her in and letting
+  them choose blind. **Scene-block your cost-bearing NPCs to the decision, not to
+  their job.**
+- **When a roll's failure produces the same world as its success, delete it or
+  give it a consequence.** The stealth roll's failure triggered an event that
+  fired on a timer regardless. The tactician noticed immediately and asked what
+  it had bought. Re-cast it so the roll buys *when* rather than *whether*.
+- **Honest dice are the whole point of a desk pass.** Six of ten rolls failed in
+  act one and the act was untouched, which validated the "the witness points at
+  everything she has been trying to show someone for four years" backstop far
+  better than a clean run would have. A seeded roller (mulberry32, seed printed,
+  rolls consumed in printed order) makes the run re-checkable rather than
+  remembered — and re-checkable is what lets a later pass argue with this one.
+- **Midjourney's margin lettering is unfixable on screen-print prompts, and that
+  is sometimes fine.** Four suppression attempts left faint pencil-scale edition
+  marks in the lower margins. They read as a printmaker's annotation and
+  contradict nothing, so they were documented as accepted rather than fought.
+  **The rule is not "no lettering", it is "no lettering that says something"** —
+  the moment a plate grows legible text near a clue, regenerate it.
+- **Prompt one plate before writing the sheet.** The first generation came back
+  as a completely different structure from the one prompted (an adit portal, not
+  a mushroom vent head) but in exactly the right register. Re-captioning it cost
+  nothing and the art sheet recorded why, which is cheaper than fighting the model
+  toward a picture the scenario did not actually need.
