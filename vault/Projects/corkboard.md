@@ -182,9 +182,16 @@ commits genuinely overlap.** Eight non-conflicting commits against a store with
 latency give one winner and seven refusals — `applyChange`'s optimistic check is
 made against a revision read a moment earlier, and there is no retry, so those
 seven are told to reload exactly as before §6. Nothing corrupts; an opportunity
-is lost, and the window is one database round trip. A bounded retry would close
-it. Still unproved: two browsers on two machines, load, and SSE reconnect under
-`Last-Event-ID`.
+is lost, and the window is one database round trip. **That gap is now closed and
+LIVE** (`5b5852b`, deployed 2026-09-15 12:22 CEST): `COMMIT_ATTEMPTS = 4`, and a
+loser re-reads the board and tries again instead of being told to reload. Bounded
+on purpose — an unbounded version **starves the event loop**, because every await
+in the path resolves as a microtask, so timers never get CPU and even vitest's own
+`testTimeout` cannot fire; the process simply stops answering. The role is re-read
+**per attempt** (`src/web/boards.mjs:307`), so a grant revoked mid-retry is not
+honoured against a role read before it was taken away — worth more than the retry
+itself. Still unproved: two browsers on two machines, load, and SSE reconnect
+under `Last-Event-ID`.
 
 Slice 1, for the record:
 `./install-web-server.sh` then `certbot --nginx -d corkboard.oneoffgames.com`;
@@ -285,6 +292,16 @@ Neither the Foundry module, the standalone app nor the published board changes.
   so the clamp is invisible until release
 
 **Key decisions**
+- 2026-09-15 — **Deploy from a throwaway worktree at an explicit sha, never from
+  `~/Git/corkboard`.** `install-web-server.sh` runs `rsync -az --delete src/`, and
+  several sessions share that tree; at deploy time it held three files nobody in
+  this session had written, one of them `src/data/board-ops.mjs`, which is on the
+  write path. `git worktree add <dir> <sha>` costs one command and makes the shipped
+  bytes exactly what the commit says. Confirm it afterwards by comparing the sha256
+  of the whole `src/` tree on the box against the artifact — it matched on `5b5852b`.
+- 2026-09-15 — **"Keep the commit" is not "deploy it".** The retry was settled as
+  KEEP through a peer relay; the peer then refused to deploy on that, and was right
+  to. Two decisions, and only a person makes the second one.
 - 2026-09-15 — **No pre-commit hook for the shell hash, deliberately.** A peer
   proposed one: rebuild from the index at commit time and refuse if it differs
   from the staged `app/sw.js`. It would catch build-then-stage, which is real but

@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: feedback
   originSessionId: 64d58577-adfc-4033-b6dc-6a703dfdd201
-  modified: 2026-09-14T21:57:37.967Z
+  modified: 2026-09-15T11:35:00.000Z
 ---
 
 Before reporting that something found nothing, prove the thing that found
@@ -29,6 +29,29 @@ a fast command exits 0.
 
 A browser console that reports no CSP violation reports exactly the same thing
 when the capture is broken.
+
+**The extractor is an instrument too, and an empty extract reads as agreement.**
+On 2026-09-15 two sessions did this within ten minutes of each other, comparing
+the same function across two shas. A peer's extractor matched nothing twice and
+printed `da39a3ee5e6b4b0d` — the SHA-1 of the empty string — then said
+"IDENTICAL". Mine failed two different ways in a row: **`git show $sha:path`
+unquoted in zsh dropped the `:path` and returned the COMMIT MESSAGE**, so I
+diffed two commit texts and read 4042 vs 21441 bytes as if they were the file;
+then an `awk '/^export function x/,/^}/'` range matched nothing at both shas and
+my own trailing `&& echo "IDENTICAL (and both non-empty above)"` fired anyway,
+because **`diff` of two empty files succeeds**. I printed a sentence asserting
+non-emptiness directly beneath zero lines of output. Quote the revision spec
+(`git show "$sha:path"`), and never let the conclusion be an `echo` chained to a
+command that succeeds on nothing.
+
+Two habits that would have caught all four failures, and cost nothing:
+
+    # 1. make the instrument show its work
+    cat /tmp/extract.txt
+    # 2. refuse to compare when there is nothing to compare
+    [ -s a ] && [ -s b ] || { echo "REFUSING: an extract is empty"; exit 1; }
+
+A comparison is only evidence once you have seen what was compared.
 
 Worse are measurements the shell corrupts on the way back. **`$(...)` command
 substitution strips NUL bytes**, so counting them through a substitution
