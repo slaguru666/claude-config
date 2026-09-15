@@ -41,9 +41,8 @@ is what publishes. Every variant now has its own `deploy*/README.md`.
 | e-paper | con2026epaper.timevans.uk | con2026epaper-app | untracked |
 | phone | con26phone.timevans.uk | con26phone-app | **yes, in full** |
 
-`apps.timevans.uk` is the separate apps-hub, **not** v1 — `deploy/deploy.sh` step 3 still
-says otherwise and is inert only by luck of its grep guard. `vanityrpg.timevans.uk` is the
-unrelated dice app.
+`apps.timevans.uk` is the separate apps-hub, **not** v1 — `deploy/deploy.sh` said otherwise
+until `aa89894`. `vanityrpg.timevans.uk` is the unrelated dice app.
 
 **Next steps**
 - Print packs and read-throughs per scenario.
