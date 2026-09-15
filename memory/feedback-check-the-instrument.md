@@ -74,6 +74,19 @@ back `[2,3,4,0,1]`. **"It comes back ordered" is a plan, not a guarantee** —
 and the argument that insertion order already IS key order, sound for an
 in-memory fake, does not transfer to a database.
 
+**A test can be the empty extract.** 2026-09-15, corkboard: a peer's recovery
+suite passed 6/6 and its mutation sweep reported the `Last-Event-ID` mutant
+caught. Both were true only because an *uncommitted* helper change of mine was
+sitting in the tree. Against the committed helper, `listen` silently dropped the
+`headers` option it did not know about — and because the server ignores that
+header by design, three tests were comparing two identical requests. The proof:
+with the helper unextended, a mutant answering
+`id: request.headers["last-event-id"] ?? revision` **survives 6/6**. The
+assertions were real, the input never arrived, and green was identical either
+way. Two lessons: a test whose input is silently discarded is indistinguishable
+from a passing one, and **a sweep run in a shared working tree measures the tree,
+not the commit** — re-run it on a clean checkout before believing a line of it.
+
 **Corroborate from a DIFFERENT LAYER, not by re-running the same measurement
 more carefully.** Every instrument failure on 2026-09-15 — six across two
 sessions — was inside one layer, so more care within that layer would have caught
