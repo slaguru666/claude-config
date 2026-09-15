@@ -145,8 +145,14 @@ Index: [[INDEX]]
       install moved to `~/.Trash/corkboard-replaced-20260915-133103` rather than deleted.
       Verified: byte-identical to the build, all manifest paths exist, 31 modules reachable from
       the entry point with no unresolved import, and Foundry 14.361 lists it without warnings.
-      **Not verified: the module initialising inside a world** — that needs a world launched, and
-      the scratch one is gone [[corkboard]]
+- [x] **Corkboard verified loading inside a world** (2026-09-15). Threw up an empty
+      `corkboard-load-check` world, enabled the module, reloaded: active, `BoardData` registered
+      for `corkboard.board`, type in the document schema. Made a board page by hand — it rendered
+      with its zone, card, bold body, pin head and gmNote corner — and **clicking Note wrote a
+      pin (1→2) and armed Undo**, so the commit path is live rather than just markup. Exactly one
+      console error across the whole boot: one I planted myself to prove the reader works. The
+      provenance strip was correctly ABSENT on a hand-made board. World binned afterwards
+      [[corkboard]]
 - [x] **Five scenarios normalised to the house format** (2026-09-15, 0ad76fd) — all six now 15/15
       canonical sections, and every one registers clues, NPCs, handouts and art [[scenario-forge]]
 - [ ] Decide `SM-ART-06-silverstrike` — it was in neither the "still valid" nor the "orphaned"
