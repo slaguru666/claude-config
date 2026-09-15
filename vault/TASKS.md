@@ -134,10 +134,15 @@ Index: [[INDEX]]
 - [x] **Tidied up after the acceptance test** (2026-09-15). `forge-acceptance` world and the
       `afterimage-forge` module moved to **~/.Trash** rather than deleted, so both are
       recoverable; /tmp build scratch removed. Contents checked first — every document in that
-      world was imported, none hand-authored. **Note: `~/FoundryVTT/Data/modules/corkboard` was
-      replaced with a current build during the test and no copy of the old one was kept.** It is
-      newer and fully tested but is now a little behind corkboard HEAD — re-run `npm run build`
-      + copy to dist if you want it current [[scenario-forge]]
+      world was imported, none hand-authored [[scenario-forge]]
+- [x] **Corkboard reinstalled at HEAD `dca755b`** (2026-09-15). Built in an ISOLATED worktree, not
+      the shared working tree — `build.mjs` copies what is on disk, so a peer mid-edit would
+      otherwise ship into Tim's Foundry. 2124 tests green at that commit first; the previous
+      install moved to `~/.Trash/corkboard-replaced-20260915-133103` rather than deleted.
+      Verified: byte-identical to the build, all manifest paths exist, 31 modules reachable from
+      the entry point with no unresolved import, and Foundry 14.361 lists it without warnings.
+      **Not verified: the module initialising inside a world** — that needs a world launched, and
+      the scratch one is gone [[corkboard]]
 - [x] **Five scenarios normalised to the house format** (2026-09-15, 0ad76fd) — all six now 15/15
       canonical sections, and every one registers clues, NPCs, handouts and art [[scenario-forge]]
 - [ ] Decide `SM-ART-06-silverstrike` — it was in neither the "still valid" nor the "orphaned"
