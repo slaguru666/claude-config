@@ -220,7 +220,11 @@ Neither the Foundry module, the standalone app nor the published board changes.
 - Slice 1+2 gaps worth closing: no reboot test (that box runs Foundry), nothing
   about load, the login throttle forgets on restart (in-memory by design)
 - Housekeeping on the box: the `corkboard_test` role and database, and an SSH
-  tunnel on port 55432 if one is still open. Account `sara` is suspended again
+  tunnel on port 55432 — **closed 2026-09-15**, reopen per run and close after.
+  The `corkboard_test` database is deliberately KEPT: without
+  `CORKBOARD_TEST_DATABASE_URL` the Postgres store suite skips silently, which
+  is how §6 nearly shipped with `changesSince` never once executed.
+  Account `sara` is suspended again
   after slice 4 AND slice 5 used it; both temporary password files were shredded.
   Two `Dock 9, live check` boards from slice 3 are still on the box; slice 5's
   test board and its two pictures were deleted, index rows and disk files
