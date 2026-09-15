@@ -66,7 +66,22 @@ Index: [[INDEX]]
       parser could not read; completed in house format, plus the Guy's Hospital view [[scenario-forge]]
 - [ ] **forge: clue tables in a set-piece are invisible** — `readClues` iterates numbered acts
       only, so Chopper's chapel reveal (clues 10-13, its most important) never reaches the case
-      board; it reports 9 clues, not 13. Widen to set-piece sections, or decide not to [[scenario-forge]]
+      board; it reports 9 clues, not 13. **FIXED** (2026-09-15, 18e164f) — acts and set-pieces are
+      both BEATS now, and Chopper's case board goes 9 cards / 2 zones -> 13 / 3, with the
+      INTERLUDE zone between ACT TWO and ACT THREE [[scenario-forge]]
+- [ ] **Chopper clue 13's fallback is written but unreadable** — the prose says
+      `**13 is the load-bearing one.** …told by the stone-singers instead`, where the house
+      shape is `**13** — …`. MEASURED: reshaping that one line makes the reader find it. I did
+      not widen the parser, because "bold text starting with a digit" would also swallow a
+      Pacing Note's `**10 minutes. Hard.**`. One-line prose fix, your call [[scenario-forge]]
+- [ ] **Chopper clue 12 has no written fallback at all** — Hilario's *"It is a voice"* line, one
+      of the interlude's four Essentials. Only visible now that set-piece clues are read
+      [[scenario-forge]]
+- [ ] **`readHandouts` has the same acts-only blindness `readClues` had** — a `### Handouts`
+      table inside a set-piece would be dropped. LATENT, measured: no set-piece in the corpus has
+      one. Not fixed on purpose — a set-piece handout would arrive with `act: null`, which is how
+      `isPregame` identifies a PRE-GAME handout, so a careless fix would hand players a mid-game
+      reveal at the table [[scenario-forge]]
 - [ ] Front-matter `version:` on all six scenarios disagrees with the prose — Silvery Moon's
       text says v3, its front matter says 1.0.0. Added wholesale in c81e8e5 and never bumped;
       decide whether it tracks anything [[scenario-forge]]

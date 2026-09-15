@@ -436,3 +436,17 @@ pass.
   Nothing about the information changed. When generated art looks unfinished,
   check whether the container is promising something the data cannot deliver,
   before adding data to fill it.
+
+- **2026-09-15 — Where a clue is written is a pacing choice, not a statement
+  about whether it counts.** A tool that read Clue Trails from numbered acts
+  only lost an entire interlude's worth — four Essential clues carrying a
+  scenario's central reveal — and the document validated clean, because nothing
+  knew to look. If the house format allows a beat between acts (INTERLUDE,
+  ESCAPE SEQUENCE), every reader that walks acts has the same hole. Check the
+  siblings of any section-walking rule.
+
+- **2026-09-15 — A rule that distinguishes things is untested until two things
+  need distinguishing.** Matching clues to beats by act number passed the whole
+  suite: a set-piece clue has no act number, so `null === null` quietly matched
+  every set-piece clue to every set-piece — invisible with one set-piece in the
+  fixture. Write the second one.
