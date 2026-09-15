@@ -25,6 +25,20 @@ sessions at once conclude that git's binary detection "uses more than NUL byte
 checking" — the file had a NUL, the measurement did not survive the pipe.
 Write the bytes to a file and measure the file.
 
+**The sweep itself is an instrument, and it needs the same treatment.** Writing a
+test for a surviving mutant and *catching* that mutant are different facts, one
+command apart — always re-run the mutant against the new test rather than
+assuming a test written for it works. Two ways this failed in one session
+(2026-09-15, corkboard): a peer's new test passed for the wrong reason, because
+the row they planted to exercise a count also conflicted, so the rule refused
+the call before the count was ever reached; and a survivor I nearly recorded as
+equivalent was not — dropping `order by base` from a query is invisible only
+because the planner picks an index scan on a PK that happens to be in that
+order. Forced to a seq scan after an UPDATE moved tuples, the same rows came
+back `[2,3,4,0,1]`. **"It comes back ordered" is a plan, not a guarantee** —
+and the argument that insertion order already IS key order, sound for an
+in-memory fake, does not transfer to a database.
+
 **How to apply:** Fire the detector deliberately before trusting its silence —
 introduce the violation, break the thing, plant the string — and confirm it is
 seen. If a check cannot be made to fail on demand, it is not yet a check; say
