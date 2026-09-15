@@ -23,8 +23,12 @@ and `gtimeout` both absent, `/usr/bin/perl` present):
 
     perl -e 'alarm shift @ARGV; exec @ARGV' 30 <your command>
 
-It exits 142 when the cap fires, so the cap is detectable rather than silent. A browser console that reports no CSP violation reports exactly the
-same thing when the capture is broken.
+It exits 142 when the cap fires, so the cap is detectable rather than silent.
+Verified again independently on 2026-09-15: `sleep 30` capped at 2s exits 142,
+a fast command exits 0.
+
+A browser console that reports no CSP violation reports exactly the same thing
+when the capture is broken.
 
 Worse are measurements the shell corrupts on the way back. **`$(...)` command
 substitution strips NUL bytes**, so counting them through a substitution

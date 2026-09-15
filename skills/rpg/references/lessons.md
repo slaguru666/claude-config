@@ -394,3 +394,13 @@ pass.
   checking the wrong thing — the index is what the commit records, so a result
   computed over the index is correct no matter what else is dirty. Before adding
   a precondition, ask whether the normal case satisfies it.
+
+  **The mirror of it came up the same day and is worse.** A proposed pre-commit
+  hook would have *passed* on the bad case: with a shared git index, a peer's
+  staged file is already in your commit, so the hook would rebuild a correct
+  hash over their work and hand you a green check on a commit that took their
+  change under your message. A check that passes while the bad thing happens is
+  worse than no check, because it retires the attention that would otherwise
+  have caught it. Both halves are the same error — a guard not matched to the
+  hazard — and the test for both is to name the exact bad outcome and ask
+  whether the guard's answer differs between that outcome and the good one.
