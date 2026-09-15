@@ -70,8 +70,8 @@ Index: [[INDEX]]
 - [ ] Tidy up after the acceptance test — delete the **Forge Acceptance Test** world and `~/FoundryVTT/Data/modules/afterimage-forge` [[scenario-forge]]
 - [~] **scenario-forge — the four Corkboard boards** (2026-09-15, 7aa1814). Case/Player/Cast/
       Timeline build for all six scenarios: 24 boards, 0 errors, 0 coercions. Corkboard phase 1
-      barrel + exports map shipped (corkboard 3cf70af), re-sync shipped (corkboard 35abe6e).
-      **Still open from phase 1:** the sheet header reading the provenance flag [[scenario-forge]]
+      Corkboard phase 1 COMPLETE: barrel + exports map (3cf70af), re-sync (35abe6e), sheet header
+      (440af78 + forge 65684d8) [[scenario-forge]]
 - [x] **Wire the boards into the adventure build** (2026-09-15, e730a44). They ship as a
       JournalEntry of `corkboard.board` pages inside the Adventure, so importing the adventure
       brings them. Opt-in: without `boards: true` the build is what it was — no folder, no
@@ -85,9 +85,16 @@ Index: [[INDEX]]
 - [ ] **Day One clue 4 (Danny's arm) is Essential, behind a Spot Hidden roll, with no written
       fallback** — found by CB-04. The house standard says essential clues never live behind a
       search roll; the 13:00 hard trigger is the de-facto fallback but is not written as one [[afterimage]]
-- [~] Corkboard phase 1 for scenario-forge [[corkboard]] — barrel + `exports` map (3cf70af) and
-      **re-sync** (2026-09-15, 35abe6e) both shipped; only the sheet header reading the provenance
-      flag is left.
+- [x] **Corkboard phase 1 for scenario-forge — done** [[corkboard]] (2026-09-15). Barrel +
+      `exports` map (3cf70af), re-sync (35abe6e), sheet header (440af78, with forge 65684d8
+      putting the scenario's TITLE in the flag — the id alone read "afterimage" where the GM
+      expects the name). The framework's Corkboard-side dependencies are all in.
+- [x] **Sheet header — a GM can see a board was generated** [[corkboard]] (2026-09-15, 440af78).
+      `AFTERIMAGE v3.2.0 — Case board` above the tools, build date + forge + a Re-sync note on
+      the hover; nothing on a hand-made board, nothing for a player. `src/board/provenance.mjs`
+      is its own module so it can be TESTED — sheet.mjs imports Foundry and cannot be, which is
+      how a reference to a class that does not exist survived `node --check` an hour earlier.
+      13 tests, 10/11 mutations; the survivor was an unreachable `typeof` guard, removed.
 - [x] **Re-sync — a rebuilt scenario reaches a used board without clobbering it** [[corkboard]]
       (2026-09-15, 35abe6e). `resyncPayload` in board-ops, exported through `corkboard/data`; the
       import dialog offers Re-sync or Replace, but only when BOTH boards are generated. One

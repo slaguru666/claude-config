@@ -370,3 +370,18 @@ pass.
   read the code more carefully — it was to move the function somewhere a test
   could call it. When a decision matters and lives somewhere untestable, move
   the decision, not the scrutiny.
+
+- **2026-09-15 — A generated file cannot be made attributable by staging it by
+  path.** A build step that reads the whole working tree writes a file whose
+  contents depend on everybody's uncommitted edits, so `git add <that file>`
+  stages a result computed over someone else's work — path-precision does not
+  help. In a repo several sessions are writing to, this shipped a commit whose
+  own sources did not produce the hash it published. Rebuild immediately before
+  staging and confirm nothing else is dirty; better, generate such files at
+  release time and have the test assert consistency rather than exact bytes.
+
+- **2026-09-15 — `git checkout <file>` to undo a scratch edit will silently take
+  real work with it.** During a mutation sweep on a file that also held ten
+  minutes of uncommitted work, a checkout reverted both. Copy the file aside and
+  restore from the copy; a checkout restores from the last commit, which is not
+  the same thing as undoing what you just did.

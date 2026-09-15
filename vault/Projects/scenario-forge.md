@@ -63,8 +63,11 @@ cards, strings, layout and reveals stay put. The import dialog offers Re-sync or
 Replace when both boards are generated, so the destructive path is still there
 but is no longer the only one.
 
+**Corkboard phase 1 is complete** — barrel, re-sync and the sheet header
+(corkboard 440af78, forge 65684d8). A GM opening a generated board sees
+`AFTERIMAGE v3.2.0 — Case board` above the tools; players see nothing.
+
 **Next steps** (spec §12)
-- Corkboard phase 1's last item: the sheet header reading the provenance flag
 - Acceptance test the boards: build AFTERIMAGE, import, open the case board —
   the one thing the spike could not verify
 - `readClues` is blind to a clue table inside a set-piece, so Chopper's
