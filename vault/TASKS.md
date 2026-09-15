@@ -39,8 +39,17 @@ Index: [[INDEX]]
       [[oneoffgames-vps]]
 - [x] **scenario-forge** — remote created, private `slaguru666/scenario-forge`, spec pushed (2026-09-13) [[scenario-forge]]
 - [x] scenario-forge — parser + validator, run against all six (2026-09-13). 37 findings → 18 [[scenario-forge]]
-- [ ] **Write Clue Trails for Vain Crown, Silvery Moon and Chopper** — absent entirely; now caught by C-04. The bulk of the normalisation work, and it is writing not editing [[scenario-forge]]
-- [ ] Write a Clue Trail for Day One act 2 — caught by C-05 [[scenario-forge]]
+- [x] **Clue Trails written for Vain Crown, Silvery Moon and Chopper** (2026-09-15, 2fdc76e).
+      All six scenarios now validate clean. Vain Crown's existed as "Trail of Vesper" in the
+      wrong shape; the other two were new writing off the acts' own material [[scenario-forge]]
+- [x] Day One act 2 Clue Trail (2026-09-15) — the clues existed in a three-column table the
+      parser could not read; completed in house format, plus the Guy's Hospital view [[scenario-forge]]
+- [ ] **forge: clue tables in a set-piece are invisible** — `readClues` iterates numbered acts
+      only, so Chopper's chapel reveal (clues 10-13, its most important) never reaches the case
+      board; it reports 9 clues, not 13. Widen to set-piece sections, or decide not to [[scenario-forge]]
+- [ ] Front-matter `version:` on all six scenarios disagrees with the prose — Silvery Moon's
+      text says v3, its front matter says 1.0.0. Added wholesale in c81e8e5 and never bumped;
+      decide whether it tracks anything [[scenario-forge]]
 - [x] Handout indexes cleared (2026-09-13) — 5 of the 9 were a parser bug (per-act tables); 4 real gaps indexed from the print packs; AFTERIMAGE's props row given F2-H02-E [[scenario-forge]]
 - [x] Day One's two unknown headings — renamed to lead with new canonical stems `running-this` and `rules-reference` (2026-09-13) [[scenario-forge]]
 - [x] Section order fixed in three scenarios (2026-09-13). Silvery Moon and Chopper now validate clean [[scenario-forge]]

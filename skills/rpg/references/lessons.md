@@ -311,3 +311,24 @@ pass.
   the Overview.** Four strangers take 15–20 minutes on safety, pitches and
   choosing. Whether that is inside the budget decides whether the scenario fits
   the slot, and it is not a detail the GM should have to adjudicate at the table.
+- **When a check reports a section missing, look for it in the wrong shape before
+  you write a new one.** Four scenarios failed "no Clue Trail anywhere". Two of
+  them had the trail already — Day One's act two as a three-column table with no
+  *How found* and no *Type*, Vain Crown's as "Trail of Vesper — Act One triggers"
+  with a Fallback column — and both were invisible to a parser looking for the
+  house headers. Writing fresh trails would have duplicated the GM's own material
+  and quietly dropped the fallbacks he had already thought through. Read the act
+  first; the absence a tool reports is a failure to *recognise*, not always a
+  failure to *exist*.
+- **A clue trail is an index of the act, not new invention.** The material is
+  already in the scene text — it just isn't gathered where a GM can sweep it in
+  one glance. Writing the trail surfaces the revelations with nowhere to live:
+  Day One's Guy's Hospital view had its own Sanity roll and no row; Vain Crown's
+  single most important warning ("the crown was made to be looked at — so don't")
+  was buried inside a priest's NPC block. If a trail needs facts that are not in
+  the act, that is a scene problem, not a table problem.
+- **Put the trail where the reveal happens, even when the tooling only reads acts.**
+  Chopper's load-bearing revelation is in an INTERLUDE between acts two and three,
+  which act-scoped tooling cannot see. Moving it into an act to satisfy the parser
+  would have moved it away from the ten minutes it belongs to. Write it where it
+  plays and record the tooling gap instead.
