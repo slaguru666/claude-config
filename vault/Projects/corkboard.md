@@ -244,6 +244,15 @@ Neither the Foundry module, the standalone app nor the published board changes.
   so the clamp is invisible until release
 
 **Key decisions**
+- 2026-09-15 — **"It comes back ordered" is a plan, not a guarantee.** `changesSince`
+  needs `order by base` because `merge.mjs` checks the window's contiguity by
+  walking the rows. Dropping it is invisible in every ordinary test: the planner
+  picks `Index Scan using changes_pkey` and the key is `(board_id, base)`. Forced
+  to a seq scan after an UPDATE moved tuples, the same rows came back
+  `[2,3,4,0,1]`. Pinned by a pg-only test on its own pool with index and bitmap
+  scans off, which asserts the plan really is a Seq Scan **before** asserting the
+  order. The argument that insertion order already IS key order is sound for the
+  in-memory fake and does not transfer to a database. → [[2026-09]]
 - 2026-09-15 — **A stale base is a question, not a refusal — and the conflict
   unit is the ENTRY, not the field.** `commitToBoard` refused every stale base;
   spec §6 asks for that to be weakened, so the bar is staying provably NARROWER
