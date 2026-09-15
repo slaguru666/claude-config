@@ -42,3 +42,4 @@
 - [Fuzz cannot generate](feedback-fuzz-cannot-generate.md) — a clean fuzz proves nothing about events its harness cannot produce; state the generator's range, not the run count
 - [Check the instrument](feedback-check-the-instrument.md) — prove the detector fires before trusting its silence; `$(...)` strips NUL bytes and will lie to you
 - [Guarantee, not argument](feedback-guarantee-not-argument.md) — reasoning sound about one implementation is not evidence about another; ask whether the same guarantee exists
+- [My rule is not the limit](feedback-my-rule-is-not-the-limit.md) — a constraint on how I may act is not a constraint on what is possible; check the system before reporting a blocker

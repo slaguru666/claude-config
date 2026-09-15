@@ -190,8 +190,16 @@ in the path resolves as a microtask, so timers never get CPU and even vitest's o
 `testTimeout` cannot fire; the process simply stops answering. The role is re-read
 **per attempt** (`src/web/boards.mjs:307`), so a grant revoked mid-retry is not
 honoured against a role read before it was taken away — worth more than the retry
-itself. Still unproved: two browsers on two machines, load, and SSE reconnect
-under `Last-Event-ID`.
+itself. **Proved live in production** (2026-09-15 12:28 CEST, by the slice-5
+session): eight non-conflicting commits fired at once at one base gave **7 landed
+/ 1 refused**, where the same shape before the retry gave 1 / 7 — and the two
+consistency checks are the part that matters (cards on the board == commits told
+they landed; revision == base + landed). **The floor holds**: eight at once against
+the SAME card still gives exactly one winner, revision +1, which is what the bound
+must never erode. Corroborated independently from nginx's access log rather than
+taken on report — 20 commit POSTs in one second, 11×200 / 9×409, the 409s
+matching the reported exercises exactly. Still unproved: two browsers on two
+machines, load, and SSE reconnect under `Last-Event-ID`.
 
 Slice 1, for the record:
 `./install-web-server.sh` then `certbot --nginx -d corkboard.oneoffgames.com`;
@@ -248,7 +256,11 @@ is typed into any form, which is what had kept live proofs parked for four slice
   Foundry 14.361; live is 14.363
 - **Open the same board in two signed-in tabs and drag a card in one.** Closes
   BOTH open gaps in seconds: the server and the client have each been proven,
-  but never in one session (signing in means typing a password into a form),
+  but never in one session (the *real* reason is two machines and real pointer
+  gestures — NOT that signing in needs a password typed into a form, which was
+  wrong: `beginSession` in `src/web/accounts.mjs:100` mints a session server-side
+  and `endSession` revokes it, so a live authenticated proof needs no credential
+  and no person),
   and a drag completing across a push is unverified because synthetic pointer
   events never made the gesture claim
 - **An orphan picture is never reclaimed** — an upload that never reaches a card,
