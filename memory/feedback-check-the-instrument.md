@@ -118,6 +118,16 @@ way. Two lessons: a test whose input is silently discarded is indistinguishable
 from a passing one, and **a sweep run in a shared working tree measures the tree,
 not the commit** — re-run it on a clean checkout before believing a line of it.
 
+**Your own code is not a thing you know — it is a thing you can run.** On
+2026-09-15 I told two people a notice pile-up was three deep, describing the
+control flow of a client retry I had written an hour earlier. It is two: the retry
+branch `return`s before the line that pushes a notice, so the first refusal is
+silent. Thirty seconds of running it would have said so. **The author is precisely
+the person who "knows" what the code does without looking**, and that confidence is
+indistinguishable from knowledge until something checks. The conclusion survived,
+but I had offered the wrong number as a reason to RECONSIDER — which is how a bad
+figure does damage even when the decision it supports is right.
+
 **Corroborate from a DIFFERENT LAYER, not by re-running the same measurement
 more carefully.** Every instrument failure on 2026-09-15 — six across two
 sessions — was inside one layer, so more care within that layer would have caught
