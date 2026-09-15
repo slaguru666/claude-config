@@ -41,8 +41,11 @@ is what publishes. Every variant now has its own `deploy*/README.md`.
 | e-paper | con2026epaper.timevans.uk | con2026epaper-app | untracked |
 | phone | con26phone.timevans.uk | con26phone-app | **yes, in full** |
 
-`apps.timevans.uk` is the separate apps-hub, **not** v1 — `deploy/deploy.sh` said otherwise
-until `aa89894`. `vanityrpg.timevans.uk` is the unrelated dice app.
+`apps.timevans.uk` is the separate apps-hub, **not** v1. **No PWA variant has a deploy
+script** — `deploy/deploy.sh` was retired in `906af59` because the VPS tree is deploy-only
+(no sources, no `build.mjs`), so its build step aborted on every run. Build where the
+sources are, `rsync --checksum` the dist, `docker compose up -d --build` on the VPS.
+`vanityrpg.timevans.uk` is the unrelated dice app; its script works, having no build step.
 
 **Next steps**
 - Print packs and read-throughs per scenario.
