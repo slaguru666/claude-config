@@ -74,6 +74,26 @@ back `[2,3,4,0,1]`. **"It comes back ordered" is a plan, not a guarantee** —
 and the argument that insertion order already IS key order, sound for an
 in-memory fake, does not transfer to a database.
 
+**Corroborate from a DIFFERENT LAYER, not by re-running the same measurement
+more carefully.** Every instrument failure on 2026-09-15 — six across two
+sessions — was inside one layer, so more care within that layer would have caught
+none of them: an empty `awk` extract, `git show $sha:path` unquoted returning the
+commit message, a log filter whose `1[3-9]:` matched the MINUTE field, a
+MutationObserver on a node the redraw replaces, a `window.fetch` wrapper the app
+outruns by holding its own reference from module load, and a `journalctl` that
+physically cannot see per-request traffic.
+
+What worked every time was dropping a layer. A peer counted redraws **inside**
+the page and could in principle have been watching a page redraw itself; nginx's
+access log showed **two `/events` connections at 92,164 bytes each, identical** —
+bytes crossing the proxy to two clients, outside the app entirely. Same fact, one
+layer down, and immune to every failure above. Likewise: the box's `src/` tree
+digest beats reading a deploy script's output, and printing the rows beats
+trusting the count. **A total is a claim about data you have stopped looking at.**
+
+"Check the rows, not the count" is the short form, and it generalises past logs —
+an observer attached to the wrong object is an extractor matching nothing.
+
 **How to apply:** Fire the detector deliberately before trusting its silence —
 introduce the violation, break the thing, plant the string — and confirm it is
 seen. If a check cannot be made to fail on demand, it is not yet a check; say
