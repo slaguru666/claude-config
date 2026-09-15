@@ -47,6 +47,9 @@ Content is **baked into the image at build time** — no volume mounts — so th
 - `pwa/dist-v2/print/*.pdf` is **gitignored** — it duplicates `print/` byte for byte
   (218MB). A fresh clone must run `node pwa/build-v2.mjs` before building the image,
   or the container ships with no print PDFs and no error. Documented in the v2 README.
+- **Tracked build output: `dist-v2` and `dist-phone` only.** `dist` and `dist-epaper`
+  are 542MB each (they carry the print pack) and stay out; `dist-phone` is 64KB of
+  self-contained HTML, so it is in.
 
 **The Princes Bride — canon, reconciled** (the January drafts contradicted each other)
 - Mary Fletcher made the planted poppet; the real fae charm came from the late
