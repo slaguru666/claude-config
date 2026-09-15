@@ -183,7 +183,7 @@ latency give one winner and seven refusals — `applyChange`'s optimistic check 
 made against a revision read a moment earlier, and there is no retry, so those
 seven are told to reload exactly as before §6. Nothing corrupts; an opportunity
 is lost, and the window is one database round trip. **That gap is now closed and
-LIVE** (`5b5852b`, deployed 2026-09-15 12:22 CEST): `COMMIT_ATTEMPTS = 4`, and a
+LIVE** (deployed 2026-09-15 12:22 CEST at `5b5852b`; **production is now `6caf4d5`, the tip, deployed 12:5x on Tim's instruction so the box is the tip on purpose rather than by nobody noticing**): `COMMIT_ATTEMPTS = 4`, and a
 loser re-reads the board and tries again instead of being told to reload. Bounded
 on purpose — an unbounded version **starves the event loop**, because every await
 in the path resolves as a microtask, so timers never get CPU and even vitest's own
