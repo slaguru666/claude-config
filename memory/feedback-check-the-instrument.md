@@ -15,7 +15,15 @@ nothing is capable of finding something.
 time the output was indistinguishable from a real success. `rsync -n` prints
 nothing without `-i`, so a dry run used as evidence compared two empty outputs.
 macOS has no `timeout`, so a mutation sweep wrapped in it ran nothing and read
-as clean. A browser console that reports no CSP violation reports exactly the
+as clean. **A second session did exactly this again on 2026-09-15 having read
+this memory** — knowing the rule did not stop them reaching for the tool it
+warns about, because the reach is a reflex and the rule is a fact. So here is
+the substitute rather than only the warning, verified on this Mac (`timeout`
+and `gtimeout` both absent, `/usr/bin/perl` present):
+
+    perl -e 'alarm shift @ARGV; exec @ARGV' 30 <your command>
+
+It exits 142 when the cap fires, so the cap is detectable rather than silent. A browser console that reports no CSP violation reports exactly the
 same thing when the capture is broken.
 
 Worse are measurements the shell corrupts on the way back. **`$(...)` command
