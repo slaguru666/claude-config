@@ -198,8 +198,10 @@ they landed; revision == base + landed). **The floor holds**: eight at once agai
 the SAME card still gives exactly one winner, revision +1, which is what the bound
 must never erode. Corroborated independently from nginx's access log rather than
 taken on report — 20 commit POSTs in one second, 11×200 / 9×409, the 409s
-matching the reported exercises exactly. Still unproved: two browsers on two
-machines, load, and SSE reconnect under `Last-Event-ID`.
+matching the reported exercises exactly. **The ratio varies run to run** (7/1 at
+5b5852b, 6/2 at 6caf4d5, each corroborated the same way): ordinary variance in a
+bounded retry under contention, so quote it as a range, never as "7 of 8". Still
+unproved: load, and SSE reconnect under `Last-Event-ID`.
 
 Slice 1, for the record:
 `./install-web-server.sh` then `certbot --nginx -d corkboard.oneoffgames.com`;
@@ -254,15 +256,22 @@ is typed into any form, which is what had kept live proofs parked for four slice
 - **Verify the geometry race fix on a live board** — drag a line's box in one
   tab while undoing a resize in another, both orderings. Codex's harness ran
   Foundry 14.361; live is 14.363
-- **Open the same board in two signed-in tabs and drag a card in one.** Closes
-  BOTH open gaps in seconds: the server and the client have each been proven,
-  but never in one session (the *real* reason is two machines and real pointer
-  gestures — NOT that signing in needs a password typed into a form, which was
-  wrong: `beginSession` in `src/web/accounts.mjs:100` mints a session server-side
-  and `endSession` revokes it, so a live authenticated proof needs no credential
-  and no person),
-  and a drag completing across a push is unverified because synthetic pointer
-  events never made the gesture claim
+- ~~Open the same board in two signed-in tabs and drag a card in one~~ **DONE
+  2026-09-15**, by the slice-5 session, and it had been open for four slices on a
+  false premise. Two premises, in fact, both mine and both wrong: signing in does
+  NOT need a password typed into a form (`beginSession`,
+  `src/web/accounts.mjs:100`, mints one server-side; `endSession` revokes it), and
+  "synthetic pointer events never made the gesture claim" is true only of
+  JS-dispatched events — **browser-level input through CDP is trusted and claims
+  the gesture normally**. Proved: a card moved in tab one and tab two reached the
+  same transform with no reload; with the other tab committing every 100ms, a
+  455ms drag had **three remote redraws land inside the gesture window** and still
+  completed, both tabs and the server agreeing after 127 revisions. Caveats kept:
+  one account in two tabs, not two accounts; and whether the drag's own commit took
+  the merge path is still unmeasured. Two of that session's own detectors failed
+  silently first — a MutationObserver on a node the redraw REPLACES, and a
+  `window.fetch` wrapper the app outruns by holding its own reference from module
+  load
 - **An orphan picture is never reclaimed** — an upload that never reaches a card,
   or one on a board somebody deletes, stays in the `assets` index and on disk.
   Each upload is capped at 8 MiB; nothing bounds how many. Deciding what a
