@@ -48,10 +48,13 @@ sources are, `rsync --checksum` the dist, `docker compose up -d --build` on the 
 `vanityrpg.timevans.uk` is the unrelated dice app; its script works, having no build step.
 
 The VPS tree's `origin` was mis-set to gitea `loom-adventures` — corrected to
-`https://github.com/slaguru666/Continuum2026`. It still **cannot fetch**: the VPS has no
-GitHub credential (no PAT, and none of its three SSH keys is registered there), and its
-HEAD is still the loom commit `417fde3`. Tim adds a read-only deploy key, then
-`git fetch && git reset --hard origin/main` reconciles it — untracked `dist*` survive.
+`https://github.com/slaguru666/Continuum2026`, and configured as a **cone sparse checkout**
+(`deploy* apps-hub vanity-roller pwa` + root files = 325MB of 916MB) with
+`partialclonefilter=blob:none`. `pwa` is in the cone because `dist-v2`/`dist-phone` are
+tracked and would otherwise be deleted from the host at checkout. **Still cannot fetch**:
+no GitHub credential on the VPS (no PAT; none of its three SSH keys is registered), HEAD
+is still the loom commit `417fde3`. Tim adds a read-only deploy key, then
+`git fetch && git reset --hard origin/main` completes it — untracked `dist*` survive.
 
 **Next steps**
 - Print packs and read-throughs per scenario.
