@@ -1,6 +1,6 @@
 ---
 name: feedback-check-the-instrument
-description: "A quiet result from a tool nobody has poked is not evidence — prove the detector fires before trusting its silence, and beware measurements the shell silently corrupts"
+description: "Before trusting a result, run the case that would come out differently under the other explanation — prove the detector fires before trusting its silence, check the rows not the count, corroborate from a different layer, and beware measurements the shell silently corrupts (git show \"${sha}:path\" needs the braces)"
 metadata: 
   node_type: memory
   type: feedback
