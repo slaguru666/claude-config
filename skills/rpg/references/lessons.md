@@ -332,3 +332,21 @@ pass.
   which act-scoped tooling cannot see. Moving it into an act to satisfy the parser
   would have moved it away from the ten minutes it belongs to. Write it where it
   plays and record the tooling gap instead.
+- **The Revelations checklist is the section scenarios skip, and it is the one that
+  survives contact with a real table.** Four of six had none. Writing them was not
+  invention — every revelation was already somewhere in the acts — but gathering
+  them abstracted from *where* they are found is what lets a GM carry an
+  undelivered one forward instead of losing it with the scene that was cut. Write
+  it with two named to drop first and one named never to drop; "never" is the more
+  useful half, because it says what the evening is actually about.
+- **A checklist that cites a Pacing Note obliges you to write that Pacing Note.**
+  Princes Bride told the GM to "drop 12 and 14 first" from a ten-item list that had
+  never been longer. Name the revelations, not their numbers — numbers go stale the
+  first time anyone reorders the list, and the GM reads that line under pressure.
+- **A Countdown buried inside another section is not a Countdown.** Day One's lived
+  as "Master Timeline" inside Running This Scenario and Vain Crown's as a sub-head
+  of the Plot Summary. Both were good tables in the wrong place: the Countdown is
+  the universal third route to every essential clue, so it has to be where a GM
+  reaches for it mid-session, not where it was convenient to draft it. A dated
+  history of what already happened belongs in the Plot Summary; the during-play
+  clock is a separate thing and a scenario can need both.

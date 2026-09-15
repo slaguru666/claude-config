@@ -62,7 +62,10 @@ Index: [[INDEX]]
 - [ ] scenario-forge — the four Corkboard boards, plus Corkboard phase 1 (data barrel + exports map, provenance flag, re-sync) [[scenario-forge]]
 - [ ] Corkboard phase 1 for scenario-forge: `src/data/index.mjs` barrel + `exports` map, provenance flag, re-sync [[corkboard]]
 - [ ] scenario-forge acceptance test — build AFTERIMAGE, import into a scratch world, open the case board (the one thing the spike could not verify) [[scenario-forge]]
-- [ ] Normalise the other five scenarios to the house format — real editing, not a script [[scenario-forge]]
+- [x] **Five scenarios normalised to the house format** (2026-09-15, 0ad76fd) — all six now 15/15
+      canonical sections, and every one registers clues, NPCs, handouts and art [[scenario-forge]]
+- [ ] Decide `SM-ART-06-silverstrike` — it was in neither the "still valid" nor the "orphaned"
+      list of Silvery Moon's v3 art pass; listed complete for now [[scenario-forge]]
 - [ ] Tim's read-through — the handout pack is printed (2026-09-13): 23 sheets, four
       print-only spill pages fixed, `print/AFTERIMAGE-handouts.pdf` [[afterimage]]
 - [x] Con print pack rebuilt (2026-09-13) — 117pp, 91MB; AFTERIMAGE plates re-encoded
