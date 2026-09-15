@@ -67,8 +67,8 @@ Index: [[INDEX]]
 - [ ] Tidy up after the acceptance test — delete the **Forge Acceptance Test** world and `~/FoundryVTT/Data/modules/afterimage-forge` [[scenario-forge]]
 - [~] **scenario-forge — the four Corkboard boards** (2026-09-15, 7aa1814). Case/Player/Cast/
       Timeline build for all six scenarios: 24 boards, 0 errors, 0 coercions. Corkboard phase 1
-      barrel + exports map shipped (corkboard 3cf70af). **Still open from phase 1:** the sheet
-      header reading the provenance flag, and re-sync [[scenario-forge]]
+      barrel + exports map shipped (corkboard 3cf70af), re-sync shipped (corkboard 35abe6e).
+      **Still open from phase 1:** the sheet header reading the provenance flag [[scenario-forge]]
 - [x] **Wire the boards into the adventure build** (2026-09-15, e730a44). They ship as a
       JournalEntry of `corkboard.board` pages inside the Adventure, so importing the adventure
       brings them. Opt-in: without `boards: true` the build is what it was — no folder, no
@@ -82,7 +82,21 @@ Index: [[INDEX]]
 - [ ] **Day One clue 4 (Danny's arm) is Essential, behind a Spot Hidden roll, with no written
       fallback** — found by CB-04. The house standard says essential clues never live behind a
       search roll; the 13:00 hard trigger is the de-facto fallback but is not written as one [[afterimage]]
-- [ ] Corkboard phase 1 for scenario-forge: `src/data/index.mjs` barrel + `exports` map, provenance flag, re-sync [[corkboard]]
+- [~] Corkboard phase 1 for scenario-forge [[corkboard]] — barrel + `exports` map (3cf70af) and
+      **re-sync** (2026-09-15, 35abe6e) both shipped; only the sheet header reading the provenance
+      flag is left.
+- [x] **Re-sync — a rebuilt scenario reaches a used board without clobbering it** [[corkboard]]
+      (2026-09-15, 35abe6e). `resyncPayload` in board-ops, exported through `corkboard/data`; the
+      import dialog offers Re-sync or Replace, but only when BOTH boards are generated. One
+      checkable invariant does all of it — `sf-` keys are the generator's, every other key is the
+      GM's — so a dropped generated card is deleted and a hand-added one is not, with nothing
+      inferred. A non-`sf-` key in the INCOMING board is refused, not written: it would land on
+      top of whatever the GM keeps there. **Preserved per-entity: geometry, and `hidden`.**
+      `hidden` is beyond what the design said and was added deliberately — the case board ships
+      every clue hidden and a typo fix between sessions that re-hid eight revealed clues would
+      destroy an evening's play, which is the harm re-sync exists to prevent. Surface grows, never
+      shrinks. Dangling strings reported via the validator's own `danglingStrings` read off the
+      RESULTING board, never pruned. 31 tests, 16/16 mutations killed.
 - [ ] scenario-forge acceptance test — build AFTERIMAGE, import into a scratch world, open the case board (the one thing the spike could not verify) [[scenario-forge]]
 - [x] **Five scenarios normalised to the house format** (2026-09-15, 0ad76fd) — all six now 15/15
       canonical sections, and every one registers clues, NPCs, handouts and art [[scenario-forge]]

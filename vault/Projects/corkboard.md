@@ -258,8 +258,13 @@ Neither the Foundry module, the standalone app nor the published board changes.
 - **The iPad is the only thing phase 4 is waiting on.** Add to Home Screen, standalone
   display, `navigator.storage.persist()`, and whether Files round-trips a
   `.corkboard` bundle. Contracts §5 and §9 are provisional until it answers
-- Run `npm run build:app` after changing anything the app loads; a test fails if
-  you forget
+- Run `npm run build:app` after changing anything the app loads — **as the last
+  step before staging, not when the source change feels finished.** `src/data/*`
+  and `src/app/*` feed the shell hash, so one more edit after the build stales it
+  again; a session did exactly that twice on 2026-09-15. A test fails if you
+  forget. If the hash is stale from somebody ELSE's uncommitted work, leave it:
+  a shell hash rebuilt by whoever did not make the source change is a commit
+  nobody can attribute afterwards
 - Explicit v1 migration, and the sanitised share copy, still owed from phase 4
 - Phases 5–6: sync proof, opt-in sharing
 - iPad storage durability testing (contracts §5). The URL to test is now the real
