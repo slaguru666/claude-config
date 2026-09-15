@@ -240,6 +240,26 @@ Neither the Foundry module, the standalone app nor the published board changes.
   so the clamp is invisible until release
 
 **Key decisions**
+- 2026-09-15 — **A stale base is a question, not a refusal — and the conflict
+  unit is the ENTRY, not the field.** `commitToBoard` refused every stale base;
+  spec §6 asks for that to be weakened, so the bar is staying provably NARROWER
+  than "refuse everything". `src/web/merge.mjs` holds the whole rule and **reads
+  no board**: two commits conflict if they touch the same entry, whatever fields
+  they name. Deliberately coarse — a field-level rule would have to know a
+  line's `w,h` and `a,b` are one value, which means knowing `kind`, which means
+  choosing which board's view to trust, and value-inference has been wrong here
+  four times. At entry level a line's geometry is indivisible without anything
+  knowing what a line is. Cost: a retitle-during-move is refused. → [[2026-09]]
+- 2026-09-15 — **The merged commit is recorded at the CURRENT revision, which
+  is why no migration is needed.** A peer review said the `changes` PK
+  `(board_id, base)` blocks the relaxation and needs an ALTER this repo cannot
+  do. That holds only if a merged commit is stored at the base its author
+  claimed. Rebasing onto the current revision keeps one row per revision, keeps
+  `base` meaning "the revision this applied to", keeps §5's chain contiguous,
+  and needs no change to `applyChange` — its guard becomes protection against a
+  third writer. Measured before replying, because if the peer had been right the
+  task stopped. Given up: nothing records that a commit was rebased; provenance
+  is what would need the migration. → [[2026-09]]
 - 2026-09-15 — **Deploy the web service from a clean git worktree, never from the
   working tree.** `install-web-server.sh` rsyncs `src/` with `--delete` from
   wherever it is run, so a peer session's uncommitted files ship to production.

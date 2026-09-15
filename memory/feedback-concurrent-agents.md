@@ -48,4 +48,15 @@ Four more that only show up with **separate interactive sessions** (peers, not s
   stylesheet change wearing a docs message, so reverting it would silently delete a
   touch behaviour nobody reading the subject line would expect to lose.
 
+- **Anything that rsyncs or mutates the tree needs a throwaway worktree, not a lock.**
+  2026-09-15, corkboard: an installer that does `rsync -az --delete src/` ships a peer's
+  uncommitted files to production, and an in-place mutation sweep that copies to
+  `<file>.bak`, mutates, and restores is **invisible to a peer reading the tree** — the
+  restore clobbers their edit, and their edit makes a mutant look like it survived. Both
+  failures are silent in both directions. I negotiated a six-minute window by message
+  instead, which worked and should not have been necessary: `git worktree add <tmp>
+  <commit>` gives isolation that cannot be forgotten, costs seconds, and deploys exactly
+  what a commit contains rather than what a tree happens to hold. The peer proposed it
+  from the other side of the same hazard the same hour.
+
 **Why:** parallel agents are a big speed-up on independent content work, and every one of these problems appeared in a single session of doing it. **How to apply:** applies to any repo, not just [[loom-app]], where more than one agent is running at a time.
