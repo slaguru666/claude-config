@@ -264,7 +264,15 @@ Neither the Foundry module, the standalone app nor the published board changes.
   again; a session did exactly that twice on 2026-09-15. A test fails if you
   forget. If the hash is stale from somebody ELSE's uncommitted work, leave it:
   a shell hash rebuilt by whoever did not make the source change is a commit
-  nobody can attribute afterwards
+  nobody can attribute afterwards. **With more than one session writing, build it
+  from the INDEX, not the tree** — `build:app` hashes the working tree while the
+  commit records the index, and those stop coinciding the moment a peer has a
+  shell file dirty (this shipped an inconsistent HEAD for ~20 min on 2026-09-15,
+  commit 8ed194d). Stage your sources first, then:
+  `SNAP=$(mktemp -d); git checkout-index -a --prefix="$SNAP/"; ln -s "$PWD/node_modules" "$SNAP/node_modules"; (cd "$SNAP" && npm run build:app) && cp "$SNAP/app/sw.js" app/sw.js && git add app/sw.js`
+  — measured to give the right hash *while* a peer's edit is still dirty in the
+  tree. Corollary: a red app-shell test in a shared dirty tree is expected noise,
+  not a defect; what matters is green in a clean checkout of HEAD
 - Explicit v1 migration, and the sanitised share copy, still owed from phase 4
 - Phases 5–6: sync proof, opt-in sharing
 - iPad storage durability testing (contracts §5). The URL to test is now the real
