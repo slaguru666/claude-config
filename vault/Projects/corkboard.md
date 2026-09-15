@@ -709,6 +709,27 @@ is typed into any form, which is what had kept live proofs parked for four slice
   state so Foundry's own broadcast carries them. Keep that property.
 
 **Gotchas**
+- **Load, measured 2026-09-15. The binding constraint is BANDWIDTH, not CPU.**
+  Fan-out pushes the WHOLE board per recipient, so cost is O(watchers × board
+  size): **4.89 MB per commit** at 32 watchers on a 300-card board. At even five
+  commits a second that is ~25 MB/s of egress, which saturates the uplink long
+  before the box runs out of anything else. Service-side cost is ~0.18 ms per
+  watcher per commit on a 20-card board and scales linearly with both.
+- **Real Postgres is the floor on commit latency: 8 ms (10 cards) to 17 ms (300),
+  loopback on the box.** So ~60–120 commits/s per board before fan-out. The
+  in-memory fake does the same work in ~1 ms, so **any in-process contention
+  result is optimistic** — the retry absorbed 16-of-16 concurrent commits against
+  the fake and only 6–7-of-8 in production, and this is why. `changesSince` is
+  flat at ~1 ms across board sizes, so the `order by base` index does its job.
+- **There is NO rate limit on commits.** Login is throttled and SSE connections
+  are capped (`perUser` 8, `perBoard` 32), but an authenticated writer can commit
+  as fast as it likes, and each commit costs every watcher a whole board. That is
+  the gap a load test exists to find.
+- **`perUser: 8` bites the measurer before it bites a user.** A board with more
+  than 8 streams needs more than one account, so a harness signing in once and
+  opening 32 streams gets 8 and 24 refusals — which reads as a throughput
+  plateau, not as an error. Assert the audience you achieved, never the one you
+  asked for.
 - **"Deploy" is TWO deploys.** The shared service (`install-web-server.sh` ->
   `/opt/corkboard-web`) and the standalone app (`deploy-app.sh` ->
   `/var/www/web.oneoffgames.com/corkboard`) are separate scripts on the same box,
