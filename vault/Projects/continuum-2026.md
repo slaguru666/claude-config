@@ -29,12 +29,21 @@ Shared-folder convention: `scenarios/<day>-slot<N>-<system>-<name>.md`,
 
 All six are ported into [[the-director]] with real times.
 
-**Web delivery** — four PWA variants built from the repo by `pwa/build-all.sh`
-(v1 tablet, v2 responsive, e-paper, phone), each deployed as its own Caddy container
-on the VPS (`77.68.99.134`, user `tevans`, tree `/home/tevans/continuum-pwa`).
-Content is **baked into the image at build time** — no volume mounts — so the
-`docker compose up -d --build` is what publishes. Per-variant instructions:
-`deploy/README.md` (v1) and `deploy-v2/README.md`. v2 is `continuum2.timevans.uk`.
+**Web delivery** — four PWA variants built by `pwa/build-all.sh`, each its own Caddy
+container on the VPS (`77.68.99.134`, `tevans`, `/home/tevans/continuum-pwa`). Content is
+**baked into the image at build time** — no volume mounts — so `docker compose up -d --build`
+is what publishes. Every variant now has its own `deploy*/README.md`.
+
+| Variant | Host | Container | Dist in git? |
+|---|---|---|---|
+| v1 tablet | continuum.timevans.uk | continuum-app | gitignored |
+| v2 responsive | continuum2 / c26 .timevans.uk | continuum2-app | yes, bar the print PDFs |
+| e-paper | con2026epaper.timevans.uk | con2026epaper-app | untracked |
+| phone | con26phone.timevans.uk | con26phone-app | **yes, in full** |
+
+`apps.timevans.uk` is the separate apps-hub, **not** v1 — `deploy/deploy.sh` step 3 still
+says otherwise and is inert only by luck of its grep guard. `vanityrpg.timevans.uk` is the
+unrelated dice app.
 
 **Next steps**
 - Print packs and read-throughs per scenario.
