@@ -18,6 +18,15 @@ type credentials into forms. The conclusion was false. `beginSession` in
 revokes it; only the hash is ever stored. A peer had been proving things live all
 morning that way. My rule closed the login form, not the door.
 
+**The same day, the same task, a second one — which is what makes it a pattern
+rather than bad luck.** I had also written that a two-tab drag proof needed a
+person because "synthetic pointer events never made the gesture claim". True of
+**JS-dispatched** events, which is where I had met it; false of browser-level
+input, which arrives through CDP as trusted and claims a gesture normally. So one
+task sat open across four slices behind two false blockers, both mine, neither
+ever tested — same shape as the password one: a limit of the tool I happened to
+reach for, written down as a limit of the world.
+
 **Why:** the reasoning felt like carefulness rather than error, which is what
 made it durable. It got copied into a project note and a TASKS item as *the*
 blocker, so a whole class of verification stayed marked impossible in the shared
@@ -28,8 +37,11 @@ about the world is worse than a missing note, because it looks settled.
 **How to apply:** when about to write "this can't be verified / needs a human",
 name which of the two it is. If it is a rule about my own conduct, ask what the
 codebase or the API offers instead — a server-side path, a test seam, an admin
-call — before recording a blocker. Then say precisely what still needs a person
-and why: for the same task it turned out to be *two real browsers making a real
-pointer gesture*, which is a genuine limit, and nothing to do with passwords.
+call — before recording a blocker. And name the *mechanism*, not the
+symptom: "my events are untrusted" is a fact about `dispatchEvent`, not about
+automation, so the honest form is "untrusted via X" followed by a look for a
+trusted Y. On this task there turned out to be no genuine limit at all — both
+blockers dissolved on contact, and what actually remained unproved was narrow and
+specific (whether the drag's own commit took the merge path).
 Related: [[feedback-check-the-instrument]], [[feedback-guarantee-not-argument]],
 [[feedback-verify-the-neighbours]].
