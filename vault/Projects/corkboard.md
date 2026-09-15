@@ -183,7 +183,7 @@ latency give one winner and seven refusals — `applyChange`'s optimistic check 
 made against a revision read a moment earlier, and there is no retry, so those
 seven are told to reload exactly as before §6. Nothing corrupts; an opportunity
 is lost, and the window is one database round trip. **That gap is now closed and
-LIVE** (deployed 2026-09-15 12:22 CEST at `5b5852b`; **production is now `6caf4d5`, the tip, deployed 12:5x on Tim's instruction so the box is the tip on purpose rather than by nobody noticing**): `COMMIT_ATTEMPTS = 4`, and a
+LIVE** (deployed 2026-09-15 12:22 CEST at `5b5852b`; **production is now `dca755b`, the tip, deployed 2026-09-15 on Tim's instruction so the box is the tip on purpose rather than by nobody noticing — and since 14:15/15:2x BOTH surfaces are there, service and standalone app**): `COMMIT_ATTEMPTS = 4`, and a
 loser re-reads the board and tries again instead of being told to reload. Bounded
 on purpose — an unbounded version **starves the event loop**, because every await
 in the path resolves as a microtask, so timers never get CPU and even vitest's own
@@ -709,6 +709,18 @@ is typed into any form, which is what had kept live proofs parked for four slice
   state so Foundry's own broadcast carries them. Keep that property.
 
 **Gotchas**
+- **"Deploy" is TWO deploys.** The shared service (`install-web-server.sh` ->
+  `/opt/corkboard-web`) and the standalone app (`deploy-app.sh` ->
+  `/var/www/web.oneoffgames.com/corkboard`) are separate scripts on the same box,
+  and they SHARE `src/`. Any commit under `src/data/` moves both, so deploying one
+  leaves the other stale on the same fix. Read the app's live build from outside
+  without SSH: `curl -s .../corkboard/app/sw.js | grep VERSION` against
+  `git show "${sha}:app/sw.js"`
+- **`git show "$sha:path"` in zsh returns the COMMIT, not the file** — a `:s`
+  history modifier eats the path, and **quoting does not stop it**. Brace it:
+  `git show "${sha}:path"`. Measured: 10776 bytes vs 56957, one character apart.
+  Hit three times in this repo, the third time while following the memory that
+  prescribed the quoting
 - **Two products, two deploys, and the app is the one that gets forgotten.**
   `./install-web-server.sh` ships the shared service to
   corkboard.oneoffgames.com; `./deploy-app.sh` ships the STANDALONE app

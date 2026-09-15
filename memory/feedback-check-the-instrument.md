@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: feedback
   originSessionId: 64d58577-adfc-4033-b6dc-6a703dfdd201
-  modified: 2026-09-15T12:20:00.000Z
+  modified: 2026-09-15T13:25:00.000Z
 ---
 
 Before reporting that something found nothing, prove the thing that found
@@ -41,8 +41,21 @@ then an `awk '/^export function x/,/^}/'` range matched nothing at both shas and
 my own trailing `&& echo "IDENTICAL (and both non-empty above)"` fired anyway,
 because **`diff` of two empty files succeeds**. I printed a sentence asserting
 non-emptiness directly beneath zero lines of output. Quote the revision spec
-(`git show "$sha:path"`), and never let the conclusion be an `echo` chained to a
-command that succeeds on nothing.
+**and the fix recorded there was wrong** — quoting does not help. Corrected
+2026-09-15 after hitting it a third time *while following the advice above*:
+`"$sha:src/data/board-ops.mjs"` still returns the commit, because zsh applies a
+history-style `:s` MODIFIER to a bare `$name:` expansion, quotes or not. Here
+`:s` takes `r` as its delimiter and eats the rest of the path, leaving plain
+`$sha`. Measured on the same command, same shell, one character apart:
+
+    git show "$sha:src/data/board-ops.mjs" | wc -c   ->  10776   (the commit)
+    git show "${sha}:src/data/board-ops.mjs" | wc -c ->  56957   (the file)
+
+**Brace the variable: `git show "${sha}:path"`.** The failure is silent and
+plausible — it produced a three-row table of distinct-looking hashes, none of
+which were the file, and I nearly read "production matches no commit" off it.
+Distinct wrong answers look far more like data than a repeated one does. Never
+let the conclusion be an `echo` chained to a command that succeeds on nothing.
 
 Two habits that would have caught all four failures, and cost nothing:
 
