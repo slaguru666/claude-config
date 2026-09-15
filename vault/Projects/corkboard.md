@@ -318,11 +318,13 @@ is typed into any form, which is what had kept live proofs parked for four slice
   or a sweep deletes bytes the next request is about to name. Explicit, never on
   a timer: `/admin` names the figure, a POST does it, file before row
 - **Phase 5 slice 6** — import and export against the shared service
-- **Before any slice that changes an EXISTING table**: `schema.sql` is
-  `create table if not exists`, so a changed column definition never reaches a
-  database that already has the table, and the db suite truncates rows without
-  dropping them — it reports green on a constraint that never applied. There is
-  no migration mechanism yet; one is owed
+- ~~Before any slice that changes an EXISTING table~~ **SOLVED 2026-09-15,
+  `f0a54e2`.** `src/web/migrations.mjs` holds ordered steps, each applied in one
+  transaction with the row recording it. `MIGRATIONS` is empty; add a step
+  numbered above 4 and it applies on the next start. The suite-lies half is
+  fixed too — the db suite drops and rebuilds rather than truncating, so a
+  changed constraint actually applies. `resetSchema` refuses any database not
+  named `_test`, because the URL comes from an environment variable
 - Slice 1+2 gaps worth closing: no reboot test (that box runs Foundry), nothing
   about load, the login throttle forgets on restart (in-memory by design)
 - Housekeeping on the box: the `corkboard_test` role and database, and an SSH
