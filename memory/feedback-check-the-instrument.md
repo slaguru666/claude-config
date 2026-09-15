@@ -105,7 +105,13 @@ digest beats reading a deploy script's output, and printing the rows beats
 trusting the count. **A total is a claim about data you have stopped looking at.**
 
 "Check the rows, not the count" is the short form, and it generalises past logs —
-an observer attached to the wrong object is an extractor matching nothing.
+an observer attached to the wrong object is an extractor matching nothing, and
+**a commit subject is a summary too**. On 2026-09-15 I told the user production
+was "two commits ahead, neither reaching the service"; it was three, and one of
+them changed `src/data/board-ops.mjs`, which the installer ships. I had read the
+subjects of the two commits I knew were test work and let the shape of the day
+stand in for `git diff -- src/`. Before saying what a deploy would or would not
+change, diff the paths that ship.
 
 **When nothing reads the input, assert that it is SENT.** The resolution to the
 case above, same day. There is no route that reads `Last-Event-ID` — that is the
