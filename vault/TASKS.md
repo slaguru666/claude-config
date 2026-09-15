@@ -191,13 +191,11 @@ Index: [[INDEX]]
 - [ ] **Rotate both GitHub PATs** — exposed in a session transcript; update `~/.config/github/tokens.env` on MINI-S afterwards [[mini-s]]
 - [ ] Once rotated, delete the pre-cleanup backups on MINI-S (`~/.bashrc.bak-*`, `~/.zshrc.bak-*`, `~/.claude/settings.local.json.bak-*`) and let `~/.claude/backups/` age out [[mini-s]]
 - [ ] Re-run `install.sh` on MINI-S from an interactive shell after rotating, to register the official GitHub MCP server [[claude-config-sync]]
-- [ ] Reverse proxy on MINI-S so local names work without ports — needs port 80 freed from Seafile [[mini-s]]
 - [ ] Rotate the Canvas API token — it was shared in chat [[canvas-oss-course]]
 - [x] Decide how MINI-S reaches this vault — solved via `claude-config` [[mini-s]]
 
 ## Blocked / awaiting a decision
 
-- [ ] **Point both routers' DHCP at 192.168.1.6 for DNS** — blocked on router admin credentials; the Zyxel and the Tenda NOVA both rejected what was tried and both lock out after a few attempts [[mini-s]]
 - [ ] iPad storage durability testing [[corkboard]] — the app is now live at https://web.oneoffgames.com/corkboard/app/ (not `corkboard-spike/`), so this is unblocked
 - [x] File-exchange validation [[corkboard]] — `.corkboard` bundles both ways, verified in Foundry v14 and the app (2026-09-13)
 - [ ] Local-network sync for offline iPads — out of scope for Phase 2 [[corkboard]]
