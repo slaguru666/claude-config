@@ -57,10 +57,14 @@ explained to the GM. Opt-in throughout: without `boards: true` a build is what
 it was — no Boards folder, no Corkboard dependency. With it, `module.json`
 declares `relationships.requires: corkboard`.
 
+**Re-sync shipped** (corkboard 35abe6e). A rebuilt scenario now reaches a board
+the table has already used: generated cards take the new words, the GM's own
+cards, strings, layout and reveals stay put. The import dialog offers Re-sync or
+Replace when both boards are generated, so the destructive path is still there
+but is no longer the only one.
+
 **Next steps** (spec §12)
-- Corkboard phase 1 leftovers: the sheet header reading the provenance flag,
-  and **re-sync** — the only non-destructive path from an edited scenario to an
-  updated board
+- Corkboard phase 1's last item: the sheet header reading the provenance flag
 - Acceptance test the boards: build AFTERIMAGE, import, open the case board —
   the one thing the spike could not verify
 - `readClues` is blind to a clue table inside a set-piece, so Chopper's
@@ -70,6 +74,15 @@ declares `relationships.requires: corkboard`.
   have [[rpg-skill]] point at it. One template, not two copies drifting
 
 **Key decisions**
+- 2026-09-15 — **Re-sync preserves `hidden` as well as position, and the design
+  document was wrong to stop at position.** The case board ships every clue
+  hidden and the GM opens them as the table earns them; a re-sync between
+  sessions that re-hid eight revealed clues would destroy an evening's play to
+  fix a typo — the exact harm the operation exists to prevent. Preservation is
+  per-entity, so a clue the rebuild ADDS still arrives hidden as authored.
+  Content — title, text, gmNote, style, image, link — still comes from the
+  rebuild, so a GM who rewrites a generated card loses that edit. That stays:
+  the answer is to fix the scenario.
 - 2026-09-15 — **The boards ride inside the Adventure, not a pack of their own,
   and the dependency is opt-in.** A separate pack would be one more thing to
   explain at the table; a page Foundry cannot construct imports as an

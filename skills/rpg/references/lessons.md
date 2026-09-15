@@ -360,3 +360,13 @@ pass.
   the value from the same place the working code already takes it (here, the
   cast entry the adapter itself uses) rather than inventing a key for it, and
   assert the value is *present*, not merely that the field exists.
+
+- **2026-09-15 — A file that cannot be imported by a test is where a wrong name
+  survives.** The predicate choosing which dialog a GM sees was written inside a
+  Foundry-importing file, referencing a class name that does not exist in it.
+  `node --check` passed, because an undefined identifier is a runtime error and
+  not a syntax one, and that file is guarded only by source-text assertions,
+  which cannot tell a real class name from an invented one. The fix was not to
+  read the code more carefully — it was to move the function somewhere a test
+  could call it. When a decision matters and lives somewhere untestable, move
+  the decision, not the scrutiny.
