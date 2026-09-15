@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: feedback
   originSessionId: 64d58577-adfc-4033-b6dc-6a703dfdd201
-  modified: 2026-09-15T11:35:00.000Z
+  modified: 2026-09-15T12:20:00.000Z
 ---
 
 Before reporting that something found nothing, prove the thing that found
@@ -106,6 +106,34 @@ trusting the count. **A total is a claim about data you have stopped looking at.
 
 "Check the rows, not the count" is the short form, and it generalises past logs —
 an observer attached to the wrong object is an extractor matching nothing.
+
+**When nothing reads the input, assert that it is SENT.** The resolution to the
+case above, same day. There is no route that reads `Last-Event-ID` — that is the
+design — so no assertion about behaviour can prove the test helper forwarded the
+header, and a comment saying "do not revert this" is not a hold. What works is a
+different observable in the same channel: `headers` is spread last, so a
+deliberately broken `Cookie` must stop the stream. The forwarding now goes red in
+one named guard test instead of quietly turning three tests tautological. Ask
+what else travels the path the discarded input travels, and assert on that.
+
+**A guard that fails against the good code AND the bad code is measuring
+neither.** That guard's first draft asserted the HTTP status, and went red in
+both directions. The cause was mundane — the helper's `fetch` has no
+`redirect: "manual"`, so a rejected session follows the 303 to `/login` and comes
+back 200 — but the shape is the lesson: a red on the broken build proves nothing
+until you have seen the same check go green on the working one. Run the guard
+both ways before believing either result, which is red-green applied to the
+instrument rather than to the feature.
+
+**Red on the broken build proves nothing on its own.** The mirror of everything
+above, and the one that is easy to miss because it feels like success. A peer's
+first draft of a forwarding guard asserted the HTTP status and went red against
+the broken code — and also against the working code, because `listen` follows
+redirects, so a rejected session lands on the login page with a 200 and the status
+cannot discriminate. They only caught it by watching both directions. **A check
+must go red on the bad build AND green on the good one; either half alone is
+half a check.** The fix asserted what came back (a stream, or a page) rather than
+the status.
 
 **How to apply:** Fire the detector deliberately before trusting its silence —
 introduce the violation, break the thing, plant the string — and confirm it is
