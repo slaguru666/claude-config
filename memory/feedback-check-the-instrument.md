@@ -40,9 +40,11 @@ diffed two commit texts and read 4042 vs 21441 bytes as if they were the file;
 then an `awk '/^export function x/,/^}/'` range matched nothing at both shas and
 my own trailing `&& echo "IDENTICAL (and both non-empty above)"` fired anyway,
 because **`diff` of two empty files succeeds**. I printed a sentence asserting
-non-emptiness directly beneath zero lines of output. Quote the revision spec
-**and the fix recorded there was wrong** — quoting does not help. Corrected
-2026-09-15 after hitting it a third time *while following the advice above*:
+non-emptiness directly beneath zero lines of output.
+
+**The cure first recorded here was itself wrong: quoting does not help.** It said
+"quote the revision spec", and a second session hit the trap a third time *while
+following that advice*. Corrected 2026-09-15:
 `"$sha:src/data/board-ops.mjs"` still returns the commit, because zsh applies a
 history-style `:s` MODIFIER to a bare `$name:` expansion, quotes or not. Here
 `:s` takes `r` as its delimiter and eats the rest of the path, leaving plain
@@ -51,7 +53,13 @@ history-style `:s` MODIFIER to a bare `$name:` expansion, quotes or not. Here
     git show "$sha:src/data/board-ops.mjs" | wc -c   ->  10776   (the commit)
     git show "${sha}:src/data/board-ops.mjs" | wc -c ->  56957   (the file)
 
-**Brace the variable: `git show "${sha}:path"`.** The failure is silent and
+**Brace the variable: `git show "${sha}:path"`.** And note HOW the wrong cure got
+written down, because it is a failure of its own: the fix that worked used
+`${sha}` — typed by habit, not by design — and the quotes were incidental. Seeing
+it work, I recorded the quoting as the reason. **A fix that works does not confirm
+your account of why it works**, and a prescription derived from one you never
+isolated will send the next reader into the same trap with your name on the
+advice. Change one thing at a time, or say which part you did not test. The failure is silent and
 plausible — it produced a three-row table of distinct-looking hashes, none of
 which were the file, and I nearly read "production matches no commit" off it.
 Distinct wrong answers look far more like data than a repeated one does. Never
