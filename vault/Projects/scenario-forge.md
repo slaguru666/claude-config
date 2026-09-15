@@ -3,7 +3,7 @@ type: project
 status: active
 repo: slaguru666/scenario-forge
 path: ~/Git/scenario-forge
-updated: 2026-09-14
+updated: 2026-09-15
 ---
 
 # scenario-forge
@@ -45,23 +45,38 @@ over the first updated in place and created nothing — the destructive re-impor
 behaviour, observed rather than inferred. Both are still on the Mac — delete the
 world and `~/FoundryVTT/Data/modules/afterimage-forge` when done.
 
-**Not yet built** — the four Corkboard boards and the Corkboard phase-1 changes.
+**The four boards are built and packed** (7aa1814, e730a44). They come from
+tables the scenarios already contain: Clue Trail -> case board (all hidden,
+`gmNote` carries the fallback), NPC Roster -> cast board, Countdown -> timeline
+board, plus a near-empty player board with zones only. All six scenarios build
+24 boards, 0 errors, 0 coercions.
 
-**The four boards** are built from tables the scenarios already contain: Clue
-Trail -> case board (all hidden, `gmNote` carries the fallback), NPC Roster ->
-cast board, Countdown -> timeline board, plus a near-empty player board with
-zones only.
+They ship as a JournalEntry of `corkboard.board` pages **inside the Adventure**,
+so importing the adventure brings the boards and nothing extra has to be
+explained to the GM. Opt-in throughout: without `boards: true` a build is what
+it was — no Boards folder, no Corkboard dependency. With it, `module.json`
+declares `relationships.requires: corkboard`.
 
 **Next steps** (spec §12)
-- Corkboard phase 1 (`src/data/index.mjs` barrel + `exports` map, provenance
-  flag, re-sync) and the four board generators
-- Write the four missing Clue Trails — the last four validator findings
+- Corkboard phase 1 leftovers: the sheet header reading the provenance flag,
+  and **re-sync** — the only non-destructive path from an edited scenario to an
+  updated board
+- Acceptance test the boards: build AFTERIMAGE, import, open the case board —
+  the one thing the spike could not verify
+- `readClues` is blind to a clue table inside a set-piece, so Chopper's
+  INTERLUDE trail (clues 10-13) never reaches its case board
 - Adapters beyond `blade-runner` and `generic`
-- Normalise the other five scenarios. Real editing, not a script
 - Move `~/.claude/skills/rpg/assets/scenario-template.md` into `templates/` and
   have [[rpg-skill]] point at it. One template, not two copies drifting
 
 **Key decisions**
+- 2026-09-15 — **The boards ride inside the Adventure, not a pack of their own,
+  and the dependency is opt-in.** A separate pack would be one more thing to
+  explain at the table; a page Foundry cannot construct imports as an
+  "unavailable document" with no way back, so the page source mirrors
+  `journals.mjs` field for field rather than being minted fresh. The Corkboard
+  requirement is declared only when boards are actually built — a module that
+  ships none must not demand a module to render nothing.
 - 2026-09-14 — **A build that ships no assets must fail, not fall back.** The
   content port installed clean and rendered broken: the config declared no
   `assets` directory, so the copy step was skipped, every portrait fell back to

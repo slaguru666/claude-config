@@ -67,8 +67,16 @@ Index: [[INDEX]]
       Timeline build for all six scenarios: 24 boards, 0 errors, 0 coercions. Corkboard phase 1
       barrel + exports map shipped (corkboard 3cf70af). **Still open from phase 1:** the sheet
       header reading the provenance flag, and re-sync [[scenario-forge]]
-- [ ] Wire the boards into the adventure build — they are generated and validated but nothing
-      packs them yet; needs `module.json` `relationships.requires: corkboard` too [[scenario-forge]]
+- [x] **Wire the boards into the adventure build** (2026-09-15, e730a44). They ship as a
+      JournalEntry of `corkboard.board` pages inside the Adventure, so importing the adventure
+      brings them. Opt-in: without `boards: true` the build is what it was — no folder, no
+      dependency. With it, `module.json` declares `relationships.requires: corkboard`, so Foundry
+      refuses to enable a module whose board pages would have nowhere to render. AFTERIMAGE end
+      to end: 9 journals / 21 handouts / 13 actors / **4 boards** / 175 keys, one CB-04 warning.
+      **Two defects the tests found, both invisible to the build:** the player board always
+      emitted its zones, so the "nothing to ship" guard the opt-in depends on could never fire;
+      and cast link cards looked up portraits under a config key that does not exist, so all four
+      shipped faceless. 274 tests [[scenario-forge]]
 - [ ] **Day One clue 4 (Danny's arm) is Essential, behind a Spot Hidden roll, with no written
       fallback** — found by CB-04. The house standard says essential clues never live behind a
       search roll; the 13:00 hard trigger is the de-facto fallback but is not written as one [[afterimage]]
