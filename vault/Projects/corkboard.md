@@ -264,15 +264,17 @@ Neither the Foundry module, the standalone app nor the published board changes.
   again; a session did exactly that twice on 2026-09-15. A test fails if you
   forget. If the hash is stale from somebody ELSE's uncommitted work, leave it:
   a shell hash rebuilt by whoever did not make the source change is a commit
-  nobody can attribute afterwards. **With more than one session writing, build it
-  from the INDEX, not the tree** — `build:app` hashes the working tree while the
-  commit records the index, and those stop coinciding the moment a peer has a
-  shell file dirty (this shipped an inconsistent HEAD for ~20 min on 2026-09-15,
-  commit 8ed194d). Stage your sources first, then:
-  `SNAP=$(mktemp -d); git checkout-index -a --prefix="$SNAP/"; ln -s "$PWD/node_modules" "$SNAP/node_modules"; (cd "$SNAP" && npm run build:app) && cp "$SNAP/app/sw.js" app/sw.js && git add app/sw.js`
-  — measured to give the right hash *while* a peer's edit is still dirty in the
-  tree. Corollary: a red app-shell test in a shared dirty tree is expected noise,
-  not a defect; what matters is green in a clean checkout of HEAD
+  nobody can attribute afterwards.
+  **With more than one session writing, run `npm run build:app:staged`** (added
+  2026-09-15, `51968ad`), which hashes the INDEX rather than the working tree, so
+  it is correct even while a peer's shell file is dirty. `build:app` still hashes
+  the tree, which is what you want while developing. The two stop coinciding the
+  moment a peer has a shell file dirty, and that shipped an inconsistent HEAD for
+  ~20 min (`8ed194d`). Stage your sources FIRST, then run it: an unstaged source
+  of your own correctly does not affect the hash, because it is not in the commit.
+  The one case no check can catch is building BEFORE staging your sources.
+  Corollary: a red app-shell test in a shared dirty tree is other people's
+  uncommitted edits, not a defect; what matters is green in a clean checkout of HEAD
 - Explicit v1 migration, and the sanitised share copy, still owed from phase 4
 - Phases 5–6: sync proof, opt-in sharing
 - iPad storage durability testing (contracts §5). The URL to test is now the real
