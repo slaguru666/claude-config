@@ -160,6 +160,21 @@ The installer warns about the second on a box it will not rewrite.
 deleted board, stays on disk — observed, not assumed.
 `docs/verification/2026-09-15-shared-slice-5.md`.
 
+**§6's stale-base relaxation is LIVE** (2026-09-15, deployed at `5e42c1c`). A
+commit whose base is behind is now a **question, not a refusal**: if it touches
+nothing the window touched, it is accepted. Built in another session; what
+mattered here was that it needed **no schema change** — the merged commit is
+recorded at the **CURRENT revision**, not the base the client claimed, so
+`changes` keeps one row per revision and the `(board_id, base)` PK is untouched.
+Recording it at the claimed base would make two commits at base 7 a unique
+violation, which is an ALTER this repo still has no mechanism for. The unit is
+**entry-level, not the coupled group** — any two writes to the same shape
+conflict, so no kind gate, no board read, nothing for value-inference to get
+wrong. Proved live 14/14: a different card at a stale base lands at revision 2,
+the same card is 409 with the value AND the revision unmoved, a delete is never
+merged on either side, and a base ahead of the board is nonsense not staleness.
+`docs/verification/2026-09-15-shared-slice-6-deploy.md`.
+
 Slice 1, for the record:
 `./install-web-server.sh` then `certbot --nginx -d corkboard.oneoffgames.com`;
 both idempotent, and the installer never overwrites the database password or
