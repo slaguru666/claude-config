@@ -610,6 +610,16 @@ Neither the Foundry module, the standalone app nor the published board changes.
   state so Foundry's own broadcast carries them. Keep that property.
 
 **Gotchas**
+- **Before committing, rebuild the shell with `npm run build:app:staged`, not
+  `build:app`** (51968ad). `build:app` hashes the WORKING TREE; the commit records
+  the INDEX. One writer, no difference; three sessions writing, never the same
+  bytes — and on 2026-09-15 a commit published a shell version computed over
+  another session's uncommitted CSS, so HEAD claimed a hash its own sources did
+  not produce and everyone who pulled got a red `app-shell` test. The staged
+  build uses `git checkout-index`, which is correct *while the pollution is still
+  there*, so it needs no timing and no being last to move. `app-shell.test.mjs`
+  still reads the tree and so can go red on somebody else's dirty files — that is
+  expected noise; what must be true is green in a clean checkout of HEAD.
 - **A NUL byte in a source file makes it BINARY to git** — no diff, no blame, no
   merge. `tools/app-shell.mjs` carried a literal `0x00` as the hash separator in
   `shellVersion` and had been undiffable all along; `"\0"` is the same byte at

@@ -385,3 +385,12 @@ pass.
   minutes of uncommitted work, a checkout reverted both. Copy the file aside and
   restore from the copy; a checkout restores from the last commit, which is not
   the same thing as undoing what you just did.
+
+- **2026-09-15 — A guard that fires on the condition the tool exists to handle
+  is not a safety check, it is a refusal to do the job.** A build-from-the-index
+  script written to survive other people's uncommitted edits was first given a
+  guard refusing to run when any input file had unstaged changes. It fired
+  immediately on exactly the situation it was built for. The guard was also
+  checking the wrong thing — the index is what the commit records, so a result
+  computed over the index is correct no matter what else is dirty. Before adding
+  a precondition, ask whether the normal case satisfies it.
