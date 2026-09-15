@@ -210,6 +210,26 @@ Neither the Foundry module, the standalone app nor the published board changes.
   so the clamp is invisible until release
 
 **Key decisions**
+- 2026-09-15 — **The app host's commit log records a line's geometry whole, and
+  the reason is the log, not a live race.** `BoardSession.commit` now calls
+  `completeGeometry` before `makeCommit`. Nothing can split a partial op today,
+  and measurement said so rather than reading: one tab holds a board
+  (`navigator.locks`), and the shared server refuses a stale base OUTRIGHT —
+  driving the real `commitToBoard` with two clients at one base gives the loser
+  `{ok:false, reason:"stale"}` and discards their commit whole. What the fix
+  buys is the log outliving that protection, because `outbox` is declared and
+  empty and those ops become wire payloads the day it ships. `completeGeometry`
+  alone and NOT `writeThrough`: the `{diff:false}` half answers Foundry's sender
+  diffing and review 32 measured its cost. Inert on replay, measured both ways.
+  → [[2026-09]]
+- 2026-09-15 — **The merge point is where a stale-base policy must carry the
+  coupled group, and it does not exist yet.** Spec §6 plans to accept some
+  stale-base commits ("two people dragging different cards do not conflict").
+  Accepting any of them IS the merge, and that is where a partial `w,h` op lands
+  over moved ends and makes a zero-length line. Strict CAS is what closes this
+  in slices 1-4; completion belongs inside that future merge rule rather than
+  bolted on after. Completing app-side and at the merge compose — a whole group
+  leaves the merge deciding about one value instead of four. → [[2026-09]]
 - 2026-09-15 — **Ownership lives in one place, against the spec's own table.**
   `board_grants` carries only `editor` and `viewer`, with a check constraint
   naming exactly those two; `boards.owner_id` stays the sole record of who owns
