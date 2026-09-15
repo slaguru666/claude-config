@@ -308,11 +308,15 @@ is typed into any form, which is what had kept live proofs parked for four slice
   silently first — a MutationObserver on a node the redraw REPLACES, and a
   `window.fetch` wrapper the app outruns by holding its own reference from module
   load
-- **An orphan picture is never reclaimed** — an upload that never reaches a card,
-  or one on a board somebody deletes, stays in the `assets` index and on disk.
-  Each upload is capped at 8 MiB; nothing bounds how many. Deciding what a
-  deleted board's pictures mean is entangled with slice 6's import/export, so it
-  is owed as part of that
+- ~~An orphan picture is never reclaimed~~ **DONE 2026-09-15, `0ee55fd`** —
+  `src/web/collect.mjs`, contracts §3's rule: by scan, never a counter, over
+  board states AND every commit, so a removed card keeps its picture (undo) and
+  a deleted BOARD releases it. Two things the app's sweep never faced: the board
+  must be read **unfiltered** (the only place in the service where that is
+  correct — a filtered read collects exactly the hidden cards' pictures), and
+  upload/commit are two requests, so `assets.first_seen` gives an hour's grace
+  or a sweep deletes bytes the next request is about to name. Explicit, never on
+  a timer: `/admin` names the figure, a POST does it, file before row
 - **Phase 5 slice 6** — import and export against the shared service
 - **Before any slice that changes an EXISTING table**: `schema.sql` is
   `create table if not exists`, so a changed column definition never reaches a
