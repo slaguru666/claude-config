@@ -285,6 +285,17 @@ Neither the Foundry module, the standalone app nor the published board changes.
   so the clamp is invisible until release
 
 **Key decisions**
+- 2026-09-15 — **No pre-commit hook for the shell hash, deliberately.** A peer
+  proposed one: rebuild from the index at commit time and refuse if it differs
+  from the staged `app/sw.js`. It would catch build-then-stage, which is real but
+  is one session's own ordering and is documented in the script. Its other case —
+  a peer staging a shell file between your build and your commit — argues the
+  other way: **all sessions share one `.git`, so their staged file is in your
+  commit already.** The hook would fire, you would rebuild, and you would ship
+  their work under your message with a *correct* hash. A green check where
+  something bad happened is worse than no check. The control that covers that
+  case is the existing one — stage by explicit path, read `git diff --cached`
+  before every commit. Revisit only if build-then-stage actually bites someone.
 - 2026-09-15 — **"It comes back ordered" is a plan, not a guarantee.** `changesSince`
   needs `order by base` because `merge.mjs` checks the window's contiguity by
   walking the rows. Dropping it is invisible in every ordinary test: the planner
