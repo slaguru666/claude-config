@@ -174,11 +174,17 @@ wrong. Proved live 14/14: a different card at a stale base lands at revision 2,
 the same card is 409 with the value AND the revision unmoved, a delete is never
 merged on either side, and a base ahead of the board is nonsense not staleness.
 `docs/verification/2026-09-15-shared-slice-6-deploy.md`. **What live testing did
-NOT cover, and it is the situation the rule exists for:** every stale-base check
-was sequential `curl` from one account. No two real browsers racing, no merge
-arriving under SSE fan-out, nothing about load. The rule is unit-tested to 12/14
-mutants and proved reachable through the route; what is unproved is the
-concurrency it was built for.
+NOT cover:** every stale-base check was sequential `curl` from one account. Since
+closed in-process (`982210e`, `test/web-concurrency.test.mjs`) — overlapping
+commits through real sockets and two real `WebSession` instances, sweep 5/5.
+**What that test found is the feature's honest limit: §6 does not help when
+commits genuinely overlap.** Eight non-conflicting commits against a store with
+latency give one winner and seven refusals — `applyChange`'s optimistic check is
+made against a revision read a moment earlier, and there is no retry, so those
+seven are told to reload exactly as before §6. Nothing corrupts; an opportunity
+is lost, and the window is one database round trip. A bounded retry would close
+it. Still unproved: two browsers on two machines, load, and SSE reconnect under
+`Last-Event-ID`.
 
 Slice 1, for the record:
 `./install-web-server.sh` then `certbot --nginx -d corkboard.oneoffgames.com`;
