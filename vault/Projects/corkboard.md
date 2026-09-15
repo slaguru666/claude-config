@@ -183,7 +183,7 @@ latency give one winner and seven refusals — `applyChange`'s optimistic check 
 made against a revision read a moment earlier, and there is no retry, so those
 seven are told to reload exactly as before §6. Nothing corrupts; an opportunity
 is lost, and the window is one database round trip. **That gap is now closed and
-LIVE** (deployed 2026-09-15 12:22 CEST at `5b5852b`; **production is `463b7a1` (service; app last moved at `074f303`, unaffected since) (service and standalone app), deployed 2026-09-15. It is deliberately the tip AT DEPLOY TIME rather than permanently: peer commits land through the day, so check `git log 0ee55fd..master -- src/` rather than assuming the box is current**): `COMMIT_ATTEMPTS = 4`, and a
+LIVE** (deployed 2026-09-15 12:22 CEST at `5b5852b`; **production is `f0a54e2` (service; app last moved at `074f303` and has not needed moving since — check the shell hash, not the commit list) (service and standalone app), deployed 2026-09-15. It is deliberately the tip AT DEPLOY TIME rather than permanently: peer commits land through the day, so check `git log 0ee55fd..master -- src/` rather than assuming the box is current**): `COMMIT_ATTEMPTS = 4`, and a
 loser re-reads the board and tries again instead of being told to reload. Bounded
 on purpose — an unbounded version **starves the event loop**, because every await
 in the path resolves as a microtask, so timers never get CPU and even vitest's own
