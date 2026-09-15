@@ -230,6 +230,18 @@ slices; **slice 1 gets logged into before 2–7 are committed to.** Design:
 `docs/superpowers/specs/2026-09-14-shared-corkboard-design.md` (commit 0215bab).
 Neither the Foundry module, the standalone app nor the published board changes.
 
+**The bounded retry is live** (2026-09-15, `5b5852b`). §6 merged a stale base but
+did NOT rescue genuinely overlapping commits — the merge decision is made against
+a revision read a moment earlier, so a writer landing in between invalidated it.
+Four attempts, each a read and a write, close that. **Measured in production:
+eight non-conflicting commits at once give 7 of 8, where the same shape gave
+1 of 8 before.** Eight against the SAME card still gives exactly one winner, so
+the bound rescues contention without eroding the floor. The role is re-read per
+attempt, because a retry around an authorisation check widens the gap between
+deciding who may write and writing. **A live proof needs no person:** mint a
+session with `beginSession`, use it as a cookie, `endSession` after — no password
+is typed into any form, which is what had kept live proofs parked for four slices.
+
 **Next steps**
 - **Verify the geometry race fix on a live board** — drag a line's box in one
   tab while undoing a resize in another, both orderings. Codex's harness ran
