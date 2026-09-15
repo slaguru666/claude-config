@@ -350,3 +350,13 @@ pass.
   reaches for it mid-session, not where it was convenient to draft it. A dated
   history of what already happened belongs in the Plot Summary; the during-play
   clock is a separate thing and a scenario can need both.
+
+- **2026-09-15 — An optional chain over a config key that does not exist is a
+  silent no-op.** Cast cards on the generated boards read portraits from
+  `cfg.portraits?.[key]`; no config in the repo has a `portraits` map, so every
+  lookup returned undefined and all four link cards shipped faceless — beside
+  Actor sheets that had the portraits all along. Nothing failed, no warning
+  fired, and the build reported success. When wiring a generator to config, take
+  the value from the same place the working code already takes it (here, the
+  cast entry the adapter itself uses) rather than inventing a key for it, and
+  assert the value is *present*, not merely that the field exists.
