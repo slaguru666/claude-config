@@ -35,7 +35,8 @@ On 2026-09-15 two sessions did this within ten minutes of each other, comparing
 the same function across two shas. A peer's extractor matched nothing twice and
 printed `da39a3ee5e6b4b0d` — the SHA-1 of the empty string — then said
 "IDENTICAL". Mine failed two different ways in a row: **`git show $sha:path`
-unquoted in zsh dropped the `:path` and returned the COMMIT MESSAGE**, so I
+in zsh dropped the `:path` and returned the COMMIT MESSAGE** (the cause is two
+paragraphs down, and it is NOT the missing quotes), so I
 diffed two commit texts and read 4042 vs 21441 bytes as if they were the file;
 then an `awk '/^export function x/,/^}/'` range matched nothing at both shas and
 my own trailing `&& echo "IDENTICAL (and both non-empty above)"` fired anyway,
@@ -59,7 +60,16 @@ written down, because it is a failure of its own: the fix that worked used
 it work, I recorded the quoting as the reason. **A fix that works does not confirm
 your account of why it works**, and a prescription derived from one you never
 isolated will send the next reader into the same trap with your name on the
-advice. Change one thing at a time, or say which part you did not test. The failure is silent and
+advice.
+
+The peer did the identical thing in the opposite direction the same hour: their
+forwarding guard **passed** on its first run against the real helper, and they
+only learned it was worthless because it also passed against the reverted one.
+One shape, two directions — a green result taken as confirmation of the account
+in your head, when it was consistent with two accounts and the case that
+separates them had not been run. **Run the discriminating case before writing
+either explanation down:** change one thing at a time, and if you cannot, say
+which part you did not test. The failure is silent and
 plausible — it produced a three-row table of distinct-looking hashes, none of
 which were the file, and I nearly read "production matches no commit" off it.
 Distinct wrong answers look far more like data than a repeated one does. Never
@@ -111,7 +121,7 @@ not the commit** — re-run it on a clean checkout before believing a line of it
 **Corroborate from a DIFFERENT LAYER, not by re-running the same measurement
 more carefully.** Every instrument failure on 2026-09-15 — six across two
 sessions — was inside one layer, so more care within that layer would have caught
-none of them: an empty `awk` extract, `git show $sha:path` unquoted returning the
+none of them: an empty `awk` extract, `git show $sha:path` returning the
 commit message, a log filter whose `1[3-9]:` matched the MINUTE field, a
 MutationObserver on a node the redraw replaces, a `window.fetch` wrapper the app
 outruns by holding its own reference from module load, and a `journalctl` that
@@ -167,5 +177,9 @@ introduce the violation, break the thing, plant the string — and confirm it is
 seen. If a check cannot be made to fail on demand, it is not yet a check; say
 what it does and does not cover rather than reporting it as a pass. When a
 measurement disagrees with itself between two commands, stop and re-measure
-before drawing any conclusion from either. Related: [[feedback-verify-the-neighbours]],
+before drawing any conclusion from either. **And a correction is not landed until
+a grep for the OLD claim comes back empty** — checking the passage you edited only
+proves you edited it. Two sessions corrected the same false cause in this file
+within an hour and it survived twice in the prose around their edits, once above
+and once below. Related: [[feedback-verify-the-neighbours]],
 [[feedback-fuzz-cannot-generate]], [[feedback-concurrent-agents]].
