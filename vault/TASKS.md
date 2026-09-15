@@ -123,10 +123,13 @@ Index: [[INDEX]]
       see the log** [[scenario-forge]]
 - [x] **Sheet header was missing from the GM's default view** (2026-09-15, corkboard 6caf4d5) —
       found by the acceptance test and by nothing else [[corkboard]]
-- [ ] **Cast board: an NPC with no portrait renders as a BLANK polaroid** — `type: "photo"` with
-      `img: null` paints no image element, so five of AFTERIMAGE's nine cast cards are empty white
-      frames with small text. Legible, looks unfinished. Probably should be a note card, but that
-      changes the cast board's look — **your call** [[scenario-forge]]
+- [x] **Cast board: an NPC with no portrait now gets an index card** (2026-09-15, ba75603). A
+      polaroid is a promise of a photograph; with no Actor there is none to put in it, so those
+      NPCs get the card they actually are and the board says something true at a glance — these
+      are the people we have a photograph of. `packZone` gained one rule: width stays the grid's
+      (columns are packed tight, a wider card overlaps), height may be SHORTER, clamped so nothing
+      reaches the row beneath. Verified in Foundry: zero overlapping pairs, all inside the zone,
+      two clean rows [[scenario-forge]]
 - [ ] Tidy up after the acceptance test — delete the **Forge Acceptance Test** world,
       `~/FoundryVTT/Data/modules/afterimage-forge`, and `/tmp/afterimage-forge-dist`
       [[scenario-forge]]

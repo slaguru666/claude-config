@@ -421,3 +421,18 @@ pass.
   default; edit mode is a deliberate extra click. The feature was correct,
   tested, and absent from the first place anyone looks. Before deciding a view
   is "not for the GM", check what the GM sees when they do the ordinary thing.
+
+- **2026-09-15 — A rule about refusing something is untested until a fixture
+  asks for the thing being refused.** A layout rule said card width is the
+  grid's and never the card's; mutating it to honour the card's width passed the
+  whole suite, because no fixture card asked to be wider than its slot. The same
+  sweep had already produced this once that day, on preserve-lists for
+  collections nothing generates yet. If a rule's job is to say no, write the
+  case that asks.
+
+- **2026-09-15 — Empty space on a card means whatever the frame promises.** Five
+  cast cards were photo cards with no photo: a white polaroid frame reading as a
+  missing picture. The same words in an index card read as room to write.
+  Nothing about the information changed. When generated art looks unfinished,
+  check whether the container is promising something the data cannot deliver,
+  before adding data to fill it.
