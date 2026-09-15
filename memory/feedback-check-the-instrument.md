@@ -173,11 +173,13 @@ both ways before believing either result, which is red-green applied to the
 instrument rather than to the feature.
 
 **Red on the broken build proves nothing on its own.** The mirror of everything
-above, and the one that is easy to miss because it feels like success. A peer's
-first draft of a forwarding guard asserted the HTTP status and went red against
+above, and the one that is easy to miss because it feels like success. A peer wrote
+a forwarding guard whose first draft asserted the HTTP status and went red against
 the broken code — and also against the working code, because `listen` follows
 redirects, so a rejected session lands on the login page with a 200 and the status
-cannot discriminate. They only caught it by watching both directions. **A check
+cannot discriminate. **They caught it themselves, by watching both directions, and
+reported it against their own work** — which is why the lesson exists to be written
+down at all. **A check
 must go red on the bad build AND green on the good one; either half alone is
 half a check.** The fix asserted what came back (a stream, or a page) rather than
 the status.
