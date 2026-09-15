@@ -3,7 +3,7 @@ type: project
 status: active
 repo: slaguru666/Continuum2026
 path: ~/Library/Mobile Documents/com~apple~CloudDocs/RPGS/Conventions/Continuum 2026
-updated: 2026-09-13
+updated: 2026-09-15
 ---
 
 # Continuum 2026
@@ -29,15 +29,24 @@ Shared-folder convention: `scenarios/<day>-slot<N>-<system>-<name>.md`,
 
 All six are ported into [[the-director]] with real times.
 
+**Web delivery** — four PWA variants built from the repo by `pwa/build-all.sh`
+(v1 tablet, v2 responsive, e-paper, phone), each deployed as its own Caddy container
+on the VPS (`77.68.99.134`, user `tevans`, tree `/home/tevans/continuum-pwa`).
+Content is **baked into the image at build time** — no volume mounts — so the
+`docker compose up -d --build` is what publishes. Per-variant instructions:
+`deploy/README.md` (v1) and `deploy-v2/README.md`. v2 is `continuum2.timevans.uk`.
+
 **Next steps**
-- **Resolve the count.** The memory index records five games; the Director notes
-  record six, adding Silvery Moon (Sat S5). Six is the later and more specific
-  record. Confirm against the repo before trusting either.
 - Print packs and read-throughs per scenario.
 
 **Key decisions**
 - Scenario source-of-truth for timelines is the `gm-utility/*console` files, not the
   scenario Markdown — the Director's data was transcribed from the consoles.
+- **The slate is six games** (Silvery Moon, Sat S5, was the one in doubt) — confirmed
+  against the repo, and all six are mirrored to iCloud.
+- `pwa/dist-v2/print/*.pdf` is **gitignored** — it duplicates `print/` byte for byte
+  (218MB). A fresh clone must run `node pwa/build-v2.mjs` before building the image,
+  or the container ships with no print PDFs and no error. Documented in the v2 README.
 
 **The Princes Bride — canon, reconciled** (the January drafts contradicted each other)
 - Mary Fletcher made the planted poppet; the real fae charm came from the late
