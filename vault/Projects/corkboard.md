@@ -211,7 +211,8 @@ no gap to detect. Probed headlessly in-process: a connect carrying
 header. What is left is narrower still, and **not**
 "EventSource through nginx", because **sustained delivery through the proxy is
 already proved**: in the two-tab run two real browsers held live `EventSource`
-connections to production through nginx for minutes and took **39 remote
+connections to production through nginx for minutes (on `5e42c1c`, 11:44, the
+pre-retry build) and took **39 remote
 redraws**, three of them inside a single 455ms drag. Corroborated from nginx's
 own log rather than taken on report — two `/events` connections at 11:44:14,
 **92,164 bytes each, identical**, which is two tabs receiving one fan-out.
