@@ -208,10 +208,18 @@ a reconnecting client is caught up by connecting; there is no replay buffer and
 no gap to detect. Probed headlessly in-process: a connect carrying
 `Last-Event-ID: 1` and a fresh connect return **byte-identical payloads** (event
 `board`, `id: 2`, revision 2, both cards). So it needed neither hands nor a
-header. What is left is narrow and honestly stated: that a real browser's
-`EventSource` reconnects **through nginx** after a drop — browser behaviour plus
-proxy config (`proxy_buffering off`, `proxy_read_timeout 1h`, both checked
-present at deploy), not server logic. **No test asserts the open event catches a
+header. What is left is narrower still, and **not**
+"EventSource through nginx", because **sustained delivery through the proxy is
+already proved**: in the two-tab run two real browsers held live `EventSource`
+connections to production through nginx for minutes and took **39 remote
+redraws**, three of them inside a single 455ms drag. Corroborated from nginx's
+own log rather than taken on report — two `/events` connections at 11:44:14,
+**92,164 bytes each, identical**, which is two tabs receiving one fan-out.
+(On the pre-retry build, which does not affect the proxy question.) So
+`proxy_buffering off` is doing its job and delivery is not in question. The one
+thing left is **reconnect after a DROP**: the browser noticing a dead
+connection, re-opening, and nginx handing it a fresh stream. Recovery after
+interruption, not delivery. **No test asserts the open event catches a
 reconnecting client up**, which is the whole recovery mechanism — worth one test.
 Still unproved: load, which PROBABLY needs more than curl — "probably" written
 down rather than implied, because the last three impossibilities here dissolved

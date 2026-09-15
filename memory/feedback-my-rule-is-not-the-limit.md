@@ -34,6 +34,16 @@ record, and the next session to read it would have inherited the same false
 blocker with no reason to doubt it. A self-imposed constraint stated as a fact
 about the world is worse than a missing note, because it looks settled.
 
+**The countermeasure is a time limit, not a resolution.** Three of these in one
+day across two sessions — a peer recorded the same password blocker in a
+verification document before finding `beginSession` in a file they had already
+read — so "be more careful" has already failed. The rule that works: **if
+explaining why something cannot be verified would take longer than a two-minute
+probe, probe.** Writing the explanation is cheaper than doing the check and feels
+like diligence while it is happening, which is exactly why it sticks. The
+`Last-Event-ID` case took four minutes and turned out not even to need the header
+tested; the paragraph justifying it as impossible would have taken longer.
+
 **How to apply:** when about to write "this can't be verified / needs a human",
 name which of the two it is. If it is a rule about my own conduct, ask what the
 codebase or the API offers instead — a server-side path, a test seam, an admin
