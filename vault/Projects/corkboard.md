@@ -200,8 +200,22 @@ must never erode. Corroborated independently from nginx's access log rather than
 taken on report — 20 commit POSTs in one second, 11×200 / 9×409, the 409s
 matching the reported exercises exactly. **The ratio varies run to run** (7/1 at
 5b5852b, 6/2 at 6caf4d5, each corroborated the same way): ordinary variance in a
-bounded retry under contention, so quote it as a range, never as "7 of 8". Still
-unproved: load, and SSE reconnect under `Last-Event-ID`.
+bounded retry under contention, so quote it as a range, never as "7 of 8". **SSE reconnect
+is now measured, and the task was misconceived**: the server never READS
+`Last-Event-ID` — by design, per the comment at `src/web/service.mjs:415`. It
+writes `id: <revision>` and sends a whole-board `board` event on every open, so
+a reconnecting client is caught up by connecting; there is no replay buffer and
+no gap to detect. Probed headlessly in-process: a connect carrying
+`Last-Event-ID: 1` and a fresh connect return **byte-identical payloads** (event
+`board`, `id: 2`, revision 2, both cards). So it needed neither hands nor a
+header. What is left is narrow and honestly stated: that a real browser's
+`EventSource` reconnects **through nginx** after a drop — browser behaviour plus
+proxy config (`proxy_buffering off`, `proxy_read_timeout 1h`, both checked
+present at deploy), not server logic. **No test asserts the open event catches a
+reconnecting client up**, which is the whole recovery mechanism — worth one test.
+Still unproved: load, which PROBABLY needs more than curl — "probably" written
+down rather than implied, because the last three impossibilities here dissolved
+on first contact.
 
 Slice 1, for the record:
 `./install-web-server.sh` then `certbot --nginx -d corkboard.oneoffgames.com`;
