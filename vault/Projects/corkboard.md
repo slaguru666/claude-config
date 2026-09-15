@@ -709,6 +709,23 @@ is typed into any form, which is what had kept live proofs parked for four slice
   state so Foundry's own broadcast carries them. Keep that property.
 
 **Gotchas**
+- **There are TWO served module graphs, and "not in the served graph" is only ever
+  true of one of them.** The web service walks `BOARD_ENTRIES`
+  (`tools/web-server.mjs`: `src/web/client/main.mjs` plus `styles/corkboard.css`
+  and `styles/app.css` — a stylesheet is `<link>`ed, not imported, so it is its
+  own root) and the module part comes to **35 files**; the standalone app walks
+  `app/index.html` and comes to **54**. `src/data/bundle.mjs` and `transfer.mjs`
+  are in the 54 and NOT in the 35, so `readImport` is reachable in the app and
+  not in the service. Check the graph you mean — `shellFiles(root, entry)` will
+  tell you in one line, and carrying one product's answer to the other is the
+  [[feedback-guarantee-not-argument]] mistake wearing a new hat.
+- **`expandEntries` is module-private and the server cannot reach it at all.**
+  Declared unexported in `src/data/board-ops.mjs`, reached only from
+  `touchesCoupledGeometry` and `completeGeometry`, and `src/web/` imports
+  neither (its only board-ops import is `placeOf`). So commit JSON from a
+  stranger at `/api/boards/:id/commit` cannot reach the flattening order
+  question — closed by construction, not by reachability, which is the version
+  worth relying on.
 - **Before committing, rebuild the shell with `npm run build:app:staged`, not
   `build:app`** (51968ad). `build:app` hashes the WORKING TREE; the commit records
   the INDEX. One writer, no difference; three sessions writing, never the same
