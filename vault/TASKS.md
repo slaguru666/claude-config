@@ -70,7 +70,6 @@ Index: [[INDEX]]
 - [x] scenario-forge — **content port done** (2026-09-14): handouts, actors, scenes, tables + the blade-runner adapter. AFTERIMAGE rebuilds with all 30 journals / 13 actors / 6 scenes / 1 table; 222 tests, `6845182` [[scenario-forge]]
 - [x] scenario-forge — module.json, adventure assembly, LevelDB packer; `forge build` works end to end (2026-09-13) [[scenario-forge]]
 - [x] **scenario-forge live acceptance test PASSED** (2026-09-13) — built, installed, imported into a scratch world, pages open and read correctly [[scenario-forge]]
-- [ ] Tidy up after the acceptance test — delete the **Forge Acceptance Test** world and `~/FoundryVTT/Data/modules/afterimage-forge` [[scenario-forge]]
 - [~] **scenario-forge — the four Corkboard boards** (2026-09-15, 7aa1814). Case/Player/Cast/
       Timeline build for all six scenarios: 24 boards, 0 errors, 0 coercions. Corkboard phase 1
       Corkboard phase 1 COMPLETE: barrel + exports map (3cf70af), re-sync (35abe6e), sheet header
@@ -110,7 +109,25 @@ Index: [[INDEX]]
       destroy an evening's play, which is the harm re-sync exists to prevent. Surface grows, never
       shrinks. Dangling strings reported via the validator's own `danglingStrings` read off the
       RESULTING board, never pruned. 31 tests, 16/16 mutations killed.
-- [ ] scenario-forge acceptance test — build AFTERIMAGE, import into a scratch world, open the case board (the one thing the spike could not verify) [[scenario-forge]]
+- [x] **scenario-forge acceptance test — PASSED with the boards** (2026-09-15). Built under
+      `afterimage-forge`, installed, imported into **Forge Acceptance Test** (Foundry 14.361,
+      blade-runner). All four boards import into an `AFTERIMAGE — Boards` folder and
+      `page.system.constructor.name` is **`BoardData`** — the data model really constructs, which
+      the spike could only infer from reading Foundry's source. Case board renders 19 clues in ACT
+      ONE/ACT TWO zones; **Player preview says "Nothing on the board yet."**, so the case board is
+      genuinely dark to the table. Ownership chain verified from the documents: pages are
+      INHERIT(-1), parent entry is NONE(0) + GM OWNER. All 4 cast link cards resolve to real
+      Actors, portraits serve 200. `playerEdit` only on the player board. **Found three things —
+      see the log** [[scenario-forge]]
+- [x] **Sheet header was missing from the GM's default view** (2026-09-15, corkboard 6caf4d5) —
+      found by the acceptance test and by nothing else [[corkboard]]
+- [ ] **Cast board: an NPC with no portrait renders as a BLANK polaroid** — `type: "photo"` with
+      `img: null` paints no image element, so five of AFTERIMAGE's nine cast cards are empty white
+      frames with small text. Legible, looks unfinished. Probably should be a note card, but that
+      changes the cast board's look — **your call** [[scenario-forge]]
+- [ ] Tidy up after the acceptance test — delete the **Forge Acceptance Test** world,
+      `~/FoundryVTT/Data/modules/afterimage-forge`, and `/tmp/afterimage-forge-dist`
+      [[scenario-forge]]
 - [x] **Five scenarios normalised to the house format** (2026-09-15, 0ad76fd) — all six now 15/15
       canonical sections, and every one registers clues, NPCs, handouts and art [[scenario-forge]]
 - [ ] Decide `SM-ART-06-silverstrike` — it was in neither the "still valid" nor the "orphaned"

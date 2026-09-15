@@ -404,3 +404,20 @@ pass.
   have caught it. Both halves are the same error — a guard not matched to the
   hazard — and the test for both is to name the exact bad outcome and ask
   whether the guard's answer differs between that outcome and the good one.
+
+- **2026-09-15 — A fallback inside a probe turns "cannot measure this" into a
+  confident wrong answer.** Checking whether a GM-only board was visible to
+  players, the probe read
+  `testUserPermission(users.find(u => !u.isGM) ?? currentUser, "OBSERVER")` and
+  returned `true`. The world had no player users, so `??` substituted the GM and
+  the answer was about the wrong person entirely. Write probes that return null
+  or throw when their subject is absent, and print the subject alongside the
+  result so a substitution is visible.
+
+- **2026-09-15 — "The player template" and "the read-only template" are not the
+  same thing, and a GM lives in the second.** A provenance line was added only
+  to the editing template on the reasoning that the other one was for players.
+  In Foundry a GM opening a journal page gets the READ-ONLY rendering by
+  default; edit mode is a deliberate extra click. The feature was correct,
+  tested, and absent from the first place anyone looks. Before deciding a view
+  is "not for the GM", check what the GM sees when they do the ordinary thing.

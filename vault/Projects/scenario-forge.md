@@ -63,6 +63,16 @@ cards, strings, layout and reveals stay put. The import dialog offers Re-sync or
 Replace when both boards are generated, so the destructive path is still there
 but is no longer the only one.
 
+**The boards passed the live acceptance test** (2026-09-15, Foundry 14.361).
+Imported into **Forge Acceptance Test** over a previous import: all four boards
+arrive in an `AFTERIMAGE — Boards` folder, `page.system` really is a `BoardData`
+instance rather than the plain-object fallback, the case board renders 19 clues
+in act zones, and **Player preview says "Nothing on the board yet."** Cast link
+cards resolve to real Actors with portraits that serve. The design's claim that
+re-import happens "with no prompt" is wrong — Foundry asks *Overwrite Existing
+Content?* — but there is still no diff and no per-item choice, so re-sync is
+still the only non-destructive path.
+
 **Corkboard phase 1 is complete** — barrel, re-sync and the sheet header
 (corkboard 440af78, forge 65684d8). A GM opening a generated board sees
 `AFTERIMAGE v3.2.0 — Case board` above the tools; players see nothing.
