@@ -276,6 +276,19 @@ session with `beginSession`, use it as a cookie, `endSession` after — no passw
 is typed into any form, which is what had kept live proofs parked for four slices.
 
 **Next steps**
+- ~~One test for the SSE recovery mechanism~~ **DONE 2026-09-15, `dca755b`** —
+  `test/web-recovery.test.mjs`. Six tests state the mechanism; the seventh guards
+  the instrument, and it is the one worth remembering. Three of the six send a
+  header and **no route reads one** — the server ignores `Last-Event-ID` on
+  purpose — so when `listen` dropped `headers`, all six passed *and* a mutant
+  honouring the header survived. You cannot assert a header is read; you can
+  assert it is SENT: `headers` is spread last, so a deliberately broken `Cookie`
+  must stop the stream. Swept on a **clean checkout** (the earlier numbers came
+  from the shared tree and were indistinguishable from the vacuous run): 5/5
+  caught. Left over, and narrower than it reads: **reconnect after a DROP** —
+  sustained delivery is already proved live on `5e42c1c`, so do not re-test it;
+  the browser noticing a dead connection and nginx handing it a fresh stream is
+  what is untested
 - **Verify the geometry race fix on a live board** — drag a line's box in one
   tab while undoing a resize in another, both orderings. Codex's harness ran
   Foundry 14.361; live is 14.363
