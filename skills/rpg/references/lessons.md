@@ -502,3 +502,16 @@ pass.
   a mushroom vent head) but in exactly the right register. Re-captioning it cost
   nothing and the art sheet recorded why, which is cheaper than fighting the model
   toward a picture the scenario did not actually need.
+
+- **2026-09-16 — A rewrite inherits the old document's evidence, and most of it
+  no longer applies.** STANDING ORDER v1.0 kept v0.7's site, people and act
+  budgets, and the five desk passes that justified those budgets had tested a
+  different plot. The status line has to say which lessons carry forward (and
+  mark each one where it lands) and which measurements do not, or the
+  "convention-ready" claim survives the rewrite that voided it.
+- **2026-09-16 — When a scenario gains a fight, measure it before writing the
+  paragraph about it.** Guessing the Act Two detention as "a scuffle" would
+  have been wrong: the four-player cut, with no fighter in it, loses to four
+  wardens more often than it wins. Measuring first turned the brief's "do this
+  diplomatically" from flavour into the table's best option, and the GM text
+  could say so with a cited figure.
