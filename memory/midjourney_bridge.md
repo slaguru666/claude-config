@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: reference
   originSessionId: fa4ca039-8c0e-4b9c-aee8-b6d7a81482b5
-  modified: 2026-07-19T14:01:49.937Z
+  modified: 2026-09-16T14:54:08.402Z
 ---
 
 # Midjourney bridge (`mj-gen`)
@@ -62,6 +62,14 @@ Then read the resulting PNG back to verify it matches the brief before placing i
   bust..." prompts died in a row and were misread as fast-hours exhaustion —
   the account had 13h56m remaining; "Head and shoulders portrait" worked
   first try.) `timeout_seconds` in config.json is 1800 (was 600).
+- **16 Sep 2026, same mistake twice:** Joan Wetherlaw's portrait "timed out" in
+  two sessions and was written up as fast hours running out — wrong again; other
+  prompts in the same minutes returned in 40s. Proven blocker: **"bare"** ("one
+  bare bulb" → "a single hanging light bulb" rendered). Joan's died on one of
+  "waxed" / "yard brush" / "unimpressed". **Check first:** list the channel's last
+  messages (import `~/bin/mj-gen` as a module and call `discord_request`; never
+  print the token) — no bot post for the job = blocked prompt. Kill a stuck
+  `mj-gen` after ~3 min rather than waiting 30.
 
 ## Known fragility
 
