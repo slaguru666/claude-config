@@ -52,12 +52,29 @@ for rel in "${EXTRA_PROJECT_PATHS[@]}"; do
   fi
 done
 
-# Obsidian memory vault. Canonical copy is the slavault vault on the Macs; the
-# iCloud vault gets a one-way MIRROR so TASKS.md stays readable on the phone —
-# edits made on the phone are overwritten, so treat the iCloud copy as read-only.
-# A machine without slavault (MINI-S) skips this entirely, leaving the repo copy
-# intact — the same never-delete-what-you-don't-have rule as the memory dirs above.
-VAULT_SRC="$HOME/Vault/slavault/Ai/Claude"
+# Obsidian memory vault. Canonical copy is the slavault vault — ~/Vault/slavault on
+# the Macs, ~/Documents/slavault on fedora, where Obsidian is a flatpak with no
+# iCloud and syncs into ~/Documents. Probed in order, first hit wins; override with
+# SLAVAULT_PATH. The iCloud vault gets a one-way MIRROR so TASKS.md stays readable
+# on the phone — edits made on the phone are overwritten, so treat the iCloud copy
+# as read-only. A machine without slavault (MINI-S) skips this entirely, leaving the
+# repo copy intact — the same never-delete-what-you-don't-have rule as the memory
+# dirs above.
+#
+# This probes for "$candidate/Ai/Claude", not the vault root install.sh looks for:
+# this direction READS the notes and drives an rsync --delete into the repo, so a
+# slavault with no Ai/Claude must not be selected. install.sh creates that dir.
+SLAVAULT_CANDIDATES=("$HOME/Vault/slavault" "$HOME/Documents/slavault")
+if [ -n "${SLAVAULT_PATH:-}" ]; then
+  SLAVAULT_CANDIDATES=("$SLAVAULT_PATH" "${SLAVAULT_CANDIDATES[@]}")
+fi
+VAULT_SRC=""
+for candidate in "${SLAVAULT_CANDIDATES[@]}"; do
+  if [ -d "$candidate/Ai/Claude" ]; then
+    VAULT_SRC="$candidate/Ai/Claude"
+    break
+  fi
+done
 VAULT_MIRROR="$HOME/Library/Mobile Documents/iCloud~md~obsidian/Documents/Obsidian/Ai/Claude"
 # Guard: a note whose heading appears twice is the signature of two writers
 # colliding, or of an anchor-replace run without count=1 on an already-doubled
@@ -115,7 +132,7 @@ if [ -d "$VAULT_SRC" ] && [ "$VAULT_GUARD_FAILED" = "0" ]; then
 elif [ "$VAULT_GUARD_FAILED" = "1" ]; then
   echo "  Skipped: vault/ — guard refused (see above); repo copy left intact"
 else
-  echo "  Skipped: vault/ — no ~/Vault/slavault/Ai/Claude on this machine"
+  echo "  Skipped: vault/ — no slavault/Ai/Claude on this machine (probed: ${SLAVAULT_CANDIDATES[*]})"
 fi
 
 if [ -d "$CLAUDE_DIR/skills" ]; then

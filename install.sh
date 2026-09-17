@@ -44,11 +44,23 @@ for rel in "${EXTRA_PROJECT_PATHS[@]}"; do
 done
 
 # Obsidian memory vault -> the slavault vault, when this machine has one.
+# slavault sits in a different place per machine: ~/Vault/slavault on the Macs,
+# ~/Documents/slavault on fedora, where Obsidian is a flatpak with no iCloud and
+# syncs into ~/Documents. Probed in order, first hit wins; override with
+# SLAVAULT_PATH before running.
 # Overlay only, no --delete: a machine's own newer notes are never destroyed by an
 # install. Machines with no Obsidian vault (MINI-S) read the repo copy directly.
 if [ -d "$SCRIPT_DIR/vault" ]; then
-  if [ -d "$HOME/Vault/slavault" ]; then
-    VAULT_DEST="$HOME/Vault/slavault/Ai/Claude"
+  SLAVAULT_ROOT=""
+  for candidate in "${SLAVAULT_PATH:-}" "$HOME/Vault/slavault" "$HOME/Documents/slavault"; do
+    if [ -n "$candidate" ] && [ -d "$candidate" ]; then
+      SLAVAULT_ROOT="$candidate"
+      break
+    fi
+  done
+
+  if [ -n "$SLAVAULT_ROOT" ]; then
+    VAULT_DEST="$SLAVAULT_ROOT/Ai/Claude"
     mkdir -p "$VAULT_DEST"
     if command -v rsync >/dev/null 2>&1; then
       rsync -a "$SCRIPT_DIR/vault/" "$VAULT_DEST/"
@@ -104,7 +116,8 @@ fi
 # Obsidian vault MCP server (filesystem access).
 # The vault lives in a different place on every machine: on MINI-S it is inside the
 # homelab Docker stack (~/docker/obsidian/config/...), on the Macs it is a native
-# Obsidian vault under ~/Vault. The old hardcoded /home/timevans/... path could never
+# Obsidian vault under ~/Vault, and on fedora the flatpak syncs it to ~/Documents.
+# The old hardcoded /home/timevans/... path could never
 # match on macOS, so this step silently skipped there on every install.
 # Candidates are probed in order and every one that exists is granted to the server.
 # Override with OBSIDIAN_VAULT_PATHS (colon-separated) before running.
@@ -116,6 +129,7 @@ if command -v claude >/dev/null 2>&1; then
       "$HOME/docker/obsidian/config/Obsidian Vault"
       "$HOME/Vault/Tims_Vault"
       "$HOME/Vault/slavault"
+      "$HOME/Documents/slavault"
     )
   fi
 
