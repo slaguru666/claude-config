@@ -17,8 +17,9 @@ VPS, with self-hosted **LiveKit** as the media engine.
 `docs/superpowers/specs/2026-09-20-parley-av-layer-design.md`, slice 1 plan at
 `docs/superpowers/plans/2026-09-20-parley-slice-1-spine.md`.
 
-**Current state** — Design and slice 1 plan written and committed 2026-09-20.
-**No code yet.** Blocked on Tim: two Porkbun A records.
+**Current state** — Design and slice 1 plan written and committed 2026-09-20,
+then retargeted the same day at the [[media-box]]. DNS is live. **No code yet**;
+nothing is blocked — slice 1 can start.
 
 **Four things it must do that nothing off the shelf can**
 1. Masque processing the GM's outgoing voice, per NPC, switchable mid-sentence.
@@ -46,13 +47,19 @@ VPS, with self-hosted **LiveKit** as the media engine.
   service mints identity-bound tokens → the GM hands each player theirs over
   Foundry's own socket. The LiveKit secret never leaves the VPS.
 
+**Runs on two boxes** — the module deploys to [[oneoffgames-vps]] (the game box);
+LiveKit and `parley-service` deploy to the [[media-box]]. They never talk to each
+other, so this costs nothing and keeps media load off live worlds.
+
 **Gotchas**
 - `Track.Source` is a **closed enum**. Aux tracks are identified by `name`
   (`parley.ambience`, `parley.npc`), never by source — anything keying off
   source breaks the moment a GM shares a screen.
 - `AccessToken.toJwt()` is **async** in `livekit-server-sdk` 2.x.
-- Needs A records for `rtc.` and `turn.oneoffgames.com` at Porkbun before
-  certbot can issue — the wildcard points at Porkbun parking.
+- **No certbot on the media box** — TLS is a Caddy *container*. Edit
+  `/opt/nextcloud-stack/Caddyfile`, validate, reload. Back it up first.
+- **TURN is UDP-only** (443 is taken), so a player on a UDP-blocked network has
+  no fallback. Test for it; do not discover it mid-game.
 - `ProtectSystem=strict` on the unit is fine *only* while the service writes
   nothing. Adding state means adding `StateDirectory` at the same moment.
 

@@ -10,7 +10,7 @@ Index: [[INDEX]]
 
 ## Active
 
-- [ ] **Add A records for `rtc.oneoffgames.com` and `turn.oneoffgames.com`** at Porkbun -> 85.190.246.132 [[parley]] — blocks slice 1 entirely; certbot cannot issue without them
+- [x] **A records for `rtc.` and `turn.oneoffgames.com`** — done 2026-09-20, pointed at **149.102.145.10** (the [[media-box]]), not the game box. Kept deliberately: LiveKit and Foundry never talk to each other, so separating them keeps media load off live worlds. Plan retargeted.
 - [ ] Decide Parley's remote (Gitea + GitHub) and whether the name stays [[parley]]
 - [ ] Parley slice 1 — the spine: LiveKit + service + AVClient + dock [[parley]]
 - [x] Import Ordnance's VTT exports into a live v14 world [[ordnance]] — 2026-09-19, all three routes pass; two faults found and fixed (6be38a7)

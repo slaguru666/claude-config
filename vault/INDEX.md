@@ -66,4 +66,5 @@ The map of everything Claude and Tim are building. Open this first.
 | [[oneoffgames-vps]] | Contabo box; Foundry, the public game site, Loom | active |
 | [[gitea-timevans]] | Private git; **SSH port 2222** | active |
 | [[mini-s]] | Linux box: remote access, Docker stacks, Playwright | active |
+| [[media-box]] | Third Contabo box: Nextcloud, backup Foundry, and Parley's LiveKit | active |
 | [[graphiti]] | Knowledge-graph memory service | active |
