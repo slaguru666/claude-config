@@ -1,6 +1,6 @@
 ---
 type: index
-updated: 2026-09-13
+updated: 2026-09-20
 ---
 
 # Claude — Index
@@ -22,6 +22,7 @@ The map of everything Claude and Tim are building. Open this first.
 | [[the-director]] | Offline convention GM tablet PWA | complete |
 | [[rpg-skill]] | The house scenario-writing skill at `~/.claude/skills/rpg` | active |
 | [[scenario-forge]] | Compiles a house-format scenario into a Foundry module + Corkboard boards | active |
+| [[parley]] | Our own A/V layer inside Foundry — LiveKit, Masque, ambience, staging | active |
 
 ## Conventions and scenarios
 
@@ -42,6 +43,9 @@ The map of everything Claude and Tim are building. Open this first.
 | [[haunt]] | Horror ambience machine | complete |
 | [[grimoire]] | Dark-fantasy keys preset instrument | complete |
 | [[nexus]] | Combined cinematic score workstation | complete |
+| [[nexus-80]] | Blade Runner CS-80 synth, published as an Artifact | active |
+| [[off-world]] | Blade Runner ambient generator that plays itself | active |
+| [[ordnance]] | Seeded battle-map generator: dungeons, buildings, hulls, wargames tables | active |
 
 ## Tooling
 

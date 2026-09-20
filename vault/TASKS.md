@@ -1,6 +1,6 @@
 ---
 type: tasks
-updated: 2026-09-15
+updated: 2026-09-20
 ---
 
 # Tasks
@@ -10,6 +10,14 @@ Index: [[INDEX]]
 
 ## Active
 
+- [ ] **Add A records for `rtc.oneoffgames.com` and `turn.oneoffgames.com`** at Porkbun -> 85.190.246.132 [[parley]] — blocks slice 1 entirely; certbot cannot issue without them
+- [ ] Decide Parley's remote (Gitea + GitHub) and whether the name stays [[parley]]
+- [ ] Parley slice 1 — the spine: LiveKit + service + AVClient + dock [[parley]]
+- [x] Import Ordnance's VTT exports into a live v14 world [[ordnance]] — 2026-09-19, all three routes pass; two faults found and fixed (6be38a7)
+- [ ] Decide whether Ordnance becomes a repo (Gitea + GitHub) or stays an Artifact [[ordnance]]
+- [x] Ordnance: hex grid option, and multi-deck ships sharing one hull outline [[ordnance]]
+- [x] Ordnance: hand-carved rooms are geometry only — they still get no number in the key [[ordnance]] — 2026-09-19, keyed in baa2c77
+- [x] **Push `f8deadb` from fedora** — done 2026-09-17. `gh auth login` (device flow) on the box, `gh auth setup-git` for the credential helper, pushed and verified with `git ls-remote`: `origin/main` = `f8deadb`, `install.sh` + `sync.sh` [[claude-config-sync]]
 - [x] Undo double-fire report — **not reproducible; no defect** [[corkboard]] (2026-09-13). One click gives one handler run and one toast; the binding is single on every render path. Do not re-chase.
 - [x] **Undo race — both review 32 P2s fixed** [[corkboard]] (2026-09-15, 19b9ace). Both were BOUNDARY errors, not errors in the coupling. The rule was keyed on `shapes.<id>.<field>` and so excluded `shapes.<id>` — the one producer naming a line's geometry all at once (`restorePayload`, used by baseline restore and import). Classification now lives in one function, `coupledTarget`: an existing entry is forced, a creation is not (nothing to diff against), a removal is excluded explicitly (`placeOf` strips the `-=`), and an entry BECOMING a line counts. Second: `diff:false` is per-update not per-field, so protecting four fields stopped protecting everything sent beside them — `setShapeEnd` names `x,y` too. `thinUncoupled` now drops what diffing would have dropped outside the group, in one update (one payload is one transaction). Mutation sweep 14/14.
 - [x] **Coupling boundary — rebuilt so there is nothing left to infer** [[corkboard]] (2026-09-15, 1488f9a). Three fixes had each added a rule for a SECOND key shape; the fix is to remove the second shape. A whole-entry write is rewritten as writes of the fields it sets (Foundry merges objects into existing entries, so it is the same write). One key shape afterwards, and completion and thinning both work at the granularity Foundry's own diff uses. Both review 33 findings fall out rather than being handled. Flattening is the price of turning diffing off, so it is paid only there: uncoupled writes are handed back untouched, creations stay whole. 2044 pass, sweep 17/17.

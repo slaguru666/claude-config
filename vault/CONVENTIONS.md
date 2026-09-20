@@ -126,6 +126,13 @@ never conflicts, it just silently wins.
 - This happened on 2026-09-13: `Projects/oneoffgames-vps.md` carried two `**Gotchas**`
   sections across five commits, ~2.2 KB duplicated, bullets stranded after the
   `Related:` footer, and nothing complained. Found and merged by another session.
+- **Never run `install.sh`'s vault restore on a machine holding vault edits the repo has
+  not seen.** That step is `rsync -a claude-config/vault/ -> canonical`, an overlay, so it
+  silently puts the older note back — and `diff -rq` between the two afterwards comes back
+  clean *because* the rsync has just made both sides identical. The check has to look for
+  your own text, not for a difference. On `fedora` every vault edit is in that state until
+  a Mac runs `sync.sh`, since only the Mac path pushes. 2026-09-17: cost a whole log entry,
+  recovered from the session transcript.
 
 ## Infrastructure
 
@@ -140,3 +147,18 @@ never conflicts, it just silently wins.
 - Reference code as `file:line`.
 - Smallest correct change. No opportunistic refactoring, no speculative
   features, no bundled cleanup.
+
+- **Assert continuity, not presence.** "Some water was placed" passed while the river
+  had holes in 36 of 60 columns. Ask whether the thing spans end to end, joins up, or
+  has a partner — the properties that make it the thing it claims to be.
+- **Sweep every option, not the default.** Ordnance's sight-line blocking looked fine
+  on the 60×44 table and failed badly on the 30×22 one; the weakness was pre-existing
+  and invisible until the sweep covered all four sizes.
+- **Look at the render.** Four real defects in Ordnance v5 — a wall around every river,
+  overflowing title text, an unreadable courtyard, an invisible road — were caught by
+  screenshotting the sheet, not by 7684 passing assertions.
+
+- **Never rasterise a rotated rectangle onto a grid.** Sampling it along its own axis
+  leaves a one-cell staircase joined only corner to corner. Measure distance to the
+  centre segment instead, with a radius of at least 0.75 so a diagonal neighbour is
+  taken in. Cost two separate bugs in Ordnance before it was written down.
