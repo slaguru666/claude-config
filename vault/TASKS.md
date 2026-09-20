@@ -12,7 +12,11 @@ Index: [[INDEX]]
 
 - [x] **A records for `rtc.` and `turn.oneoffgames.com`** — done 2026-09-20, pointed at **149.102.145.10** (the [[media-box]]), not the game box. Kept deliberately: LiveKit and Foundry never talk to each other, so separating them keeps media load off live worlds. Plan retargeted.
 - [ ] Decide Parley's remote (Gitea + GitHub) and whether the name stays [[parley]]
-- [ ] Parley slice 1 — the spine: LiveKit + service + AVClient + dock [[parley]]
+- [ ] **Parley slice 1 — the spine: LiveKit + service + AVClient + dock** [[parley]]. Code complete and deployed (47/47 tests, md5 parity on the box, no config drift); **live verification blocked and NOT done.** See `docs/verification/2026-09-20-slice-1-spine.md`.
+- [ ] **TIM, blocking everything else on Parley: relaunch the `blade-runner` world** [[parley]] — Foundry builds its package list at world launch, so the module deployed on 09-20 is invisible to a server whose world launched on 09-18. Return to Setup → Launch World, or `ssh foundry 'systemctl restart foundryvtt13'`. Then `game.modules.has("parley")` must be `true`.
+- [ ] **TIM: run Half B of the Parley verification** [[parley]] — two browser profiles, real mic and camera. Enable the module, set `serviceUrl` + the GM-only secret, A/V mode 3, **reload**, then: both seats, audio both ways, video both ways, mute observed across, the player-side secret check, LiveKit's participant log, and the toast count with `parley-service` stopped. Exact commands and expected output are in the doc.
+- [ ] **Parley: close the AVClient test gap before slice 2** [[parley]] — `av-client.mjs` and `dock.mjs` cannot be imported without a `foundry` global, so **no automated test exercises any client behaviour** and every defect in slice 1 was found by reading, never by running. Largest quality gap in the slice.
+- [ ] Parley slice 2 — the audio bus: Masque on the GM's outgoing voice, ambience as a separate track [[parley]]
 - [x] Import Ordnance's VTT exports into a live v14 world [[ordnance]] — 2026-09-19, all three routes pass; two faults found and fixed (6be38a7)
 - [ ] Decide whether Ordnance becomes a repo (Gitea + GitHub) or stays an Artifact [[ordnance]]
 - [x] Ordnance: hex grid option, and multi-deck ships sharing one hull outline [[ordnance]]
