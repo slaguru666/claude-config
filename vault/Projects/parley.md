@@ -17,28 +17,23 @@ VPS, with self-hosted **LiveKit** as the media engine.
 `docs/superpowers/specs/2026-09-20-parley-av-layer-design.md`, slice 1 plan at
 `docs/superpowers/plans/2026-09-20-parley-slice-1-spine.md`.
 
-**Current state** — Slice 1's code is **complete and deployed**, branch
-`slice-1-spine`, 47 unit tests green, and the whole `module/` tree now matches the
-box byte-for-byte (md5 parity on all 9 files; the service matches too). The
-infrastructure is healthy and the repo's `deploy/` has **no drift** from either
-box. Task 10 ran, and it found a wall: **Parley has never executed in a browser,
-because the running Foundry server has never seen the module.** `blade-runner` was
-launched 2026-09-18 19:31, the module directory first existed 2026-09-20 22:23,
-and Foundry builds its package list at world launch — so `game.modules.has(
-"parley")` is `false` and `CONFIG.WebRTC.clientClass.name` is still
-`SimplePeerAVClient`. Verification doc:
-`docs/verification/2026-09-20-slice-1-spine.md`.
+**Current state** — Slice 1 complete and reviewed, branch `slice-1-spine`,
+31 commits, **126 tests**. Infrastructure live and healthy. The whole-branch
+review found a **blocker** (no CORS on the token service, so the GM's browser
+could never get a token) plus three trust-chain holes; all fixed and the CORS
+fix live-verified. An overnight pass then added a Foundry test double, the
+dock's four controls, token renewal, and local push-to-talk gating.
 
-**Next steps** — (1) **Tim, first and blocking:** relaunch the world (or
-`systemctl restart foundryvtt13`) so Foundry rescans packages, then enable Parley,
-set `serviceUrl` to `https://rtc.oneoffgames.com/parley` and paste the secret on
-the GM machine only, set A/V mode to 3, **reload**. (2) Then Half B of the
-verification doc — two browser profiles, real mic and camera: both seats, audio
-both ways, video both ways, mute observed across, the player-side secret check,
-the LiveKit participant log, and the service-down toast count. (3) Only then the
-whole-branch review and `superpowers:finishing-a-development-branch`. (4) Before
-slice 2: close the AVClient test gap, or accept that no client logic has ever been
-executed.
+**Blocked on Tim, and only this** — Parley has never executed in a browser. The
+world now sees the module (Foundry was restarted 2026-09-21 and blade-runner
+relaunched), so what remains is: enable it, set `serviceUrl` + the secret in the
+GM browser, set world A/V mode to AUDIO_VIDEO, reload, then the console checks
+and a two-browser audio test. See `docs/verification/2026-09-20-slice-1-spine.md`.
+
+**Next steps** — (1) Tim's checklist above. (2) Slice 2: the dock is not
+draggable (no frame = no drag header; core makes it a flex sibling of
+`#interface`), per-user volume does nothing, no reconnect after an unexpected
+disconnect, and a GM page reload force-reconnects the whole table.
 
 **Four things it must do that nothing off the shelf can**
 1. Masque processing the GM's outgoing voice, per NPC, switchable mid-sentence.
