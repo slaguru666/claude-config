@@ -19,6 +19,7 @@ Index: [[INDEX]]
 - [ ] Parley slice 2 — the audio bus: Masque on the GM's outgoing voice, ambience as a separate track [[parley]]
 - [x] Import Ordnance's VTT exports into a live v14 world [[ordnance]] — 2026-09-19, all three routes pass; two faults found and fixed (6be38a7)
 - [ ] Decide whether Ordnance becomes a repo (Gitea + GitHub) or stays an Artifact [[ordnance]]
+- [x] Ordnance's dungeon, starship and station generators in Loom's map panel [[loom]] — 2026-09-22, db6f326, deployed to loom.oneoffgames.com
 - [x] Ordnance: hex grid option, and multi-deck ships sharing one hull outline [[ordnance]]
 - [x] Ordnance: hand-carved rooms are geometry only — they still get no number in the key [[ordnance]] — 2026-09-19, keyed in baa2c77
 - [x] **Push `f8deadb` from fedora** — done 2026-09-17. `gh auth login` (device flow) on the box, `gh auth setup-git` for the credential helper, pushed and verified with `git ls-remote`: `origin/main` = `f8deadb`, `install.sh` + `sync.sh` [[claude-config-sync]]
@@ -209,11 +210,11 @@ Index: [[INDEX]]
 
 ## Blocked / awaiting a decision
 
-- [ ] iPad storage durability testing [[corkboard]] — the app is now live at https://web.oneoffgames.com/corkboard/app/ (not `corkboard-spike/`), so this is unblocked
+- [ ] iPad storage durability testing [[corkboard]] — emulation pass done 2026-09-22 (WebKit iPad profiles: flows, gestures, offline, 44px targets, fit — d69ebed live). Still needs a REAL iPad: keyboard on Add note, select height, Home Screen status-bar inset, 7-day eviction in a Safari tab
 - [x] File-exchange validation [[corkboard]] — `.corkboard` bundles both ways, verified in Foundry v14 and the app (2026-09-13)
 - [ ] Local-network sync for offline iPads — out of scope for Phase 2 [[corkboard]]
 - [x] Publish from the app [[corkboard]] — Publish button + `corkboard-publish` service; filter runs client-side, server refuses unfiltered boards (2026-09-13)
-- [ ] Unpublish from the app [[corkboard]] — taking a board down is still `ssh` + `rm`; a DELETE on the same service and auth
+- [x] Unpublish from the app [[corkboard]] — 2f55fd4; app + publish server both deployed 2026-09-22 (DELETE answers 401 unauthenticated; authorised path not exercised live)
 - [x] Shared Corkboard slice 1 — accounts, sessions, admin page, live at https://corkboard.oneoffgames.com [[corkboard]] (2026-09-14)
 - [x] Shared Corkboard slice 2 — boards, the commit endpoint and the module server; a board renders under a CSP with no `unsafe-inline` [[corkboard]] (2026-09-14)
 - [ ] **Sign in once at corkboard.oneoffgames.com and open a board** [[corkboard]] — the one thing slice 2 could not verify; account `tim`, password in `/root/.corkboard-admin` on the box

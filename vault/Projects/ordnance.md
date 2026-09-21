@@ -3,7 +3,7 @@ type: project
 status: active
 repo: github.com/slaguru666/ordinance (public)
 path: ~/Git/ordnance
-updated: 2026-09-19
+updated: 2026-09-22
 ---
 
 # Ordnance
@@ -36,6 +36,11 @@ keep a room and reroll; stocking by party level (`js/gen/stock.js`); projects of
 linked maps with teleports (`js/project.js`); presets + guide (`js/presets.js`);
 stamps; tiled 1-inch print (`js/print.js`); hex grids (`js/hex.js`).
 `playtest-gm.mjs` drives all ten as a GM.
+
+**In Loom (2026-09-22)** — dungeon, ship and station generators vendored
+byte-identical from `369d4b5` into [[loom]] as three map types. Fix bugs here and
+recopy; never edit Loom's copy. Battlefield and building were left out: a
+wargames table has no rooms to pin, and Loom already has buildings.
 
 **Next steps**
 - Decide whether this becomes a repo (Gitea + GitHub) or stays an Artifact

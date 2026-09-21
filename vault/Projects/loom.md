@@ -3,7 +3,7 @@ type: project
 status: active
 repo: slaguru666/loom (gitea.timevans.uk, private)
 path: ~/loom
-updated: 2026-09-13
+updated: 2026-09-22
 ---
 
 # Loom
@@ -29,9 +29,17 @@ GM screen, and the Ringworld setting board generated from the bible by
 `~/RingBRP/make-loom-board.mjs` (a generator, so the bible stays the single source — it adds
 only card *type*, which Loom colours by and numbered headings cannot supply).
 
+Nine map types since 2026-09-22: the three Ordnance ones (dungeon level, starship,
+space station) sit beside Mapwright's six. 225 tests.
+
 **Next steps** — driven by `docs/feedback/REPORT.md`.
 
 **Key decisions**
+- 2026-09-22 — **Ordnance is vendored, not ported.** Its generators and `toSVG` sit
+  byte-identical in `app/core/mapgen/ordnance/` (resync recipe in its README);
+  Loom's contract lives only in the adapter `mapgen/ordnance.mjs`. Its image has
+  a margin and title block, so pins are placed on the printed room number, not
+  normalised over the cell grid — a test holds that at three grid sizes → [[2026-09]]
 - 2026-09-13 — **A seed is meaningless without the engine that read it.** `ENGINE`
   (`generators.mjs:52`, now 2) is written into provenance beside the seed and bumped
   whenever generation changes meaning; otherwise rewriting a pack row silently makes old

@@ -3,7 +3,7 @@ type: project
 status: active
 repo: slaguru666/corkboard
 path: ~/Git/corkboard
-updated: 2026-09-15
+updated: 2026-09-22
 ---
 
 # Corkboard
@@ -276,6 +276,11 @@ session with `beginSession`, use it as a cookie, `endSession` after — no passw
 is typed into any form, which is what had kept live proofs parked for four slices.
 
 **Next steps**
+- **Real-iPad check** (2026-09-22 emulation pass is done, d69ebed live): the
+  keyboard on Add note (focus lands after an `await`, which iOS may refuse),
+  the ink-width `<select>` height, the toolbar under the status bar when opened
+  from the Home Screen, and the 7-day Safari-tab eviction the banner now names.
+  Playwright's WebKit is macOS WebKit, not iOS; no Xcode, so no Simulator
 - ~~One test for the SSE recovery mechanism~~ **DONE 2026-09-15, `dca755b`** —
   `test/web-recovery.test.mjs`. Six tests state the mechanism; the seventh guards
   the instrument, and it is the one worth remembering. Three of the six send a
@@ -367,6 +372,12 @@ is typed into any form, which is what had kept live proofs parked for four slice
   so the clamp is invisible until release
 
 **Key decisions**
+- 2026-09-22 — **On an iPad the storage threat is time, not space.** A Safari tab
+  loses its storage after seven days unvisited; a Home Screen launch does not. The
+  banner detects a Safari tab by `navigator.standalone === false` (only Safari has
+  the property) and says so. Also: 44px targets under `(pointer: coarse)` only, and
+  `#app` padded by `safe-area-inset-top` for the black-translucent status bar
+  → [[2026-09]]
 - 2026-09-15 — **Deploy from a throwaway worktree at an explicit sha, never from
   `~/Git/corkboard`.** `install-web-server.sh` runs `rsync -az --delete src/`, and
   several sessions share that tree; at deploy time it held three files nobody in
