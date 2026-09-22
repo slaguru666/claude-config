@@ -3,7 +3,7 @@ type: project
 status: active
 repo: slaguru666/RingBRP + slaguru666/ringbrp-design
 path: ~/FoundryVTT/Data/systems/ringbrp + ~/RingBRP
-updated: 2026-09-13
+updated: 2026-09-23
 ---
 
 # The Custodians (RingBRP)
@@ -18,8 +18,8 @@ updated: 2026-09-13
 - `~/RingBRP/` → `slaguru666/ringbrp-design` (public since 9 Sep 2026) — the design
   corpus: the bible, six rules specs, 26 review briefs. `.gitignore` holds the scans back.
 
-**Current state** — playable and guarded. **21 build guards** under `npm run check`, each a
-claim about the game re-measured on every build. **`docs/REVIEW_LOG.md` (at R-309) holds the
+**Current state** — playable and guarded. **25 build guards** under `npm run check`, each a
+claim about the game re-measured on every build. **`docs/REVIEW_LOG.md` (at R-310) holds the
 reasoning behind all of them** and is the thing to read before re-deciding anything here.
 Scenarios: `LAST_ADMISSION`, `OPEN_DAY`, `THROUGH_TRAIN`, **CLEAN GROUND** (v0.25, eleven
 desk passes, artwork placed, Contingency 2027 slot 9), whose published figures are held in both directions —
@@ -29,15 +29,40 @@ number with nothing holding it stops the build. That guard is now one reader wit
 authorities — shapes on a named phrasing, columns on the table header, bold in prose only —
 after `check-unmarked` was folded into it.
 
-**Next steps** — **CLEAN GROUND needs a run with human beings, and that is now the only thing
-left on its list.** Pass 11 closed the last desk-reachable branch; every one of the original
-four has been played. Then splitting `ringbrp.mjs`, and anatomy tables for non-human shapes —
-the bestiary's own known gap. **CLEAN GROUND's artwork is generated and placed** — 6 NPC
-portraits at 512×512 and 11 scene plates at 1024×682, prompts and failure notes in
+**NPCs, threats and monsters (23 Sep 2026)** — generated NPCs now draw their **posting's
+kit**: `drawKitFor()` in `postings.mjs` decides, `generateNPC` issues, and each weapon grants
+the skill it names. Armour is an item, not a number. **The forge** (`forge.mjs` at the root,
+`tools/forge.mjs` CLI, and a third Actors-sidebar button) derives a creature from role, size,
+tier and species and explains every number. **The forge panel is not yet verified in a running
+Foundry** — the derivation is, the Foundry glue is not.
+
+**Next steps** — **open a world and click the three generator buttons**; that is the only
+untested surface. Then **CLEAN GROUND needs a run with human beings** — pass 11 closed the
+last desk-reachable branch and all four originals have been played. Then splitting
+`ringbrp.mjs`. **CLEAN GROUND's artwork is generated and placed** — 6 NPC portraits at
+512×512 and 11 scene plates at 1024×682, prompts and failure notes in
 `docs/scenarios/CLEAN_GROUND_ART.md`. One known defect kept on purpose: `cg_04_crossing` has
 livestock on a hillside the text says is empty, and seven re-rolls produced nothing better.
 
+Open, and **not** mine to decide: `breach_suit` and `riot_shield` declare no `covers`, so
+they armour every location including the head — 12 of 32 armours are the same. And 35
+creatures hold a weapon they have no skill for, held at `check-armed`'s ratchet because
+giving each one a rating moves `check-lethality`'s numbers.
+
 **Key decisions**
+- 2026-09-23 — **The posting says what it carries; the tier says how much.** A weapon names
+  the skill that fires it, so the pairing table is the weapon and nothing can be issued that
+  its holder cannot use. The same rule now puts body-plan declarations on the natural attacks:
+  anatomy records that a creature has a head, not that the head has horns.
+- 2026-09-23 — **One derivation in a module both sides import is most of a guarantee, not all
+  of it.** The forge CLI and the Foundry panel call the same function from *different*
+  catalogues, and a fallback that took the first usable entry made them disagree — the list
+  arrives in declaration order from `content.mjs` and id order from the pack. A derivation may
+  not depend on its caller's iteration order.
+- 2026-09-23 — **A guard whose success line claims more than it checks.** `check-forge` read
+  the hit-location table and never used it while printing "armed with something its body can
+  use"; deleting the forge's body filter left all 450 rows green. Mutation-test every new
+  guard — three plants, one caught, one real hole, one genuine no-op.
 - 2026-09-09 — **`rules.mjs` is the ONLY rule authority**, imported by runtime and pack
   builder alike, so packs cannot be built under one rule and played under another. Read it
   before quoting any rule; the `design/` specs are review history, **not** current rules.

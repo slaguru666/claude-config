@@ -1,6 +1,6 @@
 ---
 type: tasks
-updated: 2026-09-20
+updated: 2026-09-23
 ---
 
 # Tasks
@@ -10,6 +10,9 @@ Index: [[INDEX]]
 
 ## Active
 
+- [ ] **TIM: open a world and click the three generator buttons** [[custodians-ringbrp]] — New agent, New NPC and the new **Forge creature**. The derivation is covered by 450 guarded combinations; `Actor.create`, the pack reads and the dialogs are the part `check-behaviour` says outright it cannot reach, and nothing has exercised them.
+- [ ] **TIM, a balance call: should `breach_suit` and `riot_shield` armour the head?** [[custodians-ringbrp]] — neither declares `covers`, and `buildCombatant` reads `covers ?? "all"`, so they do. It is why Apex · Containment now wipes the party 88.5% of the time and why NPC_KIT_PLAN's stated counterplay ("armour is by location") does not exist. 12 of 32 armours are in the same position; one packed spec (`rakhi`) moves if it changes.
+- [ ] **TIM, a balance call: 35 creatures hold a weapon they have no skill for** [[custodians-ringbrp]] — the hollow man's dagger, the hulk haunt's boarding axe, one PREGEN's pistol. The simulator floors an unskilled weapon at 1%, so each one punches instead. Held at `check-armed`'s ratchet; fixing means choosing ratings, which moves `check-lethality`.
 - [x] **A records for `rtc.` and `turn.oneoffgames.com`** — done 2026-09-20, pointed at **149.102.145.10** (the [[media-box]]), not the game box. Kept deliberately: LiveKit and Foundry never talk to each other, so separating them keeps media load off live worlds. Plan retargeted.
 - [ ] Decide Parley's remote (Gitea + GitHub) and whether the name stays [[parley]]
 - [ ] **Parley slice 1 — the spine: LiveKit + service + AVClient + dock** [[parley]]. Code complete and deployed (47/47 tests, md5 parity on the box, no config drift); **live verification blocked and NOT done.** See `docs/verification/2026-09-20-slice-1-spine.md`.
