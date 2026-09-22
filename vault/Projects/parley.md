@@ -1,9 +1,9 @@
 ---
 type: project
 status: active
-repo: none yet — ~/Git/parley, local only
+repo: github.com/slaguru666/parley (private)
 path: ~/Git/parley
-updated: 2026-09-20
+updated: 2026-09-22
 ---
 
 # Parley
@@ -13,27 +13,26 @@ table; Parley owns only **who hears and sees what**. A Foundry module that
 replaces `CONFIG.WebRTC.clientClass`, plus a small token/staging service on the
 VPS, with self-hosted **LiveKit** as the media engine.
 
-**Where it lives** — `~/Git/parley`, local git only, **no remote yet**. Spec at
-`docs/superpowers/specs/2026-09-20-parley-av-layer-design.md`, slice 1 plan at
-`docs/superpowers/plans/2026-09-20-parley-slice-1-spine.md`.
+**Where it lives** — `~/Git/parley`, pushed to `github.com/slaguru666/parley`
+(private). Spec `docs/superpowers/specs/2026-09-20-parley-av-layer-design.md`;
+plans in `docs/superpowers/plans/`; SDD ledgers in `.superpowers/sdd/` (gitignored).
 
-**Current state** — Slice 1 complete and reviewed, branch `slice-1-spine`,
-31 commits, **126 tests**. Infrastructure live and healthy. The whole-branch
-review found a **blocker** (no CORS on the token service, so the GM's browser
-could never get a token) plus three trust-chain holes; all fixed and the CORS
-fix live-verified. An overnight pass then added a Foundry test double, the
-dock's four controls, token renewal, and local push-to-talk gating.
+**Current state** — Slice 1 verified live 2026-09-21 (audio + video both ways,
+two browsers). **Slice 2 (audio bus) code complete** on branch
+`slice-2-audio-bus`, head `4a17917`, pushed, **317 tests** (from 139). Masque's
+DSP is synced into `module/lib/masque/` with a drift test; voice via LiveKit's
+`TrackProcessor` seam; ambience = a tap on Foundry's own `music` gainNode
+published as `parley.ambience`; dock has a GM voice picker + per-listener score
+volume. Every task reviewed; whole-branch review READY_WITH_FIXES, fix wave
+re-reviewed ALL_ADDRESSED. Checkpoint A (agent half) passed on the live box at
+`2aaa74f`: files served as JS, no CSP, graph builds in 277 ms, demon shifts
+220→152 Hz. **Not merged. Not heard by a human.**
 
-**Blocked on Tim, and only this** — Parley has never executed in a browser. The
-world now sees the module (Foundry was restarted 2026-09-21 and blade-runner
-relaunched), so what remains is: enable it, set `serviceUrl` + the secret in the
-GM browser, set world A/V mode to AUDIO_VIDEO, reload, then the console checks
-and a two-browser audio test. See `docs/verification/2026-09-20-slice-1-spine.md`.
-
-**Next steps** — (1) Tim's checklist above. (2) Slice 2: the dock is not
-draggable (no frame = no drag header; core makes it a flex sibling of
-`#interface`), per-user volume does nothing, no reconnect after an unexpected
-disconnect, and a GM page reload force-reconnects the whole table.
+**Next steps (all Tim)** — (1) redeploy `slice-2-audio-bus` HEAD (live box runs
+`2aaa74f`); (2) Task 5 steps 4–6 and Task 10 listening checklist, incl. 8a forced
+re-dial and 8b unplug; (3) decide whether "Mute all peers" silences ambience;
+(4) sign off the ~10-line fix for voice activation's clone going stale after
+LiveKit restarts the mic itself (fails silent, not hot); (5) merge after Task 10.
 
 **Four things it must do that nothing off the shelf can**
 1. Masque processing the GM's outgoing voice, per NPC, switchable mid-sentence.
@@ -67,6 +66,19 @@ disconnect, and a GM page reload force-reconnects the whole table.
   to take. The verification document says so at the top rather than burying it.
   The brief's own standard — "done when two real browsers carry real media" — is
   not met.
+
+- 2026-09-22 — **Masque is synced, not vendored or submoduled.** Only the DSP
+  import closure (19 files) is copied, with a MANIFEST of sha256s and a test that
+  fails on drift. Zero-build ESM rules out a package; a submodule drags Masque's
+  UI and Python sidecar into every deploy.
+- 2026-09-22 — **The voice uses LiveKit's `TrackProcessor` seam, not
+  `publishTrack`.** Keeps the mic publication and both gates intact. Both install
+  and removal hand the publication an *enabled* track, so the gates are
+  re-asserted in a `finally`; and `restartTrack` re-opens PTT, so a
+  `TrackEvent.Restarted` listener re-gates (this bug predated slice 2).
+- 2026-09-22 — **Ambience comes from Foundry's own audio bus**, not from
+  Drift/Esper/etc. One edge off `ctx.gainNode`; `publishAux` swaps by track
+  identity and binds each call to the room it was made against.
 
 **Runs on two boxes** — the module deploys to [[oneoffgames-vps]] (the game box);
 LiveKit and `parley-service` deploy to the [[media-box]]. They never talk to each
