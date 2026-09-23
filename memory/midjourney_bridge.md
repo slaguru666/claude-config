@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: reference
   originSessionId: fa4ca039-8c0e-4b9c-aee8-b6d7a81482b5
-  modified: 2026-09-16T14:54:08.402Z
+  modified: 2026-09-23T02:30:00.000Z
 ---
 
 # Midjourney bridge (`mj-gen`)
@@ -70,6 +70,46 @@ Then read the resulting PNG back to verify it matches the brief before placing i
   messages (import `~/bin/mj-gen` as a module and call `discord_request`; never
   print the token) — no bot post for the job = blocked prompt. Kill a stuck
   `mj-gen` after ~3 min rather than waiting 30.
+- **⚠ 23 Sep 2026 — "bare" is NOT confirmed, and the note above may be wrong too.**
+  Two RingBRP creatures stalled six times between them. Regenerating one with
+  "bare" replaced worked, and that was written up here and committed as the
+  diagnosis. **It did not survive retesting**: the same prompt with "bare"
+  restored and nothing else changed was accepted in seconds. The variable that
+  really differed was that the successful run was the only job in flight. The
+  16 Sep "one bare bulb" finding rests on the same kind of evidence — one retry
+  after one edit — so treat it as unconfirmed rather than proven.
+  Also tested and dead: the other creature's full prompt is accepted immediately,
+  so it was never blocked; and four jobs fired two seconds apart were all
+  answered, so it is not a concurrency limit at that scale. **What caused those
+  six failures is still unknown.**
+- **The lesson is about the evidence, not the word.** One successful retry after
+  one edit is not a diagnosis — there is no control, and a stall that comes and
+  goes will hand you a false positive every time. Confirm both directions: make
+  it work, then put the suspect word back and make it fail again.
+- **THREE failure modes, not one. This is the thing to know.**
+  1. **Refused before starting** — nothing is ever posted to the channel. The
+     ephemeral decline; a banned word. Bisect the prompt.
+  2. **Started, then deleted** — the bot POSTS, the job begins, and Midjourney
+     then removes its own message. This is the GENERATED IMAGE being flagged, not
+     the prompt, so no `--no` list and no amount of retrying helps; the
+     description has to change. Discovered 23 Sep on RingBRP's `moor_cat`, which
+     failed six times and had every prompt-level hypothesis tested against it.
+     The tell: the message exists while you watch, and is gone from the history
+     afterwards.
+  3. **Genuinely slow** — posted and still there.
+- **`~/bin/mj-blocked "<prompt>"` — written 23 Sep, use it first.** Sends the
+  prompt, watches for ~2 minutes, then re-checks 45s later that the post SURVIVED.
+  Exit 0 = running, 2 = refused before starting, 3 = started then deleted.
+  `--last` just lists recent bot posts. This replaces waiting out a 30-minute
+  timeout and then guessing, which is what three sessions have now done.
+- **`find_grid` in mj-gen matches on the first 40 alphanumerics of the prompt**,
+  so if the bot's post is deleted mid-job, mj-gen waits out the full timeout with
+  "timed out waiting for grid" and no other explanation. That message means one
+  of the three modes above — it does not mean the service is slow.
+- **In the RingBRP repo**, `tools/mj-queue.mjs` keeps the banned list and
+  `promptFor()` THROWS rather than warning, because a warning in a log predicts a
+  job that never arrives and never errors. It also refuses more than six `--no`
+  terms. Nothing should be ADDED to that list on the strength of a single retry.
 
 ## Known fragility
 
