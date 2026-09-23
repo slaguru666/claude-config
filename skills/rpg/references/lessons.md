@@ -515,3 +515,15 @@ pass.
   wardens more often than it wins. Measuring first turned the brief's "do this
   diplomatically" from flavour into the table's best option, and the GM text
   could say so with a cited figure.
+- **2026-09-23 — Put the moral problem on the far side of the players' success.**
+  STANDING ORDER v2.0 moves the song's reveal after the vote, so the table spends
+  an act persuading a thousand people to come up and only then learns what
+  surfacing costs. The dilemma stops being a puzzle presented to them and becomes
+  a consequence they built, and Act Two's argument gains its weight retroactively.
+  The cost is a discipline: nothing in the earlier act may leak the reveal, so
+  every clue that used to point at it has to be rewritten to point somewhere else.
+- **2026-09-23 — A bureaucratic wall needs published rules or it reads as GM
+  stonewalling.** The Seat refuses modern evidence by clause 5 of its own Standing
+  Order, and the players hold that clause in Act Two. Naming the three things the
+  wall *will* accept turns "they won't listen" into a solvable problem and stops
+  the committee scene becoming a monologue the table cannot act on.

@@ -29,6 +29,12 @@ number with nothing holding it stops the build. That guard is now one reader wit
 authorities — shapes on a named phrasing, columns on the table header, bold in prose only —
 after `check-unmarked` was folded into it.
 
+**STANDING ORDER is at v2.0 (23 Sep 2026)** — rebuilt around the slow (half-speed ageing
+below), an unarmed 1974 Board of Inspection, and a committee that only accepts its own
+clause 5 evidence. 39 plates and 14 maps are generated and wired; desk passes are the only
+thing left before it can be called convention-ready. Art prompts and the blocked-word notes
+are in `docs/scenarios/STANDING_ORDER_ART.md`.
+
 **NPCs, threats and monsters (23 Sep 2026)** — generated NPCs now draw their **posting's
 kit**: `drawKitFor()` in `postings.mjs` decides, `generateNPC` issues, and each weapon grants
 the skill it names. Armour is an item, not a number. **The forge** (`forge.mjs` at the root,
@@ -50,6 +56,12 @@ creatures hold a weapon they have no skill for, held at `check-armed`'s ratchet 
 giving each one a rating moves `check-lethality`'s numbers.
 
 **Key decisions**
+- 2026-09-23 — **Put the moral problem on the far side of the players' success.** STANDING
+  ORDER v2.0 holds the song back until after the table has persuaded a thousand people to
+  surface, so the dilemma is a consequence they built rather than a puzzle handed to them.
+  The price is discipline in Act Two: nothing there may leak the reveal. Its bureaucratic
+  wall publishes its own rules (clause 5's three exhibits) so refusal reads as a solvable
+  problem, not GM stonewalling.
 - 2026-09-23 — **The posting says what it carries; the tier says how much.** A weapon names
   the skill that fires it, so the pairing table is the weapon and nothing can be issued that
   its holder cannot use. The same rule now puts body-plan declarations on the natural attacks:
