@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: feedback
   originSessionId: 4c6c6592-cb70-4a13-af73-1b5771ce78c2
-  modified: 2026-09-13T09:05:04.833Z
+  modified: 2026-09-23T01:30:00.000Z
 ---
 
 When verifying a claim, **read the neighbouring functions while you are in there.** On
@@ -34,6 +34,22 @@ us had examined an arm.
 guess, because it arrives with real evidence.** Watching the thing work is not checking
 the rule.
 
+**2026-09-23 — the same bug three files apart, and what to do about it.** `spec.species`
+was read to decide a creature's SHAPE in three tools. Every creature with a non-human body
+carries `species: "baseline"` and says what it is in `bodyPlan`, so: `mj-queue` drew a
+wingless gryphon, `make-portraits` drew a human silhouette for 48 creatures, and
+`BESTIARY.md` published "26 of them are not human-shaped" when the number is 74. Each was
+found by reading the neighbour of the one before — which worked three times and is exactly
+why it should not be relied on a fourth.
+
+**The upgrade to this lesson: when the neighbours keep having the same defect, stop reading
+neighbours and make the shape of the defect checkable.** It was one line every time — a
+shape function fed from `species` with no resolved plan on the line — so a guard was added
+to `check-anatomy`. Proved by checking each file's parent commit out of git history and
+watching the guard name that file at the line the fix touched: a mutation test against the
+real defect rather than a planted one, which is the strongest form available and costs
+nothing when the history is right there.
+
 **How to apply:**
 
 - Verify a correction rather than applying it — twice in that session a peer's correction
@@ -44,6 +60,12 @@ the rule.
   fight you watched is one you survived reading.
 - When two thresholds coincide on common inputs, find an input where they do not, and
   check there. That is the only place the difference is visible.
+- **Count the instances.** One neighbour with the same bug is luck; three is a class, and a
+  class is a guard. Ask what the defect looks like as a line of source — if you can say it
+  in one sentence, it is checkable.
+- **Mutation-test against history, not invention.** `git show <fix>~1:path > path`, run the
+  new guard, restore. If it does not name that file at that line, the guard is measuring
+  something else.
 
 Related: [[feedback-concurrent-agents]] — the signal that an assumption inside a guard is
 wrong is almost always somebody arriving with a different reason to care; you cannot audit

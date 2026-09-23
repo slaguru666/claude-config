@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 710730ff-4590-4412-82b8-d6ae6765d92b
-  modified: 2026-09-09T19:30:00.000Z
+  modified: 2026-09-23T02:00:00.000Z
 ---
 
 Started 7 August 2026. **Two repositories, and the distinction matters:**
@@ -14,7 +14,7 @@ Started 7 August 2026. **Two repositories, and the distinction matters:**
   `rules.mjs` there is the ONLY rule authority. Scenarios live inside it at `docs/scenarios/`
   (`LAST_ADMISSION`, `OPEN_DAY`, `THROUGH_TRAIN`), which is why searching Gitea for a scenario
   repo finds nothing. `docs/GM_SCREEN.md` is the table-facing sheet, every figure verified by
-  running the functions. Guards run under **bun**: `npm test` → `bun run check` → eight guards.
+  running the functions. Guards run under **bun**: `npm test` → `bun run check` → 25 guards (Sep 2026).
   Bare `bun test` runs bun's own runner and finds nothing — not the guards.
 - `~/RingBRP/` → `slaguru666/ringbrp-design` (public, since 9 Sep 2026) — the design corpus:
   the bible, six rules specs, 26 review briefs, and `make-loom-board.mjs`. **Gitea has
@@ -65,12 +65,35 @@ repo — which is why searching Gitea and GitHub for them finds nothing: `LAST_A
 a train looping the same four minutes since 1881). Each has a `tools/scenario-*.mjs` builder
 and a `packs/` compendium.
 
+## Making NPCs, threats and monsters (23 Sep 2026)
+
+- **Generated NPCs draw their posting's kit.** `drawKitFor(role, tier, {classify})` in
+  `postings.mjs` decides what is issued; `generateNPC` resolves the keys against the packs.
+  Before this it read `R.core`/`R.support` only, so the dialog's DRAWS FROM STORES card
+  promised nine items and the actor got a utility knife.
+- **A weapon names the skill that fires it** (`skillFamilyId`/`skillSpecialisationId`), so
+  there is no weapon↔skill pairing table and nothing can be issued that its holder cannot
+  use. The same idea put `plans` on the ten natural attacks — which body plans can make
+  them — because anatomy records that a creature has a head, not that the head has horns.
+- **Kit keys have drifted from their names.** `climbing_kit` is "Breaching charges",
+  `prybar` is "Entry bar". Classify by catalogue membership, never by reading a key.
+- **The forge**: `forge.mjs` at the ROOT (pure, like `rules.mjs`/`postings.mjs`),
+  `tools/forge.mjs` as the CLI (`new`/`explain`/`measure`/`list`), and a third
+  Actors-sidebar button calling `generateCreature`. One derivation so the CLI and the
+  panel cannot diverge — but they feed it from *different* catalogues, so `check-forge`
+  reads the built pack and requires both to forge the same creature.
+- **Measurement**: `tools/npc-cohort.mjs` builds a generated NPC as a simulator spec in
+  the old and new configurations and measures both. `measure()` returns `wipeRate` as a
+  **fraction** — multiply by 100, as `check-lethality` does.
+
 ## Hard-won lessons
 - **Rewards accelerate; they never gate.** Two versions failed because a scenario-critical object
   sat behind a probability gate (the second time at P=1.7%). Anything on the critical path must be
   reachable by some route with probability 1.
 - **Derive HP from the weapon damage ladder, not the other way round.** The 1984 damage values are
   calibrated to a ~26-point pool; halving HP collapses the ladder into one-hit kills.
+- **A long `--no` list stalls a Midjourney job silently** — ten or more terms never return
+  a grid, which looks exactly like a moderation refusal. `promptFor` throws above six now.
 - **Foundry LevelDB packs**: the parent document's `items` / `pages` / `results` array must hold
   **ID strings, not objects**. Writing objects yields a pack that loads with zero embedded
   documents and no error. This cost real time; the server log message about "undefined embedded
