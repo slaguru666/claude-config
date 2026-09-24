@@ -84,3 +84,19 @@ stubs, called with both documents), and take frames/timers from
 **`styles/corkboard.css` and the app's import graph are service-worker shell files.** Any edit,
 comment included, turns `test/app-shell.test.mjs` red until `node tools/build-app-shell.mjs`
 is re-run. That is the test working.
+
+**Phone apps (built 2026-09-24, branch `mobile-apps`).** `mobile/` is Capacitor 8
+around the standalone app — same files, no port. `src/app/platform.mjs` is the only
+place native differs from web; keep the web path byte-for-byte the old behaviour.
+Gotchas that cost real time and are NOT obvious:
+- Android's local server serves the root `index.html` for EVERY navigation, so the
+  root page must be the app page (build-mobile rewrites paths); a redirect loops.
+- Capacitor's fetch bridge UTF-8-decodes a `Uint8Array` body — send binary as a
+  `File` (`requestBody`). Proved with an echo server: raw body doubled in size.
+- Android picker greys out `.corkboard` (no MIME) — no accept filter on Android.
+- Cold-start "open with" on Android arrives twice (launch URL + appUrlOpen).
+- iOS build on this Mac: `DEVELOPER_DIR=/Applications/Xcode-beta.app/...` (Xcode not
+  first-launched; `xcode-select` needs sudo) and `-packageAuthorizationProvider netrc`
+  or SwiftPM hangs on a keychain prompt. Drive the sim's WKWebView via
+  `ios_webkit_debug_proxy` (brew); Android's WebView via adb-forwarded CDP.
+Verification note: `docs/verification/2026-09-24-mobile-apps.md`.

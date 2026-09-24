@@ -3,7 +3,7 @@ type: project
 status: active
 repo: slaguru666/corkboard
 path: ~/Git/corkboard
-updated: 2026-09-22
+updated: 2026-09-24
 ---
 
 # Corkboard
@@ -275,7 +275,19 @@ deciding who may write and writing. **A live proof needs no person:** mint a
 session with `beginSession`, use it as a cookie, `endSession` after — no password
 is typed into any form, which is what had kept live proofs parked for four slices.
 
+**Phone apps built** (2026-09-24, branch `mobile-apps`, not merged). `mobile/` is
+Capacitor 8 around the standalone app — same files, no port; `src/app/platform.mjs`
+is the only place native differs. iOS sim + Android emulator driven end to end;
+nine defects found by running it and fixed, three Codex rounds (reviews 34–36).
+Verification: `docs/verification/2026-09-24-mobile-apps.md`. Debug APK at
+`mobile/android/app/build/outputs/apk/debug/`.
+
 **Next steps**
+- **Tim: test the phone apps on real devices** — Android: install the debug APK.
+  iPhone: `sudo xcode-select -s /Applications/Xcode-beta.app/...` once, open
+  `mobile/ios/App/App.xcodeproj`, pick a Team, Run on the phone. Unverified from
+  here: iOS picker/photo picker taps, real finger gestures on iOS, a real publish.
+  Then merge `mobile-apps`. Gap noted: the standalone app has no hide/reveal UI.
 - **Real-iPad check** (2026-09-22 emulation pass is done, d69ebed live): the
   keyboard on Add note (focus lands after an `await`, which iOS may refuse),
   the ink-width `<select>` height, the toolbar under the status bar when opened
@@ -372,6 +384,12 @@ is typed into any form, which is what had kept live proofs parked for four slice
   so the clamp is invisible until release
 
 **Key decisions**
+- 2026-09-24 — **Phones get Capacitor, not a native rewrite.** Three hosts already
+  share one renderer with 2,200+ tests; SwiftUI/Compose would be two more to drift.
+  Where native differs lives in `platform.mjs`, and on the web each function there
+  is the old inline code. Two bridge traps are now in the code: Android serves the
+  root page for every navigation, and the fetch bridge UTF-8-decodes binary bodies
+  and turns a 304 into "Failed to fetch".
 - 2026-09-22 — **On an iPad the storage threat is time, not space.** A Safari tab
   loses its storage after seven days unvisited; a Home Screen launch does not. The
   banner detects a Safari tab by `navigator.standalone === false` (only Safari has
