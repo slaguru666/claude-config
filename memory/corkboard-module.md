@@ -85,7 +85,7 @@ stubs, called with both documents), and take frames/timers from
 comment included, turns `test/app-shell.test.mjs` red until `node tools/build-app-shell.mjs`
 is re-run. That is the test working.
 
-**Phone apps (built 2026-09-24, branch `mobile-apps`).** `mobile/` is Capacitor 8
+**Phone apps (built 2026-09-24, merged to master 2026-09-25 at 44006f0).** `mobile/` is Capacitor 8
 around the standalone app — same files, no port. `src/app/platform.mjs` is the only
 place native differs from web; keep the web path byte-for-byte the old behaviour.
 Gotchas that cost real time and are NOT obvious:
@@ -99,4 +99,15 @@ Gotchas that cost real time and are NOT obvious:
   first-launched; `xcode-select` needs sudo) and `-packageAuthorizationProvider netrc`
   or SwiftPM hangs on a keychain prompt. Drive the sim's WKWebView via
   `ios_webkit_debug_proxy` (brew); Android's WebView via adb-forwarded CDP.
+- Tim's iPhone Air (UDID 00008150-000915302288401C) is registered on team 58APE87Z2X;
+  device build: add `-destination id=<udid> -allowProvisioningUpdates DEVELOPMENT_TEAM=58APE87Z2X`,
+  install with `xcrun devicectl device install app`. iwdp can't reach iOS 17+ devices;
+  drive the real phone with an XCUITest runner (xcodegen project, `XCUIApplication(bundleIdentifier:)`)
+  — real taps; typeText into the WebView fails; `aria-pressed` buttons are toggles (type 40).
+- Tablets (branch `tablets`, 2026-09-25): `keep-centre.mjs` keeps the board's middle through
+  rotation/keyboard resizes (held while a non-pan gesture is live); toolbar is one scrolling row
+  up to 1024px. Android tablet AVD `Medium_Tablet_API_36.1` (hand-made copy of the phone AVD, no
+  cmdline-tools installed). This Xcode beta has no Simulator.app, so the iPad sim can't be rotated.
+  Over CDP use `adb shell input keyevent KEYCODE_ENTER`, not `Input.dispatchKeyEvent` — the latter
+  leaves Android's keyboard open.
 Verification note: `docs/verification/2026-09-24-mobile-apps.md`.
