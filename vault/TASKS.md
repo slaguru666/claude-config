@@ -10,6 +10,7 @@ Index: [[INDEX]]
 
 ## Active
 
+- [ ] **TIM: go-ahead for the shared-apps deploy (Task 19)** [[corkboard]] — branch `shared-apps` (eca2110, unpushed). First: Codex 40 round 2; repair Xcode (`sudo xcodebuild -runFirstLaunch`) + Android SDK for the device run.
 - [ ] **TIM: try the Corkboard phone apps** [[corkboard]] — branch `mobile-apps`. Android: debug APK. iPhone: Xcode (needs `sudo xcode-select` once, then Team + Run). Check iOS pickers, real-finger strings, a real publish; then merge.
 - [ ] **TIM: open a world and click the three generator buttons** [[custodians-ringbrp]] — New agent, New NPC and the new **Forge creature**. Step-by-step with every expected value derived from the code: `docs/VERIFY_GENERATORS.md` in the repo. Redeploy **and relaunch the world** first, or Foundry runs the old package list. `Actor.create`, the pack reads and the dialogs are the part `check-behaviour` says outright it cannot reach; nothing has exercised them.
 - [ ] **TIM, a balance call: should `breach_suit` and `riot_shield` armour the head?** [[custodians-ringbrp]] — neither declares `covers`, and `buildCombatant` reads `covers ?? "all"`, so they do. It is why Apex · Containment now wipes the party 88.5% of the time and why NPC_KIT_PLAN's stated counterplay ("armour is by location") does not exist. 12 of 32 armours are in the same position; one packed spec (`rakhi`) moves if it changes.

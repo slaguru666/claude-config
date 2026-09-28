@@ -3,7 +3,7 @@ type: project
 status: active
 repo: slaguru666/corkboard
 path: ~/Git/corkboard
-updated: 2026-09-24
+updated: 2026-09-28
 ---
 
 # Corkboard
@@ -282,7 +282,21 @@ nine defects found by running it and fixed, three Codex rounds (reviews 34–36)
 Verification: `docs/verification/2026-09-24-mobile-apps.md`. Debug APK at
 `mobile/android/app/build/outputs/apk/debug/`.
 
+**Shared boards in the apps** (2026-09-28, branch `shared-apps` off `tablets` 86f68ce,
+HEAD eca2110, **unpushed** — no upstream and `gh` missing). Apps put a board online at
+the central service, player role enforced server-side, join by code/QR//j/ link,
+read-only offline, four transfer moves. Spec/plan in `docs/superpowers/`; ledger in
+`.superpowers/sdd/2026-09-27-shared-boards-in-apps/progress.md` (all rulings).
+Tasks 1–18 + final review done; suite 2554 with Postgres. E2E run in the browser pane
+(`docs/verification/2026-09-28-shared-boards-in-apps.md`), NOT on devices.
+
 **Next steps**
+- **shared-apps**: re-run Codex review 40 round 2 (usage limit hit); then **Task 19
+  deploy needs Tim** — add the `/.well-known/` block to the certbot nginx site by hand,
+  release-key fingerprint into `CORKBOARD_WEB_ANDROID_CERTS`, redeploy web app, rollback
+  note (migration 5 is safe under old code), joins assume one service process.
+  Device run blocked: Xcode needs `sudo xcodebuild -runFirstLaunch`; Android SDK
+  symlink `~/Library/Android/sdk` points at itself.
 - **Tim: test the phone apps on real devices** — Android: install the debug APK.
   iPhone: `sudo xcode-select -s /Applications/Xcode-beta.app/...` once, open
   `mobile/ios/App/App.xcodeproj`, pick a Team, Run on the phone. Unverified from
