@@ -29,6 +29,7 @@
 - [Nexus app](nexus-app.md) — combined cinematic score workstation (Blade Runner/horror/Alien/drama, 18 scenes, mood pad, arcs, cue pads, split keys, 42 layers) at ~/nexus/; port 8769, not in git
 - [Masque app](masque-app.md) — real-time GM voice changer at ~/masque; spec 1 + Beatrice 2 AI sidecar (spec 2) BUILT + verified 2026-08-23, merged to main
 - [Loom app](loom-app.md) — local Alkemion-style adventure-design tool at ~/loom (port 8771, Markdown-on-disk adventures, facet-constrained generators, map generator, scenario builders, procedural art, passphrase remote access); see docs/feedback/REPORT.md
+- [Stylish Login Screen](stylish-login-screen.md) — third-party Foundry portrait-login module, live in VPS world `classified`; set Custom base URL to the hostname (bare IP hits code-server), and test it in real Chrome, not the pane (blob: nav blocked)
 - [One Off Games VPS](infra-oneoffgames-vps.md) — `ssh foundry` (85.190.246.132, root only); nginx + web.oneoffgames.com public game site; drop a folder in the web root and it is live
 - [Concurrent agents](feedback-concurrent-agents.md) — never `git add -A` with agents running; disjoint files, verify every claim
 - [Codex review loop](feedback-codex-review-loop.md) — fix → codex review → fix findings → verify live → repeat; use `--profile deep`, and tell a reviewer on a streak not to invent findings
