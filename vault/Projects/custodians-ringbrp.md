@@ -3,7 +3,7 @@ type: project
 status: active
 repo: slaguru666/RingBRP + slaguru666/ringbrp-design
 path: ~/FoundryVTT/Data/systems/ringbrp + ~/RingBRP
-updated: 2026-09-23
+updated: 2026-10-07
 ---
 
 # The Custodians (RingBRP)
@@ -18,7 +18,7 @@ updated: 2026-09-23
 - `~/RingBRP/` → `slaguru666/ringbrp-design` (public since 9 Sep 2026) — the design
   corpus: the bible, six rules specs, 26 review briefs. `.gitignore` holds the scans back.
 
-**Current state** — playable and guarded. **25 build guards** under `npm run check`, each a
+**Current state** — playable and guarded. **27 build guards** under `npm run check`, each a
 claim about the game re-measured on every build. **`docs/REVIEW_LOG.md` (at R-310) holds the
 reasoning behind all of them** and is the thing to read before re-deciding anything here.
 Scenarios: `LAST_ADMISSION`, `OPEN_DAY`, `THROUGH_TRAIN`, **CLEAN GROUND** (v0.25, eleven
@@ -29,11 +29,21 @@ number with nothing holding it stops the build. That guard is now one reader wit
 authorities — shapes on a named phrasing, columns on the table header, bold in prose only —
 after `check-unmarked` was folded into it.
 
-**STANDING ORDER is at v2.0 (23 Sep 2026)** — rebuilt around the slow (half-speed ageing
-below), an unarmed 1974 Board of Inspection, and a committee that only accepts its own
-clause 5 evidence. 39 plates and 14 maps are generated and wired; desk passes are the only
-thing left before it can be called convention-ready. Art prompts and the blocked-word notes
-are in `docs/scenarios/STANDING_ORDER_ART.md`.
+**STANDING ORDER is at v3.2 (7 Oct 2026)** — the slow (half-speed ageing below), an unarmed
+1974 Board of Inspection, a committee that only accepts its own clause 5 evidence, and
+**Mr Smith living in Warden Michael Smith since 1974 without knowing it.** Act Three is a
+measured encounter (`so_smith_awake`) over a 40-minute clock with 168 children opening the
+blast lock. **The engine is the twins:** 122 of the 168 children are 61 pairs born 2010–2013,
+and they are what bends time there — the clocks have said so since 2010. 59 plates and 14 maps
+wired; desk passes are all that is left. Prompts and blocked words in
+`docs/scenarios/STANDING_ORDER_ART.md`.
+
+**THE LONG RETURN — a three-case time-travel sequence off STANDING ORDER.** Outline in
+`docs/LONG_RETURN_PLAN.md` (deliberately in `docs/` root, not `docs/scenarios/`, or the corpus
+guard classifies it). **Case 1, `docs/scenarios/RETURN_WORKING.md`, is written at v1.0** —
+4 November 1974, the day the door shut, ridden in on Ada and Tom Verity. Cases 2 (DEAD
+RECKONING, Region 8, 1996) and 3 (CLOSING TIME, now) are outline only. **No Foundry pack for
+RETURN WORKING and no 1974 cast actors**; the Markdown is the deliverable so far.
 
 **NPCs, threats and monsters (23 Sep 2026)** — generated NPCs now draw their **posting's
 kit**: `drawKitFor()` in `postings.mjs` decides, `generateNPC` issues, and each weapon grants
@@ -42,7 +52,10 @@ the skill it names. Armour is an item, not a number. **The forge** (`forge.mjs` 
 tier and species and explains every number. **The forge panel is not yet verified in a running
 Foundry** — the derivation is, the Foundry glue is not.
 
-**Next steps** — **open a world and click the three generator buttons**; that is the only
+**Next steps** — **desk-pass RETURN WORKING**, whose two hours on the moor after the door
+shuts is either the best scene in the sequence or twenty dead minutes, and whose five remaining
+outline questions (Region 8 tower or island, how much engine the players get, case 3's frame)
+are still open. Then **open a world and click the three generator buttons**; that is the only
 untested surface. Then **CLEAN GROUND needs a run with human beings** — pass 11 closed the
 last desk-reachable branch and all four originals have been played. Then splitting
 `ringbrp.mjs`. **CLEAN GROUND's artwork is generated and placed** — 6 NPC portraits at
@@ -56,6 +69,18 @@ creatures hold a weapon they have no skill for, held at `check-armed`'s ratchet 
 giving each one a rating moves `check-lethality`'s numbers.
 
 **Key decisions**
+- 2026-10-07 — **A closed time loop answers rather than refuses.** RETURN WORKING was written
+  on the hard loop (Tim's Option A): nothing on 4 November 1974 can be changed. The design fix
+  for passivity is that every interference *lands* as something the table has already read in
+  2026 — the occurrence book's first page, "tape 2 of 2, re-cut", a margin note in a hand the
+  Department never identified. **A GM never says "you can't".** And the loop protects 1974, not
+  the agents: inside the lock at 16:00 is fifty-two years, and a trapped agent becomes clause
+  5(b)'s one admissible deposition at 87.
+- 2026-10-07 — **No fight is a design position, and it has to be written down as one.** The
+  house rule is that a fight gets measured before the paragraph about it is written, so a case
+  with no encounter must say why (the villain cannot be hurt without softening the loop; the
+  only other people on site are civilians in a queue; the clock is lethal without a die) and
+  what would have to be measured if one were ever added.
 - 2026-09-23 — **Put the moral problem on the far side of the players' success.** STANDING
   ORDER v2.0 holds the song back until after the table has persuaded a thousand people to
   surface, so the dilemma is a consequence they built rather than a puzzle handed to them.
