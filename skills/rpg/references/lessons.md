@@ -527,3 +527,30 @@ pass.
   Order, and the players hold that clause in Act Two. Naming the three things the
   wall *will* accept turns "they won't listen" into a solvable problem and stops
   the committee scene becoming a monologue the table cannot act on.
+- **2026-10-07 — A generator failure has three modes, and the cheap probe tells you
+  which.** A Midjourney job that produces nothing is (1) a *refused prompt* — the bot
+  posts nothing at all, because the refusal is ephemeral, so the client waits out its
+  whole timeout; (2) a *slow service* — the bot posts, late; or (3) **a flagged image —
+  the bot posts and then deletes its own post**, meaning the job started and was pulled
+  mid-generation. Only (1) is a blocked word. For (3), rewording the description is the
+  only lever: a `--no` list does not help and retrying does not either.
+  **And before rewording anything, re-send a prompt that is known to have worked today.**
+  If that fails too, the words are not the variable — a clean cutoff in the *clock*
+  rather than in the *content* is an account-level state (exhausted hours, a moderation
+  strike), and every minute spent rewording after that point is wasted. Six prompts were
+  nearly rewritten on the assumption they each contained a blocked word; one probe with
+  an already-successful prompt settled it in two minutes.
+- **2026-10-07 — A closed time loop answers; it never refuses.** Writing a scenario where
+  the past cannot be changed, the failure mode is a table told "you can't" until it stops
+  trying. The fix is to prepare, in a table, what each interference *turns out to have
+  been* — the warning becomes the rumour already in the record, the stolen tape becomes
+  the "re-cut" line in the log the players read decades later. The GM never blocks; the
+  loop absorbs. And the loop protects the *past*, not the characters: keep a real, lethal
+  jeopardy (a door that shuts on a schedule) so the stakes are personal even though the
+  history is fixed.
+- **2026-10-07 — "No encounter" is a design position and has to be written down as one.**
+  A house rule that every fight is measured before its paragraph is written does not mean
+  every scenario needs a fight. A case with none should say why in the document — who
+  cannot be fought without breaking the premise, who is a civilian, what the lethal
+  pressure is instead — and state what would have to be measured if one were ever added.
+  Otherwise the absence reads as an omission and the next writer quietly fills it.
