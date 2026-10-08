@@ -623,3 +623,25 @@ pass.
   version. Both broke inside two rounds of a desk run: a prey at SHORT from one
   pursuer and MEDIUM from another is in an undefined state. **Whenever a rule
   splits one number into several, re-read every rule that consumed the old one.**
+- **2026-10-08 — The route your playtester declines is the one that needs playing.**
+  Pass 05's tactician looked at AFTERIMAGE's "tell the broker where she'll be" and
+  said no on the merits, which read as the trap working. It meant the branch had
+  never been run, and when a *frightened* table took it in pass 06 the pier it
+  produced had three holes in it — the betrayed NPC had no written reaction, the
+  antagonist it summons arrived after the one party who made him irrelevant, and a
+  contested roll could wipe the central object before anybody chose anything.
+  **A branch declined by a competent player is untested, not validated.** Schedule
+  the contrarian pass around the choice nobody made, and cast the hat that would
+  make it — the cautious player and the frightened player are different tables.
+- **2026-10-08 — Order your antagonists by who removes whose teeth.**
+  Two opposed pressures arriving in the wrong order cancel instead of compounding:
+  the unlicensed one turned up twenty minutes after the corporate one and simply
+  withdrew, because a man with no warrant does not perform in front of a recording
+  drone. The costly choice became an anticlimax. **The party with the least
+  standing has to arrive first and be frightening alone**; the one with the legal
+  claim arrives second as the lever. Same two NPCs, same scene, opposite outcome.
+- **2026-10-08 — A nested blockquote reads as one read-aloud block.**
+  Wrapping GM guidance round a `> >` speech turned two spoken sentences into an
+  eleven-sentence read-aloud and tripped the house 3-sentence limit. Keep the
+  spoken line at the top level as its own `>` and put the staging around it as
+  plain text.
