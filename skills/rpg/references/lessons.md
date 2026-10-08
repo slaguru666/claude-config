@@ -645,3 +645,29 @@ pass.
   eleven-sentence read-aloud and tripped the house 3-sentence limit. Keep the
   spoken line at the top level as its own `>` and put the staging around it as
   plain text.
+- **2026-10-08 (correction to the two entries above) — a control prompt is a
+  sample of one, and it can be the casualty.** Both of today's earlier entries
+  concluded "the bridge or the account is dead" because the known-good probe
+  — *"a plain grey stone on wet sand"* — produced nothing in thirty minutes.
+  **It was not dead.** Reading the Discord channel directly showed the bot had
+  been answering all along; that specific job had rendered to **65% and stalled
+  there**, and the message was still sitting at `(65%) (fast)` almost two hours
+  later. Re-sent, the identical prompt round-tripped in **twenty-five seconds**.
+  So: the control prompt still separates "your art direction is the problem"
+  from everything else, but **a failed control prompt proves nothing on its own
+  — retry it once before concluding anything.** And when it fails twice, do not
+  theorise: **read the channel.** Author, timestamp and content of the last
+  twenty messages tells you in one call whether the bot is answering, whether
+  your jobs appear, and whether a job is stuck mid-render — which is the one
+  state that looks exactly like a dead service from the client side and is not.
+- **2026-10-09 — A repo that keeps a superseded builder keeps a loaded gun.**
+  AFTERIMAGE's `sync-portraits.sh --build` ran the frozen hand-rolled `build.mjs`
+  that scenario-forge replaced, which is retained only so forge's regression
+  suite has something to diff against. It overwrote a forge install and silently
+  dropped a whole journal and two actors; **the only symptom was a scene count
+  one lower than expected** in output I nearly did not read. When a build is
+  superseded, the convenience scripts around it have to be repointed in the same
+  pass — a comment in the config saying "do not edit both" does not reach the
+  helper two files over. And the portrait sync had a hardcoded name map with no
+  entry for the new NPC, so his art silently did not copy: **any mapping keyed by
+  hand is a place new content disappears quietly.**
