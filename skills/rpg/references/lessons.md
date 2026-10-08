@@ -572,3 +572,25 @@ pass.
   bad word. **Soften the press, not the subject**: the same art direction with "horror" and
   "lurid" removed went through. And retrying is not a strategy against this; thirty-two
   attempts bought nothing that the first two did not already prove.
+- **2026-10-08 — Name a new section in the FORMAT's vocabulary, not the fiction's.**
+  AFTERIMAGE gained a jeopardy beat between Acts Two and Three, and calling it
+  `ACT TWO-AND-A-HALF` was a silent collision: scenario-forge's `actNumber`
+  matches `^act\s+([a-z]+)`, so `[a-z]+` stops at the hyphen, "two" resolves, and
+  the new section claims act **2** alongside the real one. The format already had
+  the right word — `set-piece`, aliased to *interlude*, documented as "a beat
+  BETWEEN acts as often as one after them". **Run the parser over the heading
+  before writing a hundred and fifty lines under it**; `node -e` over
+  `parseSections` costs thirty seconds and prints exactly what the build will
+  think. The same check caught a new `##` block as an unrecognised heading —
+  which is the validator working, and the fix was to demote it into the section
+  it already sat inside rather than widen a shared tool's alias list for one
+  scenario.
+- **2026-10-08 — Do not pipe a long-running probe through `tail`.**
+  The control-prompt discipline from earlier today was followed correctly and
+  then undone by the shell: `mj-gen ... | tail -5` buffers until EOF, so twenty
+  minutes of `[mj-gen] still waiting... (Ns left)` went into a pipe nobody could
+  read and the output file sat empty. The probe was fine; the instrument was
+  blindfolded. **Redirect a progress-reporting probe to a file and `tail` the
+  file**, never pipe the process. *(And note the real timeout before waiting on
+  one: `~/.config/mj-bridge/config.json` sets `timeout_seconds: 1800`, so a dead
+  job hangs for half an hour per stage, not the ten minutes the default suggests.)*
