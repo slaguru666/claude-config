@@ -554,3 +554,21 @@ pass.
   cannot be fought without breaking the premise, who is a civilian, what the lethal
   pressure is instead — and state what would have to be measured if one were ever added.
   Otherwise the absence reads as an omission and the next writer quietly fills it.
+- **2026-10-08 — When the art pipeline goes quiet, send a control prompt before theorising.**
+  Thirty-two consecutive Midjourney jobs for one scenario produced nothing over four and a
+  half hours, and the silence was diagnosed in turn as dropped submissions, exhausted fast
+  hours, and a broken bridge. All three were wrong, and each cost an hour. A short neutral
+  prompt — *"a plain grey stone on wet sand"* — returned a finished grid in thirty seconds
+  and killed all three theories at once. **Keep one throwaway prompt that is known to work
+  and send it the moment a batch starts failing.** It separates "the service is fine and
+  your art direction is the problem" from everything else, which is the only split that
+  changes what you do next. The HTTP checks that feel rigorous — token valid, channel
+  readable, submission accepted — cannot make that split, because a successful submission
+  and a doomed one return the same status.
+- **2026-10-08 — A whole art direction can be refused while every prompt in it looks harmless.**
+  Moderation that flags the *generated image* rather than the prompt escalates: a press that
+  rendered six plates in the afternoon had everything pulled by evening, including a portrait
+  of a man in an overcoat holding a clipboard. Bisecting words is the wrong tool — there is no
+  bad word. **Soften the press, not the subject**: the same art direction with "horror" and
+  "lurid" removed went through. And retrying is not a strategy against this; thirty-two
+  attempts bought nothing that the first two did not already prove.

@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: reference
   originSessionId: fa4ca039-8c0e-4b9c-aee8-b6d7a81482b5
-  modified: 2026-09-23T02:30:00.000Z
+  modified: 2026-10-08T00:40:00.000Z
 ---
 
 # Midjourney bridge (`mj-gen`)
@@ -97,11 +97,34 @@ Then read the resulting PNG back to verify it matches the brief before placing i
      The tell: the message exists while you watch, and is gone from the history
      afterwards.
   3. **Genuinely slow** — posted and still there.
-- **`~/bin/mj-blocked "<prompt>"` — written 23 Sep, use it first.** Sends the
-  prompt, watches for ~2 minutes, then re-checks 45s later that the post SURVIVED.
+- **`~/bin/mj-blocked "<prompt>"` — written 23 Sep, FIXED 8 Oct, use it first.**
+  Sends the prompt, watches ~2 minutes, then confirms the outcome.
   Exit 0 = running, 2 = refused before starting, 3 = started then deleted.
-  `--last` just lists recent bot posts. This replaces waiting out a 30-minute
-  timeout and then guessing, which is what three sessions have now done.
+  `--last` just lists recent bot posts.
+  **The 23 Sep version gave a false mode-3 on every successful job.** It watched
+  one message id, and Midjourney posts a "(Waiting to start)" placeholder which it
+  then DELETES and replaces with the finished grid under a NEW id — read as "the
+  image was flagged", i.e. "rewording is the only lever", about jobs that had just
+  succeeded. It sent two sessions down the wrong path. It now waits for a real grid
+  via `mj-gen`'s own `find_grid`, and calls mode 3 only after 45s with nothing at
+  all in the channel for that job. Regression-tested offline by replaying a scripted
+  channel through a fake `$HOME` (no network, no token): old → 3, new → 0.
+- **⚠ 8 Oct 2026 — mode 2 can swallow a whole art direction, and retrying is
+  worthless against it.** DEAD RECKONING's 1968 Hammer press rendered six plates
+  happily, then **thirty-two consecutive jobs** — plates and portraits, spaced 2–2.5
+  minutes, over four and a half hours — produced no file at all. Diagnosed in turn as
+  dropped submissions, exhausted fast hours, and a dead bridge. **All three wrong.**
+  Every one of those jobs started, posted, and had its post pulled. Prompts as
+  innocuous as *a man in an overcoat holding a clipboard* were pulled.
+  **The one diagnostic that settles it in 30 seconds: send a short known-good control
+  prompt.** *"a plain grey stone on wet sand"* came back as a full fast-mode grid one
+  minute before a DEAD RECKONING prompt was pulled. Token 200, channel 200,
+  `POST /interactions` 204 — and note that **204 is also what a SUCCESSFUL submission
+  returns**, so it proves acceptance and nothing more; `mj-capture-command` returned
+  byte-identical metadata. None of those four checks can tell you anything. The control
+  prompt can.
+  **When a press enters this state, soften the press, not the subject** — the variant
+  without "horror" and "lurid" rendered the same day.
 - **`find_grid` in mj-gen matches on the first 40 alphanumerics of the prompt**,
   so if the bot's post is deleted mid-job, mj-gen waits out the full timeout with
   "timed out waiting for grid" and no other explanation. That message means one
