@@ -603,3 +603,23 @@ pass.
   landed (`ls "$out/$name"*`), never the status code**, and count the misses so
   the script says so at the end. Fixed in `gen-afterimage-interlude.sh`; the
   other seven still have it.
+- **2026-10-08 — "Measure the fight" means measure the EXCHANGE, not the duel.**
+  The house rule was followed and still produced a wrong paragraph. AFTERIMAGE's
+  new set-piece compared the party's best shooter to one enemy — 1.43 expected
+  successes against 0.98 — and concluded the straight fight was losable. It was
+  not: there were *two* enemies and three guns on the other side, and simulating
+  the actual round-by-round exchange put the party's win at 92–100%. A pool
+  comparison answers "who is better at shooting", which is almost never the
+  question. **Simulate rounds, with health, action economy and target priority,
+  and report the spread rather than an average** — the useful number turned out
+  to be not "do they win" (they always do) but "is the Health-4 detective
+  standing at the end" (41%, or 69% if the GM-run ally keeps out of it). The
+  playtest also exposed what the first measurement had hidden: whether that ally
+  shoots was never written down, and it moved the headline figure by 28 points.
+- **2026-10-08 — A set-piece that orders individual tracking must restate the
+  win conditions.** The chase says "run pursuers as individuals, not as one
+  grouped side" — correctly, it stops the specialist being benched — and then
+  keeps Hide ("MEDIUM+") and escape ("prey reaches EXTREME") from the single-range
+  version. Both broke inside two rounds of a desk run: a prey at SHORT from one
+  pursuer and MEDIUM from another is in an undefined state. **Whenever a rule
+  splits one number into several, re-read every rule that consumed the old one.**
