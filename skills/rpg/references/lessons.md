@@ -594,3 +594,12 @@ pass.
   file**, never pipe the process. *(And note the real timeout before waiting on
   one: `~/.config/mj-bridge/config.json` sets `timeout_seconds: 1800`, so a dead
   job hangs for half an hour per stage, not the ten minutes the default suggests.)*
+- **2026-10-08 — `mj-gen` exits 0 when it times out, and every house art script
+  trusts that exit code.** The control prompt ran the full 1800s, printed
+  `timed out waiting for grid`, and returned **0**. All eight `gen-*.sh` scripts
+  in Continuum2026 log `DONE $name (exit $?)`, so a whole batch can read
+  `DONE / exit 0` down the log and have produced not one image — which is very
+  probably what some earlier "completed" runs actually did. **Check that a file
+  landed (`ls "$out/$name"*`), never the status code**, and count the misses so
+  the script says so at the end. Fixed in `gen-afterimage-interlude.sh`; the
+  other seven still have it.
