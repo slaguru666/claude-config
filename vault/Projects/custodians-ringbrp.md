@@ -3,7 +3,7 @@ type: project
 status: active
 repo: slaguru666/RingBRP + slaguru666/ringbrp-design
 path: ~/FoundryVTT/Data/systems/ringbrp + ~/RingBRP
-updated: 2026-10-07
+updated: 2026-10-11
 ---
 
 # The Custodians (RingBRP)
@@ -19,7 +19,7 @@ updated: 2026-10-07
   corpus: the bible, six rules specs, 26 review briefs. `.gitignore` holds the scans back.
 
 **Current state** — playable and guarded. **27 build guards** under `npm run check`, each a
-claim about the game re-measured on every build. **`docs/REVIEW_LOG.md` (at R-310) holds the
+claim about the game re-measured on every build. **`docs/REVIEW_LOG.md` (at R-311) holds the
 reasoning behind all of them** and is the thing to read before re-deciding anything here.
 Scenarios: `LAST_ADMISSION`, `OPEN_DAY`, `THROUGH_TRAIN`, **CLEAN GROUND** (v0.25, eleven
 desk passes, artwork placed, Contingency 2027 slot 9), whose published figures are held in both directions —
@@ -45,6 +45,16 @@ guard classifies it). **Case 1, `docs/scenarios/RETURN_WORKING.md`, is written a
 RECKONING, Region 8, 1996) and 3 (CLOSING TIME, now) are outline only. **No Foundry pack for
 RETURN WORKING and no 1974 cast actors**; the Markdown is the deliverable so far.
 
+**Panic is a rolled action (11 Oct 2026)** — the track existed since early on and was
+**inert**: `gainPanic` had one caller, the sheet's + button, hardcoding `wrongThing`.
+Now a point lands without a roll and then the agent rolls **Hold, POW×5**, through
+`skillRoll` where the band penalty already sits — so the escalation needed no new
+arithmetic. `PANIC_CONSEQUENCES` in `rules.mjs` is one rung per band (−10% next roll /
+no defence / grip lowered / no attack / break), each enforced at an existing chokepoint,
+with per-round state in `system.combat.panicPending` cleared by the reset that already
+clears defences. `majorWound` fires by itself now; the + button asks which trigger.
+**The relief table is still unwired** — the − button hardcodes `steadyYourself`/`success`.
+
 **NPCs, threats and monsters (23 Sep 2026)** — generated NPCs now draw their **posting's
 kit**: `drawKitFor()` in `postings.mjs` decides, `generateNPC` issues, and each weapon grants
 the skill it names. Armour is an item, not a number. **The forge** (`forge.mjs` at the root,
@@ -52,7 +62,9 @@ the skill it names. Armour is an item, not a number. **The forge** (`forge.mjs` 
 tier and species and explains every number. **The forge panel is not yet verified in a running
 Foundry** — the derivation is, the Foundry glue is not.
 
-**Next steps** — **desk-pass RETURN WORKING**, whose two hours on the moor after the door
+**Next steps** — **wire the panic relief table** (the − button; needs a target picker for
+`reach` and scene/case state for the once-per limits, neither of which the system keeps).
+Then **desk-pass RETURN WORKING**, whose two hours on the moor after the door
 shuts is either the best scene in the sequence or twenty dead minutes, and whose five remaining
 outline questions (Region 8 tower or island, how much engine the players get, case 3's frame)
 are still open. Then **open a world and click the three generator buttons**; that is the only
@@ -69,6 +81,17 @@ creatures hold a weapon they have no skill for, held at `check-armed`'s ratchet 
 giving each one a rating moves `check-lethality`'s numbers.
 
 **Key decisions**
+- 2026-10-11 — **A rule can be complete, documented, playtested and still never run.** Panic
+  had six bands, seven triggers, five relief routes, a widget, a card, five tests and a GM-screen
+  table, and one caller. The part that *was* wired — the band penalty in the roll stack — worked
+  perfectly, which is why no one checked the rest. **Count the callers of anything that looks
+  finished.** Fix: the escalating thing (the penalty) is reused as the difficulty of the new
+  roll, so there is one number and no second table to drift.
+- 2026-10-11 — **Scope a guard to the function that must act, and strip comments first.** Two new
+  tests passed with the enforcement deleted: one matched the flag name left behind in a flavour
+  string, one matched the comment explaining the clear it was checking for. Tightening the first
+  immediately found a real hole — the top rung only printed. A guard that matches the word
+  rather than the work is this project's recurring defect, now recorded against itself (R-311).
 - 2026-10-07 — **A closed time loop answers rather than refuses.** RETURN WORKING was written
   on the hard loop (Tim's Option A): nothing on 4 November 1974 can be changed. The design fix
   for passivity is that every interference *lands* as something the table has already read in
