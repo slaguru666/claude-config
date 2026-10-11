@@ -109,6 +109,22 @@ Then read the resulting PNG back to verify it matches the brief before placing i
   via `mj-gen`'s own `find_grid`, and calls mode 3 only after 45s with nothing at
   all in the channel for that job. Regression-tested offline by replaying a scripted
   channel through a fake `$HOME` (no network, no token): old → 3, new → 0.
+- **12 Oct 2026 — ANCHOR A FIGURE'S SIZE TO SOMETHING ELSE IN THE FRAME.** The single most
+  useful prompt technique found so far. Six plates of one man at six distances failed twice:
+  describing the scene and putting him last — *"barely more than a mark on the paper"* — made
+  the render omit him entirely, because that phrasing is an instruction to treat him as
+  negligible. Leading with him walked him up to the camera and dragged an airbrushed poster into
+  a grainy film still. **What works: "no taller in the frame than the parked cars beside him."**
+  Concrete and checkable. Pair with `--no close-up, portrait` whenever the subject is named
+  first, and `--no photograph, film still` to hold a painted press.
+- **12 Oct 2026 — a press designed around the filter never hit it.** WALKING PACE ran ~40 horror
+  plates with a **zero pull rate**, days after DEAD RECKONING's thirty-two-job wall, on the same
+  account. The difference was written into the art sheet as a rule: **no plate depicts an injury,
+  a body or a weapon**, and the respirator hood is *described* ("a pale canvas hood with two
+  round glass eyepieces") rather than named. The horror lives in the prose. **Everything that
+  cost time was composition, not moderation** — which is the opposite of the assumption that
+  wasted the previous session.
+
 - **⚠ 8 Oct 2026 — mode 2 can swallow a whole art direction, and retrying is
   worthless against it.** DEAD RECKONING's 1968 Hammer press rendered six plates
   happily, then **thirty-two consecutive jobs** — plates and portraits, spaced 2–2.5

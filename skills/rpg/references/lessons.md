@@ -671,3 +671,30 @@ pass.
   helper two files over. And the portrait sync had a hardcoded name map with no
   entry for the new NPC, so his art silently did not copy: **any mapping keyed by
   hand is a place new content disappears quietly.**
+- **2026-10-12 — Anchor a figure's size to something else in the frame.** Six plates of the same
+  man at six distances failed twice. Describing the scene and putting him last — *"barely more
+  than a mark on the paper"* — made the render leave him out altogether; that phrasing is an
+  instruction to treat him as negligible and it is obeyed. Leading with him walked him up to the
+  camera and dragged the whole image from an airbrushed poster into a grainy film still. **What
+  works is a scale anchor: "no taller in the frame than the parked cars beside him."** Concrete,
+  checkable, and it holds distance without losing the subject. Pair it with a `--no` list
+  containing `close-up, portrait` whenever the subject is named first.
+- **2026-10-12 — A dice pool cannot tell party compositions apart at one-shot scale.** A set piece
+  built to test six pregens — nine doors, nine different locks, the right specialist scoring
+  better — was measured three times across three party splits and scored 2.23/2.25/2.23, then
+  3.76/3.57/3.52, then 3.35/3.22/3.32. Flat every time, because any three characters cover most
+  skills between them and six rolls is too few for the spread to show. **If you want "we do not
+  have the right person for this" to land, gate it in the fiction: this door does not open without
+  her, and she is across town.** No roll. The composition becomes the mechanic.
+- **2026-10-12 — Measure a set piece before you write its numbers, and expect the first design to
+  be wrong.** The climax's first build — eight clauses, a death per failed track — killed 9.4
+  civilians a run and failed the four-player cut 78% of the time. The second, five clauses with a
+  clearable casualty queue, gave 93.2% and 63.6%. **Neither figure was guessable** and the first
+  one would have shipped as a massacre. The corollary: commit the harness, not just the numbers,
+  or the next person inherits a figure nobody can reproduce.
+- **2026-10-12 — Write the shortcut your players will actually take.** A desk pass nearly ended in
+  Act Two when a player with the solution in hand asked why they were waiting until the scripted
+  night. The honest answer was "no reason", and the pass had to improvise a railroad, which the
+  player spotted. **The fix is never to block it — it is to write what the climax looks like when
+  it happens early.** A competent table finds the shortest path; a scenario that only works when
+  they miss it is a scenario that works by luck.

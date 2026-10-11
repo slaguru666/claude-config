@@ -58,6 +58,19 @@ steadied, limits are keyed by scene/combat/case **token** rather than cleared by
 lifecycle, and the attempt spends the limit rather than the result. A GM-only
 **Correction** entry takes a point off without spending anything.
 
+**WALKING PACE — a standalone 1986 case, v1.3 (12 Oct 2026).** `docs/scenarios/WALKING_PACE.md`,
+not part of THE LONG RETURN. One clearance officer, one 1971 instruction nobody countermanded, an
+estate built in 1979 on the hospital he is still clearing. **He walks the 1971 corridors, not the
+streets**, so WP-H01 and WP-H02 overlay and the safe houses are the old courtyards. Climax is a
+ninety-second reading, not a fight. **Two declared breaks from the corpus:** explicit 1986
+video-nasty register, and the first case here that **cannot be run without its pictures** — six
+approach plates are a mechanic. **Three desk passes, nineteen fixes, pack 22 built.** Two
+harnesses: `wp-ninety.mjs` (the climax, measured) and `wp-wardten.mjs` (a **negative** result —
+dice cannot tell party splits apart, so three doors are gated in the fiction). Art is a third
+press, a 1986 VHS sleeve, in `WALKING_PACE_ART.md`; **pull rate zero** because no plate shows an
+injury, a body or a weapon. **Left to do: the two overlay maps, five portraits, a human run, a
+slot.**
+
 **NPCs, threats and monsters (23 Sep 2026)** — generated NPCs now draw their **posting's
 kit**: `drawKitFor()` in `postings.mjs` decides, `generateNPC` issues, and each weapon grants
 the skill it names. Armour is an item, not a number. **The forge** (`forge.mjs` at the root,
