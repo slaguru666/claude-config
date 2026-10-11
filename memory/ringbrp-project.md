@@ -106,3 +106,23 @@ factual claim that was tested held up — but Claude's own recomputation caught 
 probabilities Claude had published, so verify both sides.
 
 Related: [[rpg-skill]]
+
+## Running the guards and a local Foundry (11 Oct 2026)
+- **`bun run check`, never `npm run check`.** `npm run <script>` cannot spawn in the
+  desktop-app sandbox at all — see [[infra-npm-sandbox-exit-194]].
+- **Shut the world before running the guards.** A launched world holds a write lock on
+  every LevelDB pack, so `check-packs` dies with `LEVEL_DATABASE_NOT_OPEN`, which reads
+  nothing like "Foundry has the file".
+- **Launching a world compacts all 21 packs**, so `git status` afterwards shows every one
+  of them churned with no content change. Do not pick through it — `bun run build` is
+  deterministic and puts the tree back to just the packs whose content really changed.
+- Local Foundry is **14.361** on port 30000; the ringbrp world is `ringbrp-slice` ("The
+  Ilfracombe Crossing"), Gamemaster user, no password. Launch it with
+  `POST /setup {"action":"launchWorld","world":"ringbrp-slice"}` — the key is `world`,
+  not `id` or `packageId` — and shut it with `game.shutDown()` from the page.
+- **`tools/foundry-double.mjs`** is enough of a Foundry to import `ringbrp.mjs` into node
+  with a scripted dice queue; `tools/check-panic-live.mjs` runs 27 scenarios through it.
+  Use it for anything check-behaviour can only grep for. It cannot prove template
+  rendering or that Foundry's update pipeline accepts a field — a live world can, and
+  did: an unknown `system.*` path is dropped silently.
+

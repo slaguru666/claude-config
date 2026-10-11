@@ -60,3 +60,12 @@ Four more that only show up with **separate interactive sessions** (peers, not s
   from the other side of the same hazard the same hour.
 
 **Why:** parallel agents are a big speed-up on independent content work, and every one of these problems appeared in a single session of doing it. **How to apply:** applies to any repo, not just [[loom-app]], where more than one agent is running at a time.
+
+**It cuts both ways (11 Oct 2026).** A *second* session working the same repo ran
+`git add -A` between my `git add` and my `git commit`, and swept an entire finished
+feature — code, guards, docs, rebuilt packs — into its own unrelated scenario commit. The
+history was left alone rather than rewritten, because rewriting a shared branch under a
+live session is how somebody's work disappears; the review log says where the change
+actually landed instead. **With another session live, a staged index is not a safe place
+to leave anything**: stage and commit in the same breath, and check `git log` afterwards.
+

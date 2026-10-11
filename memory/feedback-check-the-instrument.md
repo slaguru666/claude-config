@@ -218,3 +218,14 @@ proves you edited it. Two sessions corrected the same false cause in this file
 within an hour and it survived twice in the prose around their edits, once above
 and once below. Related: [[feedback-verify-the-neighbours]],
 [[feedback-fuzz-cannot-generate]], [[feedback-concurrent-agents]].
+
+**Two more instruments that lied (11 Oct 2026, RingBRP).**
+- *A mutation that does not compile is not a passing test.* Deleting a condition took its
+  closing bracket with it; the guard crashed on a syntax error, printed no `FAIL`, and the
+  grep looking for `FAIL` reported the mutation as uncaught. Run `node --check` (or the
+  language's equivalent) on a mutated file before believing the result.
+- *`grep -E "FAIL"` cannot see a `ReferenceError`.* A new guard called a `fail()` the file
+  did not define, and sat after that file's own `process.exit`, so it asserted nothing in
+  both the clean and the mutated state — and the grep said so cheerfully in both. **Check
+  the exit code, not the output**, and confirm a new assertion can fail before trusting it.
+

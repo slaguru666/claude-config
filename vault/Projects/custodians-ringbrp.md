@@ -3,7 +3,7 @@ type: project
 status: active
 repo: slaguru666/RingBRP + slaguru666/ringbrp-design
 path: ~/FoundryVTT/Data/systems/ringbrp + ~/RingBRP
-updated: 2026-10-11
+updated: 2026-10-12
 ---
 
 # The Custodians (RingBRP)
@@ -19,7 +19,7 @@ updated: 2026-10-11
   corpus: the bible, six rules specs, 26 review briefs. `.gitignore` holds the scans back.
 
 **Current state** — playable and guarded. **27 build guards** under `npm run check`, each a
-claim about the game re-measured on every build. **`docs/REVIEW_LOG.md` (at R-311) holds the
+claim about the game re-measured on every build. **`docs/REVIEW_LOG.md` (at R-313) holds the
 reasoning behind all of them** and is the thing to read before re-deciding anything here.
 Scenarios: `LAST_ADMISSION`, `OPEN_DAY`, `THROUGH_TRAIN`, **CLEAN GROUND** (v0.25, eleven
 desk passes, artwork placed, Contingency 2027 slot 9), whose published figures are held in both directions —
@@ -53,7 +53,10 @@ arithmetic. `PANIC_CONSEQUENCES` in `rules.mjs` is one rung per band (−10% nex
 no defence / grip lowered / no attack / break), each enforced at an existing chokepoint,
 with per-round state in `system.combat.panicPending` cleared by the reset that already
 clears defences. `majorWound` fires by itself now; the + button asks which trigger.
-**The relief table is still unwired** — the − button hardcodes `steadyYourself`/`success`.
+The **relief table is wired too**: the − button asks which route, `reach` decides who is
+steadied, limits are keyed by scene/combat/case **token** rather than cleared by a
+lifecycle, and the attempt spends the limit rather than the result. A GM-only
+**Correction** entry takes a point off without spending anything.
 
 **NPCs, threats and monsters (23 Sep 2026)** — generated NPCs now draw their **posting's
 kit**: `drawKitFor()` in `postings.mjs` decides, `generateNPC` issues, and each weapon grants
@@ -62,9 +65,7 @@ the skill it names. Armour is an item, not a number. **The forge** (`forge.mjs` 
 tier and species and explains every number. **The forge panel is not yet verified in a running
 Foundry** — the derivation is, the Foundry glue is not.
 
-**Next steps** — **wire the panic relief table** (the − button; needs a target picker for
-`reach` and scene/case state for the once-per limits, neither of which the system keeps).
-Then **desk-pass RETURN WORKING**, whose two hours on the moor after the door
+**Next steps** — **desk-pass RETURN WORKING**, whose two hours on the moor after the door
 shuts is either the best scene in the sequence or twenty dead minutes, and whose five remaining
 outline questions (Region 8 tower or island, how much engine the players get, case 3's frame)
 are still open. Then **open a world and click the three generator buttons**; that is the only
@@ -81,6 +82,16 @@ creatures hold a weapon they have no skill for, held at `check-armed`'s ratchet 
 giving each one a rating moves `check-lethality`'s numbers.
 
 **Key decisions**
+- 2026-10-12 — **A fixture you write to satisfy your own assertion agrees with your
+  misunderstanding.** One panic rung shipped two implementations that did nothing, both
+  passing live tests that ran the real code against objects the game cannot produce. What
+  found it was copying a real pregen in a real world. Full chain in R-313; the
+  transferable half is in `feedback-fixtures-encode-your-error`.
+- 2026-10-12 — **Run the engine, do not grep it.** `tools/foundry-double.mjs` imports the
+  system into node with a scripted dice queue; of six behavioural mutations, four are
+  invisible to the regex guards. But a double cannot prove template rendering or that
+  Foundry accepts a new `system.*` path — only a live world can, and an unknown path is
+  dropped silently.
 - 2026-10-11 — **A rule can be complete, documented, playtested and still never run.** Panic
   had six bands, seven triggers, five relief routes, a widget, a card, five tests and a GM-screen
   table, and one caller. The part that *was* wired — the band penalty in the roll stack — worked
