@@ -718,3 +718,14 @@ pass.
   which nothing in it had. Props are not decoration: **every figure a handout shows is a
   question a player is now entitled to ask**, so read a new prop back as a player and answer
   what it raises before it reaches the table.
+- **2026-10-12 — Typeset the prop early; it forces a precision prose lets you dodge.** A
+  clipboard page that had read fine as a blockquote for three desk passes turned out, the
+  moment it was set as a real form next to the map, to list three addresses that were not on
+  the antagonist's route and to omit one that was. Prose can say "the next few houses" and
+  survive; **a form has rows, and a player reads the rows against the map.** Anything a player
+  will hold in their hand is a consistency test, so run it before the table does.
+- **2026-10-12 — Handout text that lives in two places needs a guard, not good intentions.**
+  The words are in the scenario a GM reads and in the HTML they print, and they drift silently
+  — nobody proof-reads a pack against its own source. A check that every word of each printed
+  sheet appears in the scenario costs about thirty lines and catches the edit that was only
+  made in one of them. Prove it fails before trusting it to pass.
