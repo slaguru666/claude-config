@@ -44,7 +44,7 @@
 - [Check the instrument](feedback-check-the-instrument.md) — run the case that comes out differently under the other explanation; prove the detector fires before trusting its silence; `git show "${sha}:path"` needs the braces or you get the commit
 - [Guarantee, not argument](feedback-guarantee-not-argument.md) — reasoning sound about one implementation is not evidence about another; ask whether the same guarantee exists
 - [My rule is not the limit](feedback-my-rule-is-not-the-limit.md) — a constraint on how I may act is not a constraint on what is possible; check the system before reporting a blocker
-- [Mac gh credential helper](infra-mac-gh-credential-helper.md) — HTTPS pushes to GitHub (incl. sync.sh) fail: ~/.gitconfig points at a missing /opt/homebrew/bin/gh; override with osxkeychain
+- [Mac gh credential helper](infra-mac-gh-credential-helper.md) — git gets GitHub creds from gh; fixed 2026-10-12 with `brew install gh` (the keyring login had survived) — check the binary exists before assuming auth is gone
 - [npm exits 194 in the sandbox](infra-npm-sandbox-exit-194.md) — `npm run` gives 194 and no output here; run the script's chain under bash before calling a suite broken
 - [Fixtures encode your error](feedback-fixtures-encode-your-error.md) — a fixture written to satisfy your assertion agrees with your misunderstanding; copy real data
 
