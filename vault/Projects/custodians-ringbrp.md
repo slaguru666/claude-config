@@ -18,8 +18,8 @@ updated: 2026-10-12
 - `~/RingBRP/` → `slaguru666/ringbrp-design` (public since 9 Sep 2026) — the design
   corpus: the bible, six rules specs, 26 review briefs. `.gitignore` holds the scans back.
 
-**Current state** — playable and guarded. **27 build guards** under `npm run check`, each a
-claim about the game re-measured on every build. **`docs/REVIEW_LOG.md` (at R-313) holds the
+**Current state** — playable and guarded. **28 build guards** under `bun run check`, each a
+claim about the game re-measured on every build. **`docs/REVIEW_LOG.md` (at R-315) holds the
 reasoning behind all of them** and is the thing to read before re-deciding anything here.
 Scenarios: `LAST_ADMISSION`, `OPEN_DAY`, `THROUGH_TRAIN`, **CLEAN GROUND** (v0.25, eleven
 desk passes, artwork placed, Contingency 2027 slot 9), whose published figures are held in both directions —
@@ -52,7 +52,9 @@ Now a point lands without a roll and then the agent rolls **Hold, POW×5**, thro
 arithmetic. `PANIC_CONSEQUENCES` in `rules.mjs` is one rung per band (−10% next roll /
 no defence / grip lowered / no attack / break), each enforced at an existing chokepoint,
 with per-round state in `system.combat.panicPending` cleared by the reset that already
-clears defences. `majorWound` fires by itself now; the + button asks which trigger.
+clears defences. **Three triggers fire themselves (12 Oct 2026, R-315)** — `majorWound` every time a
+wound is rolled, `aBody` and `someoneYouKnew` once per scene, keyed by the same token
+scheme as the reliefs; the other four stay on the + button, which asks which happened.
 The **relief table is wired too**: the − button asks which route, `reach` decides who is
 steadied, limits are keyed by scene/combat/case **token** rather than cleared by a
 lifecycle, and the attempt spends the limit rather than the result. A GM-only
@@ -108,6 +110,11 @@ creatures hold a weapon they have no skill for, held at `check-armed`'s ratchet 
 giving each one a rating moves `check-lethality`'s numbers.
 
 **Key decisions**
+- 2026-10-12 — **A feature that has a definition may not hold a second opinion about it.**
+  The panic wound trigger gated on `actor.hasPlayerOwner` — obviously correct, and it
+  fired for nobody, because `partyActors()` reads the active case file first and the live
+  world's six agents are unowned. `died()` panicked the party correctly from the same
+  file. Both were "right"; they disagreed about who the party is. R-315.
 - 2026-10-12 — **A fixture you write to satisfy your own assertion agrees with your
   misunderstanding.** One panic rung shipped two implementations that did nothing, both
   passing live tests that ran the real code against objects the game cannot produce. What
