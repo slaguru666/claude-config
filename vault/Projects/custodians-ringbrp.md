@@ -19,7 +19,7 @@ updated: 2026-10-12
   corpus: the bible, six rules specs, 26 review briefs. `.gitignore` holds the scans back.
 
 **Current state** — playable and guarded. **28 build guards** under `bun run check`, each a
-claim about the game re-measured on every build. **`docs/REVIEW_LOG.md` (at R-315) holds the
+claim about the game re-measured on every build. **`docs/REVIEW_LOG.md` (at R-316) holds the
 reasoning behind all of them** and is the thing to read before re-deciding anything here.
 Scenarios: `LAST_ADMISSION`, `OPEN_DAY`, `THROUGH_TRAIN`, **CLEAN GROUND** (v0.25, eleven
 desk passes, artwork placed, Contingency 2027 slot 9), whose published figures are held in both directions —
@@ -52,9 +52,13 @@ Now a point lands without a roll and then the agent rolls **Hold, POW×5**, thro
 arithmetic. `PANIC_CONSEQUENCES` in `rules.mjs` is one rung per band (−10% next roll /
 no defence / grip lowered / no attack / break), each enforced at an existing chokepoint,
 with per-round state in `system.combat.panicPending` cleared by the reset that already
-clears defences. **Three triggers fire themselves (12 Oct 2026, R-315)** — `majorWound` every time a
-wound is rolled, `aBody` and `someoneYouKnew` once per scene, keyed by the same token
-scheme as the reliefs; the other four stay on the + button, which asks which happened.
+clears defences. **Four triggers fire themselves (12 Oct 2026, R-315/R-316)** — `majorWound` every time a
+wound is rolled, `aBody`, `someoneYouKnew` and `touchedByIt` once per scene, keyed by the
+same token scheme as the reliefs. The remaining three stay on the + button, which asks
+which happened, because the lights going out is not a state the engine can observe.
+**`system.anomalous` is declared on the creature, never inferred** — all four proxies for
+"is this one of the things" are wrong, and `check-creatures` cross-checks every
+declaration against the creature's own role category.
 The **relief table is wired too**: the − button asks which route, `reach` decides who is
 steadied, limits are keyed by scene/combat/case **token** rather than cleared by a
 lifecycle, and the attempt spends the limit rather than the result. A GM-only
@@ -110,6 +114,15 @@ creatures hold a weapon they have no skill for, held at `check-armed`'s ratchet 
 giving each one a rating moves `check-lethality`'s numbers.
 
 **Key decisions**
+- 2026-10-12 — **Write the assertion from the shape of the failure, not the shape of the
+  fix.** Three guards in one session were aimed at a hazard next to the real one; the worst
+  existed to catch a mechanical data sweep and could not, because it asked whether the
+  whole corpus was uniform when the hazard was one file. R-316.
+- 2026-10-12 — **Declare the fact; never infer it from a proxy that happens to correlate.**
+  Four candidates for "is this creature one of the things" all read as obviously correct
+  and all were wrong, including the role-string prefix (23 different words, among them
+  LIVESTOCK and ACT TWO). `system.anomalous` is declared, and the prefix demoted to the
+  second opinion that has to agree. R-316.
 - 2026-10-12 — **A feature that has a definition may not hold a second opinion about it.**
   The panic wound trigger gated on `actor.hasPlayerOwner` — obviously correct, and it
   fired for nobody, because `partyActors()` reads the active case file first and the live
