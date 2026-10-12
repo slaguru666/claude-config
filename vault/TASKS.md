@@ -263,7 +263,9 @@ Index: [[INDEX]]
 - [x] ONE MORE ABOARD: four handouts [[custodians-ringbrp]] (12 Oct: H02–H05, held word-for-word by check-handouts)
 - [x] ONE MORE ABOARD: nine art plates [[custodians-ringbrp]] (12 Oct: 1912 illustrated-weekly press, zero pulls)
 - [x] ONE MORE ABOARD: bestiary entry + pack build [[custodians-ringbrp]] (12 Oct: pack `onemoreaboard` registered in system.json **and** the Scenarios pack folder; 28 guards green, check-forge skipped on Foundry's LOCK)
-- [ ] ONE MORE ABOARD: a desk pass — walk the 150 minutes with a clock and a pencil [[custodians-ringbrp]]
+- [x] ONE MORE ABOARD: a desk pass — walk the 150 minutes with a clock and a pencil [[custodians-ringbrp]] (12 Oct: pass 1 done, `ONE_MORE_ABOARD_PLAYTEST_1.md` — **Act Four does not survive it**; 15 fixes, 5 must-fix)
+- [ ] **TIM, a design call: is the perfect ending priced at an agent?** [[custodians-ringbrp]] — ONE MORE ABOARD fix 1. Act Four needs the door below the E-deck line, the route shuts at 1:48 with no way back up, the last door lets exactly one person out, and Act Five wants Ashcroft standing on the boat deck with six anchors in hand. Those cannot all be true. Options: **(a)** somebody stays below and the perfect ending costs six refusals *and* a sacrifice (harder, better, changes what the scenario is about); **(b)** the door does not need to go below — write why, and the problem becomes getting the host down and the party back; **(c)** the flooded room *is* the containment — shut the door on a deep compartment, the host drowns with nobody within three yards, and THE BERTH's "it is in the water and the case is over" is the win (already latent in the text, cheapest to write, three sentences). Nothing else in the fix list can be finished until this is answered.
+- [ ] ONE MORE ABOARD: apply desk-pass-1 fixes 2–15 and bump to v1.1 [[custodians-ringbrp]] — sighting tracks + a guard rule that holds the pattern at 1:30 not 2:05, boiler-room-4 floor assertion, the drift rule, cut 15 min from Act Three in writing, the 324-vs-61 shortlist logic, OMA-H05 leaking the tells
 - [ ] ONE MORE ABOARD: a run with human beings, and a slot [[custodians-ringbrp]]
 
 ## Someday

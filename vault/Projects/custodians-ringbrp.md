@@ -162,6 +162,22 @@ fights to be carried, and winning hands it a fresh host. The blockquote prints i
 desk pass and a run.** Side effect: R-319's Night Warden Religion change finally shipped in a
 built pack on this build.
 
+**ONE MORE ABOARD: desk pass 1 done, and DO NOT RUN IT YET (12 Oct 2026)** —
+`ONE_MORE_ABOARD_PLAYTEST_1.md`. Acts One, Two, Three and Five are a convention scenario with
+a timing problem (+18 drift by Act Four: Act One is eight over on the six anchors, Act Three
+fifteen over and mislabelled "the only act with slack"). **Act Four has three contradictions.**
+(1) The route below is 1:30–1:48 — eighteen minutes — and the drift is eighteen minutes, so
+the window has shut on arrival; the document has **no drift rule** for a one-for-one clock.
+(2) Boiler room 4's tank top is past wading depth at **1:23**, seven minutes before the act
+opens, and `--check` never asks: rule 4 tests br4 at deck `e`, the ladder head, not deck
+`tank`, the floor the act is set on. (3) **Ashcroft cannot be both below the line after 1:48
+and on the boat deck in Act Five** — so the perfect ending is either unreachable or priced at
+an agent, and the text implies both. **Fix 1 is Tim's design call, not a correction.** Also:
+the sighting plot reads Treherne 12/12, Tunnard 7/12, Hale 1/12, Carrow/Pyke/Vuković **0/12**
+— four of the six never appear, and at the 1:20 decision point Treherne is 7/7 and Tunnard
+**2/2**, so the confirm points hardest at the innocent decoy. 15 fixes, 5 must-fix, none
+applied. `4ec8f43`.
+
 **NPCs, threats and monsters (23 Sep 2026)** — generated NPCs now draw their **posting's
 kit**: `drawKitFor()` in `postings.mjs` decides, `generateNPC` issues, and each weapon grants
 the skill it names. Armour is an item, not a number. **The forge** (`forge.mjs` at the root,

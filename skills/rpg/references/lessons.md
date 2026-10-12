@@ -830,3 +830,31 @@ pass.
   reads to decide what to do next, so a stale one sends them to work that is finished and hides
   the work that is not. **Trim it in the same commit that closes an item**, never in a sweep
   later.
+- **2026-10-12 — Read the mechanic out of the model, do not adjudicate it by hand.** A
+  scenario's identification climax was a positional plot: mark where you see each suspect, and
+  one of them has always been near you. Simulating that at the desk, I would have produced the
+  pattern the text promised, because I had just read the text. Dumping the model's own in-sight
+  matrix instead showed four of six suspects never appear on the plot at all, and that at the
+  moment the players must decide, **the innocent decoy also has a perfect record.** The prose
+  and the generator had drifted apart and only the generator knew. **Where a mechanic has a
+  model under it, the desk pass's job is to print the model, not to imagine it.**
+- **2026-10-12 — A one-for-one clock needs a drift rule, or the drift lands on the one hard
+  deadline.** "150 minutes of ship for 150 minutes of play" is a superb device and it removes
+  the thing every other scenario relies on: making time up later. My walk ran eight minutes
+  over in Act One and fifteen in Act Three, and the climax's window was eighteen minutes wide
+  — so the window had shut before the act began. **If the clock is the scenario, write what
+  the GM does when the table is twelve minutes behind**, with a worked example, and say which
+  clock a deadline is measured on. Related: an act labelled "the one with slack in it" should
+  be the act you count first; that label was on the most overloaded act in the document.
+- **2026-10-12 — Checking the route to a place is not checking the place.** A guard verified
+  that the corridor and ladder down to the climax were passable for the whole act, and passed
+  — while the room at the bottom had been under more than wading depth since seven minutes
+  before the act opened. The route was tested at the deck of the ladder head; the floor the
+  scene is set on was never asked about. **Assert the state of the space the scene happens in,
+  not just the approach**, and when a guard's green line names a journey, check whether it
+  names the destination.
+- **2026-10-12 — Say what is already right.** A desk pass that is only a fix list reads as a
+  verdict on the whole scenario, and the next person to open it cannot tell which parts have
+  been checked and held from which parts were never examined. I now write a *what is already
+  right, and should not be touched* section with the arithmetic I verified in it. It stops the
+  same ground being re-litigated and it is honest about how much of the document survived.
