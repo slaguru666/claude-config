@@ -79,8 +79,10 @@ it also closed a hole in the text: with eleven dates printed on a handout, the d
 answer to why eight wards took seven years and the last three take three nights, and rule 3 now
 gives one. Ward ten is **Pardoe Crescent**, the one street that follows the old corridor; the two
 safe houses are nos 2 and 4, on the west airing court. **All the art is in** — 33 plates and
-5 portraits over six batches, pull rate still zero. **Left to do: a human run, a slot, and the
-three typed handouts as print props.**
+5 portraits over six batches, pull rate still zero. **The print pack is built too** —
+`WALKING_PACE_HANDOUTS.html`, three A4 sheets, and `check-handouts` holds every word of it
+against the scenario while `walkingpace-plans --check` holds WP-H04's addresses against the
+ward the map draws. **Left to do: a human run and a slot.**
 
 **NPCs, threats and monsters (23 Sep 2026)** — generated NPCs now draw their **posting's
 kit**: `drawKitFor()` in `postings.mjs` decides, `generateNPC` issues, and each weapon grants
