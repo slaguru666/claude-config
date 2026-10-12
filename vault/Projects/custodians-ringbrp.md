@@ -19,7 +19,7 @@ updated: 2026-10-12
   corpus: the bible, six rules specs, 26 review briefs. `.gitignore` holds the scans back.
 
 **Current state** — playable and guarded. **28 build guards** under `bun run check`, each a
-claim about the game re-measured on every build. **`docs/REVIEW_LOG.md` (at R-317) holds the
+claim about the game re-measured on every build. **`docs/REVIEW_LOG.md` (at R-318) holds the
 reasoning behind all of them** and is the thing to read before re-deciding anything here.
 Scenarios: `LAST_ADMISSION`, `OPEN_DAY`, `THROUGH_TRAIN`, **CLEAN GROUND** (v0.25, eleven
 desk passes, artwork placed, Contingency 2027 slot 9), whose published figures are held in both directions —
@@ -64,6 +64,13 @@ The **relief table is wired too**: the − button asks which route, `reach` deci
 steadied, limits are keyed by scene/combat/case **token** rather than cleared by a
 lifecycle, and the attempt spends the limit rather than the result. A GM-only
 **Correction** entry takes a point off without spending anything.
+**The three skill reliefs now actually roll (12 Oct 2026, R-318)** — they read the rating
+from `item.system.rating`, a field **no skill item has**, so Religion, Psychology and Occult
+rolled against 0 from the day the table shipped: 1% to help against 5% to backfire onto
+everyone they reached. The field is `system.value`. And **a point from a backfired attempt
+to help cannot take anybody to breaking point**, it stops one short — the only remaining
+path to a whole party breaking in the same moment, which THROUGH TRAIN already ruled out.
+The cap is on the backfire only; what happens *to* an agent still breaks them.
 
 **WALKING PACE — a standalone 1986 case, v1.3 (12 Oct 2026).** `docs/scenarios/WALKING_PACE.md`,
 not part of THE LONG RETURN. One clearance officer, one 1971 instruction nobody countermanded, an
@@ -144,6 +151,15 @@ creatures hold a weapon they have no skill for, held at `check-armed`'s ratchet 
 giving each one a rating moves `check-lethality`'s numbers.
 
 **Key decisions**
+- 2026-10-12 — **A balance question about a rule nobody can roll is not a balance question.**
+  The Occult fumble looked too harsh; measuring it first found the roll reading a field that
+  does not exist, so every skill relief had been at band 1 since it shipped. Measure before
+  tuning, and when the measurement answers a different question than the one asked, answer
+  that one. R-318.
+- 2026-10-12 — **A cap on the bad outcome has to be conditional on the outcome.** Stopping a
+  backfire one short of breaking point reads identically to stopping *every* relief one short,
+  and the second quietly hands a free point back on a plain failure at the cap. It passed four
+  tests. The guard belongs on the branch, not on the number. R-318.
 - 2026-10-12 — **Ask the question the rule needs, and let absence be an answer.** `anomalous`
   claimed something about a creature's nature in order to serve one rule about contact, and a
   broad claim pressed into narrow service went wrong at both ends — 50 declarations that changed
