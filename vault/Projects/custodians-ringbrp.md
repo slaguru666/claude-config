@@ -45,38 +45,24 @@ guard classifies it). **Case 1, `docs/scenarios/RETURN_WORKING.md`, is written a
 RECKONING, Region 8, 1996) and 3 (CLOSING TIME, now) are outline only. **No Foundry pack for
 RETURN WORKING and no 1974 cast actors**; the Markdown is the deliverable so far.
 
-**Panic is a rolled action (11 Oct 2026)** — the track existed since early on and was
-**inert**: `gainPanic` had one caller, the sheet's + button, hardcoding `wrongThing`.
-Now a point lands without a roll and then the agent rolls **Hold, POW×5**, through
-`skillRoll` where the band penalty already sits — so the escalation needed no new
-arithmetic. `PANIC_CONSEQUENCES` in `rules.mjs` is one rung per band (−10% next roll /
-no defence / grip lowered / no attack / break), each enforced at an existing chokepoint,
-with per-round state in `system.combat.panicPending` cleared by the reset that already
-clears defences. **Four triggers fire themselves (12 Oct 2026, R-315/R-316)** — `majorWound` every time a
-wound is rolled, `aBody`, `someoneYouKnew` and `touchedByIt` once per scene, keyed by the
-same token scheme as the reliefs. The remaining three stay on the + button, which asks
-which happened, because the lights going out is not a state the engine can observe.
-**`system.wrongToTouch` is declared on the creature, never inferred** — all four proxies
-are wrong, and it is a question about **contact**, not about what the creature is (R-317):
-only the 93 specs that can reach out answer it, the other 55 are silent, and five harmless
-touches are pinned in `tools/harmless-touch-baseline.json`.
-The **relief table is wired too**: the − button asks which route, `reach` decides who is
-steadied, limits are keyed by scene/combat/case **token** rather than cleared by a
-lifecycle, and the attempt spends the limit rather than the result. A GM-only
-**Correction** entry takes a point off without spending anything.
-**The three skill reliefs now actually roll (12 Oct 2026, R-318)** — they read the rating
-from `item.system.rating`, a field **no skill item has**, so Religion, Psychology and Occult
-rolled against 0 from the day the table shipped: 1% to help against 5% to backfire onto
-everyone they reached. The field is `system.value`. **Training is by posting, not per agent**,
-and `check-behaviour` now holds it: `registry` and the `professor` trade have occult in core
-(Bhattacharya 63, Lindqvist 58), `interview` and `doctor` psychology in support (Renshaw,
-Nkemdirim 40). **Religion was the weak one and is fixed (R-319)** — it was reachable only as
-`pathology`'s support rating of 35, so the **Night Warden** now has it in core and Pollard
-rolls 53. Six core skills there, like `lead` and `talker`, nothing demoted. The rulebook
-prints who trains what, **derived from `ROLES`/`TRADES`** so it cannot drift. And **a point from a backfired attempt
-to help cannot take anybody to breaking point**, it stops one short — the only remaining
-path to a whole party breaking in the same moment, which THROUGH TRAIN already ruled out.
-The cap is on the backfire only; what happens *to* an agent still breaks them.
+**Panic is a SANITY-STYLE SCORE (12 Oct 2026, R-320)** — Tim read the whole mechanic back
+and replaced it: *"No, I dont like it."* Now a fright is a **POW×5 roll**, harder by what
+you are looking at; **pass and nothing happens at all**; fail and it is **+1 Panic** and
+then **d10 + the new score** on an eight-row severity table, open at the top. The thing
+the old track could not do was let an agent withstand a fright — a point used to land
+unconditionally and the roll came after.
+**Gone:** `PANIC_BANDS`/`panicPenaltyFor` (the score no longer touches any other roll — it
+was double jeopardy and it applied to the Hold roll itself, so bad nights ran away),
+`PANIC_MAX`/`PANIC_AFTER_BREAK` (no ceiling; breaking does not hand points back), and
+R-318's backfire cap along with the threshold it capped.
+**Triggers carry the difficulty** (`cost` → `mod`): a body −10, its name −30, so the sight
+IS the difficulty — which is what THROUGH TRAIN wanted when it had to cut a two-point
+trigger. The curve: Panic 1 rolls 2–11 (worst: breaks), 3 rolls 4–13 (out of the scene),
+5 rolls 6–15 (out of the case), 10's BEST row is breaks. Out-of-play releases itself by
+token like the relief limits. The reliefs are unchanged and now better, rolling at full
+rating when the score is high. 57 live scenarios, 136 behavioural guards, 117 rules.
+**Still to do: rebuild the packs and run `check-forge`** — both blocked on a world somebody
+else had open holding the LevelDB lock.
 
 **WALKING PACE — a standalone 1986 case, v1.3 (12 Oct 2026).** `docs/scenarios/WALKING_PACE.md`,
 not part of THE LONG RETURN. One clearance officer, one 1971 instruction nobody countermanded, an
@@ -202,6 +188,16 @@ creatures hold a weapon they have no skill for, held at `check-armed`'s ratchet 
 giving each one a rating moves `check-lethality`'s numbers.
 
 **Key decisions**
+- 2026-10-12 — **The outcome a mechanic cannot produce is the one to look for.** The panic
+  track was complete, guarded, documented and measured, and had no version of a fright an
+  agent simply withstood — because the point landed before the roll. Nothing in six review
+  entries about it noticed, because every guard asked whether the rules it had were enforced,
+  never which outcomes were missing from the set. R-320.
+- 2026-10-12 — **Ask the structural questions; guess the rest.** Three forks in the rewrite
+  (does the score still penalise rolls, is it capped, where does difficulty come from) each
+  changed a lot of code and had no default worth assuming, so they were put to Tim before any
+  code was written. The severity table's contents were drafted rather than asked about, which
+  is the right split: a design judgement he can correct, versus a decision only he can make.
 - 2026-10-12 — **A route printed in the rulebook that almost nobody can take is not a rule,
   it is decoration.** Religion existed as a panic relief, was core to a posting the roster does
   not hold, and otherwise a support rating of 35 on one agent. The fix was a posting that was
