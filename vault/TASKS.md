@@ -252,6 +252,10 @@ Index: [[INDEX]]
 - [x] WALKING PACE: typeset WP-H03/H04/H05 as print props [[custodians-ringbrp]] (12 Oct: WALKING_PACE_HANDOUTS.html, held by check-handouts)
 - [ ] WALKING PACE: a run with human beings — three desk passes done, that is all that is left [[custodians-ringbrp]]
 - [ ] WALKING PACE: find it a slot [[custodians-ringbrp]]
+- [x] New RingBRP case: a 2h30 action scenario, ocean liner, 1912 [[custodians-ringbrp]] (12 Oct: ONE MORE ABOARD v1, 25 of 26 guards green)
+- [ ] ONE MORE ABOARD: draw the deck plan OMA-H01 as a generator with a `--check` — the sighting mechanic rides on it [[custodians-ringbrp]]
+- [ ] ONE MORE ABOARD: run the fight harness on *the passage* and give its stat block a real measured line — do not invent one [[custodians-ringbrp]]
+- [ ] ONE MORE ABOARD: bestiary entry + pack build, four handouts, nine art plates, a desk pass [[custodians-ringbrp]]
 
 ## Someday
 

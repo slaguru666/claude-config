@@ -729,3 +729,31 @@ pass.
   — nobody proof-reads a pack against its own source. A check that every word of each printed
   sheet appears in the scenario costs about thirty lines and catches the edit that was only
   made in one of them. Prove it fails before trusting it to pass.
+- **2026-10-12 — A short slot is not a long scenario cut down; it is an execution clock.** The
+  house default is four hours with an investigation act, and halving that by trimming scenes
+  produces a thin mystery rather than a fast game. The structure that actually works at two
+  and a half hours is the inversion: **the party arrives already knowing the problem, and the
+  whole session is execution against a clock they can see** — one location, one direction of
+  travel, three beats, no break. And if the premise is a real event, **let its own duration set
+  the runtime**: a disaster that took two hours and forty minutes is a two-hour-forty session
+  at one minute to one minute, and the clock then needs no handout and no GM bookkeeping.
+- **2026-10-12 — Price the best ending in refusals, not rolls.** A "perfect" outcome that hangs
+  on dice is luck, and one that hangs on a clever single insight is a quiz. Make it an object
+  count the players can see on the table — six things, still in six hands at the end — and then
+  spend the session offering six good reasons to give one away, **each reason a named person
+  with a real need and none of them the antagonist.** No roll defends the object; it is a
+  decision, repeated. The table earns the good ending by being hard six times and being right,
+  which is a thing they will remember arguing about.
+- **2026-10-12 — Make the antagonist the helpful one.** A monster that stalks, hides or
+  threatens turns identification into a search problem and the players into hunters. A monster
+  that is courteous, useful and *always nearby* turns identification into a betrayal of someone
+  the table likes, and it lets the confirming evidence be positional — plot where it has been
+  and it has been beside you all night. **It also fixes the pacing**, because the thing can be
+  on screen constantly without the scenario having to escalate.
+- **2026-10-12 — Read the setting's own framing before designing the period.** Asked for a 1912
+  case, I had most of an Edwardian branch of the organisation designed before checking, and the
+  corpus does not work that way at all — agents go from the present through a crossing, with a
+  standing order stripping their modern kit. Ten minutes of reading turned an invention that
+  would have contradicted canon into **the engine of the scenario**: a door that works both ways
+  is the one thing the antagonist has never been offered. The established mechanism is usually a
+  better premise than the one you would have made up for it.

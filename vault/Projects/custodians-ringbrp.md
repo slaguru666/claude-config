@@ -90,6 +90,24 @@ safe houses are nos 2 and 4, on the west airing court. **All the art is in** —
 against the scenario while `walkingpace-plans --check` holds WP-H04's addresses against the
 ward the map draws. **Left to do: a human run and a slot.**
 
+**ONE MORE ABOARD — a 1912 ocean-liner case, v1 (12 Oct 2026).**
+`docs/scenarios/ONE_MORE_ABOARD.md`, **2h30 and no break**, built to Tim's brief: action
+packed, and a danger that must not get off the ship while the players do not know who it is.
+RMS *Hesperic*, 14 April 1912. **The session clock is the ship's clock, one minute to one
+minute** — through at 11:50pm, founders at 2:20am, 150 minutes exactly. **The crossing is
+Ashcroft rather than a place**, so the door walks about with a man and the thing's target is
+his half of a cut school tie. Identification is a count (2,206 against 2,205 tickets, then a
+cancelled stub), three tells that are each a lie, and a positional confirm the table earns by
+marking a deck plan — **the suspect is the most helpful man aboard**, and a frightened trimmer
+trips two tells as a decoy. **Killing is not containment**: it transfers to whoever last
+touched the host. **The perfect ending is six anchors intact and in hand at 2:20, priced at
+six refusals**, each a real person who needs the object in an agent's hand. Cast declared:
+Holloway, Ashcroft, Renshaw, Ferriby, Sharrock, Okonkwo — **no Medicine and no Sleight of
+Hand**, deliberately, with three routes into the purser's office so no beat needs either.
+**Left to do: the deck plan (OMA-H01), which is the one prop it cannot run without and wants
+the WALKING PACE treatment — one geometry, generated, with a checker; the fight-harness figure
+for the creature; a bestiary entry; four handouts; nine plates; and a run.**
+
 **NPCs, threats and monsters (23 Sep 2026)** — generated NPCs now draw their **posting's
 kit**: `drawKitFor()` in `postings.mjs` decides, `generateNPC` issues, and each weapon grants
 the skill it names. Armour is an item, not a number. **The forge** (`forge.mjs` at the root,
@@ -97,7 +115,7 @@ the skill it names. Armour is an item, not a number. **The forge** (`forge.mjs` 
 tier and species and explains every number. **The forge panel is not yet verified in a running
 Foundry** — the derivation is, the Foundry glue is not.
 
-**Next steps** — **desk-pass RETURN WORKING**, whose two hours on the moor after the door
+**Next steps** — **draw ONE MORE ABOARD's deck plan**, which is the prop the sighting mechanic rides on and therefore needs a generator and a `--check`, not a drawing. Then **desk-pass RETURN WORKING**, whose two hours on the moor after the door
 shuts is either the best scene in the sequence or twenty dead minutes, and whose five remaining
 outline questions (Region 8 tower or island, how much engine the players get, case 3's frame)
 are still open. Then **open a world and click the three generator buttons**; that is the only
@@ -114,6 +132,13 @@ creatures hold a weapon they have no skill for, held at `check-armed`'s ratchet 
 giving each one a rating moves `check-lethality`'s numbers.
 
 **Key decisions**
+- 2026-10-12 — **A short case is not a long case cut down; it is an execution clock.** ONE MORE
+  ABOARD has no investigation act — the party arrives knowing the problem and the whole session
+  is one location, one direction of travel and a visible clock. Picking a real two-and-a-half
+  hours of history set the runtime for free.
+- 2026-10-12 — **Price the good ending in refusals rather than rolls.** Six anchors intact is
+  countable on the table, and every temptation to lose one is a person who needs it. No roll
+  defends an anchor.
 - 2026-10-12 — **Write the assertion from the shape of the failure, not the shape of the
   fix.** Three guards in one session were aimed at a hazard next to the real one; the worst
   existed to catch a mechanical data sweep and could not, because it asked whether the
