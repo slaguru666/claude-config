@@ -148,8 +148,19 @@ prompts and record in `ONE_MORE_ABOARD_ART.md`. **The press is a London illustra
 **No plate shows a body or anybody in the water** — what the weeklies did, where the horror
 belongs, and the only version of the order that could be placed. Zero pulls. Two registers kept
 on purpose: engraving for the scenes, tinted lithograph for the two portraits. `oma_01` is the
-cover stem `make-pdf` resolves by. **The case is now short only a bestiary entry + pack build,
-a desk pass and a run.**
+cover stem `make-pdf` resolves by.
+
+**ONE MORE ABOARD is in the game (12 Oct 2026)** — `tools/scenario-onemoreaboard.mjs` (15 GM
+pages, 4 handouts, 9 plates, 2 drawn sheets, 8 cast), pack `onemoreaboard` registered in
+`system.json` **and in the Scenarios pack folder** — a pack declared and not foldered sits
+loose in the sidebar, and both lists now reconcile with no orphans either way. All 28 guards
+green (`check-forge` skipped: Foundry held `packs/weapons/LOCK`). **The passage is measured:
+0.00 of 4 down, 0% wiped, 2 rounds** — four agents floor it in two rounds and nobody goes
+down. That is the case stated as a number, not a weak monster: it does not fight to win, it
+fights to be carried, and winning hands it a fresh host. The blockquote prints it with three
+`cite:` markers, so check-cited holds the prose to the harness. **The case is now short only a
+desk pass and a run.** Side effect: R-319's Night Warden Religion change finally shipped in a
+built pack on this build.
 
 **NPCs, threats and monsters (23 Sep 2026)** — generated NPCs now draw their **posting's
 kit**: `drawKitFor()` in `postings.mjs` decides, `generateNPC` issues, and each weapon grants

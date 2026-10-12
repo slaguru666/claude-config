@@ -816,3 +816,17 @@ pass.
   inaccurate detail, it is the wrong instant — and the plate exists to show that instant.
   **Distinguish "wrong detail, keep" from "wrong subject, re-roll"**, and say which in the
   prompt sheet so the next person does not have to relitigate it.
+- **2026-10-12 — When the harness finally answers, publish the answer AND the reading.** A
+  stat block had carried a note saying *do not quote a figure for this until it has been
+  measured*. Measured, it came back trivially killable: four agents floor it in two rounds and
+  none of them goes down. The temptation is to treat that as a flaw and buff the thing. It was
+  the design — the monster does not fight to win, it fights to be carried, and winning the
+  fight hands it a fresh host. **A number alone is misread as a verdict**, so the figure now
+  prints with the sentence that tells a GM what it means. If your measurement contradicts your
+  prose, check which one is wrong before you change either.
+- **2026-10-12 — A "Not built" list that lies about what is done is worse than no list.** Three
+  of five lines still claimed the art, the bestiary entry and the harness figure were
+  outstanding, hours after each landed. The list is the first thing a returning GM or author
+  reads to decide what to do next, so a stale one sends them to work that is finished and hides
+  the work that is not. **Trim it in the same commit that closes an item**, never in a sweep
+  later.
