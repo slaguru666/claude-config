@@ -69,8 +69,11 @@ from `item.system.rating`, a field **no skill item has**, so Religion, Psycholog
 rolled against 0 from the day the table shipped: 1% to help against 5% to backfire onto
 everyone they reached. The field is `system.value`. **Training is by posting, not per agent**,
 and `check-behaviour` now holds it: `registry` and the `professor` trade have occult in core
-(Bhattacharya 63, Lindqvist 58), `antiquities` religion in core and `pathology` in support
-(Braithwaite 35), `interview` and `doctor` psychology in support (Renshaw, Nkemdirim 40). And **a point from a backfired attempt
+(Bhattacharya 63, Lindqvist 58), `interview` and `doctor` psychology in support (Renshaw,
+Nkemdirim 40). **Religion was the weak one and is fixed (R-319)** — it was reachable only as
+`pathology`'s support rating of 35, so the **Night Warden** now has it in core and Pollard
+rolls 53. Six core skills there, like `lead` and `talker`, nothing demoted. The rulebook
+prints who trains what, **derived from `ROLES`/`TRADES`** so it cannot drift. And **a point from a backfired attempt
 to help cannot take anybody to breaking point**, it stops one short — the only remaining
 path to a whole party breaking in the same moment, which THROUGH TRAIN already ruled out.
 The cap is on the backfire only; what happens *to* an agent still breaks them.
@@ -172,6 +175,11 @@ creatures hold a weapon they have no skill for, held at `check-armed`'s ratchet 
 giving each one a rating moves `check-lethality`'s numbers.
 
 **Key decisions**
+- 2026-10-12 — **A route printed in the rulebook that almost nobody can take is not a rule,
+  it is decoration.** Religion existed as a panic relief, was core to a posting the roster does
+  not hold, and otherwise a support rating of 35 on one agent. The fix was a posting that was
+  already written for it — the Night Warden, whose kit has carried a *ward* since the day it
+  was written. Look for the posting the fiction already chose before inventing a reason. R-319.
 - 2026-10-12 — **A null result is a claim, and a confident correction of a true statement
   costs more than the original slip.** I "corrected" R-318 to say no roster posting trains the
   panic relief skills, having read `expandFromRegister`'s `skills` **array** as an object keyed
