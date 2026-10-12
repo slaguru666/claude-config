@@ -61,8 +61,14 @@ trigger. The curve: Panic 1 rolls 2–11 (worst: breaks), 3 rolls 4–13 (out of
 5 rolls 6–15 (out of the case), 10's BEST row is breaks. Out-of-play releases itself by
 token like the relief limits. The reliefs are unchanged and now better, rolling at full
 rating when the score is high. 57 live scenarios, 136 behavioural guards, 117 rules.
-**Still to do: rebuild the packs and run `check-forge`** — both blocked on a world somebody
-else had open holding the LevelDB lock.
+**Packs rebuilt 13 Oct, 27/27 guards green**, and the in-game rulebook and primer journals
+read back to confirm they carry the new model. The rebuild found two things no test could:
+`system.panic.outOf`/`outOfToken` were **never declared in `template.json`**, and Foundry
+drops an undeclared `system.*` write silently — so out-of-scene and out-of-case would have
+done nothing at a table while all 57 scenarios passed. Guarded now (every `system.panic.*`
+path the source writes must be declared; mutation-tested both ways). `panic.max` removed
+with it. Also: all 23 packs were unopenable in the working tree (`CURRENT` → a missing
+MANIFEST) from an interrupted world compaction — the committed state was fine. R-320a.
 
 **WALKING PACE — a standalone 1986 case, v1.3 (12 Oct 2026).** `docs/scenarios/WALKING_PACE.md`,
 not part of THE LONG RETURN. One clearance officer, one 1971 instruction nobody countermanded, an
