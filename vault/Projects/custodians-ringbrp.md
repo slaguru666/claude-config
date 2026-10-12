@@ -68,8 +68,19 @@ approach plates are a mechanic. **Three desk passes, nineteen fixes, pack 22 bui
 harnesses: `wp-ninety.mjs` (the climax, measured) and `wp-wardten.mjs` (a **negative** result —
 dice cannot tell party splits apart, so three doors are gated in the fiction). Art is a third
 press, a 1986 VHS sleeve, in `WALKING_PACE_ART.md`; **pull rate zero** because no plate shows an
-injury, a body or a weapon. **Left to do: the two overlay maps, five portraits, a human run, a
-slot.**
+injury, a body or a weapon — 33 plates now, the six-card approach deck among them.
+
+**The two overlay sheets are built (12 Oct 2026)** — `tools/walkingpace-plans.mjs` draws
+WP-H01, WP-H02 and an acetate version of H02 **from one geometry**: everything is positioned in
+corridor coordinates, `s` along the 1971 spine and `t` across it, so the two sheets cannot drift
+out of register. `--check` holds eleven rules and caught three faults a reading of the drawing
+had passed, the worst a dogleg that took two houses a player-facing clue says it misses. Drawing
+it also closed a hole in the text: with eleven dates printed on a handout, the document owed an
+answer to why eight wards took seven years and the last three take three nights, and rule 3 now
+gives one. Ward ten is **Pardoe Crescent**, the one street that follows the old corridor; the two
+safe houses are nos 2 and 4, on the west airing court. **All the art is in** — 33 plates and
+5 portraits over six batches, pull rate still zero. **Left to do: a human run, a slot, and the
+three typed handouts as print props.**
 
 **NPCs, threats and monsters (23 Sep 2026)** — generated NPCs now draw their **posting's
 kit**: `drawKitFor()` in `postings.mjs` decides, `generateNPC` issues, and each weapon grants

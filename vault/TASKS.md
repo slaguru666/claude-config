@@ -242,8 +242,9 @@ Index: [[INDEX]]
 - [ ] Confirm non-official marketplaces auto-fetch on MINI-S [[claude-config-sync]]
 - [ ] Decide whether to retire Seafile or Nextcloud [[mini-s]]
 - [ ] Generate the iOS project — needs full Xcode + CocoaPods, not on this Mac [[the-director]]
-- [ ] WALKING PACE: draw WP-H01 and WP-H02 to the same scale so they overlay — the single most important production item [[custodians-ringbrp]]
-- [ ] WALKING PACE: five portraits, then add WP_FACES rows to the builder [[custodians-ringbrp]]
+- [x] WALKING PACE: draw WP-H01 and WP-H02 to the same scale so they overlay — the single most important production item [[custodians-ringbrp]] (12 Oct: `tools/walkingpace-plans.mjs`, one geometry drawn twice, `--check` holds eleven rules)
+- [x] WALKING PACE: re-run `wp_pr4_hood_peg` — the runner dropped it and never sent it [[custodians-ringbrp]] (12 Oct, first attempt)
+- [x] WALKING PACE: five portraits, then add WP_FACES rows to the builder [[custodians-ringbrp]] (12 Oct; Oyelaran re-rolled — the prompt never said she is Black British and a surname is not a description)
 - [ ] WALKING PACE: a run with human beings — three desk passes done, that is all that is left [[custodians-ringbrp]]
 - [ ] WALKING PACE: find it a slot [[custodians-ringbrp]]
 
