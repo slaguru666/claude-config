@@ -888,3 +888,28 @@ pass.
   character's described competence and the skill the system would roll for it are different
   objects**, so query the roster for the best holder of each skill before naming an agent in a
   route, and let the free, no-roll version stay with the character the prose is about.
+- **2026-10-12 — A pass 2 that confirms the design and demolishes the numbers is a pass 2 doing
+  its job.** The stress re-run found nothing wrong with the climax's *mechanism* and three things
+  wrong with its clock and its map. That is the normal result and it is worth saying out loud in
+  the record, because a fix list alone reads as a verdict on the idea. **Separate "is this the
+  right scene?" from "are these the right minutes?"** — they fail independently and pass 1 can
+  only really test the first.
+- **2026-10-12 — When a model gives one number and the prose has to carry two meanings, the
+  prose picks the wrong one.** The flood model derived a single minute: when the destination
+  becomes unreachable. The scenario turned that into "the window is eighteen minutes and after
+  that there is no way back up" — which fused *the deadline to do the thing* with *the deadline
+  to get home*, and both halves were wrong. The real deadlines were four minutes earlier and
+  never, respectively. **Ask of every derived figure: how many different deadlines is this
+  sentence claiming, and is the model the source of all of them?**
+- **2026-10-12 — Check the route a scene actually walks, not the one the model walks.** A
+  climax's route table listed a leg that was 350 feet in the wrong direction, past the
+  destination and back, in an act measured in minutes — and the model that derived the act's
+  deadline did not include that leg at all. The written path and the checked path were different
+  paths. **Put the stations on the page**: a distance and a minute cost per leg, so a leg that
+  goes the wrong way is visible as arithmetic rather than hiding in atmosphere.
+- **2026-10-12 — A guard that looks for a figure "somewhere in the document" is usually
+  vacuous.** Holding a scene to quote a derived minute, I searched the whole file — and the same
+  minutes already appeared in a derived table hundreds of lines away, so the scene could have
+  dropped them entirely and the check would have passed. **Scope a document-agreement check to
+  the section that must carry the claim**, then mutate inside that section: a mutation elsewhere
+  in the file proves nothing about it.

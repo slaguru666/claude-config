@@ -269,7 +269,8 @@ Index: [[INDEX]]
 - [x] ONE MORE ABOARD: a desk pass — walk the 150 minutes with a clock and a pencil [[custodians-ringbrp]] (12 Oct: pass 1 done, `ONE_MORE_ABOARD_PLAYTEST_1.md` — **Act Four does not survive it**; 15 fixes, 5 must-fix)
 - [x] **TIM, a design call: is the perfect ending priced at an agent?** [[custodians-ringbrp]] (12 Oct: **no — option (c)**, the flooded room is the containment. Nobody stays below; Ashcroft is the bait and comes back up; the win is getting your hands off it before the water takes the body.)
 - [x] ONE MORE ABOARD: apply desk-pass-1 fixes and bump to v1.1 [[custodians-ringbrp]] (12 Oct: all 15 applied + 2 more found + 1 withdrawn; **its roll tags used the Blade Runner `BR:` prefix so no guard had ever read them** — fixing that found 4 bad tags and 3 routes on the wrong agents)
-- [ ] ONE MORE ABOARD: desk pass 2 — stress Act Four three ways (on time / arriving 1:45 / shoot the host at 1:35 and handle the transfer on the way down) [[custodians-ringbrp]]
+- [x] ONE MORE ABOARD: desk pass 2 — stress Act Four three ways [[custodians-ringbrp]] (12 Oct: **the window is 14 min not 18**, "no way back up" was false, and the win needed a fifth step — back away from the hatch before 1:46 or THE BERTH takes whoever stayed. All 10 fixes applied as v1.2)
+- [ ] ONE MORE ABOARD: desk pass 3 — full session, player chair, contrarian (split the party at 1:30, send Ashcroft down alone, refuse hard beat 1, give an anchor away early) [[custodians-ringbrp]]
 - [ ] ONE MORE ABOARD: a run with human beings, and a slot [[custodians-ringbrp]]
 
 ## Someday

@@ -191,6 +191,24 @@ Act One 20 min with the anchors as one go-round, Act Three's cut pre-written, OM
 longer leaks the tells. Still outstanding: **desk pass 2** (stress Act Four three ways) and a
 run.
 
+**ONE MORE ABOARD desk pass 2 + v1.2 (12 Oct 2026)** — `ONE_MORE_ABOARD_PLAYTEST_2.md`,
+`ac094bb` + `4ca67eb`. Act Four under stress three ways. **The mechanism was right and the
+clock and the map were wrong.** (1) **The window is 1:30–1:44, fourteen minutes, not the
+eighteen printed in capitals** — you cannot seal anything into a shaft that is already full,
+and the water closes over the E-deck sill at 1:46. Same shape as pass 1 one layer in: *the
+route was verified and the room was not* → **the room was verified and the air in it was not.**
+(2) **"After 1:48 there is no way back up" was false** — only the shaft shuts; the corridor and
+stairs are open past 2:04. The two numbers were wrong in opposite directions. (3) **A fifth
+step**: the body dies at 1:46 when the water closes over, not when the hatch shuts, so there is
+a 2–6 minute **wait** with the thing alive down there using their names — and three yards from
+a hatch is nothing, so the agent who stays on it to be sure is the nearest living person and
+**the thing is in them.** (4) **The route sent them 350 ft the wrong way** — the after gates
+are comp 13, BR4 is comp 7. Gates off the route; every leg now has a distance and minutes
+(~1 minute of real margin). Plus: the door is named (E-deck hatch, not the tank-top one under
+30 ft of water), the likely late failure is written, and the invited shot now has an answer
+(Hale). Rule 6c holds the air and the open walk home. Next: **desk pass 3**, player chair,
+contrarian.
+
 **NPCs, threats and monsters (23 Sep 2026)** — generated NPCs now draw their **posting's
 kit**: `drawKitFor()` in `postings.mjs` decides, `generateNPC` issues, and each weapon grants
 the skill it names. Armour is an item, not a number. **The forge** (`forge.mjs` at the root,
