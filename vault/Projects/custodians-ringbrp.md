@@ -19,7 +19,7 @@ updated: 2026-10-12
   corpus: the bible, six rules specs, 26 review briefs. `.gitignore` holds the scans back.
 
 **Current state** — playable and guarded. **28 build guards** under `bun run check`, each a
-claim about the game re-measured on every build. **`docs/REVIEW_LOG.md` (at R-316) holds the
+claim about the game re-measured on every build. **`docs/REVIEW_LOG.md` (at R-317) holds the
 reasoning behind all of them** and is the thing to read before re-deciding anything here.
 Scenarios: `LAST_ADMISSION`, `OPEN_DAY`, `THROUGH_TRAIN`, **CLEAN GROUND** (v0.25, eleven
 desk passes, artwork placed, Contingency 2027 slot 9), whose published figures are held in both directions —
@@ -56,9 +56,10 @@ clears defences. **Four triggers fire themselves (12 Oct 2026, R-315/R-316)** �
 wound is rolled, `aBody`, `someoneYouKnew` and `touchedByIt` once per scene, keyed by the
 same token scheme as the reliefs. The remaining three stay on the + button, which asks
 which happened, because the lights going out is not a state the engine can observe.
-**`system.anomalous` is declared on the creature, never inferred** — all four proxies for
-"is this one of the things" are wrong, and `check-creatures` cross-checks every
-declaration against the creature's own role category.
+**`system.wrongToTouch` is declared on the creature, never inferred** — all four proxies
+are wrong, and it is a question about **contact**, not about what the creature is (R-317):
+only the 93 specs that can reach out answer it, the other 55 are silent, and five harmless
+touches are pinned in `tools/harmless-touch-baseline.json`.
 The **relief table is wired too**: the − button asks which route, `reach` decides who is
 steadied, limits are keyed by scene/combat/case **token** rather than cleared by a
 lifecycle, and the attempt spends the limit rather than the result. A GM-only
@@ -132,6 +133,15 @@ creatures hold a weapon they have no skill for, held at `check-armed`'s ratchet 
 giving each one a rating moves `check-lethality`'s numbers.
 
 **Key decisions**
+- 2026-10-12 — **Ask the question the rule needs, and let absence be an answer.** `anomalous`
+  claimed something about a creature's nature in order to serve one rule about contact, and a
+  broad claim pressed into narrow service went wrong at both ends — 50 declarations that changed
+  nothing, and a boolean true 143 times in 148. `wrongToTouch` is asked only of creatures that
+  can reach out; the rest declare nothing and the default is then honest. R-317.
+- 2026-10-12 — **A guard's success line is a claim and needs holding too.** Printing the figures
+  honestly found two real defects in the guard that printed them (129 cross-checks against 93
+  declarations, then 92 against 93). This project holds every figure in its prose against the
+  code; the numbers a guard prints about itself did not get the same treatment. R-317.
 - 2026-10-12 — **A short case is not a long case cut down; it is an execution clock.** ONE MORE
   ABOARD has no investigation act — the party arrives knowing the problem and the whole session
   is one location, one direction of travel and a visible clock. Picking a real two-and-a-half
