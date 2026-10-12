@@ -109,6 +109,17 @@ Hand**, deliberately, with three routes into the purser's office so no beat need
 the WALKING PACE treatment — one geometry, generated, with a checker; the fight-harness figure
 for the creature; a bestiary entry; four handouts; nine plates; and a run.**
 
+**ONE MORE ABOARD's sheets are built (12 Oct 2026)** — `tools/onemoreaboard-plans.mjs` draws
+**OMA-H01** (the deck plan the players mark) and **OMA-H01b** (the section, GM side) from one
+frame. **The flood is a single model** — sixteen compartments, six open to the sea, bulkheads
+carried to stated decks, water by breach, over the top, and spill — and every "this is gone by
+now" is derived from it. `--check` holds thirteen rules; `--flood` prints the table. The model
+contradicted the scenario and won: **Act Four's route below opens at 1:30 and shuts at 1:48**,
+eighteen minutes, not the thirty-five the prose claimed, and Act Five's arithmetic is better for
+it. Rule 9 is the mechanic — Treherne in sight at all twelve sightings, the other five out of
+sight twice or more — and Treherne's track is **derived** from the agents' rather than kept as a
+second copy. Wired into `bun run check`. **Left: four handouts, nine plates, a desk pass, a run.**
+
 **NPCs, threats and monsters (23 Sep 2026)** — generated NPCs now draw their **posting's
 kit**: `drawKitFor()` in `postings.mjs` decides, `generateNPC` issues, and each weapon grants
 the skill it names. Armour is an item, not a number. **The forge** (`forge.mjs` at the root,
@@ -116,7 +127,7 @@ the skill it names. Armour is an item, not a number. **The forge** (`forge.mjs` 
 tier and species and explains every number. **The forge panel is not yet verified in a running
 Foundry** — the derivation is, the Foundry glue is not.
 
-**Next steps** — **draw ONE MORE ABOARD's deck plan**, which is the prop the sighting mechanic rides on and therefore needs a generator and a `--check`, not a drawing. Then **desk-pass RETURN WORKING**, whose two hours on the moor after the door
+**Next steps** — **desk-pass RETURN WORKING**, whose two hours on the moor after the door
 shuts is either the best scene in the sequence or twenty dead minutes, and whose five remaining
 outline questions (Region 8 tower or island, how much engine the players get, case 3's frame)
 are still open. Then **open a world and click the three generator buttons**; that is the only
@@ -142,6 +153,11 @@ giving each one a rating moves `check-lethality`'s numbers.
   honestly found two real defects in the guard that printed them (129 cross-checks against 93
   declarations, then 92 against 93). This project holds every figure in its prose against the
   code; the numbers a guard prints about itself did not get the same treatment. R-317.
+- 2026-10-12 — **When a model built to serve the prose contradicts the prose, change the
+  prose.** The flood model gave ONE MORE ABOARD's Act Four eighteen minutes below decks where
+  the text claimed thirty-five. The model was right and the act is better for it; the closing
+  route is what makes the last choice forced rather than sentimental. That is what building a
+  model is for.
 - 2026-10-12 — **A short case is not a long case cut down; it is an execution clock.** ONE MORE
   ABOARD has no investigation act — the party arrives knowing the problem and the whole session
   is one location, one direction of travel and a visible clock. Picking a real two-and-a-half

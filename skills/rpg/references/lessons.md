@@ -757,3 +757,24 @@ pass.
   would have contradicted canon into **the engine of the scenario**: a door that works both ways
   is the one thing the antagonist has never been offered. The established mechanism is usually a
   better premise than the one you would have made up for it.
+- **2026-10-12 — A model built to serve the prose will contradict the prose, and that is what it
+  is for.** A map that carries a mechanic needs a model underneath it rather than a set of
+  labels, and the moment there is one it starts answering questions you did not ask it. Act Four
+  of a sinking-ship case claimed a route below decks from half past one to five past two; the
+  flooding model gave eighteen minutes. **Change the prose, not the model** — the shortened
+  window was better drama than the one I had written, because a route that closes is what makes
+  the last choice forced instead of sentimental. If the model only ever agrees with you, it is
+  decoration and you have learned nothing from building it.
+- **2026-10-12 — Say so out loud when an assertion has become true by construction.** The check
+  that mattered was "the suspect is within sight of the party at every sighting". Deriving the
+  suspect's movements from the party's — the right fix, because two hand-maintained copies had
+  already drifted — turned that assertion into a tautology. The guard is still worth keeping for
+  its other half (that the innocent tracks are out of sight often enough for the pattern to
+  mean anything), but **a comment has to say which half is evidence**, or a later reader takes
+  the tautology for proof.
+- **2026-10-12 — Put label placement in the data, not in the drawing code.** The first render of
+  a generated prop printed two place names through each other and a third across a funnel, and
+  the checker had nothing to say because placement lived in the draw calls. Give every label a
+  lane and compute its width from the string, and collisions become arithmetic a rule can hold.
+  **A prop a player cannot read is not a prop**, and "I looked at it and it seemed fine" is the
+  same quality of evidence here as it is anywhere else.
