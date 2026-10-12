@@ -219,6 +219,36 @@ within an hour and it survived twice in the prose around their edits, once above
 and once below. Related: [[feedback-verify-the-neighbours]],
 [[feedback-fuzz-cannot-generate]], [[feedback-concurrent-agents]].
 
+**The worst version: a broken instrument CORRECTING a true statement (12 Oct 2026, RingBRP).**
+I had written that a rating of 58 belonged to a particular agent's Occult. Checking it, my
+probe read a function's returned `skills` **array** of `{fam, spec, val}` as an object keyed by
+family, so `sk.occult` was `undefined` for every agent. I reported 0 of 16 as a finding, wrote
+a confident correction into the review log, the vault, the task list and the knowledge graph,
+and told the user his own roster trained none of these skills. The original statement was
+right and my correction was the error.
+
+Three things make this the sharpest instance in this file:
+
+- **The tell was in my own output.** 0 of 16 included the agent whose posting is *called*
+  Registry Officer and one whose trade is *professor*. A measurement that finds nothing where
+  the domain obviously predicts something is a broken instrument before it is a discovery. I
+  ran the same broken probe **twice**, on the same question, minutes apart.
+- **A coincidence in a second source read as corroboration.** The live world genuinely had no
+  such skill on the actor I named — for an unrelated, already-documented reason (a stale import
+  predating the skill). Dropping a layer is the cure prescribed above, and here the second
+  layer **agreed with the bad probe by accident**. So corroboration is only corroboration once
+  you know *why* the second source says what it says; two independent wrong things pointing the
+  same way is the most convincing evidence there is.
+- **Correcting a true statement costs more than the original slip**, because it spends the
+  credibility of having been careful, and it propagates: four documents and a user instruction
+  issued on a false premise. Before overturning something I previously asserted, check the
+  instrument *harder* than for a new claim — the prior is evidence too, and "I was wrong
+  earlier" is a conclusion I reach too cheaply.
+
+The guard written afterwards is the transferable bit: it asserts a **positive** hit for each
+case, so a reader that cannot see the declaration fails loudly instead of reporting zero.
+**Write the guard so that a broken instrument is a failure rather than a finding.**
+
 **Two more instruments that lied (11 Oct 2026, RingBRP).**
 - *A mutation that does not compile is not a passing test.* Deleting a condition took its
   closing bracket with it; the guard crashed on a syntax error, printed no `FAIL`, and the

@@ -67,7 +67,10 @@ lifecycle, and the attempt spends the limit rather than the result. A GM-only
 **The three skill reliefs now actually roll (12 Oct 2026, R-318)** — they read the rating
 from `item.system.rating`, a field **no skill item has**, so Religion, Psychology and Occult
 rolled against 0 from the day the table shipped: 1% to help against 5% to backfire onto
-everyone they reached. The field is `system.value`. And **a point from a backfired attempt
+everyone they reached. The field is `system.value`. **Training is by posting, not per agent**,
+and `check-behaviour` now holds it: `registry` and the `professor` trade have occult in core
+(Bhattacharya 63, Lindqvist 58), `antiquities` religion in core and `pathology` in support
+(Braithwaite 35), `interview` and `doctor` psychology in support (Renshaw, Nkemdirim 40). And **a point from a backfired attempt
 to help cannot take anybody to breaking point**, it stops one short — the only remaining
 path to a whole party breaking in the same moment, which THROUGH TRAIN already ruled out.
 The cap is on the backfire only; what happens *to* an agent still breaks them.
@@ -160,6 +163,14 @@ creatures hold a weapon they have no skill for, held at `check-armed`'s ratchet 
 giving each one a rating moves `check-lethality`'s numbers.
 
 **Key decisions**
+- 2026-10-12 — **A null result is a claim, and a confident correction of a true statement
+  costs more than the original slip.** I "corrected" R-318 to say no roster posting trains the
+  panic relief skills, having read `expandFromRegister`'s `skills` **array** as an object keyed
+  by family. The probe said 0 of 16 — including the agent whose posting is called *Registry
+  Officer* — and I ran it twice and believed it, because a coincidence in the live world
+  (Lindqvist's stale 59-skill import genuinely has no occult item) looked like corroboration.
+  The guard that followed asserts a **positive** hit per relief, so a reader that cannot see a
+  training declaration fails instead of reporting zero. R-318.
 - 2026-10-12 — **A balance question about a rule nobody can roll is not a balance question.**
   The Occult fumble looked too harsh; measuring it first found the roll reading a field that
   does not exist, so every skill relief had been at band 1 since it shipped. Measure before
