@@ -55,3 +55,4 @@
 - [Hold the success line](feedback-hold-the-success-line.md) — the coverage figures a guard prints about itself are claims; make them reconcile or they describe a different set from the one they count
 - [Read the --update diff](feedback-read-the-update-diff.md) — adding a baseline row and changing one print the same success line; only the diff distinguishes them
 - [Can the guard see it?](feedback-can-the-guard-see-it.md) — a reader keyed on a prefix is silent, not safe, about a file using the wrong one; add one instance and check the count moves
+- [Scope the document check](feedback-scope-the-document-check.md) — asserting a figure appears "somewhere in the file" is usually vacuous; scope to the section and mutate inside it
