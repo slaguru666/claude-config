@@ -858,3 +858,33 @@ pass.
   been checked and held from which parts were never examined. I now write a *what is already
   right, and should not be touched* section with the arithmetic I verified in it. It stops the
   same ground being re-litigated and it is honest about how much of the document survived.
+- **2026-10-12 — Check that the scenario's mechanic tags are in THIS game's notation before
+  trusting any guard that reads them.** A Custodians scenario was written with `BR:` roll tags
+  — the Blade Runner prefix from the same author's other convention work — and the house guard
+  reads `CUS:`. Result: not one roll in the document had ever been checked, while two guards
+  printed green lines claiming every skill resolved and every route was reachable. Neither was
+  ever talking about that file. **The tell was a count that did not move**: I added one roll and
+  the corpus total stayed put. Fixing the prefix immediately found four malformed tags and
+  three routes gated on skills nobody in the cast had. **A guard keyed on a prefix is silent,
+  not safe, about a document using the wrong one** — and when a system's scenarios share a
+  corpus check, the first thing to verify in a new file is that the check can see it.
+- **2026-10-12 — The object of a roll goes outside the brackets, and so does the joke.** Three
+  of the four bad tags were formatting: `Persuade a steward` (object inside), `Brawl or
+  Intimidate` (a skill from a different system's list), and a parenthetical aside inside the
+  brackets, which made the reader parse `Computer Use *(yes` and `really` as skill names. Tag
+  = system and skills only; the target, the aside and the effect go after the closing bracket.
+- **2026-10-12 — Writing the guard is what tests the finding.** A desk pass of mine reported
+  that two suspects had "a perfect record" on the identification plot at the moment players
+  must choose. Trying to write the rule that would catch it showed it could never fire: a
+  suspect is marked on the plot *precisely when* they are in sight, so "every mark has an agent
+  in it" is true of every mark of every suspect. A tautology — and the scenario's read-aloud
+  said it out loud, which was a worse defect than the one I thought I had found. **If a finding
+  cannot be expressed as a check that fails on the broken version, the finding is not yet
+  understood.** Withdraw it in writing and say what replaced it.
+- **2026-10-12 — Ask the roster who holds the skill; do not infer it from the character note.**
+  The scenario cast a builder as the man who reads structures and gated that on Engineering.
+  The catalogue entry is *Engineering (Field Systems)* and the builder has none of it — the
+  holder was the IT specialist, at 40%. Four other attributions were wrong the same way. **A
+  character's described competence and the skill the system would roll for it are different
+  objects**, so query the roster for the best holder of each skill before naming an agent in a
+  route, and let the free, no-roll version stay with the character the prose is about.

@@ -164,6 +164,27 @@ the sighting plot reads Treherne 12/12, Tunnard 7/12, Hale 1/12, Carrow/Pyke/Vuk
 **2/2**, so the confirm points hardest at the innocent decoy. 15 fixes, 5 must-fix, none
 applied. `4ec8f43`.
 
+**ONE MORE ABOARD v1.1 — pass 1 applied, and its tags had never been read (12 Oct 2026)** —
+`4cd4980`. **Fix 1 decided: the containment is the water AND the door.** BR4 is over a man's
+head from 1:23, the thing is NOT COLD so water does not hold it, the door holds it for the
+forty minutes that matter, and THE BERTH closes the case because nobody is within three yards.
+Win = *get it in, get your hands off it, get out, shut the door*; **nobody stays below**;
+Ashcroft is the bait and the eighteen minutes are a round trip. **Then the real find:** every
+other RingBRP scenario opens a roll tag `CUS:` and this one used `BR:` (Blade Runner), so
+**not one of its rolls had ever been checked** while both guards printed green lines claiming
+otherwise — the tell was the corpus tag count not moving when I added a roll. Fixing it took
+check-scenarios 210→218 and check-rollable 197→205, and **four of eight tags were wrong**
+(Intimidate is not a skill; a parenthetical broke the parse; "Persuade a steward"; and Status,
+Fast Talk and Science are held by **nobody** in the cast). Which exposed that **three routes
+belonged to the wrong agents** — and that **Sharrock holds no Engineering** (it is
+Engineering (Field Systems); that is Ferriby at 40). **Correction to the sighting finding:** a
+candidate is marked precisely when in sight, so "every mark has one of you in it" is a
+tautology, and it was the read-aloud. The confirm is now arithmetic; rule 9 became a band and
+rule 9b holds the margin **by 1:30**, not by 2:05. Also: drift rule with a worked example,
+Act One 20 min with the anchors as one go-round, Act Three's cut pre-written, OMA-H05 no
+longer leaks the tells. Still outstanding: **desk pass 2** (stress Act Four three ways) and a
+run.
+
 **NPCs, threats and monsters (23 Sep 2026)** — generated NPCs now draw their **posting's
 kit**: `drawKitFor()` in `postings.mjs` decides, `generateNPC` issues, and each weapon grants
 the skill it names. Armour is an item, not a number. **The forge** (`forge.mjs` at the root,
