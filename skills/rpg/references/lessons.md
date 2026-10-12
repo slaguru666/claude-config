@@ -778,3 +778,23 @@ pass.
   lane and compute its width from the string, and collisions become arithmetic a rule can hold.
   **A prop a player cannot read is not a prop**, and "I looked at it and it seemed fine" is the
   same quality of evidence here as it is anywhere else.
+- **2026-10-12 — A test harness that restores files must restore the one it broke, and nothing
+  else.** Mutation-testing a handout pack, my probe loop copied back a backup of the *scenario*
+  taken before I had written that session's handout text into it. Four probes then "fired"
+  correctly while actually failing for a reason I had caused, and I was one careless glance from
+  recording four proofs that were nothing of the kind. The tell was that the first probe's
+  message named the right sheet and every later one named the same wrong sheet. **A backup taken
+  before the edit under test is not a backup, it is a time bomb** — and a row of green or red
+  that all says the same thing is a reason to check the instrument, not to feel finished.
+- **2026-10-12 — A prop can pass every check and still be wrong, so print it and look at it.**
+  The cancelled ticket that is the single piece of hard evidence in a case had its cancellation
+  rule drawn straight through the name on it. Word-for-word agreement with the scenario: perfect.
+  Font sizes: fine. **Legibility of the one thing the handout exists to say: not checkable, and
+  not checked.** Render the pack, put the pages side by side, and read them as the player will,
+  every time.
+- **2026-10-12 — When a second thing needs the same check, write the function, not the paste.**
+  A handout guard written for one scenario would have become two near-identical blocks the
+  moment a second pack existed, and the copies drift — one learns about HTML entities or accented
+  surnames and the other does not. One function called twice, parameterised by the pack. Related:
+  **make the guard's success line say what it actually held**, or a pack can be checked correctly
+  and reported nowhere.

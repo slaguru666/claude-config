@@ -257,7 +257,8 @@ Index: [[INDEX]]
 - [x] ONE MORE ABOARD: draw the deck plan OMA-H01 as a generator with a `--check` — the sighting mechanic rides on it [[custodians-ringbrp]] (12 Oct: plan + section from one frame, 13 rules, route shuts 1:48)
 - [ ] RingBRP: `walkingpace-plans --check` is not in the `bun run check` script and never has been — one line to add, Tim's call [[custodians-ringbrp]]
 - [ ] ONE MORE ABOARD: run the fight harness on *the passage* and give its stat block a real measured line — do not invent one [[custodians-ringbrp]]
-- [ ] ONE MORE ABOARD: bestiary entry + pack build, four handouts, nine art plates, a desk pass [[custodians-ringbrp]]
+- [x] ONE MORE ABOARD: four handouts [[custodians-ringbrp]] (12 Oct: H02–H05, held word-for-word by check-handouts)
+- [ ] ONE MORE ABOARD: bestiary entry + pack build, nine art plates, a desk pass [[custodians-ringbrp]]
 
 ## Someday
 

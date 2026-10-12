@@ -127,6 +127,15 @@ it. Rule 9 is the mechanic — Treherne in sight at all twelve sightings, the ot
 sight twice or more — and Treherne's track is **derived** from the agents' rather than kept as a
 second copy. Wired into `bun run check`. **Left: four handouts, nine plates, a desk pass, a run.**
 
+**ONE MORE ABOARD's handouts are built (12 Oct 2026)** — `ONE_MORE_ABOARD_HANDOUTS.html`,
+four A4 props: **OMA-H02** the crossing order (Bureau, present day), **OMA-H03** the purser's
+muster, **OMA-H04** the cancelled counterfoil, **OMA-H05** the shortlist of six. The words are
+in the scenario's Handouts section and `check-handouts` holds all four word-for-word. **That
+guard is now one function serving both WALKING PACE and ONE MORE ABOARD** rather than two
+near-copies, and its green line is built from what it held rather than a hard-coded sentence.
+**OMA-H05's six names are held against OMA-H01's sighting table** by the plan generator's rule
+14. **Left: nine art plates, a desk pass, a run.**
+
 **NPCs, threats and monsters (23 Sep 2026)** — generated NPCs now draw their **posting's
 kit**: `drawKitFor()` in `postings.mjs` decides, `generateNPC` issues, and each weapon grants
 the skill it names. Armour is an item, not a number. **The forge** (`forge.mjs` at the root,
@@ -169,6 +178,10 @@ giving each one a rating moves `check-lethality`'s numbers.
   honestly found two real defects in the guard that printed them (129 cross-checks against 93
   declarations, then 92 against 93). This project holds every figure in its prose against the
   code; the numbers a guard prints about itself did not get the same treatment. R-317.
+- 2026-10-12 — **A guard's green line must be built from what it checked.** `check-handouts`
+  announced CLEAN GROUND and WALKING PACE in a hard-coded sentence; a third pack would have
+  been held correctly and reported nowhere. Summaries that cannot go stale, or they are
+  decoration.
 - 2026-10-12 — **When a model built to serve the prose contradicts the prose, change the
   prose.** The flood model gave ONE MORE ABOARD's Act Four eighteen minutes below decks where
   the text claimed thirty-five. The model was right and the act is better for it; the closing
