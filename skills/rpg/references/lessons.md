@@ -698,3 +698,23 @@ pass.
   player spotted. **The fix is never to block it — it is to write what the climax looks like when
   it happens early.** A competent table finds the shortest path; a scenario that only works when
   they miss it is a scenario that works by luck.
+- **2026-10-12 — Two handouts that must overlay are one geometry drawn twice, not two drawings
+  to the same stated scale.** A case whose central scene is laying a 1986 street plan over a
+  1971 site plan needs the two sheets in register, and "both at 1:1250" is not a guarantee —
+  it is an intention that drifts the moment either sheet is edited. **Put everything in the
+  shared feature's own coordinates** (here: distance along the old corridor, and distance
+  across it) and compute the page position. Then there is only one frame and nothing to drift
+  from. Add registration crosses at identical coordinates on both, and print at 100%.
+- **2026-10-12 — A map that carries a mechanic needs a test, because it is code.** The overlay
+  generator's `--check` holds eleven rules — the route never crosses ground it is forbidden to
+  cross, the four houses named in a clue are the next four on it and the fifth is not, the two
+  safe houses sit wholly on the old courtyard and off the route. Three of those caught faults
+  that reading the drawing had not: worst was a dogleg that curled back into a terrace and took
+  two houses the clue says it misses, which would have made a player-read handout contradict
+  the text. **If the players will measure it, measure it first.**
+- **2026-10-12 — Putting a date on a handout creates a question the text has to answer.** The
+  moment eleven incident dates were printed on a player-facing plan, the document owed an
+  answer to "why did eight of these take seven years and the next three take three nights?" —
+  which nothing in it had. Props are not decoration: **every figure a handout shows is a
+  question a player is now entitled to ask**, so read a new prop back as a player and answer
+  what it raises before it reaches the table.
