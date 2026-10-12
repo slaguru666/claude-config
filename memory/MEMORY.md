@@ -48,3 +48,4 @@
 - [npm exits 194 in the sandbox](infra-npm-sandbox-exit-194.md) — `npm run` gives 194 and no output here; run the script's chain under bash before calling a suite broken
 - [Fixtures encode your error](feedback-fixtures-encode-your-error.md) — a fixture written to satisfy your assertion agrees with your misunderstanding; copy real data
 - [One definition, not two](feedback-one-definition-not-two.md) — a second local test for a concept the codebase already names is a fork, not a shortcut; it passes review and fails in the one world that matters
+- [Assert the failure shape](feedback-assert-the-failure-shape.md) — write a guard from what the BROKEN version looks like (often the opposite direction), not from the fix you just made; then mutate and prove it fails
