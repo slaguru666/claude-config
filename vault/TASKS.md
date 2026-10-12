@@ -259,7 +259,8 @@ Index: [[INDEX]]
 - [ ] RingBRP: `walkingpace-plans --check` is not in the `bun run check` script and never has been — one line to add, Tim's call [[custodians-ringbrp]]
 - [ ] ONE MORE ABOARD: run the fight harness on *the passage* and give its stat block a real measured line — do not invent one [[custodians-ringbrp]]
 - [x] ONE MORE ABOARD: four handouts [[custodians-ringbrp]] (12 Oct: H02–H05, held word-for-word by check-handouts)
-- [ ] ONE MORE ABOARD: bestiary entry + pack build, nine art plates, a desk pass [[custodians-ringbrp]]
+- [x] ONE MORE ABOARD: nine art plates [[custodians-ringbrp]] (12 Oct: 1912 illustrated-weekly press, zero pulls)
+- [ ] ONE MORE ABOARD: bestiary entry + pack build, a desk pass, a run [[custodians-ringbrp]]
 
 ## Someday
 

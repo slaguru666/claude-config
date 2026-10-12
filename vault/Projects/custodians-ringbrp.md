@@ -139,6 +139,15 @@ near-copies, and its green line is built from what it held rather than a hard-co
 **OMA-H05's six names are held against OMA-H01's sighting table** by the plan generator's rule
 14. **Left: nine art plates, a desk pass, a run.**
 
+**ONE MORE ABOARD's art is in (12 Oct 2026)** — nine plates in `art/scenes/oma_01`–`oma_09`,
+prompts and record in `ONE_MORE_ABOARD_ART.md`. **The press is a London illustrated weekly,
+1912**, the conceit being that these were drawn by an artist who was not there, from a telegram.
+**No plate shows a body or anybody in the water** — what the weeklies did, where the horror
+belongs, and the only version of the order that could be placed. Zero pulls. Two registers kept
+on purpose: engraving for the scenes, tinted lithograph for the two portraits. `oma_01` is the
+cover stem `make-pdf` resolves by. **The case is now short only a bestiary entry + pack build,
+a desk pass and a run.**
+
 **NPCs, threats and monsters (23 Sep 2026)** — generated NPCs now draw their **posting's
 kit**: `drawKitFor()` in `postings.mjs` decides, `generateNPC` issues, and each weapon grants
 the skill it names. Armour is an item, not a number. **The forge** (`forge.mjs` at the root,

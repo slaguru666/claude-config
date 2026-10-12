@@ -798,3 +798,21 @@ pass.
   surnames and the other does not. One function called twice, parameterised by the pack. Related:
   **make the guard's success line say what it actually held**, or a pack can be checked correctly
   and reported nowhere.
+- **2026-10-12 — Before calling a job stalled, put the clock in the same command as the
+  evidence.** Mid-way through an art batch I checked the Discord queue, saw a generation message
+  with no completion beside it, concluded the prompt had been refused, and killed the runner.
+  The job was forty-seven seconds old and finished fine — the queue stamps its messages in UTC
+  and the machine was on BST, so I was reading a one-hour offset as a nine-minute stall. **An
+  absence only means something once you know how long it has been absent**, and a timestamp
+  from somebody else's clock is not a measurement until you have put your own beside it.
+- **2026-10-12 — A progress log that only prints on completion is not a progress log.** The
+  first runner captured the generator's output instead of streaming it, so the log went silent
+  for the whole minute each image takes and a slow job looked exactly like a dead one. That
+  silence is what made the misreading above possible. **Stream long-running tools; buffer
+  nothing you intend to watch.**
+- **"Don't regenerate for being inaccurate" does not cover a plate that missed its moment.**
+  The house rule for generated art is to accept period or technical wrongness and only re-roll
+  for the wrong medium. But a plate of a sinking ship that came back floating level is not an
+  inaccurate detail, it is the wrong instant — and the plate exists to show that instant.
+  **Distinguish "wrong detail, keep" from "wrong subject, re-roll"**, and say which in the
+  prompt sheet so the next person does not have to relitigate it.
