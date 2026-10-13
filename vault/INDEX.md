@@ -58,7 +58,7 @@ The map of everything Claude and Tim are building. Open this first.
 | [[notebooklm]] | NotebookLM wired into Claude Code on the Mac | complete |
 | [[local-llm-stack]] | Hermes Agent + Ollama + Gemma 4 12B | complete |
 | [[canvas-oss-course]] | Idempotent Canvas course builder | complete |
-| [[keycast]] | Keystroke broadcaster for two WoW clients (Swift CLI) | active |
+| [[keycast]] | Menubar keystroke broadcaster for two WoW clients (Swift) | active |
 
 ## Infrastructure
 

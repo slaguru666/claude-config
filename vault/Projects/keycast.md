@@ -8,31 +8,33 @@ updated: 2026-10-13
 
 # keycast
 
-**What it is** — Keystroke broadcaster for running two World of Warcraft clients
-at once: a key pressed in the front client is mirrored to every other running
-client. One Swift file, CLI, no deps. Blizzard prohibits input broadcasting;
+**What it is** — Menubar app that broadcasts keystrokes between two running
+World of Warcraft clients: a key pressed in the front client is mirrored to every
+other running client. One Swift file, no deps. Blizzard prohibits input broadcasting;
 Tim's risk, flagged at build time.
 
-**Where it lives** — `~/keycast/keycast.swift`, `make` builds `./keycast`.
-README in the folder. Needs Accessibility for the launching app (Terminal).
+**Where it lives** — `~/keycast/keycast.swift` + `Info.plist`; `make` builds
+and ad-hoc signs `Keycast.app` (bundle `uk.timevans.keycast`, LSUIElement).
+`open Keycast.app`, `make stop`. README in the folder.
 WoW here is the Classic Beta at `/Volumes/Mac 2TB/WoW/.../_classic_beta_/`,
 bundle id `com.blizzard.worldofwarcraft`.
 
-**Current state** — Built 2026-10-13 and verified end to end against two
-TextEdit instances (`--app com.apple.TextEdit`): one key into the front instance
-landed in both. **Not yet tried in WoW itself** — whether a backgrounded WoW
-client acts on a `CGEventPostToPid` key is the open question.
+**Current state** — Works in WoW (Tim confirmed 2026-10-13). Converted to a
+menubar app the same day: status icon, menu with state + client pids,
+Pause/Resume, Accessibility shortcut, Quit. Verified running via System Events.
+Waiting on Tim to grant Accessibility to Keycast.app (new identity); the app
+polls and starts the tap by itself once granted.
 
 **Next steps**
-- Tim: run `./keycast` in Terminal with both clients open, press a bound key in
-  one, confirm the other acts. F12 pauses/resumes.
-- If the background client ignores posted keys, next thing to try is posting to
-  the client's window via AX focus or a window-level post rather than the pid.
+- Tim: tick Keycast in Privacy & Security > Accessibility, confirm the icon fills.
+- Maybe: launch at login, choose target app from the menu.
 
 **Key decisions**
 - Session-level CGEvent tap + `postToPid`, marker in `eventSourceUserData`
   to ignore own output. Mirrors only while a WoW window is frontmost.
 - F12 toggle (swallowed), configurable. Mouse deliberately not mirrored.
+- Proper `.app` bundle, ad-hoc signed with a fixed identifier, so Accessibility
+  attaches to Keycast rather than Terminal and survives rebuilds.
 
 **Gotchas**
 - `print` to a redirected stdout is block-buffered; `setvbuf` line mode added.
