@@ -42,6 +42,15 @@ identity change.
   Listed modifier names mirror that modifier even with the state option off.
 
 **Gotchas**
+- **TCC keeps the old code requirement.** The Accessibility row is keyed by
+  bundle id; after the ad-hoc → Developer ID re-sign the row stayed ticked but
+  the app reported untrusted. Toggling does not refresh it. Fix: remove the row
+  with − and re-add, or `tccutil reset Accessibility uk.timevans.keycast`
+  then relaunch. Diagnose with `open --stdout <file> Keycast.app`: the app
+  prints its own trust verdict under its own identity (running the binary from
+  a shell evaluates under the shell's parent instead).
+- `NSImage(systemSymbolName:)` returns nil for a name that does not exist and
+  the status item silently falls back to text; check names with a 5-line probe.
 - `print` to a redirected stdout is block-buffered; `setvbuf` line mode added.
 - `before` is a reserved word in AppleScript; `set before to …` is a syntax error.
 - Test helper's first `NSRunningApplication.activate` did not take; the probe

@@ -10,7 +10,7 @@ Index: [[INDEX]]
 
 ## Active
 
-- [ ] **TIM: re-tick Keycast in Accessibility, then set the key list** [[keycast]] — the signing identity changed (ad-hoc → Developer ID) so macOS wants the tick once more; it is stable from here. Menu > Mirrored keys… to choose keys (default `1`–`0 - =`).
+- [ ] **TIM: remove the Keycast row in Accessibility (−) and re-add it** [[keycast]] — ticking the old row does nothing: it still carries the ad-hoc code requirement. After removing, relaunch Keycast, accept the prompt, tick the new row. Stable from then on. Menu > Mirrored keys… to choose keys (default `1`–`0 - =`).
 - [ ] **TIM: go-ahead for the shared-apps deploy (Task 19)** [[corkboard]] — branch `shared-apps` (eca2110, unpushed). First: Codex 40 round 2; repair Xcode (`sudo xcodebuild -runFirstLaunch`) + Android SDK for the device run.
 - [ ] **TIM: try the Corkboard phone apps** [[corkboard]] — branch `mobile-apps`. Android: debug APK. iPhone: Xcode (needs `sudo xcode-select` once, then Team + Run). Check iOS pickers, real-finger strings, a real publish; then merge.
 - [ ] **TIM: read RETURN WORKING v1.0 and answer the four remaining LONG RETURN questions** [[custodians-ringbrp]] — case 1 is written on the hard loop (`docs/scenarios/RETURN_WORKING.md`); still open: Region 8 as sea tower or island, how much of the crossing engine the players understand, whether CLOSING TIME frames on 122 children or just Ada and Tom, and standalone vs sequence-first. Also whether "left behind" is too harsh for a convention table.

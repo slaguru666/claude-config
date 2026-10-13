@@ -57,3 +57,4 @@
 - [Can the guard see it?](feedback-can-the-guard-see-it.md) — a reader keyed on a prefix is silent, not safe, about a file using the wrong one; add one instance and check the count moves
 - [Scope the document check](feedback-scope-the-document-check.md) — asserting a figure appears "somewhere in the file" is usually vacuous; scope to the section and mutate inside it
 - [keycast](keycast.md) — Swift menubar keystroke broadcaster for two WoW clients at ~/keycast (Keycast.app); works in-game
+- [TCC row keeps old csreq](infra-tcc-row-keeps-old-csreq.md) — a ticked Accessibility row stops working after re-signing; remove and re-add, toggling never refreshes it; read the verdict with `open --stdout`
