@@ -1,6 +1,6 @@
 ---
 type: tasks
-updated: 2026-10-12
+updated: 2026-10-13
 ---
 
 # Tasks
@@ -10,6 +10,7 @@ Index: [[INDEX]]
 
 ## Active
 
+- [ ] **TIM: try keycast in WoW** [[keycast]] — `cd ~/keycast && ./keycast` in Terminal (Terminal needs Accessibility), both clients open, press a bound key in one and watch the other. F12 pauses. Only verified against TextEdit so far.
 - [ ] **TIM: go-ahead for the shared-apps deploy (Task 19)** [[corkboard]] — branch `shared-apps` (eca2110, unpushed). First: Codex 40 round 2; repair Xcode (`sudo xcodebuild -runFirstLaunch`) + Android SDK for the device run.
 - [ ] **TIM: try the Corkboard phone apps** [[corkboard]] — branch `mobile-apps`. Android: debug APK. iPhone: Xcode (needs `sudo xcode-select` once, then Team + Run). Check iOS pickers, real-finger strings, a real publish; then merge.
 - [ ] **TIM: read RETURN WORKING v1.0 and answer the four remaining LONG RETURN questions** [[custodians-ringbrp]] — case 1 is written on the hard loop (`docs/scenarios/RETURN_WORKING.md`); still open: Region 8 as sea tower or island, how much of the crossing engine the players understand, whether CLOSING TIME frames on 122 children or just Ada and Tom, and standalone vs sequence-first. Also whether "left behind" is too harsh for a convention table.
