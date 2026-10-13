@@ -271,7 +271,7 @@ Index: [[INDEX]]
 - [x] **TIM, a design call: is the perfect ending priced at an agent?** [[custodians-ringbrp]] (12 Oct: **no — option (c)**, the flooded room is the containment. Nobody stays below; Ashcroft is the bait and comes back up; the win is getting your hands off it before the water takes the body.)
 - [x] ONE MORE ABOARD: apply desk-pass-1 fixes and bump to v1.1 [[custodians-ringbrp]] (12 Oct: all 15 applied + 2 more found + 1 withdrawn; **its roll tags used the Blade Runner `BR:` prefix so no guard had ever read them** — fixing that found 4 bad tags and 3 routes on the wrong agents)
 - [x] ONE MORE ABOARD: desk pass 2 — stress Act Four three ways [[custodians-ringbrp]] (12 Oct: **the window is 14 min not 18**, "no way back up" was false, and the win needed a fifth step — back away from the hatch before 1:46 or THE BERTH takes whoever stayed. All 10 fixes applied as v1.2)
-- [ ] ONE MORE ABOARD: desk pass 3 — full session, player chair, contrarian (split the party at 1:30, send Ashcroft down alone, refuse hard beat 1, give an anchor away early) [[custodians-ringbrp]]
+- [x] ONE MORE ABOARD: desk pass 3 — full session, player chair, contrarian [[custodians-ringbrp]] (12 Oct: **convention-ready at v1.3.** The order had no stated cost — answer is 706 seats and no 707th. Confiding in Treherne was unwritten. A solo descent is a certain transfer, and into Ashcroft it rides home inside the crossing. +9 on 150 under contrarian play, 3 endings incl. perfect)
 - [ ] ONE MORE ABOARD: a run with human beings, and a slot [[custodians-ringbrp]]
 
 ## Someday

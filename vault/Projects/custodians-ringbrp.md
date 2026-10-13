@@ -209,6 +209,24 @@ are comp 13, BR4 is comp 7. Gates off the route; every leg now has a distance an
 (Hale). Rule 6c holds the air and the open walk home. Next: **desk pass 3**, player chair,
 contrarian.
 
+**ONE MORE ABOARD desk pass 3 + v1.3 — CONVENTION-READY (12 Oct 2026)** —
+`ONE_MORE_ABOARD_PLAYTEST_3.md`, `7c1b249` + `a224be2`. Full session, player chair, contrarian.
+**+9 on 150 under adversarial play against pass 1's +18**, three endings reached including
+perfect, both chairs done. **The hole only the player chair finds: "you are not sent to alter
+the loss" was stated four times and costed nowhere.** Answer was in the history, not new
+machinery — **706 seats and no 707th**, so they cannot add to the count, only change which 706;
+the file closes either way, and the one thing that breaks it is carrying a person *through the
+door*, which now has its own ending. **Second: the most likely move in the scenario was
+missing** — the design is "the monster is the helpful man", so of course they confide in him;
+Act Three now says what he knows, volunteers, steers toward, and that **he must never
+stonewall**. **Third, the best ending in the book:** a solo descent is a *certain* transfer
+(one agent cannot be three yards clear of a hatch nobody else is near), and if it is Ashcroft
+it is in the crossing — settled from existing canon, the half-tie that makes him
+un-impersonable makes him un-screenable. Plus: a third lure option (it wants an anchor, not
+Ashcroft specifically), Act Four works split with four topside jobs, an anchor given away early
+now raises that agent's stakes, and Verrier is a costed fourth route into the count. **Only a
+run with human beings and a slot outstanding.**
+
 **NPCs, threats and monsters (23 Sep 2026)** — generated NPCs now draw their **posting's
 kit**: `drawKitFor()` in `postings.mjs` decides, `generateNPC` issues, and each weapon grants
 the skill it names. Armour is an item, not a number. **The forge** (`forge.mjs` at the root,

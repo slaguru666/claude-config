@@ -913,3 +913,31 @@ pass.
   dropped them entirely and the check would have passed. **Scope a document-agreement check to
   the section that must carry the claim**, then mutate inside that section: a mutation elsewhere
   in the file proves nothing about it.
+- **2026-10-12 — Four statements of a prohibition is not a rule.** A scenario's central order
+  — *you are not sent to alter the loss* — appeared in the essentials, in the read-aloud order,
+  in the design intent and in the perfect ending's wording, and **not one of them said what
+  breaking it cost.** From the GM chair that reads as emphasis; from the player chair the order
+  is the first thing tested, and the GM is inventing the premise at the table in minute ten.
+  **Every prohibition a scenario states needs one place that says: can they, what does it cost,
+  and which ending does it lead to.** Count the statements and the costings separately; they
+  are not the same number.
+- **2026-10-12 — When a prohibition needs a cost, look for one already in the setting.** The
+  fix was not Bureau machinery or a Panic penalty: there were 706 seats in the boats and there
+  is no 707th, so the party cannot add to the count, only change *which* 706 — put a child in a
+  boat and somebody who lived is on the deck instead. True to the history, no new rules, and it
+  turns "can I save someone?" into "who do you take out?", which is the scenario's actual
+  subject. **Invented machinery is the second-best answer to a moral question; the setting's own
+  arithmetic is the first.**
+- **2026-10-12 — A design intent that predicts player behaviour is a promise to handle it.** The
+  document stated plainly that the monster is the helpful man, that it never stalks or hides,
+  and that *the players will thank it* — and then had no text for the players confiding in it
+  and asking for help, which is the inevitable consequence. **Read your own design-intent
+  section as a list of scenes you have committed to writing.** If intent says players will trust
+  an NPC, somewhere there must be what that NPC knows, volunteers and steers toward — and that
+  it must never stonewall, because the helpful man going vague is the loudest tell there is.
+- **2026-10-12 — The player chair is for the premise; the GM chair cannot test it.** Pass 1 and
+  pass 2 found structure and arithmetic. Pass 3 found the premise unanswered, the likeliest
+  player move unwritten, and the best ending reachable only by accident — none of which the
+  earlier chairs could see, because reading your own document in its own order makes its logic
+  feel complete. **Do not treat the player-chair pass as a formality after the fixes land. It
+  is the only pass that asks whether the thing the scenario is about has rules.**
