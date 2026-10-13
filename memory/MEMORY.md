@@ -58,3 +58,4 @@
 - [Scope the document check](feedback-scope-the-document-check.md) — asserting a figure appears "somewhere in the file" is usually vacuous; scope to the section and mutate inside it
 - [keycast](keycast.md) — Swift menubar keystroke broadcaster for two WoW clients at ~/keycast (Keycast.app); works in-game
 - [TCC row keeps old csreq](infra-tcc-row-keeps-old-csreq.md) — a ticked Accessibility row stops working after re-signing; remove and re-add, toggling never refreshes it; read the verdict with `open --stdout`
+- [Shell chain hid the failure](feedback-shell-chain-hid-the-failure.md) — `grep -c` exiting 1 on zero matches skips the rest of an && chain; the edit never ran and it looked like a pass
