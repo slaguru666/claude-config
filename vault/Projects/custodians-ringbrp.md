@@ -263,6 +263,21 @@ were drawn in London by a man who was not there, these were drawn nine years lat
 internal report by somebody who was, which is why they may show the thing itself. Nobody is in
 the water in any of the 18 and plate 11, the washing station, has no figures in it at all.
 
+**The deployed server is a different thing from the repo (14 Oct 2026)** — asked whether the
+panic rewrite had reached the remote, and the answer was yes to Gitea and **no to the server
+people play on**. `foundry.oneoffgames.com:/root/foundrydata/Data/systems/ringbrp` is a **plain
+file copy, not a git checkout** (`DEPLOY.md` documents clone + `git pull`), last written
+**16 Sep**, so it still runs the old band-and-penalty panic: `PANIC_BANDS`/`panicPenaltyFor`
+present, `panicTargetFor`/`PANIC_TABLE` absent, no `outOfToken` in `template.json`, ~103 commits
+behind. **Both copies said `1.8.1`**, so the version string was no help — the version had not
+moved through seven content commits including the whole rewrite, which is exactly what
+`DEPLOY.md` says Foundry needs in order to offer an update. Bumped to **1.9.0** (`c809f12`,
+pushed, 28 guards green). Foundry there is `foundryvtt13.service`, no world active, and the VPS
+can clone the repo over HTTPS anonymously, so the fix is a stop / back up / fresh clone / start
+that puts it back on the documented `git pull` path. **Nothing on the server is untracked** —
+the only files it has that git does not are regenerated LevelDB manifests — so a clone loses
+nothing. Deploy itself is pending Tim: the sandbox refused it as a production deploy.
+
 **Next steps** — **desk-pass RETURN WORKING**, whose two hours on the moor after the door
 shuts is either the best scene in the sequence or twenty dead minutes, and whose five remaining
 outline questions (Region 8 tower or island, how much engine the players get, case 3's frame)
@@ -280,6 +295,13 @@ creatures hold a weapon they have no skill for, held at `check-armed`'s ratchet 
 giving each one a rating moves `check-lethality`'s numbers.
 
 **Key decisions**
+- 2026-10-14 — **"Pushed" and "deployed" are two different claims, and the version number
+  proves neither.** The panic rewrite had been on Gitea for two days and the table it would be
+  played at was a month behind, because the deployed copy is a file copy rather than the
+  checkout `DEPLOY.md` assumes, and because `system.json` had not moved off `1.8.1` since
+  7 September. Identical version strings on two different code bases is the worst case: it
+  reads as up to date. Check the deployed *code* (a function the new model introduced), never
+  the version, and bump the version in the commit that changes the model.
 - 2026-10-12 — **The outcome a mechanic cannot produce is the one to look for.** The panic
   track was complete, guarded, documented and measured, and had no version of a fright an
   agent simply withstood — because the point landed before the roll. Nothing in six review
