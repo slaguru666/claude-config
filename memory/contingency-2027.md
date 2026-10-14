@@ -16,17 +16,19 @@ Repo: `slaguru666/contingency2027`. Mirror:
 Full detail in the vault note `Projects/contingency-2027.md` — see
 [[claude-memory-vault]].
 
-Seven Call of Cthulhu games across five flavours (pulp, 1920s, the **DEAD AIR**
-1946/1962/2027 trilogy, Gaslight, modern), two Blade Runner, two Dee Sanction,
-one Walking Dead. Only AFTERIMAGE is finished; **eleven scenarios remain to be
-written** by late January.
+**The slate is set by system, to Tim's spec:** two Blade Runner, **one** Dee
+Sanction (Sunday morning), one Walking Dead, and eight Call of Cthulhu — the
+three-evening **DEAD AIR** arc (1946 / 1962 / 2027) plus **Pulp or Gaslight
+only** in every other CoC slot (two Pulp, three Gaslight). Only AFTERIMAGE is
+finished; **eleven scenarios remain to be written** by late January.
 
 **The load strategy is shared casts and cheap builds**, chosen deliberately when
 Tim refused to cut a game: Paper Children reuses AFTERIMAGE's four pregens, sheets
-and art untouched; both Dee Sanction games reuse the *Princes Bride* agents; The
-Six O'Clock Sitting and Cold Storage are one-location games needing no art at all.
-Changing a shared pregen sheet means re-auditing both games that use it.
+and art untouched (changing one sheet means re-auditing both games); The Six
+O'Clock Sitting and The Perpetual Order are one-location Gaslight games needing no
+art at all; and the three Gaslight games share a period, so their handout
+furniture gets built once.
 
-`archive/` holds three games cut as the slate changed (Vanity, Vaesen, and the
-CLEAN GROUND pointer — see [[ringbrp-project]]). Nothing was deleted; any can
+`archive/` holds four games cut as the slate changed (Vanity, Vaesen, The
+Protestant Wind, and the CLEAN GROUND pointer — see [[ringbrp-project]]). Nothing was deleted; any can
 return to a clear slot. See also [[rpg-skill]].

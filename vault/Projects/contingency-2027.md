@@ -20,28 +20,35 @@ three per day). Friday morning, Saturday morning and Sunday evening are clear.
 
 | # | Slot | Game | System |
 |---|---|---|---|
-| 1 | Wed am | The Last Fix | Pulp Cthulhu |
+| 1 | Wed am | The Last Fix | **Pulp** Cthulhu |
 | 2 | Wed pm | [[afterimage]] | Blade Runner |
-| 3 | Wed eve | The Six O'Clock Sitting | CoC 1923 |
+| 3 | Wed eve | The Six O'Clock Sitting | CoC **Gaslight** 1894 |
 | 4 | Thu am | Black Summer | TWDU (modified) |
-| 5 | Thu pm | The Favour | Dee Sanction |
+| 5 | Thu pm | The Sky Ride | **Pulp** Cthulhu |
 | 6 | Thu eve | Dead Air I — Ash & Concrete | CoC 1946 |
-| 8 | Fri pm | The New Light | CoC Gaslight 1895 |
+| 8 | Fri pm | The New Light | CoC **Gaslight** 1895 |
 | 9 | Fri eve | Dead Air II — The Quiet City | CoC 1962 |
 | 11 | Sat pm | Paper Children | Blade Runner |
 | 12 | Sat eve | Dead Air III — Full Volume | CoC modern |
-| 13 | Sun am | The Protestant Wind | Dee Sanction |
-| 14 | Sun pm | Cold Storage | CoC modern |
+| 13 | Sun am | The Favour | Dee Sanction |
+| 14 | Sun pm | The Perpetual Order | CoC **Gaslight** 1895 |
+
+**The spec Tim set:** two Blade Runner, one Dee Sanction on Sunday morning, one
+Walking Dead, the rest Call of Cthulhu — a three-evening arc plus **Pulp or
+Gaslight only** in every other CoC slot.
 
 All twelve are outlined. **Eleven scenarios still to write** — AFTERIMAGE is the
-only finished one. `archive/` holds three games cut along the way (Vanity,
-Vaesen, and the [[custodians-ringbrp]] CLEAN GROUND pointer); nothing deleted.
+only finished one. `archive/` holds four games cut along the way (Vanity,
+Vaesen, The Protestant Wind, and the [[custodians-ringbrp]] CLEAN GROUND
+pointer); nothing deleted.
 
 **Next steps**
 - Write DEAD AIR I first — earliest new game on the table, and the trilogy is one
   production with three outputs
-- Build the two shared pregen sets once: the Blade Runner four, the Dee Sanction
-  agents
+- Build the Blade Runner four once — they serve Slots 2 and 11 and must not diverge
+- Decide whether THE FAVOUR survives a 9am Sunday or swaps with Slot 14; its Act
+  Two is an archive act and the archived *Protestant Wind* has the brisk structure
+  to raid
 - Replace the placeholder slot times once Warhorn publishes
 - Decide whether the Searles rooms seat six (three games do)
 
@@ -51,10 +58,14 @@ Vaesen, and the [[custodians-ringbrp]] CLEAN GROUND pointer); nothing deleted.
   built under the Führerbunker; the bible carries a binding *Handling the Nazi
   material* section.
 - **Shared casts are the load strategy.** Paper Children reuses AFTERIMAGE's four
-  pregens, sheets, art and console module untouched; both Dee Sanction games reuse
-  the *Princes Bride* agents. Changing a shared sheet means re-auditing both games.
-- **Two games are deliberately art-free** — The Six O'Clock Sitting and Cold
-  Storage. They are the slate's ballast and should stay cheap.
+  pregens, sheets, art and console module untouched. Changing a shared sheet means
+  re-auditing both games.
+- **Non-arc CoC is Pulp or Gaslight only** — two Pulp (Slots 1, 5), three Gaslight
+  (3, 8, 14). The Gaslight three share a period, so their handout furniture gets
+  built once.
+- **Two games are deliberately art-free** — The Six O'Clock Sitting and The
+  Perpetual Order, both Gaslight, both one location. The slate's ballast; keep
+  them cheap.
 - AFTERIMAGE is ported, not rewritten.
 - Witch Finder **Garratt** (two t's) is canon from *The Princes Bride*
   ([[continuum-2026]]); The Favour runs forward from that game's crossroads

@@ -59,3 +59,6 @@
 - [keycast](keycast.md) — Swift menubar keystroke broadcaster for two WoW clients at ~/keycast (Keycast.app); works in-game
 - [TCC row keeps old csreq](infra-tcc-row-keeps-old-csreq.md) — a ticked Accessibility row stops working after re-signing; remove and re-add, toggling never refreshes it; read the verdict with `open --stdout`
 - [Shell chain hid the failure](feedback-shell-chain-hid-the-failure.md) — `grep -c` exiting 1 on zero matches skips the rest of an && chain; the edit never ran and it looked like a pass
+- [FRESH WATER scenario](freshwater-scenario.md) — first one-page Custodians case; 1923 liner, 18 scraperboard plates, the plates ARE the scenario.
+- [Measure the constraint](feedback-measure-the-constraint.md) — "one page" is a render-and-count, then look; a page count of 1 is also what clipped content reports
+- [Costly diagnostic](feedback-costly-diagnostic.md) — some diagnostics consume the very resource they diagnose; mj-blocked sends a job

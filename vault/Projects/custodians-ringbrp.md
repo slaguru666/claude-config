@@ -3,7 +3,7 @@ type: project
 status: active
 repo: slaguru666/RingBRP + slaguru666/ringbrp-design
 path: ~/FoundryVTT/Data/systems/ringbrp + ~/RingBRP
-updated: 2026-10-12
+updated: 2026-10-14
 ---
 
 # The Custodians (RingBRP)
@@ -233,6 +233,35 @@ the skill it names. Armour is an item, not a number. **The forge** (`forge.mjs` 
 `tools/forge.mjs` CLI, and a third Actors-sidebar button) derives a creature from role, size,
 tier and species and explains every number. **The forge panel is not yet verified in a running
 Foundry** — the derivation is, the Foundry glue is not.
+
+**FRESH WATER is the shelf's first ONE-PAGE case (14 Oct 2026)** — RMS *Calpurnia*,
+Liverpool–New York, foundered 17 March 1923; the agents come through onto the rescue ship
+*Dunbarrow* at dawn with **36 hours to New York**. Fire in number four hold, the crew flooded it
+to save her, which was correct and which sank her and put the cargo into the sea. **Anyone who
+was in the water is seeded and no roll detects it**; hot fresh water is the cure and the ship can
+heat about **ninety baths for 603 survivors**. It is not solved person by person — it is solved
+by getting the boat list and washing the **four boats that shipped water**, and then by finding
+the **thirty "reachers"** who leaned into the sea from a dry boat and are not lying when they say
+they were never in it.
+
+Three things about it are new to this repo and worth keeping:
+- **The plates ARE the scenario.** 18 scraperboard plates, numbered in the gallery so Foundry's
+  own sort is the deal order. The prose is **one journal page**, because splitting a one-page
+  case across twelve pages stops it being one.
+- **"One page" is measured, not asserted.** `tools/make-pdf.mjs --onesheet` (new: two columns,
+  7.6pt, no cover plate) renders it and the PDF is counted — it was **4 pages** at house size and
+  is **1** now, verified by rasterising the sheet and looking at it rather than trusting the page
+  count, which would also report 1 for clipped content.
+- **A hazard with no body does not get a stat block.** The contaminant stays prose; only
+  `cal_turned` (the one that turns early aboard — measured at **0.04 of 4 down, 2 rounds**, so it
+  is a demonstration and not a boss) and `cal_landed` (plate 17, never run — **80.1% wipe, 13
+  rounds**, which is how the GM knows it is not a fight) are actors.
+
+Art direction in `docs/scenarios/FRESH_WATER_ART.md`: **scraperboard, white line out of solid
+black**, against ONE MORE ABOARD's 1912 two-ink engraving. The conceit earns it — OMA's plates
+were drawn in London by a man who was not there, these were drawn nine years later for an
+internal report by somebody who was, which is why they may show the thing itself. Nobody is in
+the water in any of the 18 and plate 11, the washing station, has no figures in it at all.
 
 **Next steps** — **desk-pass RETURN WORKING**, whose two hours on the moor after the door
 shuts is either the best scene in the sequence or twenty dead minutes, and whose five remaining

@@ -941,3 +941,32 @@ pass.
   earlier chairs could see, because reading your own document in its own order makes its logic
   feel complete. **Do not treat the player-chair pass as a formality after the fixes land. It
   is the only pass that asks whether the thing the scenario is about has rules.**
+- **2026-10-14 — "One page" is a measurement, not an adjective.** A one-page scenario brief is a
+  hard constraint, and the only honest test is to render the document and count the pages. The
+  first draft of FRESH WATER read like one page in the editor and printed as **four** A4 sides in
+  the house style. A print mode (two columns, 7.6pt, no cover plate) got it to one. **Then look at
+  the sheet**, because a page count of 1 is also what overflowing, clipped content reports — and
+  looking is what revealed a third of a column free, which the three NPC one-liners then filled.
+  Same family as the flyer that reported "1 page" while still saying "Nine games".
+- **2026-10-14 — Write the cast sheets before you call the solution finished.** The boat-list
+  method was the whole second half of FRESH WATER and looked airtight until writing the NPC
+  specs forced the question *who is wet but on no wet-boat list?* — the people who leaned over a
+  dry boat's gunwale to pull somebody in. That hole became the last act of the case and gave two
+  skills a job they did not previously have. **Statting the people is a structural test of the
+  plot, not a production chore to be done afterwards.**
+- **2026-10-14 — A hazard with no body does not get a stat block.** The thing the players are
+  fighting was a contaminant in sea water: no characteristics, nothing it can do to a person
+  inside the session's clock. Giving it an actor so the pack's cast array has something in it
+  would have been a lie dressed as data. **Stat what can act. Describe what cannot** — and if a
+  creature exists only to be shown in an epilogue, stat it anyway and publish its measured
+  figure, because "this is not a fight" is a claim best made in numbers.
+- **2026-10-14 — Do not run the diagnostic that costs what you are diagnosing.** A plate stalled
+  mid-batch and the obvious move was the tool that tells a moderation pull from a slow service —
+  which works by *sending a job of its own*, on a bridge that takes one job at a time. Running it
+  would have killed the plate it was there to explain. **Before reaching for a diagnostic, check
+  what it consumes.**
+- **2026-10-14 — Let the plate rewrite the line, never the beat.** An epilogue plate came back
+  quieter and far better than the prompt that asked for it. Keeping it and adjusting the caption
+  is right; what must not move is what the beat *does* in the scenario. **And record the
+  substitution in the art sheet**, or the next pass regenerates it back toward the prompt on the
+  grounds that the picture does not match.
