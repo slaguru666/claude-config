@@ -20,7 +20,7 @@ three per day). Friday morning, Saturday morning and Sunday evening are clear.
 
 | # | Slot | Game | System |
 |---|---|---|---|
-| 1 | Wed am | The Last Fix | **Pulp** Cthulhu |
+| 1 | Wed am | The London Particular | CoC **Gaslight** 1896 |
 | 2 | Wed pm | [[afterimage]] | Blade Runner |
 | 3 | Wed eve | The Six O'Clock Sitting | CoC **Gaslight** 1894 |
 | 4 | Thu am | Black Summer | TWDU (modified) |
@@ -35,12 +35,12 @@ three per day). Friday morning, Saturday morning and Sunday evening are clear.
 
 **The spec Tim set:** two Blade Runner, one Dee Sanction on Sunday morning, one
 Walking Dead, the rest Call of Cthulhu — a three-evening arc plus **Pulp or
-Gaslight only** in every other CoC slot.
+Gaslight only** in every other CoC slot. Settled at **one Pulp, four Gaslight**.
 
 All twelve are outlined. **Eleven scenarios still to write** — AFTERIMAGE is the
-only finished one. `archive/` holds four games cut along the way (Vanity,
-Vaesen, The Protestant Wind, and the [[custodians-ringbrp]] CLEAN GROUND
-pointer); nothing deleted.
+only finished one. `archive/` holds five games cut along the way (Vanity,
+Vaesen, The Protestant Wind, The Last Fix, and the [[custodians-ringbrp]] CLEAN
+GROUND pointer); nothing deleted.
 
 **Next steps**
 - Write DEAD AIR I first — earliest new game on the table, and the trilogy is one
@@ -60,9 +60,11 @@ pointer); nothing deleted.
 - **Shared casts are the load strategy.** Paper Children reuses AFTERIMAGE's four
   pregens, sheets, art and console module untouched. Changing a shared sheet means
   re-auditing both games.
-- **Non-arc CoC is Pulp or Gaslight only** — two Pulp (Slots 1, 5), three Gaslight
-  (3, 8, 14). The Gaslight three share a period, so their handout furniture gets
-  built once.
+- **Non-arc CoC is Pulp or Gaslight only** — one Pulp (Slot 5), four Gaslight
+  (1, 3, 8, 14). The Pulp stays on Thursday because that is the day that needs a
+  relief valve. The four Gaslight share a period (build the handout furniture
+  once) but deliberately **not** a shape: Slot 1 is mobile and city-wide, the
+  other three are each a single location.
 - **Two games are deliberately art-free** — The Six O'Clock Sitting and The
   Perpetual Order, both Gaslight, both one location. The slate's ballast; keep
   them cheap.

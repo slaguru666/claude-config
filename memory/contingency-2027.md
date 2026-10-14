@@ -19,7 +19,10 @@ Full detail in the vault note `Projects/contingency-2027.md` — see
 **The slate is set by system, to Tim's spec:** two Blade Runner, **one** Dee
 Sanction (Sunday morning), one Walking Dead, and eight Call of Cthulhu — the
 three-evening **DEAD AIR** arc (1946 / 1962 / 2027) plus **Pulp or Gaslight
-only** in every other CoC slot (two Pulp, three Gaslight). Only AFTERIMAGE is
+only** in every other CoC slot — settled at **one Pulp, four Gaslight**. The Pulp
+sits Thursday afternoon as that day's relief valve; the four Gaslight share a
+period but deliberately not a shape (one mobile city-wide hunt, three single
+locations). Only AFTERIMAGE is
 finished; **eleven scenarios remain to be written** by late January.
 
 **The load strategy is shared casts and cheap builds**, chosen deliberately when
@@ -29,6 +32,7 @@ O'Clock Sitting and The Perpetual Order are one-location Gaslight games needing 
 art at all; and the three Gaslight games share a period, so their handout
 furniture gets built once.
 
-`archive/` holds four games cut as the slate changed (Vanity, Vaesen, The
-Protestant Wind, and the CLEAN GROUND pointer — see [[ringbrp-project]]). Nothing was deleted; any can
+`archive/` holds five games cut as the slate changed (Vanity, Vaesen, The
+Protestant Wind, The Last Fix, and the CLEAN GROUND pointer — see
+[[ringbrp-project]]). Nothing was deleted; any can
 return to a clear slot. See also [[rpg-skill]].
