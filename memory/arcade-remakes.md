@@ -1,0 +1,23 @@
+---
+name: arcade-remakes
+description: "Standalone macOS Asteroids and Battlezone remakes (single-file Swift/AppKit) at ~/asteroids and ~/battlezone, private GitHub repos"
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: 62859eab-1eb2-4772-8388-71317b87ddbf
+  modified: 2026-10-15T21:51:45.794Z
+---
+
+Two arcade remakes built 2026-10-15, each a single `Sources/main.swift` (AppKit + AVAudioEngine synthesized sound, no deps) plus `Sources/makeicon.swift` and `build.sh` (`--install` copies the .app to ~/Applications).
+
+- ~/asteroids -> github.com/slaguru666/asteroids (private)
+- ~/battlezone -> github.com/slaguru666/battlezone (private)
+- ~/pacman -> github.com/slaguru666/pacman (private), app is PacMan.app
+- ~/spaceinvaders -> slaguru666/spaceinvaders, built by a separate session 2026-10-15
+- ~/defender -> github.com/slaguru666/defender (private)
+
+Windows of apps launched with `open -g` report a tiny skewed frame (opening animation unfinished) until activated; not a sizing bug.
+
+Verification pattern that worked: strip the last 5 lines (app startup) with sed, compile with a headless autopilot harness, render frames to PNG. Do not drive the desktop with synthetic keys while the user is active — keystrokes landed in Chrome once.
+
+**Why:** the user may ask for more remakes in the same style. **How to apply:** reuse the GameView/AppDelegate/Sound skeleton and build.sh from either repo.

@@ -73,6 +73,12 @@ GROUND pointer); nothing deleted.
   The four Gaslight share a period (build the handout furniture
   once) but deliberately **not** a shape: Slot 1 is mobile and city-wide, the
   other three are each a single location.
+- **Twelve 30-second trailers exist**, built from `tools/trailers/` — a generator
+  plus one JSON spec per game, ~35s to render. Typographic, in the flyer's voice,
+  audio synthesised in the script. The rendered MP4s are **gitignored** (361 MB);
+  the specs reproduce them. If a slot time or player count changes, the booking
+  card is baked into each spec and all twelve need re-rendering.
+
 - **Two games are deliberately art-free** — The Six O'Clock Sitting and The
   Perpetual Order, both Gaslight, both one location. The slate's ballast; keep
   them cheap.
