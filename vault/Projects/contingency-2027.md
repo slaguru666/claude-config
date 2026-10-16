@@ -82,9 +82,11 @@ GROUND pointer); nothing deleted.
   Run `--check` on a spec and `--still <t>` to look at a frame before encoding.
   If a slot time or player count changes, the booking card is baked into each
   spec and all thirty-six need re-rendering. The Warhorn blurbs each link a
-  trailer via a `TRAILER_BASE` placeholder — **nothing is hosted yet**, and
-  where they live is an open decision (unlisted YouTube vs the One Off Games
-  VPS vs socials only).
+  trailer. **They are live** at
+  `https://web.oneoffgames.com/trailers/contingency-2027/` on the One Off Games
+  VPS — 720p web encodes from `tools/web_encodes.sh`, 243 MB. Deliberately
+  **outside `/conventions/`**, which is password protected; see
+  [[infra-oneoffgames-vps]].
 
 - **Two games are deliberately art-free** — The Six O'Clock Sitting and The
   Perpetual Order, both Gaslight, both one location. The slate's ballast; keep

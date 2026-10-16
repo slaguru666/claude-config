@@ -31,7 +31,7 @@
 - [Masque app](masque-app.md) — real-time GM voice changer at ~/masque; spec 1 + Beatrice 2 AI sidecar (spec 2) BUILT + verified 2026-08-23, merged to main
 - [Loom app](loom-app.md) — local Alkemion-style adventure-design tool at ~/loom (port 8771, Markdown-on-disk adventures, facet-constrained generators, map generator, scenario builders, procedural art, passphrase remote access); see docs/feedback/REPORT.md
 - [Stylish Login Screen](stylish-login-screen.md) — third-party Foundry portrait-login module, live in VPS world `classified`; set Custom base URL to the hostname (bare IP hits code-server), and test it in real Chrome, not the pane (blob: nav blocked)
-- [One Off Games VPS](infra-oneoffgames-vps.md) — `ssh foundry` (85.190.246.132, root only); nginx + web.oneoffgames.com public game site; drop a folder in the web root and it is live
+- [One Off Games VPS](infra-oneoffgames-vps.md) — `ssh foundry` (85.190.246.132, root only); nginx + web.oneoffgames.com; a new top-level folder is live with no nginx change, but **`/conventions` is behind auth_basic** — read the file before publishing
 - [Concurrent agents](feedback-concurrent-agents.md) — never `git add -A` with agents running; disjoint files, verify every claim
 - [Codex review loop](feedback-codex-review-loop.md) — fix → codex review → fix findings → verify live → repeat; use `--profile deep`, and tell a reviewer on a streak not to invent findings
 - [Codex profiles](infra-codex-profiles.md) — profiles are per-file `~/.codex/<name>.config.toml`; only gpt-6-astra and gpt-5.5 answer, and a stale model name breaks the CLI outright
@@ -63,4 +63,4 @@
 - [FRESH WATER scenario](freshwater-scenario.md) — first one-page Custodians case; 1923 liner, 18 scraperboard plates, the plates ARE the scenario.
 - [Measure the constraint](feedback-measure-the-constraint.md) — "one page" is a render-and-count, then look; a page count of 1 is also what clipped content reports
 - [Costly diagnostic](feedback-costly-diagnostic.md) — some diagnostics consume the very resource they diagnose; mj-blocked sends a job
-- [Arcade remakes](arcade-remakes.md) — Asteroids, Battlezone, Pac-Man, Space Invaders, Defender single-file Swift Mac apps in ~/<name>; private GitHub repos; headless-harness verification
+- [Arcade remakes](arcade-remakes.md) — Asteroids (+Deluxe), Battlezone, Pac-Man, Space Invaders, Defender, plus original Shardfall; single-file Swift Mac apps in ~/<name>; private GitHub repos; headless-harness verification
