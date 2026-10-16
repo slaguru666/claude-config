@@ -81,7 +81,10 @@ GROUND pointer); nothing deleted.
   to render each. MP4s are **gitignored** (1.1 GB); the specs reproduce them.
   Run `--check` on a spec and `--still <t>` to look at a frame before encoding.
   If a slot time or player count changes, the booking card is baked into each
-  spec and all thirty-six need re-rendering.
+  spec and all thirty-six need re-rendering. The Warhorn blurbs each link a
+  trailer via a `TRAILER_BASE` placeholder — **nothing is hosted yet**, and
+  where they live is an open decision (unlisted YouTube vs the One Off Games
+  VPS vs socials only).
 
 - **Two games are deliberately art-free** — The Six O'Clock Sitting and The
   Perpetual Order, both Gaslight, both one location. The slate's ballast; keep
