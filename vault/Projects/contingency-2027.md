@@ -73,15 +73,15 @@ GROUND pointer); nothing deleted.
   The four Gaslight share a period (build the handout furniture
   once) but deliberately **not** a shape: Slot 1 is mobile and city-wide, the
   other three are each a single location.
-- **Twenty-four 30-second trailers exist** — twelve games × **16:9 and 9:16** —
+- **Thirty-six 30-second trailers exist** — twelve games × **16:9, 9:16 and 1:1** —
   built from `tools/trailers/`: a generator, one JSON spec per game, and
   `backdrops.py` holding one procedural plate per game (fog, rain, séance lamp,
   searchlight, VHS, caustics, 212 lamps, oscilloscope, microfiche, spectrum,
   woodcut, tide light). Seeded noise only, no stock or generated imagery. 50–80s
-  to render each. MP4s are **gitignored** (721 MB); the specs reproduce them.
+  to render each. MP4s are **gitignored** (1.1 GB); the specs reproduce them.
   Run `--check` on a spec and `--still <t>` to look at a frame before encoding.
   If a slot time or player count changes, the booking card is baked into each
-  spec and all twenty-four need re-rendering.
+  spec and all thirty-six need re-rendering.
 
 - **Two games are deliberately art-free** — The Six O'Clock Sitting and The
   Perpetual Order, both Gaslight, both one location. The slate's ballast; keep
