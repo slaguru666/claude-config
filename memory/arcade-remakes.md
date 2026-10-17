@@ -16,6 +16,7 @@ Two arcade remakes built 2026-10-15, each a single `Sources/main.swift` (AppKit 
 - ~/spaceinvaders -> slaguru666/spaceinvaders, built by a separate session 2026-10-15
 - ~/defender -> github.com/slaguru666/defender (private)
 - ~/shardfall -> github.com/slaguru666/shardfall (private): ORIGINAL game (not a remake) the user asked to be invented for 2026 with a retro vibe; shards/multiplier/overdrive/dash/sector upgrades/singularity/Monolith boss, adaptive synthwave music
+- ~/gridfront -> github.com/slaguru666/gridfront (private): ORIGINAL 2026 take on Battlezone (reuses its 3D projection); hover tank w/ shield+hull, strafe, boost, homing salvos, salvage->armory, wasps/mortars (ground rings)/hoppers, storm every 4th zone, Juggernaut boss every 5th (turrets first)
 - ~/asteroids-deluxe -> github.com/slaguru666/asteroids-deluxe (private); user asked for "Asteroids 2" = Asteroids Deluxe (no official "Asteroids 2"); built from the Asteroids base, original shapes/sounds, no ROM assets
 
 Windows of apps launched with `open -g` report a tiny skewed frame (opening animation unfinished) until activated; not a sizing bug.
