@@ -17,6 +17,8 @@ Two arcade remakes built 2026-10-15, each a single `Sources/main.swift` (AppKit 
 - ~/defender -> github.com/slaguru666/defender (private)
 - ~/shardfall -> github.com/slaguru666/shardfall (private): ORIGINAL game (not a remake) the user asked to be invented for 2026 with a retro vibe; shards/multiplier/overdrive/dash/sector upgrades/singularity/Monolith boss, adaptive synthwave music
 - ~/gridfront -> github.com/slaguru666/gridfront (private): ORIGINAL 2026 take on Battlezone (reuses its 3D projection); hover tank w/ shield+hull, strafe, boost, homing salvos, salvage->armory, wasps/mortars (ground rings)/hoppers, storm every 4th zone, Juggernaut boss every 5th (turrets first)
+- ~/missilecommand -> github.com/slaguru666/missilecommand (private), app MissileCommand.app: classic rules + mouse aim, combo chains, per-wave upgrade pick, EMP slow-time, hypersonic warheads, orbital platform boss every 5th; first game with stereo pan + AVAudioUnitReverb (pool -> fxMix -> reverb -> main)
+- ~/wavelance -> github.com/slaguru666/wavelance (private): ORIGINAL R-Type-style shooter (user asked for "a new r-type"); charge beam, detachable pod (3 colours), bits, 3 stages + bosses, loop; 4 melodic synth tracks via a parameterised track() generator. Gotcha found: enemies parked at the boss core absorb shots - clear them at boss start
 - ~/asteroids-deluxe -> github.com/slaguru666/asteroids-deluxe (private); user asked for "Asteroids 2" = Asteroids Deluxe (no official "Asteroids 2"); built from the Asteroids base, original shapes/sounds, no ROM assets
 
 Windows of apps launched with `open -g` report a tiny skewed frame (opening animation unfinished) until activated; not a sizing bug.
