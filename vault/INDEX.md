@@ -1,6 +1,6 @@
 ---
 type: index
-updated: 2026-10-13
+updated: 2026-10-18
 ---
 
 # Claude — Index
@@ -31,6 +31,7 @@ The map of everything Claude and Tim are building. Open this first.
 | [[continuum-2026]] | 24–26 July 2026, Cranfield — six GM'd slots | active |
 | [[contingency-2027]] | 27–31 Jan 2027, Hunstanton — ten slots, eight booked | active |
 | [[afterimage]] | Blade Runner scenario; runs at both conventions | complete |
+| [[grand-hotel]] | CoC 1924 White Mountains campaign, Twin Peaks + Mi-Go, 3–4 online sessions | active |
 
 ## Apps
 
