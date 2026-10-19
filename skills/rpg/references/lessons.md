@@ -970,3 +970,14 @@ pass.
   is right; what must not move is what the beat *does* in the scenario. **And record the
   substitution in the art sheet**, or the next pass regenerates it back toward the prompt on the
   grounds that the picture does not match.
+
+## 2026-10 — THE GRAND HOTEL production (CoC 1924, 4-session online campaign)
+
+- **Write a layout/canon reference file before fanning out production agents.**
+  Handouts, maps and session text were built in parallel against one
+  `reference/hotel-layout.md` and one guest list, and came back consistent.
+- **Ask every production agent to report canon contradictions, not fix them.**
+  Two agents returned fourteen real issues (a gallery placed two ways, a PC's
+  Private box contradicting the session's own cliffhanger, a 1926 highway number in
+  1924, the wrong railway). Fixing them took ten minutes; finding them at a table
+  would not have.
