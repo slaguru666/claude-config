@@ -17,11 +17,12 @@ Range. Picked from three pitches (others: *White Birch*, *The Double Edition*).
 **Where it lives** — `RPGS/Call/The Grand Hotel/`, Keeper doc
 `scenarios/the-grand-hotel.md`. Asset IDs `GH-ART-##`. House folder layout.
 
-**Current state — v0.2.** GM truth, fronts, all four sessions written as three
-acts each (goal, scenes, revelations, fallback, cliffhanger), summit choices
-table. Four 7e pregens in `characters/pregens.md`, budgets audited: Nora Halloran
-(journalist), Prof. Edmund Larch (geologist), Frank Dwyer (ex-Boston PD, house
-detective), Dr. Iris Mercer (physicist, wireless).
+**Current state — v0.3.** Restructured on Tim's direction: S1 (Arkham/Boston) and
+S2 (Coös County) are investigation and research, with every trail converging on the
+hotel; S3–S4 never leave the Ammonoosuc House. The Mi-Go gallery is now under the
+hotel (Ware's 1889 adit = the ice-store cellar); the finale is the Star Room
+observatory, not the Cog/summit. Doris is met alive in S2. Pregen hooks rewritten;
+stats unchanged and still audited.
 
 **Next steps**
 - Tim's read of the acts and pregens
@@ -36,3 +37,5 @@ detective), Dr. Iris Mercer (physicist, wireless).
   no state police until 1937, Mount Pleasant not yet Eisenhower.
 - Roster fixed at four by Tim (journalist, professor, retired cop, scientist);
   ranger and pathologist cut. Frank inherits the Cooper dreams; Dr. Rowe (NPC) does the autopsy.
+- S1–2 research, S3–4 hotel-only (Tim, 2026-10-19). Gallery moved under the hotel and
+  the climax into the hotel's Star Room so S3–4 never leave the building.
