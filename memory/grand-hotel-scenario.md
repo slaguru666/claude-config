@@ -1,6 +1,6 @@
 ---
 name: grand-hotel-scenario
-description: "THE GRAND HOTEL — CoC 7e 1924 White Mountains campaign (Twin Peaks + Mi-Go), 3–4 online sessions, pregens, standalone; v0.1 at RPGS/Call/The Grand Hotel"
+description: "THE GRAND HOTEL — CoC 7e 1924 White Mountains campaign (Twin Peaks + Mi-Go), 4 online sessions, 4 pregens, standalone; v0.2 at RPGS/Call/The Grand Hotel"
 metadata:
   node_type: memory
   type: project
@@ -8,9 +8,9 @@ metadata:
   modified: 2026-10-18T22:46:30.668Z
 ---
 
-CoC 7e short campaign, started 2026-10-18. 3–4 online sessions, 5 pregens, not tied to any convention. Folder: `~/Library/Mobile Documents/com~apple~CloudDocs/RPGS/Call/The Grand Hotel/` (not in git). Vault note: `Projects/grand-hotel.md`.
+CoC 7e short campaign, started 2026-10-18. 4 online sessions, 4 pregens max (journalist Nora Halloran, professor Larch, retired cop Dwyer, scientist Mercer), not tied to any convention. Folder: `~/Library/Mobile Documents/com~apple~CloudDocs/RPGS/Call/The Grand Hotel/` (not in git). Vault note: `Projects/grand-hotel.md`.
 
 Chosen from three pitches (White Birch, The Grand Hotel, The Double Edition). Tim wanted Twin Peaks inspiration, Miskatonic professors/students and a journalist angle.
 
-**Why:** v0.1 holds concept, GM truth, fronts and session spine only; scenes, pregen sheets and handouts are next.
+**Why:** v0.2 (2026-10-19) has GM truth, fronts, all sessions in acts and audited pregens; full scene keys, stat lines and handouts are next.
 **How to apply:** build on `scenarios/the-grand-hotel.md`, follow [[rpg-skill]] campaign rules (fronts, carry-forward logs). Mi-Go played straight; cairn sigils are survey coordinates laid by sleepwalking night manager Pryce.

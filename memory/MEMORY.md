@@ -63,5 +63,5 @@
 - [FRESH WATER scenario](freshwater-scenario.md) — first one-page Custodians case; 1923 liner, 18 scraperboard plates, the plates ARE the scenario.
 - [Measure the constraint](feedback-measure-the-constraint.md) — "one page" is a render-and-count, then look; a page count of 1 is also what clipped content reports
 - [Costly diagnostic](feedback-costly-diagnostic.md) — some diagnostics consume the very resource they diagnose; mj-blocked sends a job
-- [Arcade remakes](arcade-remakes.md) — Asteroids (+Deluxe), Battlezone, Pac-Man, Space Invaders, Defender, plus original Shardfall; single-file Swift Mac apps in ~/<name>; private GitHub repos; headless-harness verification
-- [Grand Hotel scenario](grand-hotel-scenario.md) — CoC 1924 White Mountains campaign (Twin Peaks + Mi-Go), 3–4 online sessions, pregens; v0.1 at RPGS/Call/The Grand Hotel, not in git
+- [Arcade remakes](arcade-remakes.md) — Asteroids (+Deluxe), Battlezone, Pac-Man, Space Invaders, Defender, Missile Command, Scramble 2026, Lunar Lander mac wrapper, plus originals Shardfall, Gridfront, Wavelance, Periapsis; single-file Swift Mac apps in ~/<name>; private repos; headless-harness verification
+- [Grand Hotel scenario](grand-hotel-scenario.md) — CoC 1924 White Mountains campaign (Twin Peaks + Mi-Go), 4 online sessions, 4 pregens; v0.2 (acts + pregens) at RPGS/Call/The Grand Hotel, not in git

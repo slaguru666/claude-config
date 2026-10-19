@@ -1,6 +1,6 @@
 ---
 type: tasks
-updated: 2026-10-18
+updated: 2026-10-19
 ---
 
 # Tasks
@@ -10,7 +10,7 @@ Index: [[INDEX]]
 
 ## Active
 
-- [ ] **TIM: read THE GRAND HOTEL v0.1, then Session 1 scenes** [[grand-hotel]] — concept, GM truth, fronts and session spine are in `RPGS/Call/The Grand Hotel/scenarios/the-grand-hotel.md`; no scenes or pregens yet. Open: git repo, which VTT.
+- [ ] **TIM: read THE GRAND HOTEL v0.2 — acts + four pregens** [[grand-hotel]] — `RPGS/Call/The Grand Hotel/`; next is full scene keys, stat lines and handouts. Open: git repo, which VTT.
 - [ ] **TIM: remove the Keycast row in Accessibility (−) and re-add it** [[keycast]] — ticking the old row does nothing: it still carries the ad-hoc code requirement. After removing, relaunch Keycast, accept the prompt, tick the new row. Stable from then on. Menu > Mirrored keys… to choose keys (default `1`–`0 - =`).
 - [ ] **TIM: go-ahead for the shared-apps deploy (Task 19)** [[corkboard]] — branch `shared-apps` (eca2110, unpushed). First: Codex 40 round 2; repair Xcode (`sudo xcodebuild -runFirstLaunch`) + Android SDK for the device run.
 - [ ] **TIM: try the Corkboard phone apps** [[corkboard]] — branch `mobile-apps`. Android: debug APK. iPhone: Xcode (needs `sudo xcode-select` once, then Team + Run). Check iOS pickers, real-finger strings, a real publish; then merge.
