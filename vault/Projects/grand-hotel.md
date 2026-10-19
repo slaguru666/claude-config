@@ -39,3 +39,4 @@ stats unchanged and still audited.
   ranger and pathologist cut. Frank inherits the Cooper dreams; Dr. Rowe (NPC) does the autopsy.
 - S1–2 research, S3–4 hotel-only (Tim, 2026-10-19). Gallery moved under the hotel and
   the climax into the hotel's Star Room so S3–4 never leave the building.
+- Star Room finale confirmed by Tim (2026-10-19); the Cog/summit climb stays out.
