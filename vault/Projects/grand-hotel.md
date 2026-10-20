@@ -17,7 +17,7 @@ Range. Picked from three pitches (others: *White Birch*, *The Double Edition*).
 **Where it lives** — `RPGS/Call/The Grand Hotel/`, Keeper doc
 `scenarios/the-grand-hotel.md`. Asset IDs `GH-ART-##`. House folder layout.
 
-**Current state — v0.4, complete first draft with full production.**
+**Current state — v0.5, audited and fixed.**
 - `scenarios/`: campaign overview + four session running sheets (scene keys, stat
   lines, clue tables, fallbacks, carry-forward).
 - `reference/`: `hotel-layout.md` (room canon; change it first), `the-eleven.md`,
@@ -28,10 +28,10 @@ Range. Picked from three pitches (others: *White Birch*, *The Double Edition*).
   (skips existing), rejects archived in `art/alternates/`.
 - Presentation page: `tools/build-site.py` → `site/`, published as a private
   Artifact https://claude.ai/artifact/QSNtnU3HfQEjNHbYEKJJLc
-- Audited 2026-10-20: Codex desk play + full agent playtest (Keeper + 4 player agents, all 4 sessions) + handout/map/art audits. Report: `playtest/2026-10-20-full-audit.md` — 4 BLOCKERs (finale dome/shaft/Seal undefined, Larch double-counted, Seal kills rescued cylinders, S4 start day), ~30 MAJOR. Fixes NOT yet applied. Not in git.
+- Audited 2026-10-20 (Codex + agent-played campaign + handout/map/art audits, `playtest/2026-10-20-full-audit.md`); **fix pass applied same day (v0.5)** — change logs `playtest/2026-10-20-fixes-{scenarios,handouts-maps,art}.md`. Still imperfect: Outerbridge portrait face, ART-06 mark placement, 13/15 figure and chair counts. Not in git.
 
 **Next steps**
-- Tim approves the fix pass, then apply in the audit's order (blockers → "if they get ahead" boxes → H1-D split/H2-D hotel position → logic → rules → art re-rolls)
+- Tim's read of v0.5; optional second agent playtest of S3–S4 to test the new dome mechanism and "If they get ahead" boxes
 - Decide VTT (Foundry? → scenario-forge) and git repo
 
 **Key decisions**
@@ -46,3 +46,5 @@ Range. Picked from three pitches (others: *White Birch*, *The Double Edition*).
 - Star Room finale confirmed by Tim (2026-10-19); the Cog/summit climb stays out.
 - Canon fixes from the production agents: gallery under the kitchen garden (not the main block), Line House ~80 mi by road, Maine Central through the Notch, no "Route 3" (US numbering is 1926), Pell commissioned 1898.
 - Agent playtest method (2026-10-20): Keeper agent writes beats to `playtest/agent-run-*/beats/`, players write action files; Keeper improvisations logged as K-items and excluded from the fix list.
+- Finale mechanism (2026-10-20): the harvest needs ring + open dome + midnight; Mi-Go come over the roofs from the old well-house (gallery shaft surfaces in the kitchen garden, not the tower). Choices: Close the dome / Collapse (dynamite; kills only cylinders still below) / Free / Bargain / Fenn turn / Larch accepts (in place of the other ten).
+- Summit bodies: the Mi-Go carried and marked Breck and Thomas; Pryce only copies marks onto the lawn cairn. Doris's ledger hides behind the switchboard jack panel. Voice digit group 247 → 261 (summit-station bearing); Pell's log now N 85° W.
