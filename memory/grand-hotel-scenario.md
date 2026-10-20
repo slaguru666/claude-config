@@ -12,5 +12,6 @@ CoC 7e short campaign, started 2026-10-18. 4 online sessions, 4 pregens max (jou
 
 Chosen from three pitches (White Birch, The Grand Hotel, The Double Edition). Tim wanted Twin Peaks inspiration, Miskatonic professors/students and a journalist angle.
 
-**Why:** v0.4 (2026-10-19) is a complete draft: four session files, 34 art images, 17 handouts, 7 maps, presented at https://claude.ai/artifact/QSNtnU3HfQEjNHbYEKJJLc (rebuild with tools/build-site.py, needs markdown+PIL). Unplaytested.
+**Why:** v0.4 (2026-10-19) is a complete draft: four session files, 34 art images, 17 handouts, 7 maps, presented at https://claude.ai/artifact/QSNtnU3HfQEjNHbYEKJJLc (rebuild with tools/build-site.py, needs markdown+PIL). Fully audited 2026-10-20 (Codex + agent-played campaign + handout/map/art audits): `playtest/2026-10-20-full-audit.md`, fixes awaiting Tim's go-ahead.
 **How to apply:** `reference/hotel-layout.md` is room canon — edit it first. Build on `scenarios/the-grand-hotel.md`, follow [[rpg-skill]] campaign rules (fronts, carry-forward logs). Mi-Go played straight; cairn sigils are survey coordinates laid by sleepwalking night manager Pryce.
+Agent playtests: Keeper and players exchange beat/action FILES (not long relayed messages); tell the Keeper never to invent named clues/documents and to keep the ASK free of one PC's private knowledge. Player agents caught real holes the static audits missed (ledger in the shoes, clay before the key, equinox vs Observation). An auditor passed a portrait four players rejected — weigh table eyes over a lone reviewer on art.

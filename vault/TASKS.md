@@ -10,7 +10,7 @@ Index: [[INDEX]]
 
 ## Active
 
-- [ ] **TIM: review THE GRAND HOTEL v0.4 — all sessions, art, handouts, maps** [[grand-hotel]] — presentation page https://claude.ai/artifact/QSNtnU3HfQEjNHbYEKJJLc ; source `RPGS/Call/The Grand Hotel/`. Open: which VTT, git repo, desk playtest.
+- [ ] **TIM: review THE GRAND HOTEL v0.4 — all sessions, art, handouts, maps** [[grand-hotel]] — presentation page https://claude.ai/artifact/QSNtnU3HfQEjNHbYEKJJLc ; source `RPGS/Call/The Grand Hotel/`. Audit done 2026-10-20 (`playtest/2026-10-20-full-audit.md`); approve fix pass. Open: which VTT, git repo.
 - [ ] **TIM: remove the Keycast row in Accessibility (−) and re-add it** [[keycast]] — ticking the old row does nothing: it still carries the ad-hoc code requirement. After removing, relaunch Keycast, accept the prompt, tick the new row. Stable from then on. Menu > Mirrored keys… to choose keys (default `1`–`0 - =`).
 - [ ] **TIM: go-ahead for the shared-apps deploy (Task 19)** [[corkboard]] — branch `shared-apps` (eca2110, unpushed). First: Codex 40 round 2; repair Xcode (`sudo xcodebuild -runFirstLaunch`) + Android SDK for the device run.
 - [ ] **TIM: try the Corkboard phone apps** [[corkboard]] — branch `mobile-apps`. Android: debug APK. iPhone: Xcode (needs `sudo xcode-select` once, then Team + Run). Check iOS pickers, real-finger strings, a real publish; then merge.
