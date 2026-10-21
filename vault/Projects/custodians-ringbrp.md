@@ -325,6 +325,47 @@ block the pull and must be restored whole; and Foundry **reads compendia at star
 clean checkout is not yet a deployment. Sequence: stop → `git clean -fd packs && git checkout
 -- packs` → `git pull --ff-only` → start. Backups at `/root/foundry-backups/ringbrp-pre-<sha>.tgz`.
 
+**A SECOND CHARACTER SHEET AND A GM PANEL (21 Oct 2026)** — `20390a6` + `33c68d5`.
+**THE REGISTRY FILE** is a second sheet for `character`, registered `makeDefault: false`, so
+it appears in an actor's Sheet Configuration dropdown and the Explorer sheet stays everybody's
+default. A 1974 departmental file: buff card, box ruling, courier, a red rubber stamp that is
+**derived from state** (fit for duty / wounded / critical / displaced / not in play) rather
+than decorative. The arrangement is the point — condition, HP, wounds, the dying clock, Panic
+with its d10 span, Coherence with its band *and what that band costs*, reaction and what is
+readied all sit in a **duty band that is on screen whichever tab is open**. It subclasses
+`RingBRPCharacterSheet` exactly as `RingBRPNpcSheet` does, so it owns no rules and no handlers.
+**The eight tab bodies are now shared partials** both sheets include — the extraction was
+proved by reconstructing the original template from the pieces and diffing it byte-for-byte.
+**THE DUTY OFFICER** is a GM panel on a third token scene-control tool: one row per actor,
+rolled hits through `hitLocationRoll` plus a quiet HP step that posts no card, the Panic roll
+by trigger, the point without the roll, relief, break, coherence by reason. It is a **caller** —
+the only `system.*` path it writes is the HP correction — and its roster **prefers selected
+tokens** so it can reach a stranger, since `partyActors()` reads the case file first.
+`partyRows()` extracted from `partyState()` so the panel and the party chat card cannot
+disagree. 8 new guards, 11 mutations, all caught.
+
+**What that build is worth remembering for** — the suite was green for all of it, and a
+running Foundry then found five things:
+- **A partial that is not preloaded renders as NOTHING** and `check-templates` still says OK,
+  because compiling a template is not resolving its partials. Both sheets would have shown
+  eight blank tabs. Caught before shipping; the preload list is now held by a guard.
+- **`ringbrp.css` colours shared classes with bare selectors**, which apply anywhere in the
+  document. Dropping the `ringbrp-sheet` class only sheds rules scoped *to* that class, so
+  58 skill percentages rendered white-on-buff at **1.15:1**. Scoping protects one direction
+  only. Fixed with two `:where()` blankets, measured 48 classes → 8 → none of 535 text nodes.
+- **The stamp read `impaired.active` as "wounded"**, and impaired is a combined penalty
+  summary whose chips include the coherence band — so an uninjured agent at Coherence 4 was
+  stamped WOUNDED. Same shape as R-316/R-317.
+- **Eight characteristics, not seven** (STR MAS CON INT POW DEX APP EDU) — the grid wrapped.
+- And one that was **not** a defect: a 1.0:1 red-on-red reading was my contrast function
+  ignoring the alpha on a 12% tint.
+
+**Open, and NOT mine to decide: the wound bar says WOUNDED for an Adrift agent.** The shared
+`tab-skills` partial titles its penalty bar from `impaired.active`, which includes the
+coherence band — the same defect the stamp had, pre-existing in the Explorer sheet and now
+sitting next to a corrected stamp that reads FIT FOR DUTY. One word in a shared partial, but
+changing it changes the Explorer sheet in every existing world, so it is Tim's call.
+
 **Next steps** — **desk-pass RETURN WORKING**, whose two hours on the moor after the door
 shuts is either the best scene in the sequence or twenty dead minutes, and whose five remaining
 outline questions (Region 8 tower or island, how much engine the players get, case 3's frame)
@@ -342,6 +383,19 @@ creatures hold a weapon they have no skill for, held at `check-armed`'s ratchet 
 giving each one a rating moves `check-lethality`'s numbers.
 
 **Key decisions**
+- 2026-10-21 — **Scoping a stylesheet protects one direction only.** The new sheet's design
+  said that dropping the shared `ringbrp-sheet` class would keep 2,000 lines of the other
+  sheet's rules out of it. It keeps out the rules *scoped to that class*; every bare `.rb-*`
+  colour rule still applies, because a bare class selector matches anywhere in the document.
+  Overriding them one at a time is what left 58 invisible numbers on screen. The fix is a
+  floor — a zero-specificity blanket that loses to every real rule in the new file and beats
+  every bare rule in the old one — and the way you know it worked is measuring every text
+  node, not reading the CSS.
+- 2026-10-21 — **Share the markup, do not copy it, and prove the extraction.** Two sheets
+  showing the same eight tabs could have been two templates; it is one set of partials, so a
+  field added to a tab appears on both. The extraction was proved by rebuilding the original
+  file from the pieces and diffing byte-for-byte, which is cheap and is the only thing that
+  shows a mechanical edit changed nothing.
 - 2026-10-14 — **"Pushed" and "deployed" are two different claims, and the version number
   proves neither.** The panic rewrite had been on Gitea for two days and the table it would be
   played at was a month behind, because the deployed copy is a file copy rather than the
