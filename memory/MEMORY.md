@@ -50,6 +50,8 @@
 - [Fixtures encode your error](feedback-fixtures-encode-your-error.md) — a fixture written to satisfy your assertion agrees with your misunderstanding; copy real data
 - [One definition, not two](feedback-one-definition-not-two.md) — a second local test for a concept the codebase already names is a fork, not a shortcut; it passes review and fails in the one world that matters
 - [Assert the failure shape](feedback-assert-the-failure-shape.md) — write a guard from what the BROKEN version looks like (often the opposite direction), not from the fix you just made; then mutate and prove it fails
+- [Partials render empty](infra-foundry-partials-render-empty.md) — a Handlebars partial Foundry never preloaded renders as nothing, silently, and a compile-check still passes; guard the loadTemplates list
+- [Scoping protects one direction](feedback-scoping-protects-one-direction.md) — a scoped stylesheet still lets the old sheet's bare-class rules in; set a zero-specificity floor and measure every text node, compositing alpha
 - [Foundry drops undeclared system paths](infra-foundry-template-drops-undeclared.md) — an update to a `system.*` path template.json does not declare is discarded silently; it passes every test and does nothing in the game
 - [Foundry pack manifest broken](infra-foundry-pack-manifest-broken.md) — `CURRENT` naming a missing MANIFEST makes a pack unopenable with no world running; decide whether git or the worktree is the bad copy first
 - [Foundry shutDown kills the server](infra-foundry-shutdown-kills-server.md) — `game.shutDown()` on 14.361 can take the whole server down, not just the world; an empty curl (exit 7) means gone, not "wait longer" — reopen the .app, then POST launchWorld
