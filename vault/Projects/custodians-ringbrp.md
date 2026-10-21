@@ -303,6 +303,18 @@ that puts it back on the documented `git pull` path. **Nothing on the server is 
 the only files it has that git does not are regenerated LevelDB manifests — so a clone loses
 nothing. Deploy itself is pending Tim: the sandbox refused it as a production deploy.
 
+**Deployed, and the doc rewritten (21 Oct 2026)** — the VPS copy **is now a git checkout** on
+`main` (cloned 14 Oct from `gitea.timevans.uk/slaguru666/RingBRP.git`), and it carries
+`cbe5109`: STANDING ORDER v3.3 with Area 1, plus FRESH WATER. Verified by checksumming each
+pack's `000003.log` against local — **not** `MANIFEST-000002`, which is byte-identical across
+freshly built single-entry packs and proved nothing when I first used it. Three traps found the
+hard way and now written into `docs/DEPLOY.md` (`bdd544b`): the unit is **`foundryvtt13`** and
+`systemctl is-active` on a wrong name reports a live server as stopped (I deployed under a
+running Foundry twice); a running Foundry leaves **143 compaction files across 24 packs** that
+block the pull and must be restored whole; and Foundry **reads compendia at startup**, so a
+clean checkout is not yet a deployment. Sequence: stop → `git clean -fd packs && git checkout
+-- packs` → `git pull --ff-only` → start. Backups at `/root/foundry-backups/ringbrp-pre-<sha>.tgz`.
+
 **Next steps** — **desk-pass RETURN WORKING**, whose two hours on the moor after the door
 shuts is either the best scene in the sequence or twenty dead minutes, and whose five remaining
 outline questions (Region 8 tower or island, how much engine the players get, case 3's frame)

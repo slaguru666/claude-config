@@ -259,3 +259,16 @@ case, so a reader that cannot see the declaration fails loudly instead of report
   both the clean and the mutated state — and the grep said so cheerfully in both. **Check
   the exit code, not the output**, and confirm a new assertion can fail before trusting it.
 
+
+**A query about the wrong NAME answers as if the thing were absent (21 Oct 2026, RingBRP VPS).**
+`systemctl is-active foundryvtt` printed `inactive`, three times across two sessions, and I
+reported the production Foundry as stopped and deployed on top of it — twice, swapping LevelDB
+compendia underneath a server that had been up for two days. **The unit is `foundryvtt13`.**
+`is-active` prints the same word for *stopped* and for *no such unit*, so a typo is
+indistinguishable from a true negative, and the correct name was **already written in my own
+[[infra-oneoffgames-vps]] memory**. Two things generalise. **A lookup keyed on a name you typed
+is an instrument, and its negative answer is a claim about the name as much as about the
+world** — confirm existence separately (`systemctl list-units --all | grep -i foundry`,
+`ps aux | grep`) before believing an absence. And **having the fact recorded is not having
+applied it**: the reach for `foundryvtt` was a reflex, and the memory only helps if it is
+consulted at the moment of typing rather than at the moment of writing up.

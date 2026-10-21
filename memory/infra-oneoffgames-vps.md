@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: reference
   originSessionId: 81a1afbb-fc23-4ed9-b787-a664647d8b4e
-  modified: 2026-10-14T17:45:27.619Z
+  modified: 2026-10-21T15:40:00.000Z
 ---
 
 `ssh foundry` reaches **85.190.246.132** (Contabo, Ubuntu 24.04, hostname `vmi2869320`, 193G disk). The `~/.ssh/config` entry `contabo` for the same IP uses user `tevans` and **does not work** — only `root@` authenticates, via `~/.ssh/id_ed25519` or `contabo_ed25519`. The second Contabo box in that config, `nodeserver` (178.238.235.121), rejects every key on the Mac.
@@ -18,7 +18,14 @@ House style for that site is a green-phosphor CRT terminal: VT323 from Google Fo
 
 DNS for `oneoffgames.com` is at **Porkbun**, and the wildcard points at Porkbun parking rather than the VPS — a new subdomain needs a real A record to 85.190.246.132, added by the user, before certbot can issue.
 
-**Foundry here is `foundryvtt13.service`** under systemd (also present but idle: `foundry.service`, `foundryvtt12.service`), data at `/root/foundrydata`, ~40 worlds. Whether a world is live is `world` in `/root/foundrydata/Config/options.json` — `null` means only the setup page is up, which is when it is safe to touch `Data/systems/*`. **The systems there are plain file copies, not git checkouts**, even where the repo's own `DEPLOY.md` documents clone + `git pull`; `ringbrp` was a month and ~103 commits stale while the repo said otherwise, and both copies carried the same version string. So check a *function* the new code introduced, never the version. Foundry builds its package list at world launch, so a deploy needs the world relaunched before it is visible. The VPS reaches `gitea.timevans.uk` over HTTPS with no credential.
+**Foundry here is `foundryvtt13.service`** under systemd (also present but idle: `foundry.service`, `foundryvtt12.service`), data at `/root/foundrydata`, ~40 worlds. Whether a world is live is `world` in `/root/foundrydata/Config/options.json` — `null` means only the setup page is up, which is when it is safe to touch `Data/systems/*`. **`ringbrp` IS a git checkout as of 14 Oct 2026** — cloned from `https://gitea.timevans.uk/slaguru666/RingBRP.git`, on `main`, and deploys by `git pull`. *(This file previously said the systems there are plain file copies; that was true of ringbrp until that date and may still be true of the others — check before assuming either way.)* It went a month and ~103 commits stale once while the repo said otherwise, and both copies carried the same version string, so still **check a *function* or file the new code introduced, never the version.**
+
+**Deploying ringbrp there has three traps, all of which have bitten.**
+1. **The service is `foundryvtt13`.** `foundry` and `foundryvtt12` exist and are idle; plain `foundryvtt` does not exist, and **`systemctl is-active` prints `inactive` for a unit that does not exist**, so querying the wrong name reports a live server as stopped. That is how the system was twice deployed underneath a running Foundry. See [[feedback-check-the-instrument]].
+2. **A running Foundry leaves every pack dirty.** It compacts each LevelDB it opens — `000003.log` + `MANIFEST-000002` become `000005.ldb` / `000006.log` / `MANIFEST-000004`, and `CURRENT` moves. That is ~143 changed files across 24 packs, all churn and no content, and it blocks a pull. Restore **whole directories** (`git clean -fd packs && git checkout -- packs`), never file by file — and back up first, because it discards any compendium edit made inside a world.
+3. **Foundry reads compendia at startup.** Files on disk change nothing until the service restarts; it will serve what it loaded days ago.
+
+The sequence: `systemctl stop foundryvtt13` → `git clean -fd packs && git checkout -- packs` → `git pull --ff-only` → `systemctl start foundryvtt13`. Written up in the repo's `docs/DEPLOY.md`. Backups go to `/root/foundry-backups/ringbrp-pre-<sha>.tgz` (~150 MB each). **Verifying a pack arrived: checksum `000003.log`, not `MANIFEST-000002`** — a freshly built single-entry pack writes identical manifest bytes whatever its content, so `freshwater` and `standingorder` have the same manifest hash. Foundry builds its package list at world launch, so a deploy needs the world relaunched before it is visible. The VPS reaches `gitea.timevans.uk` over HTTPS with no credential.
 
 MINI-S (`192.168.1.6`) **is** reachable from the Mac Mini — verified by ping 2026-10-14, ~26 ms. (This file previously said it was not, on a different-subnet assumption; that is corrected.) Use this VPS for anything that needs to be on the internet.
 

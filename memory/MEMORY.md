@@ -22,7 +22,7 @@
 - [Contingency 2027](contingency-2027.md) — 27–31 Jan 2027, Hunstanton; repo slaguru666/contingency2027; twelve games on the 15-slot grid, all outlined, eleven still to write.
 - [Gitea timevans.uk](infra-gitea-timevans.md) — push over SSH port **2222**, not 22; HTTPS has no stored credential
 - [Push after commit](feedback-push-after-commit.md) — push in the same turn as the commit; don't leave it for another session to sweep up
-- [Pushed is not deployed](feedback-pushed-is-not-deployed.md) — say which remote; check the deployed copy for a function the new code introduced, never the version — two code bases can both say 1.8.1
+- [Pushed is not deployed](feedback-pushed-is-not-deployed.md) — three answers: git, the files, the running process; check for a function the new code introduced, never the version — two code bases can both say 1.8.1
 - [Ambient synth (Drift)](ambient-synth.md) — single-file Web Audio groovebox: pad, CS-80, 303 acid, 8-drum kit, chords, melody gen, song mode + WAV bounce, Blade Runner-style Offworld generator at ~/ambient-synth/; port 8765, localStorage v4, not in git
 - [Esper app](esper-app.md) — generative Vangelis/CS-80 Blade Runner machine at ~/esper/ (14 styles, 26 layers, FX rack, performance/conductor/studio); port 8766, not in git
 - [Haunt app](haunt-app.md) — generative horror ambience machine at ~/haunt/ (14 scenes, 36 layers, tension arc + jump scares, FX rack); port 8767, not in git
@@ -31,7 +31,7 @@
 - [Masque app](masque-app.md) — real-time GM voice changer at ~/masque; spec 1 + Beatrice 2 AI sidecar (spec 2) BUILT + verified 2026-08-23, merged to main
 - [Loom app](loom-app.md) — local Alkemion-style adventure-design tool at ~/loom (port 8771, Markdown-on-disk adventures, facet-constrained generators, map generator, scenario builders, procedural art, passphrase remote access); see docs/feedback/REPORT.md
 - [Stylish Login Screen](stylish-login-screen.md) — third-party Foundry portrait-login module, live in VPS world `classified`; set Custom base URL to the hostname (bare IP hits code-server), and test it in real Chrome, not the pane (blob: nav blocked)
-- [One Off Games VPS](infra-oneoffgames-vps.md) — `ssh foundry` (85.190.246.132, root only); nginx + web.oneoffgames.com; a new top-level folder is live with no nginx change, but **`/conventions` is behind auth_basic** — read the file before publishing
+- [One Off Games VPS](infra-oneoffgames-vps.md) — `ssh foundry` (85.190.246.132, root only); nginx + web.oneoffgames.com, `/conventions` behind auth_basic; **ringbrp is a git checkout, the unit is `foundryvtt13`, and a deploy means stop → restore packs whole → pull → start**
 - [Concurrent agents](feedback-concurrent-agents.md) — never `git add -A` with agents running; disjoint files, verify every claim
 - [Codex review loop](feedback-codex-review-loop.md) — fix → codex review → fix findings → verify live → repeat; use `--profile deep`, and tell a reviewer on a streak not to invent findings
 - [Codex profiles](infra-codex-profiles.md) — profiles are per-file `~/.codex/<name>.config.toml`; only gpt-6-astra and gpt-5.5 answer, and a stale model name breaks the CLI outright
