@@ -303,6 +303,16 @@ that puts it back on the documented `git pull` path. **Nothing on the server is 
 the only files it has that git does not are regenerated LevelDB manifests — so a clone loses
 nothing. Deploy itself is pending Tim: the sandbox refused it as a production deploy.
 
+**STANDING ORDER v3.4 — Act Four rewritten (21 Oct 2026, evening)** — the Address is already
+playing when the agents come up from Area 1. **Registrar Pennyfeather** is looping it over the
+tannoy from Studio 2, out of the file, in good faith; **Warden Smith is the voice of reason and
+holds the blast-lock release bar**; and the measured fight is now a **failure branch** that a
+table which reaches the studio never sees. Four-stage ramp, five ways to stop the broadcast
+(the clean one is a countersigned cancellation), and the three answers to the crowd written out
+plainly. Live on the VPS at `1c9cbe5`; PDF 36pp. **Known cosmetic defect, not fixed:**
+`make-pdf.mjs` renders any read-aloud directly under an `###` as a typewriter handout — 93
+blocks across 16 documents, so it is the house look now, and changing it is its own job.
+
 **Deployed, and the doc rewritten (21 Oct 2026)** — the VPS copy **is now a git checkout** on
 `main` (cloned 14 Oct from `gitea.timevans.uk/slaguru666/RingBRP.git`), and it carries
 `cbe5109`: STANDING ORDER v3.3 with Area 1, plus FRESH WATER. Verified by checksumming each
