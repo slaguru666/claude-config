@@ -981,3 +981,28 @@ pass.
   Private box contradicting the session's own cliffhanger, a 1926 highway number in
   1924, the wrong railway). Fixing them took ten minutes; finding them at a table
   would not have.
+- **2026-10-21 — Two washing-place plates stalled in one week, and that is a hypothesis, not a
+  diagnosis.** FRESH WATER's wash station and STANDING ORDER's pit washhouse both returned
+  nothing on the first run — different scenarios, different presses, same subject: *a washing
+  place, empty of people, in a disaster.* Rewording away from *shower* and *bath* toward the
+  plumbing (**spray pipes over a drainage channel, enamel basins**) rendered both. **That is two
+  one-way retries and no control**, which the bridge's own notes say is exactly how a false
+  positive gets written down and committed — "bare" was confirmed that way and did not survive
+  retesting. **Treat it as a usable workaround and an unproven cause.** To settle it: put
+  *shower* back into a prompt that now renders, alone, and see whether it fails again.
+- **2026-10-21 — A player detour is a structural gift; find the job it does and give it four.**
+  The table went down a coal mine because they were told there was fuel down there. Rather than
+  bolt the mine on as a set piece, it was made to carry four loads at once: the Seat's fuel
+  crisis, the only evidence the committee's own rules cannot refuse, the reservoir explaining
+  where the scenario's song has been going, and the grave of four named men. **A location that
+  does one job is scenery; a location that does four is a spine.** When players invent a place,
+  ask what the scenario was already missing and put it there.
+- **2026-10-21 — A shared art prefix is a default scene, and it fights any plate that is not
+  that scene.** STANDING ORDER's mandatory prefix ends *"flat pale cream ground instead of sky"*,
+  which is the one line keeping a sky out of its moorland plates — and underground it is an
+  instruction to put a horizon in a room. Four of nine Area 1 plates came back as quarries,
+  tunnel mouths and daylight. FRESH WATER hit the identical failure from the other side, where a
+  *maritime illustration* prefix pulled two object close-ups out to sea. **Before blaming the
+  plate's own prompt, read the prefix as if it were the subject** — and correct it with the
+  model's own `--no` list rather than negating inside the prompt body, where it reads as
+  something to draw.

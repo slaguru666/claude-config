@@ -3,7 +3,7 @@ type: project
 status: active
 repo: slaguru666/RingBRP + slaguru666/ringbrp-design
 path: ~/FoundryVTT/Data/systems/ringbrp + ~/RingBRP
-updated: 2026-10-14
+updated: 2026-10-21
 ---
 
 # The Custodians (RingBRP)
@@ -37,6 +37,31 @@ blast lock. **The engine is the twins:** 122 of the 168 children are 61 pairs bo
 and they are what bends time there — the clocks have said so since 2010. 59 plates and 14 maps
 wired; desk passes are all that is left. Prompts and blocked words in
 `docs/scenarios/STANDING_ORDER_ART.md`.
+
+**STANDING ORDER is at v3.3 (21 Oct 2026) — AREA 1, from a live table.** The players were
+offered a coal seam at the bottom of the mine as fuel, went down, and got grabbed in the dark;
+the scenario was rebuilt around what they did. **The waking is now Act Four and the descent is
+Act Three.** The framework: the crèche speaker has played the *opening only* of the eleven-minute
+Address nightly for seven years, so nine and a half minutes are begun and never finished every
+night — and in a site where time pools rather than drains, **the unspent music collects at the
+bottom, in the coal.** A cutter let a pocket of it go at once and **emptied four men** (the
+inquiry says roof fall; Larkhall's post-mortems say no cause at all). What is left of the one at
+the controls is **a hand of coal dust that takes people by the arm and pulls them to the face** —
+no stat block, cannot be fought, stopped by humming the song at it, by offering it somebody else,
+or by leaving the district.
+
+Area 1 carries four loads at once, which is why it works: the Seat's **fuel crisis** (fourteen
+weeks of stock), the **only evidence clause 5 cannot refuse** (it is all the Seat's own), the
+**reservoir** explaining where the song has been going, and the **grave of four named men**. New
+people: **Teague** (head of operations, closed the district, keeps the key) and **Collins** (asked
+who verifies Centre's letters, was sent to the coal face, has been working beside the answer).
+New ending **D — pay the seam**: dub the Address before cutting it, play the *whole* original to
+the coal with nobody below, and the debt clears. Nine new plates, two new portraits, no blueprint
+sheet on purpose.
+
+⚠ **Name collision to resolve:** `art/portraits/so_teague.webp` is **Michael Smith** (Teague was
+his surname before v3.0). The new engineer is `so_teague_ops.webp`. Flagged in the doc and on
+TASKS.
 
 **THE LONG RETURN — a three-case time-travel sequence off STANDING ORDER.** Outline in
 `docs/LONG_RETURN_PLAN.md` (deliberately in `docs/` root, not `docs/scenarios/`, or the corpus
