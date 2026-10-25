@@ -56,6 +56,26 @@ only finished one.
 - Decide whether the Searles rooms seat six (one game does — Slot 12)
 
 **Key decisions**
+- **Player counts, 2026-10-25: Blade Runner 4, everything else 4–6.** The two
+  Blade Runner games share one set of four pregens, so four is structural there.
+  The range is not free: **ten games must now ship six sheets and still play at
+  four**, and the "do the Searles rooms seat six?" question that applied to one
+  game now applies to ten. Three games had the old count written into their
+  fiction (Black Summer's three boarding chits for five, The Perpetual Order's
+  padlock "between the four of you", Closing Weekend's eight counsellors) and
+  were rewritten to scale rather than renumbered. Black Summer's chits stay at
+  three whatever the table size, so its squeeze varies with who turns up —
+  flagged in the outline, not yet playtested.
+- **The adverts do not give away the plot** (Tim, 2026-10-25). Six were handing
+  over the discovery: the crates' contents, Afterimage's corporate lie, the
+  fog-register pattern, Paper Children's whole business, that a Closing Weekend
+  PC is the killer, and that someone is alive aboard the *Keelson*. Each now
+  states the situation and the question and stops. **The rule is premise yes,
+  twist no** — Provenance keeps "they are within their rights" because that is
+  the situation; what it withholds is that the 1811 removal was the rescue.
+  **One open tension:** cutting Closing Weekend's mask line is right as spoiler
+  policy, but if the mask rule is told to the table up front (Decision 4) a
+  player arguably needs it before booking. That is consent, not spoiler.
 - **DEAD AIR came off the slate on 2026-10-25**, after three outlines and a full
   trilogy bible. It was the slate's only economy of scale — one production with
   three outputs across three consecutive nights. Removing it **made preparation
