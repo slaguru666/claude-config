@@ -3,7 +3,7 @@ type: project
 status: active
 repo: slaguru666/contingency2027
 path: ~/Library/Mobile Documents/com~apple~CloudDocs/RPGS/Conventions/Contingency 2027
-updated: 2026-10-14
+updated: 2026-10-25
 ---
 
 # Contingency 2027
@@ -20,69 +20,72 @@ three per day). Friday morning, Saturday morning and Sunday evening are clear.
 
 | # | Slot | Game | System |
 |---|---|---|---|
-| 1 | Wed am | The London Particular | CoC **Gaslight** 1896 |
+| 1 | Wed am | The Perpetual Order | CoC **Gaslight** 1895 |
 | 2 | Wed pm | [[afterimage]] | Blade Runner |
 | 3 | Wed eve | The Six O'Clock Sitting | CoC **Gaslight** 1894 |
-| 4 | Thu am | Black Summer | TWDU (modified) |
-| 5 | Thu pm | Closing Weekend | CoC 7e — **modern** (1986) |
-| 6 | Thu eve | Dead Air I — Ash & Concrete | CoC 1946 |
-| 8 | Fri pm | The New Light | CoC **Gaslight** 1895 |
-| 9 | Fri eve | Dead Air II — The Quiet City | CoC 1962 |
+| 4 | Thu am | Black Summer: Last Flight Out | TWDU (modified) |
+| 5 | Thu pm | Continuous Service | **ALIEN RPG** Cinematic |
+| 6 | Thu eve | The London Particular | CoC **Gaslight** 1896 |
+| 8 | Fri pm | Viva Voce | CoC 7e **1920s** (Miskatonic) |
+| 9 | Fri eve | The Curious Case of Mr Parker's Diary | **Vaesen** |
 | 11 | Sat pm | Paper Children | Blade Runner |
-| 12 | Sat eve | Dead Air III — Full Volume | CoC modern |
+| 12 | Sat eve | Closing Weekend | CoC 7e — **modern** (1986) |
 | 13 | Sun am | The Favour | Dee Sanction |
-| 14 | Sun pm | The Perpetual Order | CoC **Gaslight** 1895 |
+| 14 | Sun pm | Provenance | **Outgunned** (1938) |
 
-**The spec Tim set:** two Blade Runner, one Dee Sanction on Sunday morning, one
-Walking Dead, the rest Call of Cthulhu — a three-evening arc plus **Pulp or
-Gaslight only** in every other CoC slot. That settled at one Pulp and four
-Gaslight, and then **the Pulp went too**: Slot 5 is now modern-rules CoC set in
-1986. Final shape of the eight CoC: **3 arc · 4 Gaslight · 1 modern. No Pulp.**
+**The slate was rebuilt on 2026-10-25** and the original spec no longer
+describes it. Tim cut **all three DEAD AIR games**, **The New Light** and the
+Atlantic City Outgunned heist, moved three survivors to new slots, and added
+four new games: an ALIEN hauler, a Miskatonic viva, a revived Vaesen outline
+and a 1938 Spain Outgunned game. **Nine systems now, five of them appearing
+exactly once.**
+
+The CoC count fell from eight to five: **3 Gaslight · 1 1920s · 1 modern.
+No Pulp, no arc.** `archive/` holds eleven cut games; nothing is deleted.
 
 All twelve are outlined. **Eleven scenarios still to write** — AFTERIMAGE is the
-only finished one. `archive/` holds six games cut along the way (Vanity,
-Vaesen, The Protestant Wind, The Last Fix, The Sky Ride, and the
-[[custodians-ringbrp]] CLEAN
-GROUND pointer); nothing deleted.
+only finished one.
 
 **Next steps**
-- Write DEAD AIR I first — earliest new game on the table, and the trilogy is one
-  production with three outputs
+- Write the four new outlines up to scenario v1 — they are the only games with
+  no written text at all behind the outline
 - Build the Blade Runner four once — they serve Slots 2 and 11 and must not diverge
-- Decide whether THE FAVOUR survives a 9am Sunday or swaps with Slot 14; its Act
-  Two is an archive act and the archived *Protestant Wind* has the brisk structure
-  to raid
+- Answer the two questions that block drafting: how many creatures in CONTINUOUS
+  SERVICE, and how far VIVA VOCE's Extract Three goes
 - Replace the placeholder slot times once Warhorn publishes
-- Decide whether the Searles rooms seat six (three games do)
+- Decide whether the Searles rooms seat six (one game does — Slot 12)
 
 **Key decisions**
-- **DEAD AIR is one production with three outputs**, not three scenarios. Runs
-  three consecutive **nights** at 6 players. Reframed around a room the Ahnenerbe
-  built under the Führerbunker; the bible carries a binding *Handling the Nazi
-  material* section.
+- **DEAD AIR came off the slate on 2026-10-25**, after three outlines and a full
+  trilogy bible. It was the slate's only economy of scale — one production with
+  three outputs across three consecutive nights. Removing it **made preparation
+  harder while leaving the game count at twelve**: nine systems, five appearing
+  once. The bible survives in `archive/` and its *Handling the Nazi material*
+  constraints were carried into PROVENANCE, which is the only game that still
+  needs them.
 - **Shared casts are the load strategy.** Paper Children reuses AFTERIMAGE's four
   pregens, sheets, art and console module untouched. Changing a shared sheet means
   re-auditing both games.
-- **Non-arc CoC is four Gaslight (1, 3, 8, 14) plus one modern game (5).** The
-  Pulp slot was kept on Thursday for two revisions because Thursday is the day
-  that needs a relief valve; then Tim replaced it outright with an 1986 slasher.
-  **The consequence is live and unfixed: Thursday is now three horror games**
-  (zombies 9am → slasher → Berlin 1946), so CLOSING WEEKEND has to carry the
-  day's break on register alone — its first ninety minutes are written to be
-  funny, and if it is run straight the day is a grind.
-  The four Gaslight share a period (build the handout furniture
-  once) but deliberately **not** a shape: Slot 1 is mobile and city-wide, the
-  other three are each a single location.
+- **The three Gaslight games (1, 3, 6) share a period but deliberately not a
+  shape** — Slot 1 is mobile and city-wide, the other two are each a single
+  location. Build the handout furniture once.
+- **Thursday is no longer three horror games.** The old grind — zombies 9am,
+  slasher, Berlin 1946 — was broken by the 2026-10-25 reshuffle: Thursday now
+  runs Black Summer, CONTINUOUS SERVICE and The London Particular, and CLOSING
+  WEEKEND moved to Saturday night where its comic first ninety minutes no longer
+  have to carry a whole day's relief. **This was a side effect of the reshuffle,
+  not the reason for it**, but it fixed a known problem.
 - **Thirty-six 30-second trailers exist** — twelve games × **16:9, 9:16 and 1:1** —
   built from `tools/trailers/`: a generator, one JSON spec per game, and
   `backdrops.py` holding one procedural plate per game (fog, rain, séance lamp,
-  searchlight, VHS, caustics, 212 lamps, oscilloscope, microfiche, spectrum,
-  woodcut, tide light). Seeded noise only, no stock or generated imagery. 50–80s
+  searchlight, VHS, caustics, oscilloscope, microfiche, ruled paper, dust shaft,
+  woodcut, tide light — `filament` and `spectrum` are now unused). Seeded noise only, no stock or generated imagery. 50–80s
   to render each. MP4s are **gitignored** (1.1 GB); the specs reproduce them.
   Run `--check` on a spec and `--still <t>` to look at a frame before encoding.
   If a slot time or player count changes, the booking card is baked into each
   spec and all thirty-six need re-rendering. The Warhorn blurbs each link a
-  trailer. **They are live** at
+  trailer. **All thirty-six were rebuilt on 2026-10-25** for the new slate.
+  **They are live** at
   `https://web.oneoffgames.com/trailers/contingency-2027/` on the One Off Games
   VPS — 720p web encodes from `tools/web_encodes.sh`, 243 MB. Deliberately
   **outside `/conventions/`**, which is password protected; see

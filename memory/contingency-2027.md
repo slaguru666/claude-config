@@ -1,6 +1,6 @@
 ---
 name: contingency-2027
-description: "Contingency 2027 convention (27–31 Jan 2027, Hunstanton) — repo slaguru666/contingency2027; twelve games on the 15-slot grid, all outlined, eleven still to write. No Pulp: 3 arc / 4 Gaslight / 1 modern."
+description: "Contingency 2027 convention (27–31 Jan 2027, Hunstanton) — repo slaguru666/contingency2027; twelve games on the 15-slot grid, all outlined, eleven still to write. Slate rebuilt 2026-10-25: nine systems, no DEAD AIR arc."
 metadata:
   type: project
 ---
@@ -16,30 +16,40 @@ Repo: `slaguru666/contingency2027`. Mirror:
 Full detail in the vault note `Projects/contingency-2027.md` — see
 [[claude-memory-vault]].
 
-**The slate is set by system, to Tim's spec:** two Blade Runner, **one** Dee
-Sanction (Sunday morning), one Walking Dead, and eight Call of Cthulhu — the
-three-evening **DEAD AIR** arc (1946 / 1962 / 2027) plus **four Gaslight** and
-**one modern-rules game** — CLOSING WEEKEND, an 1986 summer-camp slasher at Slot
-5. **There is no Pulp**: the spec said Pulp-or-Gaslight only, settled at one Pulp,
-and then Tim replaced that one too. The four Gaslight share a period but
-deliberately not a shape (one mobile city-wide hunt, three single locations).
-Only AFTERIMAGE is finished; **eleven scenarios remain to be written** by late
-January.
+**The slate was rebuilt on 2026-10-25 and any earlier description of it is
+wrong.** Out went all three DEAD AIR games, The New Light, and an Atlantic City
+1988 Outgunned heist. In came CONTINUOUS SERVICE (ALIEN), VIVA VOCE (CoC 1927,
+Miskatonic), MR PARKER'S DIARY (Vaesen — Tim's own parked outline, revived rather
+than a second Vaesen invented) and PROVENANCE (Outgunned, Aragón 1938). Three
+survivors moved slots. Current order: Perpetual Order, Afterimage, Six O'Clock
+Sitting, Black Summer, Continuous Service, London Particular, Viva Voce, Mr
+Parker's Diary, Paper Children, Closing Weekend, The Favour, Provenance.
 
-**Thursday is the live problem.** Slot 5 was the day's relief valve between a 9am
-zombie game and Berlin 1946; replacing it with a slasher makes Thursday three
-horror games, so CLOSING WEEKEND has to carry the tonal break on register alone.
-Its first ninety minutes are written to be funny on purpose. Watch it at the
-first playtest.
+**The rebuild cost the slate its only economy of scale.** DEAD AIR was one
+production with three outputs across three consecutive nights. Without it there
+are **nine systems, five appearing exactly once** — the game count stayed at
+twelve while the preparation got harder. Say this plainly if the slate changes
+again. The CoC count fell from eight to five: 3 Gaslight, 1 1920s, 1 modern; no
+Pulp, no arc.
 
-**The load strategy is shared casts and cheap builds**, chosen deliberately when
-Tim refused to cut a game: Paper Children reuses AFTERIMAGE's four pregens, sheets
-and art untouched (changing one sheet means re-auditing both games); The Six
-O'Clock Sitting and The Perpetual Order are one-location Gaslight games needing no
-art at all; and the three Gaslight games share a period, so their handout
-furniture gets built once.
+**The load strategy is shared casts and cheap builds.** Paper Children reuses
+AFTERIMAGE's four pregens, sheets and art untouched (changing one sheet means
+re-auditing both games); The Six O'Clock Sitting and The Perpetual Order are
+one-location Gaslight games needing no art; the three Gaslight games share a
+period, so their handout furniture gets built once. Only AFTERIMAGE is finished;
+**eleven scenarios remain**.
 
-`archive/` holds six games cut as the slate changed (Vanity, Vaesen, The
-Protestant Wind, The Last Fix, The Sky Ride, and the CLEAN GROUND pointer — see
-[[ringbrp-project]]). Nothing was deleted; any can
-return to a clear slot. See also [[rpg-skill]].
+**Thirty-six trailers** (twelve games × 16:9, 9:16, 1:1) are live at
+`https://web.oneoffgames.com/trailers/contingency-2027/` — deliberately outside
+`/conventions/`, which is `auth_basic` protected; see [[infra-oneoffgames-vps]].
+Built from `tools/trailers/` (generator + one JSON spec per game + one procedural
+plate each in `backdrops.py`); MP4s are gitignored, the specs reproduce them.
+**The booking card is baked into every frame**, so any slot or player-count change
+means re-rendering all thirty-six, re-running `tools/web_encodes.sh` and rsyncing.
+That drill was run for real on 2026-10-25 and works. rsync lands files as
+`root:root` — chown back to `webftp:www-data` 644 afterwards.
+
+`archive/` holds eleven games cut as the slate changed, plus the DEAD AIR trilogy
+bible, whose *Handling the Nazi material* constraints were carried into PROVENANCE.
+Nothing is deleted; retired trailers on the VPS were moved to
+`retired-2026-10-25/`, not removed. See also [[rpg-skill]].
