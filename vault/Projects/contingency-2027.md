@@ -131,6 +131,17 @@ only finished one.
   beds at the same peak measured -10.6 to -12.5 LUFS.
   `--audio out.wav` renders a bed alone in ~3 s; the full 36 is ~45 min.
 
+- **Each game has its own typeface** (2026-10-26). Specs carry
+  `fonts: {voice, furniture}` — voice sets title and hook, furniture the
+  letter-spaced caps. The three Gaslight games differ on purpose (Big Caslon,
+  Didot, Bodoni); the two Blade Runner games match on purpose. Sizes normalise
+  on **cap height**, which runs 53–76 across the library, clamped to
+  [0.90, 1.15] so normalisation nudges rather than transforms.
+  Two faces failed only on inspection, after preflight passed: **Copperplate**
+  cannot carry body text (engraved caps — furniture only), and **Trattatello**'s
+  calligraphic F meant THE FAVOUR did not read as THE FAVOUR. On an advert,
+  legibility beats atmosphere.
+
 - **Two games are deliberately art-free** — The Six O'Clock Sitting and The
   Perpetual Order, both Gaslight, both one location. The slate's ballast; keep
   them cheap.
