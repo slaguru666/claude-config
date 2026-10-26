@@ -66,6 +66,16 @@ means re-rendering all thirty-six, re-running `tools/web_encodes.sh` and rsyncin
 That drill was run for real on 2026-10-25 and works. rsync lands files as
 `root:root` — chown back to `webftp:www-data` 644 afterwards.
 
+**The trailers are scored** (2026-10-26) by `tools/trailers/score.py` — a mode,
+chord progression, voice palette and motif per game, pitched from the `root_hz`
+each spec already carried. **Haunt, Nexus and Esper have no audio export at
+all**, and Drift's bounce is a real-time capture of the live master, so none of
+them can hand you a file; that is why the music is synthesised in numpy rather
+than performed, and it keeps the set reproducible from text. Normalise audio to
+**-14 LUFS via ffmpeg loudnorm, never to peak** — twelve beds at the same peak
+measured -10.6 to -12.5 LUFS. `--audio out.wav` renders one bed in ~3 s; all 36
+videos take ~45 min, so **audition beds before re-rendering video**.
+
 `archive/` holds eleven games cut as the slate changed, plus the DEAD AIR trilogy
 bible, whose *Handling the Nazi material* constraints were carried into PROVENANCE.
 Nothing is deleted; retired trailers on the VPS were moved to

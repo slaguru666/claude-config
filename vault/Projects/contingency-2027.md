@@ -117,6 +117,20 @@ only finished one.
   **outside `/conventions/`**, which is password protected; see
   [[infra-oneoffgames-vps]].
 
+- **The trailers are scored** (2026-10-26). The original audio was sound design
+  — drone, pulse, impact — with no harmony and no motif, which is why it read
+  flat. `tools/trailers/score.py` gives each game a mode, a chord progression, a
+  voice palette and a motif, pitched from the `root_hz` every spec already
+  carried. Twelve distinct beds (organ and music box, CS-80 saws, glass
+  harmonica, a Carpenter ostinato for the 1986 slasher, phrygian plucked for
+  Spain 1938). **Haunt, Nexus and Esper were the obvious tools and could not do
+  it: none of them has any audio export**, and Drift's bounce is a real-time
+  capture of the live master. Scoring in numpy keeps the set reproducible from
+  text instead of turning twelve WAVs into binary assets.
+  Loudness is normalised to **-14 LUFS with loudnorm**, not to peak — twelve
+  beds at the same peak measured -10.6 to -12.5 LUFS.
+  `--audio out.wav` renders a bed alone in ~3 s; the full 36 is ~45 min.
+
 - **Two games are deliberately art-free** — The Six O'Clock Sitting and The
   Perpetual Order, both Gaslight, both one location. The slate's ballast; keep
   them cheap.

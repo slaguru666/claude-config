@@ -22,6 +22,7 @@
 - [Contingency 2027](contingency-2027.md) — 27–31 Jan 2027, Hunstanton; repo slaguru666/contingency2027; twelve games, nine systems, slate rebuilt 2026-10-25 (no DEAD AIR); 36 trailers live on the VPS.
 - [Gitea timevans.uk](infra-gitea-timevans.md) — push over SSH port **2222**, not 22; HTTPS has no stored credential
 - [Push after commit](feedback-push-after-commit.md) — push in the same turn as the commit; don't leave it for another session to sweep up
+- [Measure what they experience](feedback-measure-what-they-experience.md) — when they can't perceive what you built, measure THEIR copy (live? sent? cached?), don't defend your measurement
 - [Pushed is not deployed](feedback-pushed-is-not-deployed.md) — three answers: git, the files, the running process; check for a function the new code introduced, never the version — two code bases can both say 1.8.1
 - [Ambient synth (Drift)](ambient-synth.md) — single-file Web Audio groovebox: pad, CS-80, 303 acid, 8-drum kit, chords, melody gen, song mode + WAV bounce, Blade Runner-style Offworld generator at ~/ambient-synth/; port 8765, localStorage v4, not in git
 - [Esper app](esper-app.md) — generative Vangelis/CS-80 Blade Runner machine at ~/esper/ (14 styles, 26 layers, FX rack, performance/conductor/studio); port 8766, not in git
