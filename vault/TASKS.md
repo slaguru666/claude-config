@@ -1,6 +1,6 @@
 ---
 type: tasks
-updated: 2026-10-19
+updated: 2026-10-26
 ---
 
 # Tasks
@@ -10,6 +10,7 @@ Index: [[INDEX]]
 
 ## Active
 
+- [ ] **TIM: launch the new Outgunned Adventure world and run Frozen Legacy** [[outgunned-adventure]] — Foundry setup, world "Outgunned Adventure". Open *Welcome, Director* first; Director's Chair is in the token controls. Report what feels slow or wrong.
 - [ ] **TIM: review THE GRAND HOTEL v0.4 — all sessions, art, handouts, maps** [[grand-hotel]] — presentation page https://claude.ai/artifact/QSNtnU3HfQEjNHbYEKJJLc ; source `RPGS/Call/The Grand Hotel/`. Audit + fix pass done 2026-10-20 (v0.5; page republished). Open: which VTT, git repo.
 - [ ] **TIM: remove the Keycast row in Accessibility (−) and re-add it** [[keycast]] — ticking the old row does nothing: it still carries the ad-hoc code requirement. After removing, relaunch Keycast, accept the prompt, tick the new row. Stable from then on. Menu > Mirrored keys… to choose keys (default `1`–`0 - =`).
 - [ ] **TIM: go-ahead for the shared-apps deploy (Task 19)** [[corkboard]] — branch `shared-apps` (eca2110, unpushed). First: Codex 40 round 2; repair Xcode (`sudo xcodebuild -runFirstLaunch`) + Android SDK for the device run.

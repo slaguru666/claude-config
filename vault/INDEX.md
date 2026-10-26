@@ -1,6 +1,6 @@
 ---
 type: index
-updated: 2026-10-18
+updated: 2026-10-26
 ---
 
 # Claude — Index
@@ -22,6 +22,7 @@ The map of everything Claude and Tim are building. Open this first.
 | [[the-director]] | Offline convention GM tablet PWA | complete |
 | [[rpg-skill]] | The house scenario-writing skill at `~/.claude/skills/rpg` | active |
 | [[scenario-forge]] | Compiles a house-format scenario into a Foundry module + Corkboard boards | active |
+| [[outgunned-adventure]] | Outgunned Adventure system + ready-to-play Frozen Legacy world | active |
 | [[parley]] | Our own A/V layer inside Foundry — LiveKit, Masque, ambience, staging | active |
 
 ## Conventions and scenarios
