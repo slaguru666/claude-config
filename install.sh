@@ -207,5 +207,23 @@ if command -v claude >/dev/null 2>&1; then
     || echo "  WARNING: Graphiti MCP server setup failed — run manually: claude mcp add graphiti-memory $GRAPHITI_MCP_URL --transport http -s user"
 fi
 
+# MarkItDown MCP server (Microsoft, stdio) — one tool, convert_to_markdown(uri), for file:,
+# http(s): and data: URIs. Runs through uvx, not the README's Docker image, so it can read
+# local files without mounts. uvx is registered by absolute path: the desktop app does not
+# inherit the shell PATH, so a bare "uvx" fails to connect there. The local markitdown skill
+# (skills/markitdown) stays alongside it for large files written straight to disk.
+if command -v claude >/dev/null 2>&1; then
+  UVX_BIN="$(command -v uvx 2>/dev/null || true)"
+  if [ -n "$UVX_BIN" ]; then
+    echo "  Setting up MarkItDown MCP server ($UVX_BIN markitdown-mcp)..."
+    claude mcp remove markitdown -s user 2>/dev/null || true
+    claude mcp add markitdown -s user -- "$UVX_BIN" markitdown-mcp \
+      && echo "  Installed: MarkItDown MCP server" \
+      || echo "  WARNING: MarkItDown MCP server setup failed — run manually: claude mcp add markitdown -s user -- \$(command -v uvx) markitdown-mcp"
+  else
+    echo "  Skipping MarkItDown MCP server — uvx not found (install uv: curl -LsSf https://astral.sh/uv/install.sh | sh)"
+  fi
+fi
+
 echo ""
 echo "Done. Restart Claude Code for settings to take effect."
