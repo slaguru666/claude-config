@@ -68,3 +68,4 @@
 - [Costly diagnostic](feedback-costly-diagnostic.md) — some diagnostics consume the very resource they diagnose; mj-blocked sends a job
 - [Arcade remakes](arcade-remakes.md) — Asteroids (+Deluxe), Battlezone, Pac-Man, Space Invaders, Defender, Missile Command, Scramble 2026, Galaxian 2026, Breakout 2026, Lunar Lander mac wrapper, plus originals Shardfall, Gridfront, Wavelance, Periapsis and Hellbreak (Doom-style FPS); single-file Swift Mac apps in ~/<name>; private repos; headless-harness verification
 - [Grand Hotel scenario](grand-hotel-scenario.md) — CoC 1924 White Mountains campaign (Twin Peaks + Mi-Go), 4 online sessions, 4 pregens; v0.5 audited + fixed 2026-10-20 (playtest/2026-10-20-*.md), page https://claude.ai/artifact/QSNtnU3HfQEjNHbYEKJJLc; not in git
+- [Outgunned item art](outgunned-item-art.md) — 187 ink badges in systems/outgunned-adventure/assets/art; manifest tools/data/item-art.tsv, build-packs artFor()
