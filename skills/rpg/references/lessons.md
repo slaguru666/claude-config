@@ -1006,3 +1006,48 @@ pass.
   plate's own prompt, read the prefix as if it were the subject** — and correct it with the
   model's own `--no` list rather than negating inside the prompt body, where it reads as
   something to draw.
+- **2026-11-02 — A figure the document states about itself is a claim, not a measurement.**
+  Writing eleven scenarios to v1 in one pass, the same defect appeared three times and never once
+  in a place that looked risky: a GM Essentials block advertising a 7-point Sanity ceiling against
+  a table whose entries totalled 3–12; a summary saying "2 at best, 8 at worst" where the four
+  written losses total 7 *and* one of them had never been written down anywhere; and a block
+  advertising four Sanity losses totalling 11 of which exactly one existed in the document. Each
+  read perfectly and each was invented by the act of summarising. **Every number a scenario quotes
+  about its own contents has to be reconciled against the thing it counts, not re-derived from
+  intent** — and the loss you cannot find in the body is the real finding, because it means the
+  summary is the only place that effect exists.
+- **2026-11-02 — An outline is a dated snapshot, so resolving its open questions is not the same
+  as reading it for stale fact.** Three of eleven outlines carried design reasoning that a slate
+  reshuffle eight days earlier had falsified: one written as the convention's quiet closer that
+  now opens it at 9am, one whose cold open was justified *by* being a 9am game after it moved to
+  the evening, and one whose open question worried about a neighbouring game that had been cut.
+  None of this showed up in the open-questions list, because the outline did not know. **Check
+  every design-intent and open-question line against the current schedule, not just against the
+  plot** — a justification is a fact about the slot, and slots move.
+- **2026-11-02 — If an act is the wrong shape for its slot, change the act's shape before moving
+  the game.** A document-heavy archive act in the last 9am slot of a convention is the textbook
+  wrong shape for a tired, half-packed table, and the instinct is to swap slots. The fix that
+  cost nothing: six twelve-minute scenes alternating paper and legwork, organised around one
+  handout that visibly fills up in ink on the table as the act runs — in this case the eleven
+  households a hanged woman named from the ladder, printed as eleven ruled lines with three
+  filled. **A tired table will do an archive act happily if the archive has a scoreboard.**
+- **2026-11-02 — Read the rulebook for the thing you are about to assume, and write down what you
+  could not check.** Four books read off disk rather than remembered, four corrections that would
+  otherwise have shipped: ALIEN hands each PC a new Agenda *at the start of each of the three
+  Acts*, not one per session (a scenario's whole agenda structure was wrong); The Walking Dead
+  Universe has no mechanic called a "Journey" at all; Vaesen's Neck is unusable in a scenario
+  whose weakness is a name for one printed reason — *"There is only one Neck, and he has no other
+  name"* — so a custom vaesen built to the book's own template is the honest answer; and Outgunned
+  Adventure states in its own first line that *"A Run is not a chase"*, which makes a truck chase
+  built on the Run chassis a **house adaptation that must say so in the text.** The one rule that
+  could not be cited carries an `[unverified]` note naming the page to check. **An uncited rule
+  marked as uncited is a task; an uncited rule written as fact is a defect waiting for a table.**
+- **2026-11-02 — Before spending a real resource on a game, read what the repo already decided
+  about that game.** Two scenarios on a twelve-game slate were recorded as deliberately art-free
+  in four separate places — both game READMEs ("no art pipeline", "no art budget, no map"), one
+  outline's design intent ("cheap on purpose … no art") and the production tracker's own `n/a` in
+  the Art column — and ten art assets were queued and seven generated for them regardless, because
+  none of those four records was read first. They were the slate's deliberate ballast and the whole
+  point was that they cost nothing. **The cost of checking was one grep; the cost of not checking
+  was every image generated that session.** When a pipeline is about to spend money, time or API
+  jobs on a per-game basis, the per-game record is the input, not the documentation.

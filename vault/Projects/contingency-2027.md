@@ -43,8 +43,14 @@ exactly once.**
 The CoC count fell from eight to five: **3 Gaslight · 1 1920s · 1 modern.
 No Pulp, no arc.** `archive/` holds eleven cut games; nothing is deleted.
 
-All twelve are outlined. **Eleven scenarios still to write** — AFTERIMAGE is the
-only finished one.
+**All twelve are written (2026-11-02).** Eleven went from outline to **v1** in
+one pass; AFTERIMAGE was already convention-ready and ports. Every v1 is
+self-contained, supersedes its outline, resolves that outline's open questions
+in a dated block, and records the new ones that writing it raised. **v1 means
+runnable, not playtested** — nothing on the slate has had a desk playtest, and
+the house standard is that a game is not convention-ready until it has survived
+one inside the time budget. Pregen rosters exist for the nine games needing new
+sheets; slots 2, 11 and 13 port theirs.
 
 **The folder shape and the scenario files now exist for all twelve** (2026-11-02),
 built by `tools/scaffold_scenarios.py`: seven house subdirs plus two `art/` dirs
@@ -57,15 +63,77 @@ not a second live copy of the plot. The script never overwrites, so re-run it
 when a game is added or renamed.
 
 **Next steps**
-- Write the four new outlines up to scenario v1 — they are the only games with
-  no written text at all behind the outline
-- Build the Blade Runner four once — they serve Slots 2 and 11 and must not diverge
-- Answer the two questions that block drafting: how many creatures in CONTINUOUS
-  SERVICE, and how far VIVA VOCE's Extract Three goes
+- **Desk playtest.** Twelve v1s, none tested. This is the whole of the next
+  stage and the deadlines in `docs/production-tracker.md` assume it
+- **Settle the slot 1 / slot 3 art conflict** — see the decision below; it is
+  the only place the repo and the design record disagree
+- Finish art generation: 46 live assets across ten games, run
+  `tools/gen_art.sh` (idempotent, skips what is on disk). Requeue anything that
+  times out with reworded text — a silent prompt block looks exactly like a hang
+- **Verify Outgunned's success ladder on one page** and delete the
+  `[unverified]` note in PROVENANCE. It is the only uncited rule on the slate
+- **Verify The Dee Sanction's step die and Falter** against the published
+  sheets before THE FAVOUR is playtested — the least verified system here
 - Replace the placeholder slot times once Warhorn publishes
-- Decide whether the Searles rooms seat six (one game does — Slot 12)
+- Decide whether the Searles rooms seat six (now applies to ten games)
+- Decide the 9am Black Summer swap, and whether the convention wants a loud
+  Sunday closer
 
 **Key decisions**
+- **Eleven scenarios written to v1 in one pass (2026-11-02).** Each resolves its
+  own outline's open questions rather than carrying them forward, which turned up
+  three classes of problem worth remembering. **Stale facts from the 2026-10-25
+  reshuffle were still live in the outlines**: Slot 1 was written as the
+  convention's quiet closer and now opens it Wednesday 9am (design intent and
+  Act Three framing rewritten), Slot 6 justified a cold open by being a 9am
+  game when it had moved to Thursday evening, and Slot 12 still worried about a
+  Thursday between a zombie game and a Berlin 1946 game that was cut.
+  **Outlines contradicted themselves**: Slot 5's phase table started Act Three
+  at 2:55 while its hard rule said 2:45, and Slot 14's did the same — the hard
+  rule wins in both. **And my own arithmetic was wrong in three places** until
+  checked: Slot 1 advertised a 7-point Sanity ceiling against a table totalling
+  3–12, Slot 3 said "2 at best, 8 at worst" where four entries total 7 and one
+  loss was never written at all, and Slot 6's GM Essentials advertised four
+  Sanity losses totalling 11 of which exactly one existed anywhere in the
+  document. **A figure a document states about itself is a claim, not a
+  measurement.** See [[feedback-hold-the-success-line]].
+- **I generated art for the two games that are art-free by design.** Slots 1 and
+  3 are the slate's ballast — *"no art pipeline"*, *"no art budget, no map"*,
+  design intent 5 *"cheap on purpose"*, and `n/a` in the tracker's Art column:
+  **four separate records, and I read none of them before queueing 10 assets and
+  generating 7.** Every image produced this session is for a game that was not
+  supposed to have any. The rows are commented out, the `n/a` is restored, and
+  **the seven PNGs are left in git rather than deleted** because reversing
+  generation is Tim's call, not a cleanup. The lesson is the cheap one: the
+  design record said this in four places and the cost of checking was one grep.
+- **Research the rules before writing them, and mark what you could not.** Four
+  rulebooks were found on disk and read rather than remembered: TWDU core rules
+  (I had written that no rulebook existed and called it the slate's one blocking
+  item — it was there), the ALIEN core rules, Vaesen, and the Outgunned
+  Adventure 1.1 transcription in the Foundry system. Each produced a correction
+  that would have shipped otherwise. **ALIEN gives each PC a new Agenda at the
+  start of each of the three Acts** — I had written one per session, so
+  CONTINUOUS SERVICE now runs an eighteen-agenda per-Act cycle. **TWDU has no
+  mechanic called a "Journey"** — it has Challenges and survival mode, and the
+  word is now marked house shorthand. **Vaesen's Neck is wrong for THE CURIOUS
+  CASE OF MR PARKER'S DIARY for one printed reason** — *"There is only one Neck,
+  and he has no other name"*, and that scenario's whole weakness is a name — so
+  a custom Ferryman of Hällvattnet was built to the book's own template with the
+  rejection cited. **Outgunned Adventure's Run is explicitly "not a chase"**, so
+  PROVENANCE's truck chase is built on the Run chassis and says in the text that
+  this is a house adaptation. The one rule that could not be cited — Outgunned's
+  two-of-a-kind success ladder — carries an `[unverified]` note naming what to
+  check. See [[feedback-guarantee-not-argument]].
+- **Outgunned Adventure 1.1, not Outgunned core** — settled by the pregens: all
+  six PROVENANCE sheets are built to Adventure's Roles and Tropes, so the Run
+  replaces core's Chase and every citation is to Adventure.
+- **Slot 13's 9am-Sunday risk was fixed structurally, not by moving the game.**
+  THE FAVOUR's Act Two is an archive act in the last morning slot of the
+  convention, which the outline itself flagged as the wrong shape for a tired,
+  half-packed table. It is now six twelve-minute scenes alternating paper and
+  dale, built around one handout that fills up in ink on the table — the eleven
+  households Anne named from the ladder. **A tired table will do an archive act
+  if the archive has a scoreboard.**
 - **Player counts, 2026-10-25: Blade Runner 4, everything else 4–6.** The two
   Blade Runner games share one set of four pregens, so four is structural there.
   The range is not free: **ten games must now ship six sheets and still play at

@@ -17,7 +17,6 @@
   "model": "opus[1m]",
   "enabledPlugins": {
     "codex@openai-codex": true,
-    "warp@claude-code-warp": true,
     "superpowers@claude-plugins-official": true,
     "claude-md-management@claude-plugins-official": true,
     "aws-agents@claude-plugins-official": true,
@@ -26,15 +25,10 @@
     "amazon-location-service@claude-plugins-official": true,
     "ui-ux-pro-max@ui-ux-pro-max-skill": true,
     "impeccable@impeccable": true,
-    "claude-mem@thedotmack": true
+    "claude-mem@thedotmack": true,
+    "warp@claude-code-warp": true
   },
   "extraKnownMarketplaces": {
-    "claude-code-warp": {
-      "source": {
-        "source": "github",
-        "repo": "warpdotdev/claude-code-warp"
-      }
-    },
     "openai-codex": {
       "source": {
         "source": "github",
@@ -57,6 +51,12 @@
       "source": {
         "source": "github",
         "repo": "thedotmack/claude-mem"
+      }
+    },
+    "claude-code-warp": {
+      "source": {
+        "source": "github",
+        "repo": "warpdotdev/claude-code-warp"
       }
     }
   },
