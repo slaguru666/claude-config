@@ -97,15 +97,21 @@ when a game is added or renamed.
   Sanity losses totalling 11 of which exactly one existed anywhere in the
   document. **A figure a document states about itself is a claim, not a
   measurement.** See [[feedback-hold-the-success-line]].
-- **I generated art for the two games that are art-free by design.** Slots 1 and
-  3 are the slate's ballast — *"no art pipeline"*, *"no art budget, no map"*,
-  design intent 5 *"cheap on purpose"*, and `n/a` in the tracker's Art column:
-  **four separate records, and I read none of them before queueing 10 assets and
-  generating 7.** Every image produced this session is for a game that was not
-  supposed to have any. The rows are commented out, the `n/a` is restored, and
-  **the seven PNGs are left in git rather than deleted** because reversing
-  generation is Tim's call, not a cleanup. The lesson is the cheap one: the
-  design record said this in four places and the cost of checking was one grep.
+- **Slots 1 and 3 stay art-free; the art I generated for them was deleted**
+  (Tim, 2026-11-02). They are the slate's ballast — *"no art pipeline"*, *"no art
+  budget, no map"*, design intent 5 *"cheap on purpose"*, and `n/a` in the
+  tracker's Art column: **four separate records, and I read none of them before
+  queueing 10 assets and generating 7.** Every image produced that session was
+  for a game that was not supposed to have any. All seven are now removed from
+  the worktree and from git, the queue rows stay commented out so a re-run
+  cannot regenerate them, and the `n/a` stands as originally written. **The two
+  `scenarios/art/` dirs keep their scaffolder README placeholders** — the folder
+  shape is uniform across twelve games and empty is the correct state here.
+  **The blobs remain in git history: 16.8 MB across 7 objects**, which is why
+  `.git` did not shrink. Removing them needs a history rewrite and is not worth
+  it on a private repo at this size. The lesson is the cheap one: the design
+  record said this in four places and the cost of checking was one grep. See
+  [[feedback-read-the-per-game-record]].
 - **Research the rules before writing them, and mark what you could not.** Four
   rulebooks were found on disk and read rather than remembered: TWDU core rules
   (I had written that no rulebook existed and called it the slate's one blocking
