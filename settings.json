@@ -67,5 +67,6 @@
   "preferredNotifChannel": "terminal_bell",
   "inputNeededNotifEnabled": true,
   "agentPushNotifEnabled": true,
-  "autoUpdaterStatus": "enabled"
+  "autoUpdaterStatus": "enabled",
+  "switchModelsOnFlag": true
 }

@@ -67,9 +67,10 @@ when a game is added or renamed.
   stage and the deadlines in `docs/production-tracker.md` assume it
 - **Settle the slot 1 / slot 3 art conflict** — see the decision below; it is
   the only place the repo and the design record disagree
-- Finish art generation: 46 live assets across ten games, run
-  `tools/gen_art.sh` (idempotent, skips what is on disk). Requeue anything that
-  times out with reworded text — a silent prompt block looks exactly like a hang
+- Finish art generation: **32 of 46 committed** (`3095469`); complete sets for
+  slots 5, 6, 9 and 11. The five reworked prompts plus the last nine of slots 13
+  and 14 were running at 23:38. Re-run `tools/gen_art.sh` to fill gaps — it is
+  idempotent and skips what is on disk. A 30m01s result is a per-prompt failure
 - **Verify Outgunned's success ladder on one page** and delete the
   `[unverified]` note in PROVENANCE. It is the only uncited rule on the slate
 - **Verify The Dee Sanction's step die and Falter** against the published
@@ -97,6 +98,39 @@ when a game is added or renamed.
   Sanity losses totalling 11 of which exactly one existed anywhere in the
   document. **A figure a document states about itself is a claim, not a
   measurement.** See [[feedback-hold-the-success-line]].
+- **Midjourney fails per-prompt, and the timing says so exactly.** Across 46 art
+  jobs every single one took **either ~45 seconds or exactly 30m01s** — the
+  bridge's own timeout — **with nothing in between**, and the jobs on both sides
+  of every timeout completed normally. That rules out a rate or quota wall
+  (which I wrongly suspected first) and makes the failure a property of the
+  individual prompt. **Scattered, not clustered:** slots 9 and 11 went
+  ten-for-ten, slot 12 lost one in the middle of five. Seven failed in all; five
+  were wanted. Reworkings, with the reason kept as a comment beside each row:
+  dropping a **mass-of-people framing** (*"an immense orderly queue of people"* →
+  *"a long line of figures in raincoats"* — the same scene's floodlights,
+  chain-link and rain had already succeeded, so the setting was not the
+  trigger); dropping a **bare negation from the prompt body** (*"nothing else"*,
+  which reads as a subject to draw — the same fault as the art-prefix lesson);
+  dropping a **style prefix fighting its subject** (an *1980s horror paperback
+  cover* manner on what is actually a carpentry still life); and softening two
+  descriptions that read as **violence without naming it** (a mask *"cut flat
+  across the eye line"*, and *"a bare wooden frame standing alone"* in a mown
+  field, which is a gallows). **Keep the original text commented in the queue,
+  never overwrite it.**
+  **Honest limit:** three of the five rewritten prompts contain nothing
+  identifiably filterable — a bound thesis and a pencil, a village seen from a
+  road, a post in a field. If they succeed, rewording and a plain retry are
+  indistinguishable. Proving which costs one 30-minute timeout; the cheap test
+  is to re-send one original unchanged. See [[feedback-check-the-instrument]].
+- **Never run two queue runners over one Midjourney queue, and never rewrite the
+  queue file under a live one.** Both happened tonight. Two runners cross-match:
+  the bridge pairs a result to the job it just sent, so two in flight can save
+  the wrong image under the right name. And a shell `while read … done < file`
+  loop holds a byte offset — appending rows is safe and is picked up in the same
+  run, but truncate-and-rewrite shifts the offset mid-line and nothing errors.
+  **To change a live queue: kill, edit, validate row and field counts,
+  restart** — which is free because the script skips any asset whose PNG exists.
+  See [[infra-dont-edit-a-file-a-process-is-reading]].
 - **Slots 1 and 3 stay art-free; the art I generated for them was deleted**
   (Tim, 2026-11-02). They are the slate's ballast — *"no art pipeline"*, *"no art
   budget, no map"*, design intent 5 *"cheap on purpose"*, and `n/a` in the
