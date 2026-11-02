@@ -3,7 +3,7 @@ type: project
 status: active
 repo: slaguru666/contingency2027
 path: ~/Library/Mobile Documents/com~apple~CloudDocs/RPGS/Conventions/Contingency 2027
-updated: 2026-10-25
+updated: 2026-11-02
 ---
 
 # Contingency 2027
@@ -46,6 +46,16 @@ No Pulp, no arc.** `archive/` holds eleven cut games; nothing is deleted.
 All twelve are outlined. **Eleven scenarios still to write** — AFTERIMAGE is the
 only finished one.
 
+**The folder shape and the scenario files now exist for all twelve** (2026-11-02),
+built by `tools/scaffold_scenarios.py`: seven house subdirs plus two `art/` dirs
+per game, a primed `scenarios/<slug>.md` and a `characters/<slug>-pregens.md`.
+The primed scenario is not blank — slot, system, setting, player count, tone,
+warnings, design intent, plot truth, player experience, cast and open questions
+are carried from that game's outline, and each file states that **it supersedes
+the outline**: from the first draft on, the outline is a frozen design record,
+not a second live copy of the plot. The script never overwrites, so re-run it
+when a game is added or renamed.
+
 **Next steps**
 - Write the four new outlines up to scenario v1 — they are the only games with
   no written text at all behind the outline
@@ -83,6 +93,20 @@ only finished one.
   once. The bible survives in `archive/` and its *Handling the Nazi material*
   constraints were carried into PROVENANCE, which is the only game that still
   needs them.
+- **The scaffolder reads the repo rather than restating it** (2026-11-02). Its
+  first run reported six missing sections for two games; the cause was that it
+  built the outline filename from the slug, and those two files carry a leading
+  article (`the-perpetual-order-outline.md`). It had primed both from an empty
+  string — a silent, plausible-looking result that only a gap report caught. It
+  now globs for `*-outline.md`. The same fault, found by looking: the licence
+  footer was a second table inside the script, and had already lost "and Cthulhu
+  by Gaslight", "& Alcon Entertainment" and "Paul Baldowski /" — it now reads
+  each game's own README. See [[feedback-one-definition-not-two]].
+- **The 4–6 decision had not reached the per-game prep lines** (2026-11-02).
+  Eight READMEs still asked for 4 or 5 pregens while the slate advertises 4–6;
+  corrected to six. CLOSING WEEKEND's "6 + 4 second characters" now has the
+  second block in its pregen brief.
+
 - **Shared casts are the load strategy.** Paper Children reuses AFTERIMAGE's four
   pregens, sheets, art and console module untouched. Changing a shared sheet means
   re-auditing both games.
