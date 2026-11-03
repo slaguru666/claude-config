@@ -1082,3 +1082,82 @@ When generation fails on innocuous content, the fault is more likely a token
 than a theme. Compare vocabulary against what already worked before touching
 the art direction — and never conclude a prompt is "too violent" without
 checking that a near-identical prompt without the suspect word also fails.
+
+## 2026-11-03 — The crash-course is where a scenario's defects live
+
+Twelve desk playtests in one pass. Every case, clue trail and ending held up;
+**the system crash-course block was materially wrong or incomplete in nine of
+the eleven written scenarios.** The player-hat ledgers ran 7 to 9 of 10, and in
+three games the mechanics complaints were the only complaints.
+
+The failures were not subtle. One described a d6 dice pool for a game that
+rolls two step dice. One invented a difficulty number for a system that has
+none, and called its failure result a failure when the rules call it *failing
+forward*. One was a die short on the bonus that its own structural rule was
+derived from. Five shared a single wrong critical/fumble band.
+
+Two habits follow:
+
+- **Write the crash-course last, from the book, with page numbers** — not first,
+  from memory, because it feels like the easy part. It is the one block a
+  stand-in GM reads as authority.
+- **Before writing one, check whether a sibling file already has it right.**
+  The worst block on the slate had a correct version of itself in the same repo:
+  the sequel's rules paragraph had drifted from the original's, which was exact.
+  Another scenario's own pregen pack carried the correct rule with a page cite
+  while the scenario's block was wrong. Copy, don't recompose.
+
+## 2026-11-03 — A mechanic tag has to name something in the game
+
+Two scenarios tagged their beats with skills that do not exist. One used
+`[BR: Investigation]` four times — not a Blade Runner skill; it appears twice in
+the rulebook, both chapter titles — and three of those tags gated **Essential**
+clues. Another tagged six moments with `[DEE: observation]`, `[DEE: a social
+approach]`, `[DEE: a gentle approach]` and the like, in a system that has three
+Resources and **no skill list at all**.
+
+The cost is not usually a lost clue — the fallbacks absorb that. It is that
+when the roll goes badly the GM does not know what was at stake, so cannot
+price the consequence. In the Dee Sanction run, two beats Faltered and the
+Consequence was unshapeable because no Resource had been named.
+
+**Grep your own tags against the rulebook's skill list before the first
+playtest.** It is one command and it caught two games.
+
+## 2026-11-03 — Needing two successes is a different game from needing one
+
+Vaesen's Fear tests need successes equal to the creature's Fear value. Against
+Fear 2 at eight dice that is a **39.5%** pass, not the comfortable roll the
+scenario's commentary implied — and the expected cost across four Fear 2 tests
+is **3.35 mental Conditions against a budget of three.** The scenario read
+generous and was not.
+
+The same arithmetic ran the other way in a slasher: two Sanity rolls in the
+whole session, 2–10 points against 50–65, and nothing charged for the three to
+six deaths the scenario *expects*, which the rulebook's own table prices at
+0/1D6 each.
+
+Both are the same defect: **a cost track the document never rules on.** State
+the budget, or state that there is deliberately no budget. Either is fine; the
+silence is what breaks at the table.
+
+And when a tool reports an outcome, check the bar it used. A seeded roller's
+`-> success` tag meant "at least one success" — correct for a skill test, wrong
+for a Fear 2 test. Read against the right threshold or four failures pass as
+passes. See [[feedback-check-the-instrument]].
+
+## 2026-11-03 — The roster is where the missing ruling usually is
+
+Four of twelve scenarios hid a load-bearing ruling in the character file while
+claiming on page one that a GM with only the scenario could run the game. The
+sharpest: a scenario's vote arithmetic did not compute and its own stated design
+point was false — because the **NPC who takes the fifth seat exists only in the
+roster**, named six times there and once in the scenario, as a location.
+
+I had that written up as an arithmetic error before checking the neighbouring
+file. Where the two files disagreed, **the roster was right every time** — it is
+the file that gets audited, and the scenario is the one that drifts.
+
+So: before filing a scenario's arithmetic as wrong, read its roster. And when
+auditing a scenario, list the rulings it *depends on and does not state*, then
+move the ruling — not the roster — into the scenario.

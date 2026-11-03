@@ -3,7 +3,7 @@ type: project
 status: active
 repo: slaguru666/contingency2027
 path: ~/Library/Mobile Documents/com~apple~CloudDocs/RPGS/Conventions/Contingency 2027
-updated: 2026-11-02
+updated: 2026-11-03
 ---
 
 # Contingency 2027
@@ -46,10 +46,11 @@ No Pulp, no arc.** `archive/` holds eleven cut games; nothing is deleted.
 **All twelve are written (2026-11-02).** Eleven went from outline to **v1** in
 one pass; AFTERIMAGE was already convention-ready and ports. Every v1 is
 self-contained, supersedes its outline, resolves that outline's open questions
-in a dated block, and records the new ones that writing it raised. **v1 means
-runnable, not playtested** — nothing on the slate has had a desk playtest, and
-the house standard is that a game is not convention-ready until it has survived
-one inside the time budget. Pregen rosters exist for the nine games needing new
+in a dated block, and records the new ones that writing it raised. **Desk pass 1 is now complete on all twelve (2026-11-03)** — one document per
+game in its `playtest/` dir, cross-game findings in
+`docs/playtest-slate-findings.md`. **No fixes applied yet**; the protocol keeps
+them to a separate pass with a version bump. Passes 2 (stress re-run) and 3
+(player chair) remain. Pregen rosters exist for the nine games needing new
 sheets; slots 2, 11 and 13 port theirs.
 
 **The folder shape and the scenario files now exist for all twelve** (2026-11-02),
@@ -63,24 +64,96 @@ not a second live copy of the plot. The script never overwrites, so re-run it
 when a game is added or renamed.
 
 **Next steps**
-- **Desk playtest.** Twelve v1s, none tested. This is the whole of the next
-  stage and the deadlines in `docs/production-tracker.md` assume it
+- ~~Desk playtest, pass 1~~ — **done 2026-11-03, all twelve.** Next is **pass 2**
+  (stress re-run of each game's weakest act) and **pass 3** (player chair,
+  contrarian), then a **fix pass with version bumps**
 - **Settle the slot 1 / slot 3 art conflict** — see the decision below; it is
   the only place the repo and the design record disagree
 - ~~Finish art generation~~ — **done 2026-11-03: 46 of 46** (`4389d2d`). Every
   game that takes art has its full set; slots 1 and 3 stay art-free by design.
   The last seven were unblocked by **one word each** — see the banned-word
   decision below before adding any new prompt
-- **Verify Outgunned's success ladder on one page** and delete the
-  `[unverified]` note in PROVENANCE. It is the only uncited rule on the slate
-- **Verify The Dee Sanction's step die and Falter** against the published
-  sheets before THE FAVOUR is playtested — the least verified system here
+- ~~Verify Outgunned's success ladder~~ — **closed 2026-11-03.** It was already
+  in Tim's own transcription; delete the `[unverified]` note in PROVENANCE
+- ~~Verify The Dee Sanction's step die and Falter~~ — **closed 2026-11-03** from
+  the core rulebook, which is on disk
 - Replace the placeholder slot times once Warhorn publishes
 - Decide whether the Searles rooms seat six (now applies to ten games)
 - Decide the 9am Black Summer swap, and whether the convention wants a loud
   Sunday closer
 
 **Key decisions**
+- **Desk pass 1, all twelve (2026-11-03): the cases are sound and the
+  crash-course blocks are not.** Every case, clue trail and ending survived its
+  pass — player-hat ledgers ran 7 to 9 of 10 — while **the system
+  crash-course is materially wrong or incomplete in nine of the eleven written
+  scenarios.** Correct: TWDU (slot 4) and Outgunned (slot 14). Wrong: the
+  CoC critical/fumble band in all five CoC games (one fix, five files);
+  Vaesen's Fear die bonus by one die, where **its own pregens are right**;
+  ALIEN's missing Panic Roll on a stress symbol; Blade Runner's block, which
+  describes a d6 pool for a two-Base-Dice game **while slot 2's ported source
+  is entirely correct**; and The Dee Sanction's, which invents a difficulty the
+  game does not have and mis-states Falter as failure when it is failing
+  forward. **Fix each from the sibling file that is already right** — slot 11
+  from slot 2, slot 9 from its own pregens. These are paragraph fixes, not
+  rewrites.
+- **The roster has had the answer four times.** Every scenario claims a
+  stand-in GM can run it from that file alone, and four hid a load-bearing
+  ruling in the character file: slot 8's **missing Dean**, without whom
+  Statute XI's vote counts do not compute and the scenario's own stated design
+  point is false; slot 5's agenda collision map; slot 9's telegram fallback
+  (four players only) and the correct Fear rule; slot 14's success ladder,
+  which the scenario was still flagging as unverified. **Where the two files
+  disagree the roster has been right every time.** Check it before filing a
+  scenario's arithmetic as wrong — it prevented three incorrect findings.
+  See [[feedback-verify-the-neighbours]].
+- **Two mechanic-tag vocabularies were invented.** `[BR: Investigation]` is not
+  a Blade Runner skill (the book has it twice, both chapter titles) and gated
+  three Essential clues; **all six** of THE FAVOUR's `[DEE: …]` tags name
+  nothing in The Dee Sanction, which has three Resources and no skill list.
+  Slot 14 is the only scenario whose tags are all canonical. The cost is not
+  lost clues — it is that when a roll Falters the GM does not know what it
+  should cost.
+- **A sanity track nobody specified is the slate's quiet pattern.** CLOSING
+  WEEKEND charges 2–10 Sanity across an entire slasher and nothing at all for
+  the three to six deaths it expects, where the book prices a friend's violent
+  death at 0/1D6. THE FAVOUR never mentions Unravelling despite an exhumation
+  and a thing in the lead workings. MR PARKER'S DIARY goes the other way:
+  four Fear 2 tests expect **3.35 mental Conditions against a budget of 3**,
+  and it never names the book's own recovery. **Rule it either way, in one
+  line — the gap is the defect, not the number.**
+- **Both standing rules questions closed from sources already on disk.** The
+  Dee Sanction core rulebook was in `OLD BACKUP/Contingency 2025/`: one
+  Resource die, **1 or 2 Falters**, everything else succeeds, difficulty is
+  Step-Up/Step-Down and not a target number, and **a Falter is failing
+  forward** — so *the system cannot lose an Essential clue*. Outgunned's ladder
+  was in Tim's own transcription's quick-reference: 2/3/4/5 = Basic/Critical/
+  Extreme/Impossible, **6+ = Jackpot, "you become the Director for a turn"**,
+  pool never below 2 or above 9. **Both were a grep away.**
+- **`tools/playtest_roller.py` now reports VERIFIED for all five systems.**
+  Three rules were verified and corrected during the passes: Blade Runner's
+  10+ counting as two successes, Dee Sanction's Falter band, Outgunned's
+  Jackpot tier and dice bounds. The tool prints VERIFIED or UNVERIFIED per
+  roll so a playtest document cannot claim fidelity it lacks.
+- **PROVENANCE contradicts its own runtime four lines apart** — Overview says
+  "Maximum Runtime: 3 hours 30 minutes play", the timing table ends at **3:35**
+  — and all eleven scenarios budget the **whole** 210-minute allowance against
+  a house standard asking ~3:15 of content, with four stating a planned figure
+  their own timing table disagrees with. The protocol calls a zero-slack run a
+  fail. **Take 15 out of Act Two in all eleven** and print each game's existing
+  cut list as the default.
+- **Slot 2's port notes were a major version behind.** They describe v2.2 with
+  three playtests; the source is **3.2.0 with six**, and its own README says
+  playtests 01–03 "no longer transfer". The stale figure had propagated into
+  `README.md` and the tracker. Its advantage/disadvantage line is also wrong —
+  the book adds a third Base Die or removes the lower one, where the scenario
+  steps the skill die, so both modifiers deliver ~38% of their force **in the
+  chase obstacle table that is the scenario's set-piece**.
+- **Slots 11 and 13 have pregen files that are still empty scaffolds**, while
+  both scenarios name specific sheets and seams and declare the audit resolved.
+  The real sheets exist and are good — AFTERIMAGE's four, and the seven
+  *Princes Bride* agents with the **Sanction rhyme** that THE FAVOUR's epilogue
+  is built on. Tracker cells corrected from "(shared)"/"(reuse)" to scaffold.
 - **Eleven scenarios written to v1 in one pass (2026-11-02).** Each resolves its
   own outline's open questions rather than carrying them forward, which turned up
   three classes of problem worth remembering. **Stale facts from the 2026-10-25
@@ -98,72 +171,22 @@ when a game is added or renamed.
   Sanity losses totalling 11 of which exactly one existed anywhere in the
   document. **A figure a document states about itself is a claim, not a
   measurement.** See [[feedback-hold-the-success-line]].
-- **Midjourney fails per-prompt, and the timing says so exactly.** Across 46 art
-  jobs every single one took **either ~45 seconds or exactly 30m01s** — the
-  bridge's own timeout — **with nothing in between**, and the jobs on both sides
-  of every timeout completed normally. That rules out a rate or quota wall
-  (which I wrongly suspected first) and makes the failure a property of the
-  individual prompt. **Scattered, not clustered:** slots 9 and 11 went
-  ten-for-ten, slot 12 lost one in the middle of five. Seven failed in all; five
-  were wanted. Reworkings, with the reason kept as a comment beside each row:
-  dropping a **mass-of-people framing** (*"an immense orderly queue of people"* →
-  *"a long line of figures in raincoats"* — the same scene's floodlights,
-  chain-link and rain had already succeeded, so the setting was not the
-  trigger); dropping a **bare negation from the prompt body** (*"nothing else"*,
-  which reads as a subject to draw — the same fault as the art-prefix lesson);
-  dropping a **style prefix fighting its subject** (an *1980s horror paperback
-  cover* manner on what is actually a carpentry still life); and softening two
-  descriptions that read as **violence without naming it** (a mask *"cut flat
-  across the eye line"*, and *"a bare wooden frame standing alone"* in a mown
-  field, which is a gallows). **Keep the original text commented in the queue,
-  never overwrite it.**
-  **Honest limit:** three of the five rewritten prompts contain nothing
-  identifiably filterable — a bound thesis and a pencil, a village seen from a
-  road, a post in a field. If they succeed, rewording and a plain retry are
-  indistinguishable. Proving which costs one 30-minute timeout; the cheap test
-  is to re-send one original unchanged. See [[feedback-check-the-instrument]].
-- **The rewording did not work, and two explanations of why these prompts fail
-  are now dead** (2026-11-03). The overnight run took the slate to 39 of 46.
-  Slot 14 went **six for six, first send, 45-58 s each**; slot 13 lost four of
-  five. All **five reworked prompts failed again at the same 30 m timeout, with
-  entirely different text.** That is the finding, and it kills both stories I
-  had told:
-  - *Not prompt structure.* I had suggested the failures opened with a bare
-    `hand-drawn pen and ink illustration` instead of a named engraving manner.
-    Slot 14's six successes all use the bare form, and S13-ART-03/-04 failed
-    with it.
-  - *Not the mass-of-people framing.* S13-ART-05 — a magistrate, a clerk and
-    **a standing crowd** in a churchyard — succeeded first time, and is the
-    most crowd-like prompt on the slate.
-  - *Not length.* S4-ART-01 succeeded at 338 characters while S13-ART-01 failed
-    at 330; S13-ART-03 failed at 281 with forty longer prompts succeeding.
-  - *Not the output name.* The retest sent S13-ART-01's original text under a
-    **fresh `--name`** and was still hanging at two minutes when it was killed.
-  - *Not an outage.* Sorting the log by time showed nothing had succeeded since
-    00:44:23 — the last success is also the start of an unbroken 2.5-hour
-    failure run, which looked like the bridge dying. It was not:
-    **S14-ART-06's exact text, which succeeded at 00:43:43, succeeded again at
-    03:17 in 42 seconds.** Auth and channel checked healthy first, free, with
-    `mj-auth-check`.
-  **Cause found, and it is a single word: `bare`.** Midjourney's nudity filter
-  matches **substrings** and then simply never answers, so the bridge hits its
-  own 30-minute timeout with no refusal message. `bare` appears in **6 of the 7
-  failing prompts and 0 of the 39 succeeding ones** — "bare winter trees",
-  "bare tabletop", "bare floorboards", "bare earth", "bare moorland". The
-  seventh, S4-ART-03, says *"waiting four **abreast**"*, which contains
-  *breast*. Verified rather than argued: the full S13-ART-01 prompt with
-  **only** `bare winter trees` changed to `leafless winter trees` succeeded in
-  **42 seconds**, having failed twice at 30 minutes.
-  **Two lessons, both expensive.** First, I had rewritten all five prompts'
-  **subject matter** — dropping a crowd framing, softening a gallows — and kept
-  `bare` in every single one. Five timeouts, 2.5 hours, no information; the
-  rewriting never tested anything. **Diff the vocabulary against what already
-  worked, not the subject** — one command over the word sets found it for free.
-  Second, **a control has to be a case whose answer you already know**:
-  re-sending another *original* could not separate a block from an outage,
-  while re-sending a **known success** settled it in 42 s.
-  See [[infra-mj-banned-word-filter]], [[feedback-control-needs-known-answer]],
-  [[feedback-check-the-instrument]].
+- **Midjourney's filter matches substrings and then never answers — the word was
+  `bare`** (2026-11-03). Across 46 jobs every one took **either ~45 s or exactly
+  30m01s**, the bridge's own timeout, with nothing in between — so the failure
+  is a property of the prompt, not a rate wall. `bare` appears in **6 of the 7
+  failing prompts and 0 of the 39 succeeding ones**; the seventh said *"waiting
+  four **abreast**"*. Verified by changing **one word** in a twice-failed
+  prompt: 42 seconds. **Three expensive lessons.** I rewrote five prompts'
+  *subject matter* and kept `bare` in every one — five timeouts, 2.5 hours, no
+  information, because **the vocabulary was never diffed against what already
+  worked**, which was one free command. Two of my own explanations (prompt
+  structure, crowd framing) were falsified by the overnight run. And **a control
+  must be a case whose answer you already know**: re-sending another *original*
+  could not separate a per-prompt block from an outage; re-sending a **known
+  success** settled it in 42 s. Keep original text commented in the queue, never
+  overwritten. See [[infra-mj-banned-word-filter]],
+  [[feedback-control-needs-known-answer]], [[feedback-check-the-instrument]].
 - **Never run two queue runners over one Midjourney queue, and never rewrite the
   queue file under a live one.** Both happened tonight. Two runners cross-match:
   the bridge pairs a result to the job it just sent, so two in flight can save
