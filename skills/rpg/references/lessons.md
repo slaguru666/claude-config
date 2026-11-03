@@ -1180,3 +1180,85 @@ roster's sources block so the next pass does not repeat the hunt. A
 transcription is good evidence and the book is better; say which one a
 verification used, because "verified" from a secondary source is a different
 claim.
+
+## 2026-11-03 — Fix a shared sheet at its source, never in the copy
+
+*(Contingency 2027 fix pass: two games, four shared pregen sheets, one wrong
+skill name.)*
+
+Two games on a slate shared four character sheets, and a desk pass found a
+skill name on one of them that does not exist in the game. The cheap fix is to
+correct the copy in front of you. **Correct the source instead** — the repo the
+sheets actually live in — and both games are fixed by one edit, with no chance
+of the two copies drifting apart before print.
+
+The same logic says what a second game's roster file should *be*: not a copy of
+the sheets, but a **pointer** that wires those sheets into this case — the
+essence lines as spoken, each sheet's hook into *this* plot, the split written
+for *these* scenes, the seat and drop order, what a missing seat costs — plus
+one line saying the sheet wins on any disagreement. **Copying sheets into a
+second repo creates exactly the divergence the shared-sheet rule exists to
+prevent.**
+
+And when you do propagate: **check that the file you are about to overwrite
+still matches the version you expected** before copying over it. A divergence
+you report is a finding; a divergence you overwrite is a silent loss.
+
+## 2026-11-03 — When an act cannot hold its content, move the stop, not the act
+
+*(Contingency 2027: two of twelve games.)*
+
+The house structure is 15/60/90/30/15 with a hard "go to the final act at
+2:45". Two scenarios turned out to have final acts whose own written content
+was thirty-five and forty minutes — in one case the scenario itself said
+"*and then the real argument begins, with about twenty minutes left*".
+
+The wrong fix is to compress the act, because in both cases the final act was a
+**conversation**, and a conversation is the one thing that does not shorten
+gracefully. The right fix is to take the time out of the long middle act and
+**move the hard stop earlier** — 2:35 and 2:40 — then say in the file that this
+game's stop is not the house 2:45 **and why**. A stated exception is
+maintainable; an undocumented one reads as drift, and the next person to touch
+the file will "correct" it back.
+
+## 2026-11-03 — A per-game fix and a house standard can disagree; reconcile, don't stack
+
+*(Contingency 2027: the timing fixes.)*
+
+A playtest document's per-game fix said "take five minutes from Act Two, giving
+a 210-minute plan". The slate-wide finding in the same pass said "never plan the
+whole 210 — a run landing to the minute is a fail for a table of strangers".
+Applying both literally is impossible; applying the per-game one silently
+breaks the standard.
+
+**Reconcile out loud, in the file and in the commit.** That scenario's Act Two
+went to 75 rather than 85, and the record says the per-game fix proposed 85 and
+why the standard overrode it. Two fix lists written at different altitudes will
+sometimes conflict — that is a sign both were thinking, not that one was wrong.
+
+## 2026-11-03 — Derive a player count in read-aloud text; never print it
+
+*(Contingency 2027: a slasher opening that said "Eight of you stayed".)*
+
+A fixed number in read-aloud prose is a number the GM will read to a table that
+can count. The game ran at 4–6; the opening said eight; the briefing said eight
+staff. **Write `[Count]` and give the GM the arithmetic once** — "your players
+plus the two NPCs: eight at six, six at four" — and extend it to any prop the
+table can count, like a photograph, which should be specced as *deliberately
+not countable* rather than drawn with a fixed number of faces.
+
+Note the one place not to touch: the **advert**. A tagline that says "eight of
+you" is marketing copy, and changing published advert copy is the author's
+call, not a fix pass's. Flag it and leave it.
+
+## 2026-11-03 — Fixing the source does not fix what is generated from it
+
+*(Contingency 2027: character-sheet PDFs and three built web trees.)*
+
+The skill name was corrected in the HTML, the Markdown roster, the scenario and
+the GM console module. The **print PDF** and three **built `dist/` trees** still
+said the old name, because they are outputs.
+
+Do not write "fixed" in a commit message and move on. **Put the regeneration in
+the production tracker as a requirement**, in the column that gates printing,
+where somebody will trip over it before the convention rather than at it.

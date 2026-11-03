@@ -64,17 +64,22 @@ not a second live copy of the plot. The script never overwrites, so re-run it
 when a game is added or renamed.
 
 **Next steps**
-- ~~Desk playtest, pass 1~~ — **done 2026-11-03, all twelve.** Next is **pass 2**
-  (stress re-run of each game's weakest act) and **pass 3** (player chair,
-  contrarian), then a **fix pass with version bumps**
+- ~~Desk playtest, pass 1~~ and ~~its fix pass~~ — **both done 2026-11-03, all
+  twelve. Every game is at v1.1**, one commit each. Next is **pass 2** (stress
+  re-run of each game's weakest act) and **pass 3** (player chair, contrarian),
+  both against v1.1 — and four things pass 1 could not test at four players:
+  slots 3, 6 and 8 **at six**, and slot 4's crowd cards in a real player's hand
+- **Regenerate AFTERIMAGE's print artefacts** — the PDF and the three
+  `pwa/dist*` trees are build outputs and still carry the old skill name
 - **Settle the slot 1 / slot 3 art conflict** — see the decision below; it is
   the only place the repo and the design record disagree
 - ~~Finish art generation~~ — **done 2026-11-03: 46 of 46** (`4389d2d`). Every
   game that takes art has its full set; slots 1 and 3 stay art-free by design.
   The last seven were unblocked by **one word each** — see the banned-word
   decision below before adding any new prompt
-- ~~Verify Outgunned's success ladder~~ — **closed 2026-11-03.** It was already
-  in Tim's own transcription; delete the `[unverified]` note in PROVENANCE
+- ~~Verify Outgunned's success ladder~~ — **closed 2026-11-03**, and since
+  re-verified from the printed book; the tag is gone and Jackpot is in the
+  crash-course
 - ~~Verify The Dee Sanction's step die and Falter~~ — **closed 2026-11-03** from
   the core rulebook, which is on disk
 - Replace the placeholder slot times once Warhorn publishes
@@ -97,6 +102,24 @@ when a game is added or renamed.
   forward. **Fix each from the sibling file that is already right** — slot 11
   from slot 2, slot 9 from its own pregens. These are paragraph fixes, not
   rewrites.
+- **The fix pass, same day (2026-11-03): all twelve applied, every game v1.1.**
+  Recorded in `docs/playtest-slate-findings.md` §9. Three calls worth keeping:
+  **(a) shared files were fixed upstream, not sideways** — slot 11's Close
+  Combat and slot 2's advantage/disadvantage rule live in `Continuum2026`, so
+  they were fixed there as **AFTERIMAGE v3.6**, correcting both games in one
+  edit and turning up a frontmatter version three releases stale; **(b) two
+  games now stop earlier than the house 2:45** — slot 12 at 2:35 and slot 14 at
+  2:40 — because their final acts are forty and thirty-five minutes and cannot
+  start at 2:45 and finish by 3:30, which is a stated exception rather than
+  drift; **(c) the generated artefacts were flagged, not pretended fixed** —
+  the AFTERIMAGE print PDFs and `pwa/dist*` builds still say the old skill name
+  and are now a hard requirement in the tracker.
+- **Two scaffold rosters became pointer files, not copies (2026-11-03).** Slots
+  11 and 13 share their sheets with `Continuum2026`. Each `characters/` file now
+  wires those sheets into *this* case — essences as spoken, hooks, the split
+  written for these scenes, seat and drop order, what a missing seat costs —
+  and says the sheet wins on disagreement. **Copying sheets into a second repo
+  is what creates the divergence the shared-sheet rule exists to prevent.**
 - **The roster has had the answer four times.** Every scenario claims a
   stand-in GM can run it from that file alone, and four hid a load-bearing
   ruling in the character file: slot 8's **missing Dean**, without whom
