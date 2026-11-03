@@ -1,7 +1,7 @@
 ---
 type: project
 status: active
-repo: (local only — no remote yet)
+repo: slaguru666/flipperhub (private)
 path: ~/flipperhub
 updated: 2026-11-03
 ---
@@ -14,8 +14,8 @@ device from the Mac instead of the 128×64 screen and five buttons. Layout B: th
 live Flipper screen pinned on the left of every tab, nine tool tabs on the right —
 Library, IR, WiFi, Sub-GHz, Backup, Macros, Payloads, Remotes, Device.
 
-**Where it lives** — `~/flipperhub`, branch `main`, **no git remote yet** (local
-checkout only). Build with `bash build.sh` (SwiftPM, no Xcode — Command Line Tools
+**Where it lives** — `~/flipperhub`, branch `main`, remote **slaguru666/flipperhub** (private, pushed
+2026-11-03). Build with `bash build.sh` (SwiftPM, no Xcode — Command Line Tools
 only) → ad-hoc-signed `FlipperHub.app`. One dependency: swift-protobuf. Design and
 plan in `docs/superpowers/`.
 
