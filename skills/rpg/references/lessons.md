@@ -1051,3 +1051,34 @@ pass.
   point was that they cost nothing. **The cost of checking was one grep; the cost of not checking
   was every image generated that session.** When a pipeline is about to spend money, time or API
   jobs on a per-game basis, the per-game record is the input, not the documentation.
+
+## 2026-11-03 — A control test must be a case whose answer you already know
+
+Seven art prompts for [[contingency-2027]] failed reproducibly. I "controlled"
+by re-sending one original prompt verbatim: success would mean transient,
+failure would mean blocked. It could not separate either from **the bridge
+being down** — and the log showed no job had succeeded for 2.5 hours. Re-sending
+the text of a prompt **known to have succeeded an hour before** answered it in
+42 seconds.
+
+Before a costly test, state what each live hypothesis predicts. If two predict
+the same outcome, the test is wasted. The useful case is usually one you have
+already watched work.
+
+## 2026-11-03 — Diff the vocabulary, not the subject
+
+The cause was the word **`bare`** — "bare winter trees", "bare tabletop",
+"bare earth". Midjourney's nudity filter matches substrings and never answers;
+the bridge then times out at 30m01s with no refusal. It was in 6 of 7 failing
+prompts and 0 of 39 succeeding ones. The seventh said "waiting four **abreast**",
+which contains *breast*.
+
+I had rewritten all five prompts' **subject matter** — dropping a crowd framing,
+softening a gallows — and kept `bare` in every one. Five 30-minute timeouts,
+no information. One command comparing word sets between failures and successes
+found it for free.
+
+When generation fails on innocuous content, the fault is more likely a token
+than a theme. Compare vocabulary against what already worked before touching
+the art direction — and never conclude a prompt is "too violent" without
+checking that a near-identical prompt without the suspect word also fails.

@@ -67,10 +67,10 @@ when a game is added or renamed.
   stage and the deadlines in `docs/production-tracker.md` assume it
 - **Settle the slot 1 / slot 3 art conflict** — see the decision below; it is
   the only place the repo and the design record disagree
-- Finish art generation: **32 of 46 committed** (`3095469`); complete sets for
-  slots 5, 6, 9 and 11. The five reworked prompts plus the last nine of slots 13
-  and 14 were running at 23:38. Re-run `tools/gen_art.sh` to fill gaps — it is
-  idempotent and skips what is on disk. A 30m01s result is a per-prompt failure
+- ~~Finish art generation~~ — **done 2026-11-03: 46 of 46** (`4389d2d`). Every
+  game that takes art has its full set; slots 1 and 3 stay art-free by design.
+  The last seven were unblocked by **one word each** — see the banned-word
+  decision below before adding any new prompt
 - **Verify Outgunned's success ladder on one page** and delete the
   `[unverified]` note in PROVENANCE. It is the only uncited rule on the slate
 - **Verify The Dee Sanction's step die and Falter** against the published
@@ -122,6 +122,48 @@ when a game is added or renamed.
   road, a post in a field. If they succeed, rewording and a plain retry are
   indistinguishable. Proving which costs one 30-minute timeout; the cheap test
   is to re-send one original unchanged. See [[feedback-check-the-instrument]].
+- **The rewording did not work, and two explanations of why these prompts fail
+  are now dead** (2026-11-03). The overnight run took the slate to 39 of 46.
+  Slot 14 went **six for six, first send, 45-58 s each**; slot 13 lost four of
+  five. All **five reworked prompts failed again at the same 30 m timeout, with
+  entirely different text.** That is the finding, and it kills both stories I
+  had told:
+  - *Not prompt structure.* I had suggested the failures opened with a bare
+    `hand-drawn pen and ink illustration` instead of a named engraving manner.
+    Slot 14's six successes all use the bare form, and S13-ART-03/-04 failed
+    with it.
+  - *Not the mass-of-people framing.* S13-ART-05 — a magistrate, a clerk and
+    **a standing crowd** in a churchyard — succeeded first time, and is the
+    most crowd-like prompt on the slate.
+  - *Not length.* S4-ART-01 succeeded at 338 characters while S13-ART-01 failed
+    at 330; S13-ART-03 failed at 281 with forty longer prompts succeeding.
+  - *Not the output name.* The retest sent S13-ART-01's original text under a
+    **fresh `--name`** and was still hanging at two minutes when it was killed.
+  - *Not an outage.* Sorting the log by time showed nothing had succeeded since
+    00:44:23 — the last success is also the start of an unbroken 2.5-hour
+    failure run, which looked like the bridge dying. It was not:
+    **S14-ART-06's exact text, which succeeded at 00:43:43, succeeded again at
+    03:17 in 42 seconds.** Auth and channel checked healthy first, free, with
+    `mj-auth-check`.
+  **Cause found, and it is a single word: `bare`.** Midjourney's nudity filter
+  matches **substrings** and then simply never answers, so the bridge hits its
+  own 30-minute timeout with no refusal message. `bare` appears in **6 of the 7
+  failing prompts and 0 of the 39 succeeding ones** — "bare winter trees",
+  "bare tabletop", "bare floorboards", "bare earth", "bare moorland". The
+  seventh, S4-ART-03, says *"waiting four **abreast**"*, which contains
+  *breast*. Verified rather than argued: the full S13-ART-01 prompt with
+  **only** `bare winter trees` changed to `leafless winter trees` succeeded in
+  **42 seconds**, having failed twice at 30 minutes.
+  **Two lessons, both expensive.** First, I had rewritten all five prompts'
+  **subject matter** — dropping a crowd framing, softening a gallows — and kept
+  `bare` in every single one. Five timeouts, 2.5 hours, no information; the
+  rewriting never tested anything. **Diff the vocabulary against what already
+  worked, not the subject** — one command over the word sets found it for free.
+  Second, **a control has to be a case whose answer you already know**:
+  re-sending another *original* could not separate a block from an outage,
+  while re-sending a **known success** settled it in 42 s.
+  See [[infra-mj-banned-word-filter]], [[feedback-control-needs-known-answer]],
+  [[feedback-check-the-instrument]].
 - **Never run two queue runners over one Midjourney queue, and never rewrite the
   queue file under a live one.** Both happened tonight. Two runners cross-match:
   the bridge pairs a result to the job it just sent, so two in flight can save

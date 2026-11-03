@@ -71,3 +71,5 @@
 - [Outgunned item art](outgunned-item-art.md) — 187 ink badges in systems/outgunned-adventure/assets/art; manifest tools/data/item-art.tsv, build-packs artFor()
 - [Read the per-game record](feedback-read-the-per-game-record.md) — before a pipeline spends per item, the per-item record is an input; a decision stated four times is unread if you never grep for it
 - [Don't edit a file a process is reading](infra-dont-edit-a-file-a-process-is-reading.md) — rewriting a queue under a `while read < file` loop shifts its byte offset; kill, edit, validate, restart
+- [Control needs a known answer](feedback-control-needs-known-answer.md) — re-running a second unknown is not a control; re-send a case you've seen succeed
+- [Midjourney banned words](infra-mj-banned-word-filter.md) — "bare" and "abreast" silently kill a job as a 30m01s timeout; diff the vocabulary, don't rewrite the subject
