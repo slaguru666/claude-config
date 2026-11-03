@@ -1,6 +1,6 @@
 ---
 type: tasks
-updated: 2026-10-26
+updated: 2026-11-03
 ---
 
 # Tasks
@@ -9,6 +9,8 @@ Live list across everything. Completed items roll to `Archive/` monthly.
 Index: [[INDEX]]
 
 ## Active
+
+- [ ] **TIM: on-device verification pass for Flipper Hub (plug in the Flipper + Marauder board)** [[flipper-hub]] — run `~/flipperhub/FlipperHub.app`; verify screen mirror + keyboard drive, file ops, IR send (check `ir tx` hex/endianness), Sub-GHz listen/replay, and Option-A WiFi (launch Marauder, scan, pull logs/pcaps). Tune the Marauder menu input-step constants + log-filename matching from what the device actually does. Also decide: create a private remote (slaguru666) and push?
 
 - [ ] **TIM: launch the new Outgunned Adventure world and run Frozen Legacy** [[outgunned-adventure]] — Foundry setup, world "Outgunned Adventure". Open *Welcome, Director* first; Director's Chair is in the token controls. Report what feels slow or wrong.
 - [ ] **TIM: review THE GRAND HOTEL v0.4 — all sessions, art, handouts, maps** [[grand-hotel]] — presentation page https://claude.ai/artifact/QSNtnU3HfQEjNHbYEKJJLc ; source `RPGS/Call/The Grand Hotel/`. Audit + fix pass done 2026-10-20 (v0.5; page republished). Open: which VTT, git repo.

@@ -1,6 +1,6 @@
 ---
 type: index
-updated: 2026-10-26
+updated: 2026-11-03
 ---
 
 # Claude — Index
@@ -39,6 +39,7 @@ The map of everything Claude and Tim are building. Open this first.
 | Project | What it is | Status |
 |---|---|---|
 | [[loom]] | Adventure-design tool, local + deployed, generator engine | active |
+| [[flipper-hub]] | Mac hub to run a Flipper Zero + Marauder WiFi board over USB | active |
 | [[masque]] | Real-time GM voice changer + AI voice sidecar | active |
 | [[drift]] | Ambient groovebox (Web Audio) | complete |
 | [[esper]] | Vangelis / CS-80 generative machine | complete |
