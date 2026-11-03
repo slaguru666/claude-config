@@ -127,9 +127,17 @@ when a game is added or renamed.
   Resource die, **1 or 2 Falters**, everything else succeeds, difficulty is
   Step-Up/Step-Down and not a target number, and **a Falter is failing
   forward** — so *the system cannot lose an Essential clue*. Outgunned's ladder
-  was in Tim's own transcription's quick-reference: 2/3/4/5 = Basic/Critical/
+  was then verified **from the printed book**: 2/3/4/5 = Basic/Critical/
   Extreme/Impossible, **6+ = Jackpot, "you become the Director for a turn"**,
-  pool never below 2 or above 9. **Both were a grep away.**
+  pool never below 2 or above 9. **Both were a grep away** — and the Outgunned
+  book itself is at **`~/Downloads/Outgunned_Adventure_ENG_1_1.pdf`** (plus a
+  `.md` copy), which I missed for a whole pass because the pregen pack says
+  *"there is no Outgunned rulebook in this repo or in `~/Library/.../RPGS/`"* —
+  true as written, and not an answer to whether the book exists. **Write the
+  rulebook's path into each game's sources block.** Re-verifying from the page
+  also closed the roster's "one remove from the printed page" item: its two
+  requested spot-checks, **Bodyguard** and **Reassure**, match the book clause
+  for clause. See [[feedback-scoped-negative]].
 - **`tools/playtest_roller.py` now reports VERIFIED for all five systems.**
   Three rules were verified and corrected during the passes: Blade Runner's
   10+ counting as two successes, Dee Sanction's Falter band, Outgunned's

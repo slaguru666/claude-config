@@ -74,3 +74,4 @@
 - [Don't edit a file a process is reading](infra-dont-edit-a-file-a-process-is-reading.md) — rewriting a queue under a `while read < file` loop shifts its byte offset; kill, edit, validate, restart
 - [Control needs a known answer](feedback-control-needs-known-answer.md) — re-running a second unknown is not a control; re-send a case you've seen succeed
 - [Midjourney banned words](infra-mj-banned-word-filter.md) — "bare" and "abreast" silently kill a job as a 30m01s timeout; diff the vocabulary, don't rewrite the subject
+- [Scoped negative](feedback-scoped-negative.md) — "not in this repo" is not "not on this machine"; a timed-out search is no result, not a negative one

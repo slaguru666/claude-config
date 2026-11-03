@@ -1161,3 +1161,22 @@ the file that gets audited, and the scenario is the one that drifts.
 So: before filing a scenario's arithmetic as wrong, read its roster. And when
 auditing a scenario, list the rulings it *depends on and does not state*, then
 move the ruling — not the roster — into the scenario.
+
+## 2026-11-03 — Find the rulebook before you verify against a copy of it
+
+Four systems on one slate needed their rules checked. Two of the four rulebooks
+were in places nobody had named: The Dee Sanction's core book in
+`OLD BACKUP/Contingency 2025/...`, and Outgunned Adventure's in `~/Downloads/`.
+
+I missed the second one for a whole pass because the project's own pregen file
+said *"There is no Outgunned rulebook in this repo or in `~/Library/.../RPGS/`"*
+— true as written — and I verified against its page-cited transcription
+instead. The transcription turned out to be right in every particular, which is
+luck, not method.
+
+Before auditing a scenario's rules, **search the whole machine for the book
+once**, let the search finish, and write the path into the scenario's or
+roster's sources block so the next pass does not repeat the hunt. A
+transcription is good evidence and the book is better; say which one a
+verification used, because "verified" from a secondary source is a different
+claim.
