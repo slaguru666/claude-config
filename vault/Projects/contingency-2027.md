@@ -64,13 +64,19 @@ not a second live copy of the plot. The script never overwrites, so re-run it
 when a game is added or renamed.
 
 **Next steps**
-- ~~Desk playtest, pass 1~~ and ~~its fix pass~~ — **both done 2026-11-03, all
-  twelve. Every game is at v1.1**, one commit each. Next is **pass 2** (stress
-  re-run of each game's weakest act) and **pass 3** (player chair, contrarian),
-  both against v1.1 — and four things pass 1 could not test at four players:
-  slots 3, 6 and 8 **at six**, and slot 4's crowd cards in a real player's hand
-- **Regenerate AFTERIMAGE's print artefacts** — the PDF and the three
-  `pwa/dist*` trees are build outputs and still carry the old skill name
+- ~~Desk playtest, pass 1~~, ~~its fix pass~~ and ~~pass 2~~ — **all three done
+  2026-11-03, all twelve.** Every game is at v1.1 with a pass-2 document, one
+  commit each. **Next: apply pass 2's forty-eight fixes** (eleven critical;
+  per game in `games/*/playtest/*-desk-2.md`), then **pass 3** (player chair,
+  contrarian)
+- **Nothing has been tested at six players**, and five things now wait on that
+  table: slots 3, 6 and 8 at six, slot 4's crowd cards in a real player's
+  hand, and slot 8's viva, which that scenario's own resolved question asks for
+- **Regenerate AFTERIMAGE's print artefacts** — **eleven** files, measured at
+  pass 2: nine across the three `pwa/dist*` trees, `AFTERIMAGE-character-sheets.pdf`
+  **and `CONTINUUM-2026-PRINT-PACK.pdf`**, which nothing had identified and which
+  is the file that would actually be handed round. Every other PDF in `print/`
+  is clean — twenty-three checked
 - **Settle the slot 1 / slot 3 art conflict** — see the decision below; it is
   the only place the repo and the design record disagree
 - ~~Finish art generation~~ — **done 2026-11-03: 46 of 46** (`4389d2d`). Every
@@ -82,12 +88,29 @@ when a game is added or renamed.
   crash-course
 - ~~Verify The Dee Sanction's step die and Falter~~ — **closed 2026-11-03** from
   the core rulebook, which is on disk
+- **Settle slot 9's Fear die bonus at Vaesen core p. 68** — the scenario and its
+  own roster state it two different ways and **the Vaesen core book is not on
+  disk**. This is the third correction to this one rule; do not apply either
+  reading until the page has been read. Every Fear test in pass 3 depends on it
 - Replace the placeholder slot times once Warhorn publishes
 - Decide whether the Searles rooms seat six (now applies to ten games)
 - Decide the 9am Black Summer swap, and whether the convention wants a loud
   Sunday closer
 
 **Key decisions**
+- **Desk pass 2 (2026-11-03): timing is fixed, and a fix lands where it is
+  written rather than where it is played.** Every act measured fits — slot 9's
+  Act Two 62 of 70 against pass 1's "no slack", slot 13's 66 of 75, slot 14's
+  70 of 75, slot 12's Act Three 38 of 40 — so pass 1's finding 1 is answered,
+  and the three remaining timing problems are **rates, not lengths**. The
+  pass's own pattern, in **seven of twelve games**: a pass-1 fix reached the
+  sentence and not the place it is played from — slot 3's new FLASH beat has no
+  addressee at four or five players, slot 8's Dean went into the vote
+  arithmetic and never into the act he votes in, slot 13's revived Favour lives
+  in the scene the scenario cuts first, slot 14's *"2:40 everywhere below"*
+  left GM ESSENTIALS above it saying 2:45. **And the four-player designed table
+  is where v1.1 breaks** (seven games), because pass 1 *ran* at four and pass
+  1's fixes were written against the six-player text.
 - **Desk pass 1, all twelve (2026-11-03): the cases are sound and the
   crash-course blocks are not.** Every case, clue trail and ending survived its
   pass — player-hat ledgers ran 7 to 9 of 10 — while **the system

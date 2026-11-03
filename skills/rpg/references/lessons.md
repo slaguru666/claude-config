@@ -1262,3 +1262,155 @@ said the old name, because they are outputs.
 Do not write "fixed" in a commit message and move on. **Put the regeneration in
 the production tracker as a requirement**, in the column that gates printing,
 where somebody will trip over it before the convention rather than at it.
+
+---
+
+## 2026-11-03 — A fix is finished when every place it is played from agrees
+
+*(Contingency 2027, desk pass 2 across all twelve games — seven of them hit this)*
+
+The fix pass wrote correct sentences. Pass 2 found that in **seven of twelve
+games** the correct sentence had not reached the place the GM reads it from:
+
+- A new beat was written for the six-player table; the character it addresses
+  **leaves at the interval** at five players and does not exist at four.
+- An NPC was added to a vote's **arithmetic** and never to the **act he votes
+  in** — no line, no seat, no moment, and he is a quarter of the committee.
+- A revived mechanic was given a home in **the scene the Pacing Note cuts
+  first**.
+- A hard-stop change said *"2:40 **everywhere below**"* — and the one-glance
+  GM ESSENTIALS block is **above** that line, so the figure a GM reads in the
+  first thirty seconds was still the old one.
+- A newly scheduled beat collided with a **Countdown row the same file already
+  carried**.
+
+The shape is always the same: the edit was scoped to where the author was
+looking. **After changing any rule, time or beat, check the places it is
+played from** — the one-glance block, the other player counts, the roster, the
+Countdown, the cut list, the clue trail's *How Found* column, and anything
+generated from the file. *"X everywhere below"* is a true statement about an
+edit and a false one about a document.
+
+---
+
+## 2026-11-03 — Re-read every fix as the table you actually designed for
+
+Pass 1 **ran** at four players. Pass 1's **fixes were written against the
+six-player text**. So seven of twelve games had findings that exist *only* at
+four:
+
+- a beat with neither a speaker nor an addressee
+- a mechanic with nowhere left to be spent
+- three of four players holding characters who cannot perform the act's only
+  action
+- *"at four players expect to use one"* crowd card, and *"never cut"* two of
+  them
+
+Running at four is not the same as **fixing** at four. When the scenario says
+*"six is the written table, four is the designed table"*, every edit gets read
+twice: once as written, once as the designed table. It costs a minute and it
+caught seven games' worth of defects.
+
+---
+
+## 2026-11-03 — A contingency that fires on the default path is the path
+
+Two instances in one pass:
+
+- A movement's exit condition was *"somebody compares two crates and finds they
+  disagree"* — and the band nearest the door is the one where **nothing is
+  wrong**, so a table that starts where the layout says it starts **cannot
+  reach the exit.** The written fallback was therefore the only way out, every
+  time, and it cost four minutes the twenty-minute budget did not have.
+- A set-piece's *"if you are behind"* fast-track reached the end of its
+  pressure track at minute three; the **default** reached it at minute four.
+  A contingency that runs at the default's speed is not a contingency.
+
+**Test a fallback by asking what the ordinary table does**, not the unlucky
+one. If the ordinary table triggers it, it is not a fallback — put its cost in
+the budget and write it as the path.
+
+---
+
+## 2026-11-03 — Count, then assert; and a count can lie
+
+Three of my own figures in one write-up were wrong, and all three were caught
+the same way — by asserting them in a script or a grep rather than typing them:
+
+- "thirty-nine fixes" was **48** (`grep -c "^### [0-9]\."`).
+- "nine critical" was **11**.
+- A substitution asserted at 10 occurrences was **11**, and because the
+  assertion ran before the write, **nothing was written**.
+
+And the converse, from the same pass: a `grep -c` for a stale time figure
+returned **five**, of which **two were the correction itself** (*"at 2:40 — not
+2:45"* and its history note). **A zero-count check would have been impossible
+to satisfy and a count check would have lied.** Where a document discusses its
+own old values, the test is not the count — it is reading every hit.
+
+---
+
+## 2026-11-03 — Read the system's label, not the tool's
+
+The seeded roller resolves Year Zero pools against **one** success and printed
+*"successes=1 -> success"* for three Vaesen **Fear 2** tests, which need
+**two**. The dice were right; the verdict was wrong.
+
+Any tool that prints a pass/fail has a threshold baked into it. **Before
+trusting a verdict, check that the tool's threshold is the system's.** Read the
+dice and compute the outcome from the rule, and if the tool will be used again,
+give it the threshold as an argument.
+
+---
+
+## 2026-11-03 — Not every weakest act wants a re-run
+
+One slot's "weakest act" was a **ported** scenario carrying six playtest
+documents of its own. Pass 1 for it had been a **port-fitness audit**, not a
+play run, and had concluded the port stood.
+
+Re-running one of its acts would have been re-testing somebody else's finished
+work. The useful pass 2 was a **verification**: did the three remediations
+actually land? They had — in the **source**. They had not reached **eleven
+generated files**, one of which (a combined print pack embedding the same
+sheets) nothing had identified, and which is the file that would actually be
+handed round at the convention.
+
+**When a scenario is ported rather than written, pass 2 verifies the port, not
+the scenario** — and the thing most likely to be stale is whatever is built
+from the file rather than the file.
+
+---
+
+## 2026-11-03 — State what the mechanics cannot do, not just what they can
+
+Measured across five Call of Cthulhu games: a bout of madness needs five points
+from one roll, and **four of the five could not produce one in the act tested**
+— the largest single loss available was 1D2, 1D3 or 1D4.
+
+That is deliberate design — these are scenarios whose climaxes are decisions,
+and a player in a bout cannot take part in one — and **not one of them says
+so.** A Keeper who does not know it will soften an act that is already safe,
+and the instruction *"do not add losses"* reads like a restriction instead of
+what it is: a consequence of arithmetic the author has already done.
+
+**Print the ceiling, not just the budget.** *"The largest single loss here is
+1D3, so this act cannot cause a bout of madness"* is one sentence and it tells
+the GM they can honour the design without worrying.
+
+---
+
+## 2026-11-03 — When the book is not on disk, say so and stop
+
+A rule was corrected for the **third** time, and pass 2 found the scenario and
+its own roster stating it two different ways — with a fan cheat sheet on disk
+agreeing with the roster against a **cited page number** in the scenario.
+
+The core rulebook was not on disk. The ALIEN book was, and that pass had used
+it to read the Panic Table and the trigger list rather than recalling them.
+
+**Do not overturn a page citation on a fan PDF, and do not pick the reading you
+prefer.** Record the contradiction, name the page to be read, say plainly that
+it is unresolved, and make the next correction the last one — with a citation
+somebody has actually opened. Applying a third guess is how a rule gets
+corrected a fourth time.
