@@ -3,7 +3,7 @@ type: project
 status: active
 repo: slaguru666/RingBRP + slaguru666/ringbrp-design
 path: ~/FoundryVTT/Data/systems/ringbrp + ~/RingBRP
-updated: 2026-10-21
+updated: 2026-11-04
 ---
 
 # The Custodians (RingBRP)
@@ -584,6 +584,32 @@ giving each one a rating moves `check-lethality`'s numbers.
 - **Rewards accelerate, they never gate.** Two versions failed with something on the critical
   path behind a probability gate (once at P=1.7%).
 
+**FOUR CHARACTER SHEETS, AND ONE DEFINITION OF THE SHARED PARTS (4 Nov 2026, v1.10.0)** —
+the Explorer sheet (default) plus three CHOICES: **Registry File** (1974 buff personnel file),
+**Case File** (damp institutional horror, Special Elite + Oswald) and **Unit Readout** (1986
+neon chrome, Orbitron + Share Tech Mono). None owns a rule: `RingBRPAltSheet` holds the three
+derived values they display — file reference, condition stamp, coherence penalty in words — so
+three sheets cannot disagree about whether an agent is wounded. The eight tab bodies are the
+same partials all four use, reached via `sheet-tabs.hbs`/`sheet-bodies.hbs`. **The 106 selectors
+that re-dress those bodies live once, in `ringbrp-altsheet.css`, written against tokens**; a
+sheet declares a palette, not a stylesheet.
+
+**Two shipped defects fell out of building the second and third.** (1) The leak floor covered
+`color` and `background-color` and said nothing about **borders**, so a bare
+`.rb-cat-head { border-top: 2px solid var(--rb-yellow) }` drew lemon rules on every alternate
+sheet — **45 leaking properties per sheet, the live Registry sheet included**. The floor now
+covers border, outline, text-decoration and column-rule colour. (2) "CHRONOLOGICAL" measures
+82–89px in a 72px column, so the header read `CHRONOLOGICALAPHYSIOLOGICAL`. Columns at 96px.
+
+**`tools/render-sheets.mjs` + `tools/sheet-sweeps.js` are new and are the reason both were
+found** — the sheets render to a standalone page (fixture with 24 skills) that measures resting
+contrast on 171 text nodes per sheet with **alpha composited**, the same nodes with every
+`:hover` rule forced on as a `.force-hover` class (emulating the cascade by hand got it wrong
+twice), and Explorer-palette colours reaching in. Needs no headless browser: open
+`.render/sheets.html` and call `__sweep()`, `__hoverSweep()`, `__leakSweep()`. **Each was shown
+to fire on a real defect before its zero was believed.** Art: four Midjourney plates → webp
+(384KB), originals gitignored as `art/creatures` already does.
+
 **Gotchas**
 - Guards run under **bun**: `npm test` → `bun run check`. Bare `bun test` runs bun's own
   runner and finds nothing.
@@ -591,6 +617,10 @@ giving each one a rating moves `check-lethality`'s numbers.
   objects**. Objects yield a pack that loads with zero embedded documents and no error.
 - `check-scenarios` sweeps `tools/scenario-*` into the scenario corpus, so a tool with that
   prefix has its prose read as a scenario's. Cost one rename already (`declared-cast.mjs`).
+- A Google Fonts woff2 grabbed without checking its `unicode-range` can be the wrong
+  subset. Pick the `@font-face` block whose range starts `U+0000-00FF`.
+- JS written inside a template literal in a `.mjs` generator loses `\n` and `\d` at
+  generation time. `tools/sheet-sweeps.js` is a separate file read verbatim for that reason.
 - Derive HP from the weapon damage ladder, not the reverse — halving HP collapses the 1984
   damage values into one-hit kills.
 
