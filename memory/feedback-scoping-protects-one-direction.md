@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: feedback
   originSessionId: 710730ff-4590-4412-82b8-d6ae6765d92b
-  modified: 2026-10-21T17:55:29.659Z
+  modified: 2026-11-04T13:00:00.000Z
 ---
 
 Building a second themed surface (a Registry-file character sheet beside an existing ultramarine one), the design said: scope every rule under `.rb-registry` and leave the shared `ringbrp-sheet` class off the form, and the two stylesheets cannot touch each other. Half true. Scoping stopped the new rules escaping. Dropping the shared class shed only the rules *scoped to that class* — and the old stylesheet coloured dozens of shared classes with **bare selectors** (`.rb-skill-val { color: var(--rb-white) }`), which match anywhere in the document. 58 skill percentages rendered white on buff at **1.15:1**: invisible, on the deliverable's main screen, with every guard green.
@@ -16,4 +16,18 @@ Specificity did not save it either. The new rule `.rb-registry .rb-skill-val` wa
 
 **The floor covers the resting state only.** A day later a hovered table row still came through solid ultramarine: `:hover` adds a class-weight, so `.rb-table tbody tr:hover` (0-2-1) outranks a 0-2-0 floor. Any pseudo-class — `:hover`, `:focus`, `:checked`, `:disabled` — clears a floor built for the plain state, so set the floor and then give the new surface its own treatment for each interactive state rather than assuming they inherit it.
 
-**How to apply:** when a second visual surface reuses another's markup, assume its stylesheet reaches in, and set a floor rather than a list. Verify by walking every rendered text node and computing contrast against its *composited* background — reading the CSS cannot find this, and a class list goes stale on the next class anybody colours. **Composite the alpha before believing a contrast number**: two of my eight remaining "failures" were a 12% red tint read as solid red, i.e. the instrument, not the page. Related: [[feedback-check-the-instrument]], [[feedback-can-the-guard-see-it]], [[infra-foundry-partials-render-empty]], [[ringbrp-project]].
+**4 Nov 2026 — and the floor only covered half of what "colour" means.** Building two more
+sheets on the same markup, the floor set `color` and `background-color` and said nothing about
+**borders**, so a bare `.rb-cat-head { border-top: 2px solid var(--rb-yellow) }` drew lemon
+rules across all three sheets — **45 leaking properties per sheet, the already-shipped one
+included**. The contrast sweep could not see it: it measures text, and a border is not text.
+The floor now also sets `border-color`, `outline-color`, `text-decoration-color` and
+`column-rule-color` to `currentColor` (the CSS initial value, so an undeclared border matches
+its own text), with the few that should keep an accent given their own sheet's.
+**The detector was wrong before the page was**, twice over: the leak sweep normalised `rgb()`
+but not hex, so every hex-valued token matched nothing and it reported clean against those 45;
+and a hand-rolled `:hover` cascade emulator reported a sentinel for two sheets and missed its
+own probe — replaced by cloning each `:hover` rule as a `.force-hover` CLASS (same specificity)
+and reading real computed styles.
+
+**How to apply:** when a second visual surface reuses another's markup, assume its stylesheet reaches in, and set a floor rather than a list. Enumerate the colour-bearing properties, not just the two obvious ones, and verify by walking every rendered text node and computing contrast against its *composited* background — reading the CSS cannot find this, and a class list goes stale on the next class anybody colours. **Composite the alpha before believing a contrast number**: two of my eight remaining "failures" were a 12% red tint read as solid red, i.e. the instrument, not the page. Related: [[feedback-check-the-instrument]], [[feedback-can-the-guard-see-it]], [[infra-foundry-partials-render-empty]], [[ringbrp-project]].

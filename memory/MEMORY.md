@@ -75,3 +75,4 @@
 - [Control needs a known answer](feedback-control-needs-known-answer.md) — re-running a second unknown is not a control; re-send a case you've seen succeed
 - [Midjourney banned words](infra-mj-banned-word-filter.md) — "bare" and "abreast" silently kill a job as a 30m01s timeout; diff the vocabulary, don't rewrite the subject
 - [Scoped negative](feedback-scoped-negative.md) — "not in this repo" is not "not on this machine"; a timed-out search is no result, not a negative one
+- [Template literal eats escapes](infra-template-literal-eats-escapes.md) — JS inside a generator's backticks loses `\n` and `\d`; the page renders fine and the script never ran
