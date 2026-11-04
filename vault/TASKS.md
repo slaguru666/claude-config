@@ -32,14 +32,18 @@ Index: [[INDEX]]
   **(4 Nov — DONE. Ran it: stop, `git clean -fd packs && git checkout -- packs`, `git pull --ff-only` 9a42e64→104b1be, start. Verified by the FILES and not the version: `RingBRPAltSheet`, `RingBRPDreadSheet` and `RingBRPNeonSheet` all present in `ringbrp.mjs`, all six declared stylesheets on disk, and all 20 new files sha256-identical to local. Served over HTTP at 200 — the two new stylesheets, both templates, the four plates and the fonts. `check-behaviour` 146 and `check-lang` pass on the server itself; `check-templates` cannot run there because `node_modules` is gitignored, not because anything is wrong. Clean startup, no errors in the journal. The world was NOT running before and is still not — launch `classified` to see the sheets.)**
   list it read at startup. Check it landed by grepping for `RingBRPAltSheet` in `ringbrp.mjs`
   (a function the new code introduces) rather than by the version number.
-- [ ] **TIM: pick between four character sheets — two of them are new** [[custodians-ringbrp]] — v1.10.0
-  adds the **Case File** (damp institutional horror) and the **Unit Readout** (1986 neon chrome)
-  beside the Registry File. Per-actor: open a character, the cog in its header, Sheet
-  Configuration. The Explorer sheet stays everyone's default until you change it there or in
-  Configure Sheet Defaults. All three alternates show the same values from the same code, so
-  the only question is which one you want to look at for four hours. Worth your eye: whether the
-  Case File's PANIC-first band beats the Registry File's body-first one, and whether the Unit
-  Readout's glow is tiring at a real table rather than in a screenshot.
+- [ ] **TIM: pick between FIVE character sheets — three of them are new** [[custodians-ringbrp]] —
+  v1.10.0 added the **Case File** (damp institutional horror) and the **Unit Readout** (1986 neon
+  chrome) beside the Registry File; **v1.11.0 adds the Explorer Sheet (Ringworld)** — the cover
+  palette and Michroma, with a drawn arch and shadow squares over a painted plate, and
+  characteristics leading as they do on the 1984 sheet. Per-actor: open a character, the cog in
+  its header, Sheet Configuration. The Explorer sheet (default) stays everyone's until you change
+  it there or in Configure Sheet Defaults. All four alternates show the same values from the same
+  code, so the only question is which one you want to look at for four hours. Worth your eye:
+  whether the Case File's PANIC-first band beats the Registry File's body-first one, whether the
+  Unit Readout's glow is tiring at a real table rather than in a screenshot, and whether the
+  Ringworld sheet's arch is atmosphere or clutter once a real character is on it.
+  **Note: v1.11.0 is pushed (`f70f438`) but NOT deployed — the play server is on 1.10.0.**
 - [ ] **TIM: try the Registry File sheet and the Duty Officer panel** [[custodians-ringbrp]] — both are in `main` (`20390a6`, `33c68d5`) and both were verified by clicking in `ringbrp-slice`, but nobody has used either in anger. The sheet is per-actor: open a character, the cog in its header, Sheet Configuration, pick **Registry File** (the Explorer sheet stays the default for everyone until you change it there, or world-wide in Configure Sheet Defaults). The panel is the **clipboard icon in the token controls** — select tokens first and it acts on them, otherwise it acts on the party. The two things most worth your eye: whether the always-visible duty band is the right six things, and whether the panel's rows are too tall to see a party of six at once.
 - [ ] **TIM: the wound bar says WOUNDED for an agent who is only Adrift** [[custodians-ringbrp]] — the shared skills-tab partial titles its penalty bar from `impaired.active`, which is a combined summary whose chips include the **coherence** band, so an uninjured agent at Coherence 4 is labelled WOUNDED. This is pre-existing in the Explorer sheet, not new — but the Registry sheet's stamp now correctly reads FIT FOR DUTY for the same agent, so the two sit on screen contradicting each other. It is one word in `templates/partials/tab-skills.hbs`, and changing it changes the Explorer sheet in every existing world, which is why I have not. Options: leave it, retitle it to something true of both causes ("Impaired", "Penalties"), or split the bar's title by cause.
 - [ ] **FRESH WATER: a desk pass, the printed boat list, and a slot** [[custodians-ringbrp]] — the one-page 1923 case is written, the 18 scraperboard plates are generated and the Foundry pack is wired, but **nothing has been played or desk-passed**. The two things most likely to break at a table: whether 2 hours is right for a case whose whole second half is one arithmetic decision, and whether the washing scenes stay dignified under four real players. The printed boat list (which boats shipped water, with headcounts) is the one production item still missing — it is the handout the players actually mark.

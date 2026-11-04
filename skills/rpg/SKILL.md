@@ -24,6 +24,9 @@ across machines and sessions.
 
 ## The prime directive: write for the GM at the table
 
+**Read `references/readable-scenarios.md` first.** It is the layout and plain-language
+primer, and it takes precedence over habit.
+
 A scenario is a performance document, not a novel. The GM reads it in 30-second
 glances while four people wait. Every formatting decision serves that:
 
@@ -112,6 +115,7 @@ This skill is **live** — it must get smarter every time it is used:
 
 | File | Read when |
 |---|---|
+| `references/readable-scenarios.md` | **ALWAYS, before writing or revising any scenario document.** How it is laid out so a human can read it: open with the shape, name things rather than coding them, bold the label not the sentence, then cut it in half |
 | `references/convention-one-shot.md` | Building/revising a 4-hour slot scenario (the default) |
 | `references/campaign.md` | Multi-session or open-ended material |
 | `references/craft.md` | Structure, clue, pacing, mystery design decisions |

@@ -584,6 +584,29 @@ giving each one a rating moves `check-lethality`'s numbers.
 - **Rewards accelerate, they never gate.** Two versions failed with something on the critical
   path behind a probability gate (once at P=1.7%).
 
+**A FIFTH SHEET — THE EXPLORER SHEET, the Ringworld register (4 Nov 2026, v1.11.0)** —
+`f70f438`. The other three alternates are departures from the house identity; this one is the
+house identity turned up, with the imagery the default sheet deliberately does without.
+`templates/ringworld-sheet.hbs` + `styles/ringbrp-ringworld.css` + `RingBRPRingworldSheet`,
+`makeDefault: false` like the rest. **It takes the cover palette rather than copying it** —
+`--rb-blue`/`--rb-yellow` are declared once on `:root` and mapped onto `--alt-*`; Michroma's
+`@font-face` is not re-declared either. Characteristics and their x5 rolls lead, as on the
+1984 sheet; Panic and Coherence are two cells among six. Yellow still means rollable.
+**The arch is drawn, not painted** — two Midjourney rolls returned a disc and a monument, so
+the one shape that had to be right is an SVG (far side in shadow, lit inner surface over it,
+shadow squares as a dashed stroke cutting the lit line). The plate is demoted to atmosphere
+behind it, and contrast is measured against the solid ultramarine, never the art.
+
+**Three values on that sheet are measurements, not choices**, and all three want to drift back:
+`--alt-bad-soft` **0.05** (`--rb-danger` on ultramarine is 4.82:1 *before* any tint — the
+ceiling; at the 0.15 the other sheets use the shared wound bar reads 4.11:1), `--alt-hover`
+**0.07** (lemon is a light wash on a dark ground, so it lifts the surface under the muted skill
+figures; 0.13 gave 4.54:1 against a 4.5 line), and the field wells at **0.62** (the only sheet
+whose inputs sit over a drawn arch; at 0.34 the shadow squares read through the name).
+**The `--rb-` token guard read `ringbrp.css` alone** and was therefore silent about the
+alternates rather than safe about them; it now reads every stylesheet `system.json` declares,
+shown to fire by planting a typo in the new file.
+
 **FOUR CHARACTER SHEETS, AND ONE DEFINITION OF THE SHARED PARTS (4 Nov 2026, v1.10.0)** —
 the Explorer sheet (default) plus three CHOICES: **Registry File** (1974 buff personnel file),
 **Case File** (damp institutional horror, Special Elite + Oswald) and **Unit Readout** (1986
