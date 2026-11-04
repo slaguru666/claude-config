@@ -383,6 +383,20 @@ creatures hold a weapon they have no skill for, held at `check-armed`'s ratchet 
 giving each one a rating moves `check-lethality`'s numbers.
 
 **Key decisions**
+
+- **Scenarios are written to a readability primer now** (`~/.claude/skills/rpg/references/readable-scenarios.md`,
+  ALWAYS-read in the RPG skill). Shape first — contents, 50-to-60 words per act, the clock —
+  handouts named in prose with codes only in the handout table, one bold label per block, and
+  version/warnings/open questions at the back. FIXED POINT v2.0 is the first document rebuilt
+  to it, and the model for the rest.
+- **Measure a scenario in words, not printed pages.** `make-pdf` starts every `##` section on a
+  fresh page by default, so page count tracks the number of sections as much as the prose. Use
+  `--compact` to see the real volume.
+- **FP-H00, a one-page flow chart, is the GM's first sheet in the printed pack** — acts across,
+  scenes down, clock over each column, the three endings at the foot. A diagram belongs in the
+  pack, not as ASCII in the prose: `make-pdf` supports neither fenced code blocks nor markdown
+  images.
+
 - 2026-10-21 — **Scoping a stylesheet protects one direction only.** The new sheet's design
   said that dropping the shared `ringbrp-sheet` class would keep 2,000 lines of the other
   sheet's rules out of it. It keeps out the rules *scoped to that class*; every bare `.rb-*`

@@ -107,7 +107,11 @@ Keep cells to one line where you can.
 Write it, then take out half the words. The scenario is not improved by the sentence
 that qualifies the previous sentence.
 
-**Target lengths:** a four-hour convention one-shot is 8 to 14 printed pages, not 23.
+**Target length:** a four-hour convention one-shot is 5,000 to 8,000 words.
+
+Measure words, not pages. Page count is a property of the renderer: ringbrp's `make-pdf`
+starts every `##` section on a fresh page by default, so a twelve-section document pays
+twelve part-empty pages before a word is written. Pass `--compact` to see the real volume.
 
 ---
 
