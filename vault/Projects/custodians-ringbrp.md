@@ -384,6 +384,16 @@ giving each one a rating moves `check-lethality`'s numbers.
 
 **Key decisions**
 
+- **STANDING ORDER's creature is the pooled song, confirmed by Tim 4 Nov 2026.** The thing at
+  the bottom of the mine is seven years of a tune begun nightly and never finished, pooled in
+  the coal and grown a want of its own on sixty-one pairs' worth of held time. It is **not** a
+  separate entity: the twins remain the time engine and the passenger in Smith stays asleep.
+  Settled — do not reopen it.
+- **The long form does not fit a four-hour slot and the document now says so.** 4h10 against a
+  four-hour slot; a convention runs the short form, chosen at the start rather than discovered
+  at 3:20 when the ending is what gets cut.
+
+
 - **Scenarios are written to a readability primer now** (`~/.claude/skills/rpg/references/readable-scenarios.md`,
   ALWAYS-read in the RPG skill). Shape first — contents, 50-to-60 words per act, the clock —
   handouts named in prose with codes only in the handout table, one bold label per block, and
