@@ -1421,3 +1421,18 @@ corrected a fourth time.
   pages before a word is written. Measure a scenario in words, or render with `--compact` to see
   the real volume. Related: converting Act One's four questions from prose to a table bought
   reading speed and lost twelve words. Tables are a readability tool, not a length tool.
+
+- **2026-11-04 — A roll with no failure case is a promise the dice can break.** FIXED POINT's
+  desk pass rolled honestly and three load-bearing rolls failed: the one that delivers the act's
+  central finding, the one the document calls "the moment the case closes in their heads", and
+  the one carrying a revelation the document's own revelation table promises. Only one of the
+  three had a stated failure case. Every roll that carries a revelation needs a named second
+  route or a stated cost — and the test is not "is it likely to fail", it is "what does the
+  table lose when it does".
+- **2026-11-04 — The scenario's own open question can be the wrong question.** FIXED POINT asked
+  whether forty minutes of not knowing was too long. The pass could not make it last twenty:
+  competent players with good instruments measure rather than wander, and an act whose routes
+  are all open at once collapses. Desk-pass the thing you are worried about, but time every act,
+  because the one you are not worried about is where the drift is. Corollary: an act that runs
+  cold cannot be stretched by instruction — "spend the time on the horizon" is unusable once the
+  horizon has been measured. It needs another object in it, not another paragraph of advice.
