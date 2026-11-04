@@ -20,7 +20,7 @@ That surprises people on first use; lead with it.
 built on unpushed `shared-apps`, so it carries those 57 commits too). Adds
 `surface.background` (cork/plain/graph, both schemas), sticky-note style, card
 Duplicate (Ctrl/Cmd+D) + Bring to front, and style/paper/pin in the edit dialog.
-Local install at `~/FoundryVTT/Data/modules/corkboard` is still the Sep 15 build.
+Installed locally and deployed to `foundry` host (2026-11-04); remote 1.0.0 backup in `/root/corkboard-backups/`.
 Gotcha: `npx` and `build-app-shell-staged.mjs` fail in the Claude sandbox —
 run vitest via `node node_modules/vitest/vitest.mjs run`.
 
