@@ -1436,3 +1436,15 @@ corrected a fourth time.
   because the one you are not worried about is where the drift is. Corollary: an act that runs
   cold cannot be stretched by instruction — "spend the time on the horizon" is unusable once the
   horizon has been measured. It needs another object in it, not another paragraph of advice.
+
+- **2026-11-04 — Read the pregens' register before playtesting, not after.** Two of STANDING
+  ORDER's worst Act Four problems were visible from the character sheets with no dice at all:
+  one skill the act demanded four times was held by exactly one agent in the declared six, and
+  the act then required that same irreplaceable character to roll the party's lowest POW. Check
+  every skill an act leans on against the declared cast and ask who else can do the job — "the
+  roll is reachable at 25%" is not the same as "the party has a second person who can try".
+- **2026-11-04 — Words per minute of budget catches an act that cannot fit.** Compare each act's
+  word count against its stated minutes. STANDING ORDER's Acts Two and Three sat at 38 and 48
+  words per minute of budget; the new Act Four sat at 98, and no amount of re-reading it would
+  have made that obvious. Discount reference material a table only reads one branch of, but the
+  ratio still finds the act that is twice the size of its clock.
