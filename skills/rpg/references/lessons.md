@@ -1414,3 +1414,10 @@ prefer.** Record the contradiction, name the page to be read, say plainly that
 it is unresolved, and make the next correction the last one — with a citation
 somebody has actually opened. Applying a third guess is how a rule gets
 corrected a fourth time.
+
+- **2026-11-04 — Page count can be a property of the renderer, not the prose.** FIXED POINT v1.0
+  came back as "too many words". Cutting 14% of them moved the PDF from 22 pages to 21, because
+  `make-pdf` starts every `##` section on a fresh page: twelve sections cost twelve part-empty
+  pages before a word is written. Measure a scenario in words, or render with `--compact` to see
+  the real volume. Related: converting Act One's four questions from prose to a table bought
+  reading speed and lost twelve words. Tables are a readability tool, not a length tool.
