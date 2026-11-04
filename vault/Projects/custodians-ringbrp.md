@@ -671,6 +671,24 @@ to fire on a real defect before its zero was believed.** Art: four Midjourney pl
 - Derive HP from the weapon damage ladder, not the reverse — halving HP collapses the 1984
   damage values into one-hit kills.
 
+**A SIXTH SHEET — THE BODY COUNT, the video-nasty register (4 Nov 2026, v1.12.0, `409839b`)** —
+a second horror sheet, deliberately not a louder Case File: that one is a damp 1974 file, this
+is a 1986 rental sleeve. Blood is ground and ornament and never type (#8e0f14 is 2.07:1 on the
+ground); #ff4a3d at 5.86:1 is the rollable red. TERROR leads, where the Explorer sheet demotes
+the same cell. Its washes are heavier than every other sheet's **on purpose** — a blood wash on
+a near-black ground darkens, so contrast rises with alpha, the opposite of the Explorer sheet's
+lemon-on-blue. Four Midjourney plates; two of them carry shape only (RGB zeroed, alpha baked at
+conversion) so the palette stays this file's decision. Pushed, **not deployed**.
+
+Two things that generalise, both the instrument rather than the design:
+- The render harness MUST be served over HTTP from the Foundry Data dir. Opened as a file it
+  becomes a `data:` snapshot, no system CSS loads, and the sweep reports ~311/314 failing at a
+  uniform 1.89:1 on every sheet. A single repeated ratio across unrelated sheets means the
+  instrument is unplugged. Local `.claude/launch.json` (port 8787) does this and is uncommitted.
+- The sweeps are blind to absolutely-positioned siblings — `ground()` composites ancestors only.
+  The drip painting straight over the tab labels measured perfectly clean. Geometry defects need
+  a rectangle-intersection check, not a contrast one.
+
 Working-practice lessons this project taught live in the memory files, not here:
 `feedback-assert-where-not-just-what` (a unique match protects the text you edit, never where
 new text lands; and the cold read that found what seven passes of dice did not) and
