@@ -18,6 +18,7 @@
 - [Local LLM agent stack](local-llm-agent-stack.md) — Hermes Agent + Ollama + Gemma 4 12B on the user's Mac; install gotchas (64K ctx, uv-managed Python 3.11)
 - [NotebookLM CLI setup](notebooklm-cli-setup.md) — notebooklm-py on the Mac; pin --python 3.12 (else silent 0.1.1 downgrade), browser login, launchd auth-refresh keepalive
 - [RPG skill](rpg-skill.md) — house scenario-writing skill at ~/.claude/skills/rpg, shared via claude-config; pull+install before sync, sync.sh after RPG work.
+- [FIXED POINT scenario](fixed-point-scenario.md) — Ringworld/Custodians axis case; arch renders at night not day, and `&ldquo;` breaks check-handouts
 - [The Custodians / RingBRP](ringbrp-project.md) — Foundry system at systems/ringbrp; `rules.mjs` is the ONLY rule authority and has superseded the old design-doc rulings; scenarios live inside the system at docs/scenarios/.
 - [Contingency 2027](contingency-2027.md) — 27–31 Jan 2027, Hunstanton; repo slaguru666/contingency2027; twelve games, nine systems, slate rebuilt 2026-10-25 (no DEAD AIR); 36 trailers live on the VPS.
 - [Gitea timevans.uk](infra-gitea-timevans.md) — push over SSH port **2222**, not 22; HTTPS has no stored credential

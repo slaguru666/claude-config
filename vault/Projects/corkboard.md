@@ -3,7 +3,7 @@ type: project
 status: active
 repo: slaguru666/corkboard
 path: ~/Git/corkboard
-updated: 2026-09-28
+updated: 2026-11-04
 ---
 
 # Corkboard
@@ -15,6 +15,14 @@ That surprises people on first use; lead with it.
 
 **Where it lives** — `~/Git/corkboard`, remote `slaguru666/corkboard`. Deploy with
 `./deploy.sh --force`, then reload the world. Reviews in `docs/reviews/`.
+
+**Latest (2026-11-04)** — v1.1.0 on branch `board-backgrounds` (pushed, not merged;
+built on unpushed `shared-apps`, so it carries those 57 commits too). Adds
+`surface.background` (cork/plain/graph, both schemas), sticky-note style, card
+Duplicate (Ctrl/Cmd+D) + Bring to front, and style/paper/pin in the edit dialog.
+Local install at `~/FoundryVTT/Data/modules/corkboard` is still the Sep 15 build.
+Gotcha: `npx` and `build-app-shell-staged.mjs` fail in the Claude sandbox —
+run vitest via `node node_modules/vitest/vitest.mjs run`.
 
 **Current state** — Phase 3 gesture extraction complete, and **the standalone app
 now runs** (2026-09-13). `app/index.html` is a browser page with no Foundry that
